@@ -1,11 +1,27 @@
 import  { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { InicioComponent } from './inicio/inicio.component';importamos los componentes
+import { AlumnoComponent } from './componentes/alumno/alumno.component';
+import { LoginAlumnoComponent } from './componentes/alumno/login-alumno/login-alumno.component';
+import { LogoutAlumnoComponent } from './componentes/alumno/logout-alumno/logout-alumno.component';
+import { RegistroAlumnoComponent } from './componentes/alumno/registro-alumno/registro-alumno.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { LoginProfesorComponent } from './componentes/profesor/login-profesor/login-profesor.component';
+import { LogoutProfesorComponent } from './componentes/profesor/logout-profesor/logout-profesor.component';
+import { ProfesorComponent } from './componentes/profesor/profesor.component';
+import { RegistroProfesorComponent } from './componentes/profesor/registro-profesor/registro-profesor.component';
 
 
-const routes: Routes = [
-  // { path: 'inicio', component: InicioComponent }, aqui vamos a poner las rutas de los componentes
-
+const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
+  { path: 'inicio', component: InicioComponent }, //aqui vamos a poner las rutas de los componentes
+  { path: 'profesor', component: ProfesorComponent },
+  { path: 'alumno', component: AlumnoComponent },
+  { path: 'loginProfesor', component: LoginProfesorComponent },
+  { path: 'loginAlumno', component: LoginAlumnoComponent },
+  { path: 'registroProfesor', component: RegistroProfesorComponent },
+  { path: 'registroAlumno', component: RegistroAlumnoComponent },
+  { path: 'logoutProfesor', component: LogoutProfesorComponent },
+  { path: 'logoutAlumno', component: LogoutAlumnoComponent},
+  { path: '**', redirectTo: 'inicio'}
 ];
 
 @NgModule({
