@@ -1,1 +1,15 @@
 <p>registro-profesor works!</p>
+
+<div class="container">
+  <!-- formulario de recogida de datos -->
+  <form [formGroup]="profesor" #itemForm="ngForm">
+    <!-- campo del nombreProfesor -->
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="control-Label">nombre del profesor</label>
+        <input type="text" formControlName="nombreProfesor" placeholder="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombreProfesor.errors}">
+      </div>
+    </div>
+  </form>
+
+</div>
