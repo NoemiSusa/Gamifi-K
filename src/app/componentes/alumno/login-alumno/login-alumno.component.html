@@ -12,9 +12,6 @@ https://cssauthor.com/html5-and-css3-login-forms/
 
 <!-- <script type="text/javascript" src="login-alumno.component.js"></script> -->
 
-<div class="fondo" style="width: 100%">
-
-</div>
 
 
 <form #itemForm="ngForm" (ngSubmit)="onFormSubmit(itemForm)">
@@ -26,28 +23,29 @@ https://cssauthor.com/html5-and-css3-login-forms/
       <div class='box-login-title'>
         <div class='i i-login'></div><h2>LOGIN USUARIO</h2>
       </div>
-      <div class='box-login'>
+      <div class='box-login' >
         <div class='fieldset-body' id='login_form'>
           <!-- <button onclick="openLoginInfo();" class='b b-form i i-more' title='Mas Informacion'></button> -->
 
 
               <p class='field'>
 
-            <label for='user'>Nick</label>
-            <input type='text' id='user' name='user' title='nick'  />
+            <label for='nickAlumno'>Nick</label>
+            <input type='text' id='nickAlumno' ngModel name='nickAlumno' title='nick' value="nickAlumno"  ngModel required />
             <span id='valida' class='i i-warning'></span>
           </p>
               <p class='field'>
-            <label for='pass'>Contraseña</label>
-            <input type='password' id='pass' name='pass' title='Password' />
+            <label for='contrasenyaAlumno'>Contraseña</label>
+            <input type='password' id='pass' ngModel name='contrasenyaAlumno' #vnickAlumno title='contrasenyaAlumno'  ngModel required/>
             <span id='valida' class='i i-close'></span>
           </p>
+
 
             <!-- <label class='checkbox'>
               <input type='checkbox' value='TRUE' title='Keep me Signed in' /> Keep me Signed in
             </label> -->
 
-              <input type='submit' id='siguiente' value='Siguiente' title='Siguiente'/>
+              <input type='submit' id='siguiente' value='Siguiente' title='Siguiente' [disabled]="itemForm.invalid"/>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 // import { EventEmitter } from 'events';
 import { Alumno } from 'src/app/models/alumno.model';
 @Component({
@@ -13,14 +14,17 @@ export class LoginAlumnoComponent implements OnInit {
   // creo un alumno
   newAlumno: Alumno = null;
 
+
+
+
   // Creamos un emisor de eventos que enviará el personaje creado
-  @Output() eventoAlumno: EventEmitter<Alumno> = new EventEmitter<Alumno>();
+  // @Output() eventoAlumno: EventEmitter<Alumno> = new EventEmitter<Alumno>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+prueba;
   // Funcion que se ejecuta al enviar el formulario
   onFormSubmit(itemForm: any): void {
 
@@ -28,12 +32,17 @@ export class LoginAlumnoComponent implements OnInit {
     this.newAlumno = new Alumno(itemForm.controls.nickAlumno.value,
                                 itemForm.controls.contrasenyaAlumno.value);
 
-    console.log(this.newAlumno);
+
+
 
 
     // Enviamos el evento "characterEvent" y le pasamos el personaje creado
-    this.eventoAlumno.emit(this.newAlumno);
+    // this.eventoAlumno.emit(this.newAlumno);
+
   }
+
+
+
 
 
 
