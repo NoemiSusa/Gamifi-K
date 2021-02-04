@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profesor } from 'src/app/models/profesor.model';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class RegistroProfesorComponent implements OnInit {
       contrasenyaProfesor:['',Validators.required],
       nombreProfesor:['',Validators.required],
       apellidoProfesor:['',Validators.required],
-      correoProfesor:['',Validators.required],
+      correoProfesor:['',Validators.required, Validators.email],
       centroProfesor:['', Validators.required]
     })
 
@@ -48,7 +49,7 @@ export class RegistroProfesorComponent implements OnInit {
 
   }
 
-  get f(){
+  get controlFormulario(){
     return this.profesor.controls;
   }
 
@@ -65,6 +66,6 @@ export class RegistroProfesorComponent implements OnInit {
   Swal.fire('Les dades introduïdes són correctes');
   }
 
-  }
+
 
 }
