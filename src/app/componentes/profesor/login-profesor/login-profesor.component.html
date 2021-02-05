@@ -1,75 +1,39 @@
-<p>login-profesor works!</p>
+<form [formGroup]="profesor" #itemForm="ngForm">
 
-<!--
-Follow me on
-------------
-Codepen: https://codepen.io/mycnlz/
-Dribbble: https://dribbble.com/mycnlz
-Pinterest: https://pinterest.com/mycnlz/
+    <!-- camp nom (formControlName és una etiqueta que aten els canvis al valor del control -->
 
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label class="control-label">Nombre del Alumno</label>
 
-https://cssauthor.com/html5-and-css3-login-forms/
+            <input type="text" formControlName="nombreProfesor" placeholder="Nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlLogin.nombreAlumno.errors}">
 
--->
+            <!--la controlLogin. ve del ts, si es compleixen les dues condicions es true-->
 
-<!-- <script type="text/javascript" src="login-alumno.component.js"></script> -->
-
-
-
-<form #itemForm="ngForm" (ngSubmit)="onFormSubmit(itemForm)">
-
-  <div class='box'  >
-
-      <div class='box-form'>
-        <div class='box-login-tab'></div>
-        <div class='box-login-title'>
-          <div class='i i-login'></div><h2>LOGIN PROFESOR</h2>
+            <div *ngIf="submitted && controlLogin.nombreAlumno.errors" class="invalid-feedback">
+                <div *ngIf="controlLogin.nombreProfesor.errors.required">El nombre es obligatorio</div>
+            </div>
         </div>
-        <div class='box-login' >
-          <div class='fieldset-body' id='login_form'>
-            <!-- <button onclick="openLoginInfo();" class='b b-form i i-more' title='Mas Informacion'></button> -->
+    </div>
+    <br>
 
+    <!--camp contrasenya i confirmar contrasenya-->
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label class="control-label">Contrasenya</label>
+            <input type="password" formControlName="contrasenya" id="contrasenya" placeholder="Contrasenya" class="form-control" [ngClass]="{'is-invalid': submitted && controlLogin.contrasenya.errors}">
 
-                <p class='field'>
-
-              <label for='nickProfesor'>Nick</label>
-              <input type='text' id='nickProfesor' ngModel name='nickProfesor' title='nick' value="nickProfesor"  ngModel required />
-              <span id='valida' class='i i-warning'></span>
-            </p>
-                <p class='field'>
-              <label for='contrasenyaProfesor'>Contraseña</label>
-              <input type='password' id='pass' ngModel name='contrasenyaAlumno' #vnickAlumno title='contrasenyaAlumno'  ngModel required/>
-              <span id='valida' class='i i-close'></span>
-            </p>
-
-
-              <!-- <label class='checkbox'>
-                <input type='checkbox' value='TRUE' title='Keep me Signed in' /> Keep me Signed in
-              </label> -->
-
-                <input type='submit' id='siguiente' value='Siguiente' title='Siguiente' [disabled]="itemForm.invalid"/>
-          </div>
+            <div *ngIf="submitted && controlLogin.contrasenya.errors" class="invalid_feedback">
+                <div *ngIf="controlLogin.contrasenya.errors.required">Contrasenya obligatoria</div>
+            </div>
         </div>
-      </div>
-
-
-      <!-- <div class='box-info'>
-                            <p><button onclick="closeLoginInfo();" class='b b-info i i-left' title='Back to Sign In'></button><h3>Need Help?</h3>
-        </p>
-                            <div class='line-wh'></div>
-                            <button onclick="" class='b-support' title='Forgot Password?'> Forgot Password?</button>
-        <button onclick="" class='b-support' title='Contact Support'> Contact Support</button>
-                            <div class='line-wh'></div>
-        <button onclick="" class='b-cta' title='Sign up now!'> CREATE ACCOUNT</button>
-                      </div> -->
-
-
     </div>
 
-  </form>
 
+    <br><br>
+    <!--botó-->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click)="enviarDatosForm()">Enviar</button>
+    </div>
 
-     <!-- <div class='icon-credits'>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>,
-       <a href="http://www.flaticon.com/authors/budi-tanrim" title="Budi Tanrim">Budi Tanrim</a> & <a href="http://www.flaticon.com/authors/nice-and-serious"
-       title="Nice and Serious">Nice and Serious</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
-       title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+</form>

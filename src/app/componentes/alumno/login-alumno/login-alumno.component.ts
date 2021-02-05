@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 // import { EventEmitter } from 'events';
 import { Alumno } from 'src/app/models/alumno.model';
+
+import {AlumnoService} from 'src/app/services/alumno.service';
+
 @Component({
   selector: 'app-login-alumno',
   templateUrl: './login-alumno.component.html',
@@ -11,39 +13,55 @@ import { Alumno } from 'src/app/models/alumno.model';
 export class LoginAlumnoComponent implements OnInit {
 
 
-  // creo un alumno
-  newAlumno: Alumno = null;
+  loginForm: FormGroup;
+    submitted = false;
+
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit() {
+        this.loginForm = this.formBuilder.group({
+
+            // nick
+            nickAlumno: ['', Validators.required],
+            //contrasenya
+            contrasenyaAlumno: ['', [Validators.required, Validators.minLength(6)]],
+
+        }, {
+
+        });
+    }
+
+    // convenience getter for easy access to form fields
+    get controlFormulario() { return this.loginForm.controls; }
+
+    onSubmit() {
+
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+
+            return;
+        }
+
+        // display form values on success
+        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
 
 
 
 
-  // Creamos un emisor de eventos que enviará el personaje creado
-  // @Output() eventoAlumno: EventEmitter<Alumno> = new EventEmitter<Alumno>();
+    }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-prueba;
-  // Funcion que se ejecuta al enviar el formulario
-  onFormSubmit(itemForm: any): void {
-
-    // Guardamos los valores del formulario en un personaje nuevo
-    this.newAlumno = new Alumno(itemForm.controls.nickAlumno.value,
-                                itemForm.controls.contrasenyaAlumno.value);
-
-
-
-
-
-    // Enviamos el evento "characterEvent" y le pasamos el personaje creado
-    // this.eventoAlumno.emit(this.newAlumno);
-
-  }
-
-
+    onReset() {
+        this.submitted = false;
+        this.loginForm.reset();
+    }
 
 
 
 
 }
+
+
+
+
