@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { Profesor } from 'src/app/models/profesor.model';
+import { validarContrasenya } from '../../../models/validarContrasenya'
 import Swal from 'sweetalert2';
 
 
@@ -26,10 +27,13 @@ export class RegistroProfesorComponent implements OnInit {
     this.profesor = this.formBuilder.group({
       nickProfesor:['',Validators.required],
       contrasenyaProfesor:['',Validators.required],
+      confirmarContrasenyaProfesor:['',Validators.required],
       nombreProfesor:['',Validators.required],
       apellidoProfesor:['',Validators.required],
       correoProfesor:['',Validators.required, Validators.email],
       centroProfesor:['', Validators.required]
+    },{
+      validator: validarContrasenya('contrasenyaProfesor','confirmarContrasenyaProfesor')
     })
 
   }
@@ -40,6 +44,7 @@ export class RegistroProfesorComponent implements OnInit {
     //guardamos los datos del nuevo usuario en un registro nuevo
     this.nuevoRegistro = new Profesor(itemForm.controls.nickProfesor.value,
                                       itemForm.controls.contrasenyaProfesor.value,
+                                      itemForm.controls.confirmarContrasenyaProfesor.value,
                                       itemForm.controls.nombreProfesor.value,
                                       itemForm.controls.apellidoProfesor.value,
                                       itemForm.controls.correoProfesor.value,
@@ -63,7 +68,7 @@ export class RegistroProfesorComponent implements OnInit {
     }
 
   //si todos los datos y campos son correctos se muestra la ventana emergente
-  Swal.fire('Les dades introduïdes són correctes');
+  Swal.fire('Los datos introducidos son corectos');
   }
 
 
