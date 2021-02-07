@@ -26,7 +26,7 @@ export class RegistroProfesorComponent implements OnInit {
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nickProfesor: ['', Validators.required],
-      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20})')]],
+      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
       confirmarContrasenyaProfesor: ['', Validators.required],
       nombreProfesor: ['', Validators.required],
       apellidoProfesor: ['', Validators.required],
@@ -41,21 +41,21 @@ export class RegistroProfesorComponent implements OnInit {
   //funcion que se ejecuta al enviar el formulario
   onFormSubmit(): void {
 
-    // console.log(itemForm);
-
     console.log(this.profesor);
 
 
     //guardamos los datos del nuevo usuario en un registro nuevo
     this.nuevoRegistro = new Profesor(this.profesor.controls.nickProfesor.value,
-      this.profesor.controls.contrasenyaProfesor.value,
-      this.profesor.controls.confirmarContrasenyaProfesor.value,
-      this.profesor.controls.nombreProfesor.value,
-      this.profesor.controls.apellidoProfesor.value,
-      this.profesor.controls.correoProfesor.value,
-      this.profesor.controls.centroProfesor.value);
+                        this.profesor.controls.contrasenyaProfesor.value,
+                        this.profesor.controls.confirmarContrasenyaProfesor.value,
+                        this.profesor.controls.nombreProfesor.value,
+                        this.profesor.controls.apellidoProfesor.value,
+                        this.profesor.controls.correoProfesor.value,
+                        this.profesor.controls.centroProfesor.value);
 
+    console.log(this.nuevoRegistro);
   }
+
 
   get controlFormulario() {
     return this.profesor.controls;

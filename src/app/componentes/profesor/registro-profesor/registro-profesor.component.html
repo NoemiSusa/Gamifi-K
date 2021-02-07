@@ -5,7 +5,7 @@
   <!-- formulario de recogida de datos -->
   <form [formGroup]="profesor" (ngSubmit)="onFormSubmit">
 
-    <!-- campo del nickProfesor -->
+    <!-- campo del nickProfesor (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
     <div class="form-row">
       <div class="form-group col-md-12">
         <label class="control-Label">Nick del profesor</label>
@@ -109,7 +109,7 @@
     <!--botón registrarse-->
     <div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="onFormSubmit()">Registrarse</button>
+        <button type="submit" class="btn btn-primary" (click)="enviarDatos()">Registrarse</button>
       </div>
     </div>
 
