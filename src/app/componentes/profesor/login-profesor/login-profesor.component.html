@@ -1,39 +1,35 @@
-<form [formGroup]="profesor" #itemForm="ngForm">
+<div class="card m-3">
 
-    <!-- camp nom (formControlName és una etiqueta que aten els canvis al valor del control -->
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    <div class="form-row">
-        <div class="form-group col-md-12">
-            <label class="control-label">Nombre del Alumno</label>
+            <div class="form-group col-5">
+                <label>Login Profesor</label>
 
-            <input type="text" formControlName="nombreProfesor" placeholder="Nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlLogin.nombreAlumno.errors}">
-
-            <!--la controlLogin. ve del ts, si es compleixen les dues condicions es true-->
-
-            <div *ngIf="submitted && controlLogin.nombreAlumno.errors" class="invalid-feedback">
-                <div *ngIf="controlLogin.nombreProfesor.errors.required">El nombre es obligatorio</div>
+                <input type="text" formControlName="nickProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
+                <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
+                    <div *ngIf="controlFormulario.nickProfesor.errors.required">First Name is required</div>
+                </div>
             </div>
-        </div>
-    </div>
-    <br>
 
-    <!--camp contrasenya i confirmar contrasenya-->
-    <div class="form-row">
-        <div class="form-group col-md-12">
-            <label class="control-label">Contrasenya</label>
-            <input type="password" formControlName="contrasenya" id="contrasenya" placeholder="Contrasenya" class="form-control" [ngClass]="{'is-invalid': submitted && controlLogin.contrasenya.errors}">
-
-            <div *ngIf="submitted && controlLogin.contrasenya.errors" class="invalid_feedback">
-                <div *ngIf="controlLogin.contrasenya.errors.required">Contrasenya obligatoria</div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="contrasenyaProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
+                    <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Password is required</div>
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Login</button>
+
+
+                <!-- BOTON PARA REINICIAR LOS VALORES  -->
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
     </div>
-
-
-    <br><br>
-    <!--botó-->
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="enviarDatosForm()">Enviar</button>
-    </div>
-
-</form>
+</div>

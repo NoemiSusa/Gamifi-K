@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profesor } from 'src/app/models/profesor.model';
 
+
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Component({
@@ -9,82 +10,66 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, A
   styleUrls: ['./login-profesor.component.css']
 })
 export class LoginProfesorComponent implements OnInit {
+  loginForm: FormGroup;
+  submitted = false;
+  profesor: FormGroup;
+  mostrarMissatge = '';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder ) { }
 
   newProfesor: Profesor = null;
 
 
-   // variables
+  // variables
 
- //alumno = variable de tipo formgroup.
- profesor: FormGroup;
- submitted = false;
- mostrarMissatge = '';
+  //alumno = variable de tipo formgroup.
 
-  ngOnInit(): void {
-   //posem les condicions dels camps
-   this.profesor = this.formBuilder.group({
-    nombreProfesor: ['', Validators.required],
 
-    contrasenya: ['', Validators.required],
 
-    // confirmarContrasenya: ['', Validators.required]
-  },{
-    //validem la contrasenya
-    // validator: validarContrasenya('contrasenya', 'confirmarContrasenya')
-  });
 
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+
+      // nick
+      nickProfesor: ['', Validators.required],
+      //contrasenya
+      contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6)]],
+
+
+
+
+
+    }, {
+
+    });
+  }
+
+  // convenience getter for easy access to form fields
+  get controlFormulario() { return this.loginForm.controls; }
+
+  onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+
+      return;
+    }
+    // display form values on success
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
+ console.log(this.loginForm);
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.loginForm.reset();
   }
 
 
-
-
-  prueba;
-
-
-
-
-
-  // Funcion que se ejecuta al enviar el formulario
-  onFormSubmit(itemForm: any): void {
-
-
-
-
-    // Guardamos los valores del formulario en un personaje nuevo
-    this.newProfesor = new Profesor(itemForm.controls.nickProfesor.value,
-                                itemForm.controls.contrasenyaProfesor.value);
-
-
-
-                                console.log(this.newProfesor);
-
-
-    // Enviamos el evento "characterEvent" y le pasamos el personaje creado
-    // this.eventoAlumno.emit(this.newAlumno);
-
-  }
-
-  get controlLogin() {
-    return this.profesor.controls;
-  }
-
-
-
- //funció per enviar datos
- enviarDatosForm() {
-  this.submitted = true;
-  //si cap camp no compleix les condicions
-  if ( this.profesor.invalid) {
-    return;
-
-  }
-
-//si totes les dades i camps són correctes es mostra la següent finestra emergent
+  //si totes les dades i camps són correctes es mostra la següent finestra emergent
   // Swal.fire('Les dades introduïdes són correctes');
 }
 
 
 
-}

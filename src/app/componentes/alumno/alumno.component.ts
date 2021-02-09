@@ -15,5 +15,5 @@ export class AlumnoComponent implements OnInit {
 
 
 
-  
+
 }

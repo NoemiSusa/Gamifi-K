@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 
-
 // import { InicioComponent } from './inicio/inicio.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +19,12 @@ import { RegistroAlumnoComponent } from './componentes/alumno/registro-alumno/re
 import { PerfilAlumnoComponent } from './componentes/alumno/perfil-alumno/perfil-alumno.component';
 import { LogoutAlumnoComponent } from './componentes/alumno/logout-alumno/logout-alumno.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+
+
+// importar http client
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -42,13 +47,14 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     InicioComponent,
 
 
-
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClient,
+    HttpClientModule
 
   ],
   providers: [],
