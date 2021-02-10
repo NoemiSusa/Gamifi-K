@@ -17,7 +17,4 @@ export class ProfesorService {
     return this.profesoresArray;
 
   }
-
-
-
 }

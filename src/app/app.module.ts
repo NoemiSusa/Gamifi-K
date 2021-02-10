@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
-
 // import { InicioComponent } from './inicio/inicio.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentesComponent } from './componentes/componentes.component';
 import { ProfesorComponent } from './componentes/profesor/profesor.component';
@@ -24,7 +22,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 // importar http client
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -51,10 +49,13 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
+    // HttpClient,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClient,
-    HttpClientModule
+    ReactiveFormsModule
+
+
+
 
   ],
   providers: [],

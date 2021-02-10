@@ -8,7 +8,7 @@ import { Alumno } from 'src/app/models/alumno.model';
 import { AlumnoService } from 'src/app/services/alumno.service';
 
 //imports http client
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-alumno',
@@ -22,23 +22,15 @@ export class LoginAlumnoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-     private _loginAlumno: AlumnoService,
-     private http: HttpClient
-    ) { }
-
+    private _loginAlumno: AlumnoService
+  ) { }
 
 
   ngOnInit() {
-
-// en le login form entran los datos del formulario y aqui hago la comprobacion
-
+    // en le login form entran los datos del formulario y aqui hago la comprobacion
     this.loginForm = this.formBuilder.group({
-
-      // nick
       nickAlumno: ['', Validators.required],
-      //contrasenya
       contrasenyaAlumno: ['', [Validators.required, Validators.minLength(6)]],
-
     }, {
 
     });
@@ -48,40 +40,27 @@ export class LoginAlumnoComponent implements OnInit {
   get controlFormulario() { return this.loginForm.controls; }
 
 
+  loginAlumno() {
+    // creo una instancia para el service de login alumno pasandole los datos del formulario
+    let alumno = new Alumno(this.loginForm.controls.nickAlumno.value,
+                            this.loginForm.controls.contrasenyaAlumno.value);
 
-  onSubmit() {
+    this._loginAlumno.loginAlumno(alumno).subscribe(
+        // con el subscribe recibo la respuesta del php.
 
-    this.submitted = true;
+        // si funciona printo el resultado en la consola
+        (resultado: any) => {
+          console.log(resultado)
+        },
+        // si peta saco el error por consola
+        (error: any) => {
+          console.log(error);
+        }
+      )
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-
-      return;
-    }
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
   }
 
-
-
-loginAlumno(){
-
-  // creo una instancia para el service de login alumno pasandole los datos del formulario
-  this._loginAlumno.loginAlumno(this.loginForm.controls.nickAlumno.value,
-    this.loginForm.controls.contrasenyaAlumno.value).subscribe(
-// con el subscribe recibo la respuesta del php.
-
-// si funciona printo el resultado en la consola
-  resultado => console.log (resultado),
-// si peta saco el error por consola
-  error => console.log (error)
-
-  )
-
-}
-
-// funcion para el reset
-
+  // funcion para el reset
   onReset() {
     this.submitted = false;
     this.loginForm.reset();

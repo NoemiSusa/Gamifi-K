@@ -31,12 +31,9 @@ export class LoginProfesorComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
 
       // nick
-      nickProfesor: ['', Validators.required],
+      nickProfesor: ['', [Validators.required]],
       //contrasenya
       contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6)]],
-
-
-
 
 
     }, {
