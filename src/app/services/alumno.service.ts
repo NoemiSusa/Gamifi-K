@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 // import modelo alumno
 import { Alumno } from 'src/app/models/alumno.model';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -21,11 +21,19 @@ export class AlumnoService {
 
 
   loginAlumnoService(alumno: Alumno): Observable<any> {
+
     console.log(alumno.nickAlumno+" "+alumno.contrasenyaAlumno + " Datos del formulario");
 
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
 
-    return this.http.get<any>(`${environment.url}db.php`);
+
+
+// Conectar a bd local o en la nube
+
+     return this.http.get<any>(`${environment.url}db_local.php`); // para entrar en el php local
+
+    // return this.http.get<any>(`${environment.url}db_nube.php`); // para entrar en el php en la nube
+
   }
 
 
