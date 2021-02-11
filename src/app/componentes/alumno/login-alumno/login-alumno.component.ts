@@ -28,46 +28,58 @@ export class LoginAlumnoComponent implements OnInit {
 
   ngOnInit() {
     // en le login form entran los datos del formulario y aqui hago la comprobacion
+
     this.loginForm = this.formBuilder.group({
-      nickAlumno: ['', Validators.required],
+      nickAlumno: ['', [Validators.required]],
       contrasenyaAlumno: ['', [Validators.required, Validators.minLength(6)]],
     }, {
-
     });
   }
 
-  // convenience getter for easy access to form fields
+  // con el getter estoy estoy haciendo las comprobaciones del formulario y devolviendo los errores
   get controlFormulario() { return this.loginForm.controls; }
-
-
   loginAlumno() {
     // creo una instancia para el service de login alumno pasandole los datos del formulario
     let alumno = new Alumno(this.loginForm.controls.nickAlumno.value,
-                            this.loginForm.controls.contrasenyaAlumno.value);
+      this.loginForm.controls.contrasenyaAlumno.value);
 
-    this._loginAlumno.loginAlumno(alumno).subscribe(
+    this.submitted = true;
+    // Con el submit compruebo si se ha  enviado el formulario para luego
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+
+      return;
+    }
+
+    else {
+      this._loginAlumno.loginAlumnoService(alumno).subscribe(
         // con el subscribe recibo la respuesta del php.
-
         // si funciona printo el resultado en la consola
         (resultado: any) => {
           console.log(resultado)
         },
+
         // si peta saco el error por consola
         (error: any) => {
           console.log(error);
         }
-      )
+
+        )
+
+    }
+
 
   }
+
+
+
 
   // funcion para el reset
   onReset() {
     this.submitted = false;
     this.loginForm.reset();
   }
-
-
-
 
 }
 

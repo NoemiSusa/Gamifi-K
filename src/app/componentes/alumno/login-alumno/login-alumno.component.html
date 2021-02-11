@@ -1,11 +1,10 @@
 <div class="card m-3">
-
     <div class="card-body">
+        <!-- los datos del formulario los meto en la variable formgroup -->
+        <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
         <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
-
             <div class="form-group col-5">
                 <label>Login Usuario</label>
-
                 <input type="text" formControlName="nickAlumno" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickAlumno.errors }" />
                 <div *ngIf="submitted && controlFormulario.nickAlumno.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickAlumno.errors.required">First Name is required</div>
@@ -17,8 +16,8 @@
                     <label>Password</label>
                     <input type="password" formControlName="contrasenyaAlumno" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaAlumno.errors }" />
                     <div *ngIf="submitted && controlFormulario.contrasenyaAlumno.errors" class="invalid-feedback">
-                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Password is required</div>
-                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Password must be at least 6 characters
+                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Inserte la contraseña</div>
+                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Minimo tiene que tener 6 caracteres
                         </div>
                     </div>
                 </div>

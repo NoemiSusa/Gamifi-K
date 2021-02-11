@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
-const URL = environment.url
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,15 @@ export class AlumnoService {
 
   // alumnosArray: Alumno[] = [];
 
-
   constructor(private http: HttpClient) { }
 
 
-  loginAlumno(alumno: Alumno): Observable<any> {
+  loginAlumnoService(alumno: Alumno): Observable<any> {
+    console.log(alumno.nickAlumno+" "+alumno.contrasenyaAlumno + " Datos del formulario");
 
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
-    return this.http.get<any>(`${URL}db.php`);
+
+    return this.http.get<any>(`${environment.url}db.php`);
   }
 
 

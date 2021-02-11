@@ -29,13 +29,10 @@ export class LoginProfesorComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-
       // nick
       nickProfesor: ['', [Validators.required]],
       //contrasenya
       contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6)]],
-
-
     }, {
 
     });
@@ -45,9 +42,7 @@ export class LoginProfesorComponent implements OnInit {
   get controlFormulario() { return this.loginForm.controls; }
 
   onSubmit() {
-
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.loginForm.invalid) {
 
@@ -62,7 +57,6 @@ export class LoginProfesorComponent implements OnInit {
     this.submitted = false;
     this.loginForm.reset();
   }
-
 
   //si totes les dades i camps són correctes es mostra la següent finestra emergent
   // Swal.fire('Les dades introduïdes són correctes');

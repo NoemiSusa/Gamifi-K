@@ -6,9 +6,8 @@ export const environment = {
   production: false,
 
 
-  // variable global
+  // variable global con la direccion del servidor
   url: "http://localhost:8080/"
-
 
 
 };
