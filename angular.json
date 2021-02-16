@@ -24,10 +24,8 @@
               "src/assets"
             ],
             "styles": [
-
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-
             ],
             "scripts": [
               "node_modules/popper.js/dist/umd/popper.js",
@@ -131,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Proyecto"
+    }
+  },
+  "defaultProject": "Proyecto",
+  "cli": {
+    "analytics": false
+  }
 }
