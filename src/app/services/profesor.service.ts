@@ -6,8 +6,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProfesorService {
-  URL = `${environment.serverUrl}comprovacioRegistre.php`;
+  URL = `${environment.serverUrl}`;
   constructor( private http: HttpClient) {
 
+  }
+
+  comprobarUsuarioService(nickProfesor: string){
+    return this.http.get(`${this.URL}comprovacioRegistre.php?nickProfesor=${nickProfesor}`);
   }
 }
