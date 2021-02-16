@@ -16,6 +16,7 @@ import { PerfilAlumnoComponent } from './componentes/alumno/perfil-alumno/perfil
 import { LogoutAlumnoComponent } from './componentes/alumno/logout-alumno/logout-alumno.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -42,7 +43,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    HttpClientModule
 
 
   ],
