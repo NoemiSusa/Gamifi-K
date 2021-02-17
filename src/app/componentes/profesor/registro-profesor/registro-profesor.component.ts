@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Profesor } from 'src/app/models/profesor.model';
 import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
+import { ProfesorService } from 'src/app/services/profesor.service';
 
 
 @Component({
@@ -19,21 +20,21 @@ export class RegistroProfesorComponent implements OnInit {
   mostrarMensaje = '';
 
   //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private profe: ProfesorService) { }
 
   ngOnInit(): void {
 
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nickProfesor: ['', [Validators.required]],
-      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(10),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,10})')]],
+      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,10})')]],
       confirmarContrasenyaProfesor: ['', [Validators.required]],
       nombreProfesor: ['', [Validators.required]],
       apellidoProfesor: ['', [Validators.required]],
       correoProfesor: ['', [Validators.required, Validators.email]],
       centroProfesor: ['', [Validators.required]]
-
-
     }, {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
     });
@@ -56,7 +57,20 @@ export class RegistroProfesorComponent implements OnInit {
                                       this.profesor.controls.correoProfesor.value,
                                       this.profesor.controls.centroProfesor.value);
 
+
+
     console.log(this.nuevoRegistro.nickProfesor);
+
+    this.profe.comprobarUsuarioService(this.nuevoRegistro.nickProfesor).subscribe(
+      (value: any) => {
+        console.log('respuesta servdior: ' + value);
+
+      },
+      (error: any) => {
+        console.log(error);
+
+      }
+    )
   }
 
 
@@ -68,7 +82,6 @@ export class RegistroProfesorComponent implements OnInit {
   //funcion que se ejecuta en el html para mandar los datos
   enviarDatos() {
     this.submitted = true;  //*******************  poner esta linea en la función onFormSubmit para que funcione el reactivo */
-
 
     //si no se cumplen las condiciones
     if (this.profesor.invalid) {
