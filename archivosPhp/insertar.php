@@ -10,11 +10,12 @@ require("conBDLocal.php");
 $conexion = conexion();
 
 // realizamos la query a la BD
-$registros =  mysqli_query($conexion, "INSERT * FROM profesores WHERE nickProfesor='$_GET[nickProfesor]");
-console_log("datos insertados");
+$registros =  mysqli_query($conexion, "INSERT * FROM profesores WHERE nickProfesor='$_GET[nickProfesor]'");
 
 $resultado = mysqli_query($conexion, $registros);
-
+if($resultado==1){
+  console_log("datos insertados");
+}
 return $resultado;
 
 ?>

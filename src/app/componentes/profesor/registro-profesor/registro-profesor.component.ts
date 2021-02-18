@@ -29,7 +29,7 @@ export class RegistroProfesorComponent implements OnInit {
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nickProfesor: ['', [Validators.required]],
-      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,10})')]],
+      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
       confirmarContrasenyaProfesor: ['', [Validators.required]],
       nombreProfesor: ['', [Validators.required]],
       apellidoProfesor: ['', [Validators.required]],
@@ -41,6 +41,7 @@ export class RegistroProfesorComponent implements OnInit {
 
     console.log(this.profesor);
   }
+  prueba;
 
   //funcion que se ejecuta al enviar el formulario
   onFormSubmit(): void {
@@ -61,9 +62,12 @@ export class RegistroProfesorComponent implements OnInit {
 
     console.log(this.nuevoRegistro.nickProfesor);
 
+
     this.profe.comprobarUsuarioService(this.nuevoRegistro.nickProfesor).subscribe(
-      (value: any) => {
-        console.log('respuesta servdior: ' + value);
+     datos => {
+
+      this.prueba = datos[0]
+      console.log("usuario existe");
 
       },
       (error: any) => {
