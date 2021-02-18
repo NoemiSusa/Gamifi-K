@@ -10,12 +10,14 @@
       <div class="form-group col-md-12">
         <label class="control-Label">Nick del profesor</label>
         <input type="text" formControlName="nickProfesor" placeholder="nick" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors}">
+        [ngClass]="{'is-valid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.valid,
+                    'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">
 
         <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
         <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
           <div *ngIf="controlFormulario.nickProfesor.errors.required">El nick es obligatorio</div>
         </div>
+
       </div>
     </div>
 
@@ -109,7 +111,7 @@
     <!--botón registrarse-->
     <div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="enviarDatos()">Registrarse</button>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
       </div>
     </div>
 

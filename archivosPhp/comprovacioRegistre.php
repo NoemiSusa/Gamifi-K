@@ -1,10 +1,11 @@
 <?php
-
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
 
+
 // importamos el archivo con la conexión a la BD
 require("conBDLocal.php");
+require("insertar.php");
 
 // creamos la conexión
 $conexion = conexion();
@@ -16,10 +17,12 @@ $datos= [];
 
 // si el profesor existe obtiene datos y los guarda en un array
 if ($resultado = mysqli_fetch_array($registros)) {
-  console_log("campo2");
+  console_log("usuario ya existe");
   $datos[] = $resultado;
 }else{
-  mysqli_query($conexion, "INSERT * FROM profesores WHERE nickProfesor='$_GET[nickProfesor]");
+
+
+
   console_log("no existe");
 }
 
