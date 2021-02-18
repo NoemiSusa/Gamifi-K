@@ -4,7 +4,7 @@
 
    function conexion(){
 
-     $con = mysqli_connect('localhost', 'roor', 'usbw', 'test');
+     $con = mysqli_connect('localhost', 'root', 'usbw', 'test');
 
        mysqli_set_charset($con, "utf8");
 
