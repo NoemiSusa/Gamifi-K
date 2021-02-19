@@ -19,18 +19,14 @@ $con=mysqli_connect($servidor,$usuario,$contrasenya,$bd);  // var para conectarn
 if(!$con){
   // para ver si ha petado la conexion
   die('{ "response: ""No se ha podido realizar la conexion: " }'. mysqli_connect_error(). " <br>");
-
 }
 
 else{
   mysqli_set_charset($con,"utf8");
-
 // para ver si se ha conectado a la data base.
   echo '{ "response": "OK te has conectado a la bd" }';
   //echo "Felicidades te has conectado a la bd";
   $_SESSION["con"]=$con;
 }
-
-
 
 ?>

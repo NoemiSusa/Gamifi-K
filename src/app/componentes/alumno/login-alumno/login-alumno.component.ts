@@ -23,6 +23,7 @@ export class LoginAlumnoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _loginAlumno: AlumnoService
+
   ) { }
 
 
@@ -47,32 +48,34 @@ export class LoginAlumnoComponent implements OnInit {
     // Con el submit compruebo si se ha  enviado el formulario para luego
 
     // stop here if form is invalid
+    // en caso de que el formulario no tiene los valores correctos como contraseña o algun campo lo devuelva marcando asi el campo en rojo
     if (this.loginForm.invalid) {
-
       return;
     }
-
+ // en caso de que sea valido envio los datos al subscribe
     else {
       this._loginAlumno.loginAlumnoService(alumno).subscribe(
-        // con el subscribe recibo la respuesta del php.
-        // si funciona printo el resultado en la consola
-        (resultado: any) => {
-          console.log(resultado)
-        },
 
-        // si peta saco el error por consola
-        (error: any) => {
-          console.log(error);
+
+        datos =>{
+
+          if (datos[0]== null){
+
+
+          }
+
+          else {
+
+          }
         }
+
+
 
         )
 
     }
 
-
-  }
-
-
+ }
 
 
   // funcion para el reset
