@@ -62,20 +62,50 @@ export class RegistroProfesorComponent implements OnInit {
 
     console.log(this.nuevoRegistro.nickProfesor);
 
-
+// Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
     this.profe.comprobarUsuarioService(this.nuevoRegistro.nickProfesor).subscribe(
      datos => {
 
-      this.prueba = datos[0]
-      console.log("usuario existe");
+       this.prueba = datos[0]
+        if ( datos == this.nuevoRegistro.nickProfesor ) {
+            console.log("usuario existe");
+             // Disparador error, lo que hace es guardar en la variable error any(qualquier) tipo de error y nos lo imprimirá por
+                // consola con el console.log(error)
+                (error: any) => {
+                  console.log(error);
+                }
 
-      },
-      (error: any) => {
-        console.log(error);
+            Swal.fire(
+              'Este usuario ya existe',
+              'Este usuario ya existe',
+              'error'
+            )
+        }else {
+
+            // Llamamos a la función insertarProfesorService (está en el profesorService) y le pasamos el objeto profesor
+            this.profe.insertarProfesorService(this.nuevoRegistro).subscribe(
+              (resp: any) => {
+                if ( resp == 1) {
+                  Swal.fire(
+                    'Insert realizado',
+                    'Usuario creado correctamente',
+                    'success'
+                  )
+                }
+
+              }
+            )
+        }
 
       }
     )
   }
+
+
+
+
+
+
 
 
   get controlFormulario() {

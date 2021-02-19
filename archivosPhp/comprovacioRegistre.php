@@ -28,13 +28,7 @@ $text = "no existe";
 
 // genera el json con los datos obtenidos
 $json = json_encode($datos);
-// console_log("campo3");
 // muestra el json generado
 echo $json;
-
-
-
-
-
 
 ?>
