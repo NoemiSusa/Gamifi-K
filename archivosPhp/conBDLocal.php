@@ -10,7 +10,7 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 
    function conexion(){
 
-     $con = mysqli_connect('localhost', 'root', 'usbw', 'test');
+     $con = mysqli_connect('localhost', 'root', 'usbw', 'gamifik');
 
 
        return $con;
