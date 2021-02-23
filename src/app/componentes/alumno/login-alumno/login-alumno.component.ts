@@ -10,6 +10,7 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 //imports http client
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-login-alumno',
   templateUrl: './login-alumno.component.html',
@@ -52,30 +53,34 @@ export class LoginAlumnoComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
- // en caso de que sea valido envio los datos al subscribe
+    // en caso de que sea valido envio los datos al subscribe
     else {
       this._loginAlumno.loginAlumnoService(alumno).subscribe(
+        (respuesta: any) => {
+          console.log(respuesta);
 
 
-        datos =>{
-
-          if (datos[0]== null){
-
+          if (respuesta[0] == null) {
+            console.log("Usuario no existe");
 
           }
 
           else {
+            console.log("Usuario existe");
 
           }
+        },
+        (error: any) => {
+          console.log(error);
         }
 
 
 
-        )
+      )
 
     }
 
- }
+  }
 
 
   // funcion para el reset
