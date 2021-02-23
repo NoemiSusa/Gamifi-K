@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 
@@ -20,6 +20,8 @@ export class ProfesorService {
 
     // Función para insertar los datos del nuevo registro en la DB
       public insertarProfesorService(nuevoRegistro: Profesor) {
+        console.log(nuevoRegistro);
+
         return this.http.get(`${this.URL}insertar.php?nuevoRegistro=${nuevoRegistro}`);
       }
 

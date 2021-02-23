@@ -28,7 +28,7 @@ export class RegistroProfesorComponent implements OnInit {
 
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
-      nickProfesor: ['', [Validators.required]],
+      nickProfesor: ['', [Validators.required, Validators.minLength(2)]],
       contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
       confirmarContrasenyaProfesor: ['', [Validators.required]],
       nombreProfesor: ['', [Validators.required]],
@@ -76,7 +76,7 @@ export class RegistroProfesorComponent implements OnInit {
                 }
 
             Swal.fire(
-              'Este usuario ya existe',
+              'Problemas',
               'Este usuario ya existe',
               'error'
             )
