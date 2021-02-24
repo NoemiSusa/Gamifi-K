@@ -29,17 +29,18 @@ export class RegistroProfesorComponent implements OnInit {
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nickProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      contrasenyaProfesor: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20),Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
-      confirmarContrasenyaProfesor: ['', [Validators.required]],
-      nombreProfesor: ['', [Validators.required]],
-      apellidoProfesor: ['', [Validators.required]],
+      contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
+      confirmarContrasenyaProfesor: ['', [Validators.required, Validators.minLength(2)]],
+      nombreProfesor: ['', [Validators.required, Validators.minLength(2)]],
+      apellidoProfesor: ['', [Validators.required, Validators.minLength(2)]],
       correoProfesor: ['', [Validators.required, Validators.email]],
-      centroProfesor: ['', [Validators.required]]
+      centroProfesor: ['', [Validators.required, Validators.minLength(2)]]
     }, {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
     });
 
     console.log(this.profesor);
+
   }
   prueba;
 
@@ -51,79 +52,52 @@ export class RegistroProfesorComponent implements OnInit {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
     this.nuevoRegistro = new Profesor(this.profesor.controls.nickProfesor.value,
-                                      this.profesor.controls.contrasenyaProfesor.value,
-                                      this.profesor.controls.confirmarContrasenyaProfesor.value,
-                                      this.profesor.controls.nombreProfesor.value,
-                                      this.profesor.controls.apellidoProfesor.value,
-                                      this.profesor.controls.correoProfesor.value,
-                                      this.profesor.controls.centroProfesor.value);
-
-
+      this.profesor.controls.contrasenyaProfesor.value,
+      this.profesor.controls.confirmarContrasenyaProfesor.value,
+      this.profesor.controls.nombreProfesor.value,
+      this.profesor.controls.apellidoProfesor.value,
+      this.profesor.controls.correoProfesor.value,
+      this.profesor.controls.centroProfesor.value);
 
     console.log(this.nuevoRegistro.nickProfesor);
 
-// Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
-    this.profe.comprobarUsuarioService(this.nuevoRegistro.nickProfesor).subscribe(
-     datos => {
+    //si todos los datos y campos son correctos se muestra la ventana emergente
+    Swal.fire('Los datos introducidos son corectos');
 
-       this.prueba = datos[0]
-        if ( datos == this.nuevoRegistro.nickProfesor ) {
-            console.log("usuario existe");
-             // Disparador error, lo que hace es guardar en la variable error any(qualquier) tipo de error y nos lo imprimirá por
-                // consola con el console.log(error)
-                (error: any) => {
-                  console.log(error);
-                }
+    // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
+    this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
+      (datos: any) => {
 
-            Swal.fire(
-              'Problemas',
-              'Este usuario ya existe',
-              'error'
-            )
-        }else {
+        this.prueba = datos[0]
+        if (datos == this.nuevoRegistro.nickProfesor) {
+          console.log("usuario existe");
 
-            // Llamamos a la función insertarProfesorService (está en el profesorService) y le pasamos el objeto profesor
-            this.profe.insertarProfesorService(this.nuevoRegistro).subscribe(
-              (resp: any) => {
-                if ( resp == 1) {
-                  Swal.fire(
-                    'Insert realizado',
-                    'Usuario creado correctamente',
-                    'success'
-                  )
-                }
+          Swal.fire(
+            'Problemas',
+            'Este usuario ya existe',
+            'error'
+          );
 
-              }
-            )
+        } else {
+
+          Swal.fire(
+            'Insert realizado',
+            'Usuario creado correctamente',
+            'success'
+          )
         }
-
+      },
+      // Disparador error, lo que hace es guardar en la variable error any(qualquier) tipo de error y nos lo imprimirá por
+      // consola con el console.log(error)
+      (error: any) => {
+        console.log(error);
       }
     )
   }
 
 
-
-
-
-
-
-
   get controlFormulario() {
     return this.profesor.controls;
-  }
-
-
-  //funcion que se ejecuta en el html para mandar los datos
-  enviarDatos() {
-    this.submitted = true;  //*******************  poner esta linea en la función onFormSubmit para que funcione el reactivo */
-
-    //si no se cumplen las condiciones
-    if (this.profesor.invalid) {
-      return;
-    }
-
-    //si todos los datos y campos son correctos se muestra la ventana emergente
-    Swal.fire('Los datos introducidos son corectos');
   }
 
 
