@@ -23,7 +23,7 @@ if ($resultado = mysqli_fetch_array($registros)) {
 
 $text = "no existe";
 
-  console_log($text);
+  //console_log($text);
 }
 
 // genera el json con los datos obtenidos
