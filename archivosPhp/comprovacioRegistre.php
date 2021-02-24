@@ -26,11 +26,13 @@ while($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
 }
 
+
 // si el profesor existe obtiene datos y los guarda en un array
 if (count($datos) === 0 ) {
   print '{ "msg": "Error al encontrar usuario" }';
 } else {
   print json_encode($datos);
+
 }
 
 // // genera el json con los datos obtenidos
