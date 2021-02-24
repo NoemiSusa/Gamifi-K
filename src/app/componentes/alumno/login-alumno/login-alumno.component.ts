@@ -9,7 +9,12 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 
 //imports http client
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgSwitchDefault } from '@angular/common';
 
+
+//import sweet alert
+import swal from'sweetalert2';
+import Swal from'sweetalert2';
 
 @Component({
   selector: 'app-login-alumno',
@@ -20,6 +25,8 @@ export class LoginAlumnoComponent implements OnInit {
   // variable loginForm de tipo FormGroup
   loginForm: FormGroup;
   submitted = false;
+
+  alerta:string="";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,11 +69,14 @@ export class LoginAlumnoComponent implements OnInit {
 
           if (respuesta[0] == null) {
             console.log("Usuario no existe");
+// mostrar una alerta con sweet alert
 
+// swal('Registro exitoso...', this.alerta, 'success');
           }
 
           else {
             console.log("Usuario existe");
+            // aqui tengo que llamar el siguiente componente
 
           }
         },
