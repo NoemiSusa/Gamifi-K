@@ -7,7 +7,7 @@ export class Profesor{
     public apellidoProfesor?: string,
     public correoProfesor?: string,
     public centroProfesor?: string,
-    public idProfesor?: number
+    public imagenProfesor?: string,
 
   ){}
 }
