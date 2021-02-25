@@ -1,1 +1,39 @@
-<p>perfil-profesor works!</p>
+<div *ngIf="profesor !== null" class="card" style="width: 18rem;">
+  <!-- recorre todo el profesor con el ngIf, mientras no se salga del array y no haya nada (null) -->
+  <a *ngFor="let profesor of profesorArray"></a>
+  <div class="card-body">
+      <img [src]="profesor.imagenProfesor" class="card-img-top" alt="">
+
+      <div class="card-body">
+          <!-- card-body te saca la información como si fuera una carta -->
+          <h5 class="card-title"><strong>{{profesor.nombreProfesor}} {{profesor.apellidoProfesor}}</strong></h5>
+          <!-- saca por pantalla el nombre y apellido del profesor con un titulo -->
+      </div>
+      <form>
+          <div class="card-body">
+              <p class="card-text"><strong>Nick: </strong>{{profesor.nickProfesor}}</p>
+              <!-- saca por pantalla la descripcion -->
+          </div>
+
+          <div class="card-body">
+              <p class="card-text"><strong>Correo: </strong>{{profesor.correoProfesor}}</p>
+              <!-- saca por pantalla el correo -->
+          </div>
+
+          <div class="card-body">
+              <p class="card-text"><strong>Contraseña: </strong>{{profesor.contrasenyaProfesor}}</p>
+              <!-- saca por pantalla la contraseña -->
+          </div>
+
+          <div class="card-body">
+              <p class="card-text"><strong>Centro: </strong>{{profesor.centroProfesor}}</p>
+              <!-- saca por pantalla el confirmar contraseña -->
+          </div>
+
+      </form>
+
+
+
+  </div>
+
+</div>
