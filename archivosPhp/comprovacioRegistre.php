@@ -10,12 +10,13 @@ $params = json_decode($json);
 
 // importamos el archivo con la conexión a la BD
 require 'conBDLocal.php';
+require 'insertar.php';
 
 // creamos la conexión
 $conexion = conexion();
 
 // realizamos la query a la BD y recojemos el resultado
-$query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'"
+$query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'";
 $resultado = mysqli_query($conexion, $query);
 
 //iniciamos la variable como array
@@ -29,9 +30,13 @@ while($row = mysqli_fetch_assoc($resultado)) {
 
 // si el profesor existe obtiene datos y los guarda en un array
 if (count($datos) === 0 ) {
-  print '{ "msg": "Error al encontrar usuario" }';
-} else {
   print json_encode($datos);
+
+  $datosRegistro = new Insertar();
+  $registro=$datosRegistro->insertarRegistroProfesores($datos);
+} else {
+
+  print '{ "mensage": "problemas ya existe este nick" }';
 
 }
 

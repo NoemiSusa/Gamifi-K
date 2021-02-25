@@ -22,7 +22,8 @@ export class RegistroProfesorComponent implements OnInit {
   //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
   constructor(
     private formBuilder: FormBuilder,
-    private profe: ProfesorService) { }
+    private profe: ProfesorService
+  ) { }
 
   ngOnInit(): void {
 
@@ -38,17 +39,11 @@ export class RegistroProfesorComponent implements OnInit {
     }, {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
     });
-
-    console.log(this.profesor);
-
   }
   prueba;
 
   //funcion que se ejecuta al enviar el formulario
   onFormSubmit(): void {
-
-    // console.log(this.profesor);
-
 
     //guardamos los datos del nuevo usuario en un registro nuevo
     this.nuevoRegistro = new Profesor(this.profesor.controls.nickProfesor.value,
@@ -59,7 +54,7 @@ export class RegistroProfesorComponent implements OnInit {
       this.profesor.controls.correoProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
-    console.log(this.nuevoRegistro.nickProfesor);
+    console.log(this.nuevoRegistro);
 
     //si todos los datos y campos son correctos se muestra la ventana emergente
     Swal.fire('Los datos introducidos son corectos');
@@ -67,6 +62,7 @@ export class RegistroProfesorComponent implements OnInit {
     // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
     this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
       (datos: any) => {
+        console.log(datos);
 
         this.prueba = datos[0]
         if (datos == this.nuevoRegistro.nickProfesor) {
