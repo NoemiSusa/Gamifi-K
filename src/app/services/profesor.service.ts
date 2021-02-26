@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 
 @Injectable({
@@ -6,33 +9,21 @@ import { Profesor } from '../models/profesor.model';
 })
 export class ProfesorService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  loginProfesorService(profesor: Profesor): Observable<any> {
 
-  profesoresArray: Profesor[] = [];
+    console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
-  public getAllProfesores(): Profesor[] {
 
-    return this.profesoresArray;
+
+    return this.http.post(`${environment.url}loginProfesor.php`, JSON.stringify(profesor));
+
+    //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
 
   }
 }
 
 
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { environment } from 'src/environments/environment';
-// import { Profesor } from '../models/profesor.model';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ProfesorService {
-//   URL = `${environment.serverUrl}`;
-//   constructor( private http: HttpClient) {
 
-//   }
 
-//   comprobarUsuarioService(nickProfesor: string){
-//     return this.http.get(`${this.URL}comprovacioRegistre.php?nickProfesor=${nickProfesor}`);
-//   }
-// }

@@ -36,6 +36,7 @@ if (count($datos) === 0) {
   print '{ "msg": "Error al encontrar usuario" }';
 
 } else {
+
   print json_encode($datos);
 
 }

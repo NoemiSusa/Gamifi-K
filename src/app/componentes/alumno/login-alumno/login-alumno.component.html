@@ -4,10 +4,10 @@
         <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
         <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
             <div class="form-group col-5">
-                <label>Login Usuario</label>
+                <label>Login Alumno</label>
                 <input type="text" formControlName="nickAlumno" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickAlumno.errors }" />
                 <div *ngIf="submitted && controlFormulario.nickAlumno.errors" class="invalid-feedback">
-                    <div *ngIf="controlFormulario.nickAlumno.errors.required">First Name is required</div>
+                    <div *ngIf="controlFormulario.nickAlumno.errors.required">Nick requerido</div>
                 </div>
             </div>
 

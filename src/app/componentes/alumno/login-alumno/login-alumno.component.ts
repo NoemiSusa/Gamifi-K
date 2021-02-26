@@ -71,12 +71,13 @@ export class LoginAlumnoComponent implements OnInit {
             console.log("Usuario no existe");
 // mostrar una alerta con sweet alert
 
-// swal('Registro exitoso...', this.alerta, 'success');
+    Swal.fire('Datos incorrectos', 'Verifica el nick o la contraseña y vuelve a intentarlo', 'error')
           }
 
           else {
             console.log("Usuario existe");
             // aqui tengo que llamar el siguiente componente
+            Swal.fire('Usuario correcto')
 
           }
         },
