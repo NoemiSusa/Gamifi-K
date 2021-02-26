@@ -2,9 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 // import { EventEmitter } from 'events';
 
+
 import { Profesor } from 'src/app/models/profesor.model';
 
-// importo el servicio alumno.service para luego enviarle los datos.
+// importo el servicio profesor.service para luego enviarle los datos.
 import { ProfesorService } from 'src/app/services/profesor.service';
 
 //imports http client
@@ -49,9 +50,9 @@ export class LoginProfesorComponent implements OnInit {
   // con el getter estoy estoy haciendo las comprobaciones del formulario y devolviendo los errores
   get controlFormulario() { return this.loginFormProfesor.controls; }
   loginProfesor() {
-    // creo una instancia para el service de login alumno pasandole los datos del formulario
-    let profesor = new Profesor(this.loginFormProfesor.controls.nickAlumno.value,
-      this.loginFormProfesor.controls.contrasenyaAlumno.value);
+    // creo una instancia para el service de login profesor pasandole los datos del formulario
+    let profesor = new Profesor(this.loginFormProfesor.controls.nickProfesor.value,
+      this.loginFormProfesor.controls.contrasenyaProfesor.value);
 
     this.submitted = true;
     // Con el submit compruebo si se ha  enviado el formulario para luego
