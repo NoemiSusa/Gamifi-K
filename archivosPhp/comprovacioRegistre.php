@@ -12,7 +12,6 @@ header('Content-Type: application/json');
 $json = file_get_contents('php://input');
 
 //guardamos en la variable params los datos descodificados que recojemos del JSON
-$params = json_decode($json);
 
 // importamos el archivo con la conexión a la BD
 require 'conBDLocal.php';
@@ -21,46 +20,62 @@ require 'conBDLocal.php';
 // creamos la conexión
 $conexion = conexion();
 
-// realizamos la query a la BD y recojemos el resultado
-$query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'";
-$resultado = mysqli_query($conexion, $query);
+// class Registro{
 
-//iniciamos la variable como array
-$datos= [];
+  $params = json_decode($json);
 
-// hacemos un bucle para que mientras encuentre datos el resultado del select los vaya guardando en la variable datos []
-while($row = mysqli_fetch_assoc($resultado)) {
-  $datos[] = $row;
-}
+  // public function comprovarRegistro($params){
 
 
-// si el profesor existe obtiene datos y los guarda en un array
-if (count($datos) === 0 ) {
-  print json_encode($params);
+    // realizamos la query a la BD y recojemos el resultado
+    $query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'";
+    $resultado = mysqli_query($conexion, $query);
 
-  // // creo el objeto datosRegistro de la clase insertar y le paso los parametros para poder realizar el insert a la base de datos
-  // $datosRegistro = new Insertar();
-  // $insetado=$datosRegistro->insertarRegistroProfesores($params);
+    //iniciamos la variable como array
+    $datos= [];
+    $valorRegistro;
+    // hacemos un bucle para que mientras encuentre datos el resultado del select los vaya guardando en la variable datos []
+    while($row = mysqli_fetch_assoc($resultado)) {
+      $datos[] = $row;
+    }
+    // $conexion.exit;
 
-  // if(insetado === 0){
-  //   // $mensaje = 'Error no se ha podido realizar el insert';
-  //   // print json_encode($mensajeError);
+    // si el profesor existe obtiene datos y los guarda en un array
+    if (count($datos) === 0 ) {
+      // print json_encode($params);
 
+      // // creo el objeto datosRegistro de la clase insertar y le paso los parametros para poder realizar el insert a la base de datos
+      // $datosRegistro = new Insertar();
+      // $insetado=$datosRegistro->insertarRegistroProfesores($params);
+      // $valorRegistro = 0;
+      print '{ "mensage": "0" }';
+      // json_encode($valorRegistro);
+      // print $valorRegistro;
+      // if(insetado === 0){
+      //   // $mensaje = 'Error no se ha podido realizar el insert';
+      //   // print json_encode($mensajeError);
 
-  // }else{
-  //   // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+      // }else{
+      //   // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+      // }
+      // $datosRegistro = new Insertar();
+      // $registro=$datosRegistro->insertarRegistroProfesores($datos);
+    } else {
+
+      // print '{ "mensage": "problemas ya existe este nick" }';
+      // $valorRegistro = 1;
+      print '{ "mensage": "1" }';
+      // print $valorRegistro;
+      // json_encode($valorRegistro);
+    }
+
+    // // genera el json con los datos obtenidos
+    // $json = json_encode($valorRegistro);
+    // // muestra el json generado
+    // echo $json;
+
+    // return json_encode($valorRegistro);
   // }
-  // $datosRegistro = new Insertar();
-  // $registro=$datosRegistro->insertarRegistroProfesores($datos);
-} else {
-
-  print '{ "mensage": "problemas ya existe este nick" }';
-
-}
-
-// // genera el json con los datos obtenidos
-// $json = json_encode($datos);
-// // muestra el json generado
-// echo $json;
+// }
 
 ?>

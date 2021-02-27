@@ -62,10 +62,9 @@ export class RegistroProfesorComponent implements OnInit {
     // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
     this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
       (datos: any) => {
-        console.log(datos);
+        console.log(datos.mensage);
 
-        this.prueba = datos[0]
-        if (datos == this.nuevoRegistro.nickProfesor) {
+        if (datos.mensage == 1) {
           console.log("usuario existe");
 
           Swal.fire(
@@ -74,13 +73,19 @@ export class RegistroProfesorComponent implements OnInit {
             'error'
           );
 
-        } else {
+        } else if (datos.mensage == 0){
 
           Swal.fire(
             'Insert realizado',
             'Usuario creado correctamente',
             'success'
           )
+        } else {
+          console.log(datos);
+          Swal.fire(
+            'Datos no insertados',
+            'problemas con el paso de los datos',
+            'warning')
         }
       },
       // Disparador error, lo que hace es guardar en la variable error any(qualquier) tipo de error y nos lo imprimirá por
@@ -88,7 +93,7 @@ export class RegistroProfesorComponent implements OnInit {
       (error: any) => {
         console.log(error);
         Swal.fire(
-          'ERROR',
+          'FATAL ERROR',
           'Se ha producido un error',
           'error'
         )
