@@ -2,6 +2,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json');
 
 // importamos el archivo con la conexión a la BD
 require 'conBDLocal.php';
@@ -10,11 +11,13 @@ require 'conBDLocal.php';
 $conexion = conexion();
 class Insertar {
 
-  public insertarRegistroProfesores(
+  public function insertarRegistroProfesores($param){
     // realizamos la query a la BD
-    $registros =  mysqli_query($conexion, "INSERT INTO profesores $param->nickProfesor'");
+    $query =  "INSERT INTO `profesor`('nickProfesor', 'nombreProfesor', 'apellidosProfesor', 'emailProfesor', 'pasProfesor', 'centroProfesor', 'imagenProfesor')
+     VALUES ($param->nickProfesor,$param->nombreProfesor,$param->apellidoProfesor,$param->correoProfesor,$param->contrasenyaProfesor,$param->centroProfesor,'Profe')";
+    $resultado =  mysqli_query($conexion, $query);
 
-    $resultado = mysqli_query($conexion, $registros);
+    // $resultado = mysqli_query($conexion, $registros);
 
     if(!$resultado) {
       $insert = 0;
@@ -24,7 +27,8 @@ class Insertar {
     }
 
     $result = json_encode($insert);
-    echo $result;
-  );
+    // echo $result;
+    return $insert;
+  }
 }
 ?>

@@ -1,6 +1,12 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json');
+
+// header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+// header('Content-Type: text/html; charset=UTF-8');
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+// header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 //recoje los datos que le pasa el sevice
 $json = file_get_contents('php://input');
@@ -10,7 +16,7 @@ $params = json_decode($json);
 
 // importamos el archivo con la conexión a la BD
 require 'conBDLocal.php';
-require 'insertar.php';
+// require 'insertar.php';
 
 // creamos la conexión
 $conexion = conexion();
@@ -30,10 +36,22 @@ while($row = mysqli_fetch_assoc($resultado)) {
 
 // si el profesor existe obtiene datos y los guarda en un array
 if (count($datos) === 0 ) {
-  print json_encode($datos);
+  print json_encode($params);
 
-  $datosRegistro = new Insertar();
-  $registro=$datosRegistro->insertarRegistroProfesores($datos);
+  // // creo el objeto datosRegistro de la clase insertar y le paso los parametros para poder realizar el insert a la base de datos
+  // $datosRegistro = new Insertar();
+  // $insetado=$datosRegistro->insertarRegistroProfesores($params);
+
+  // if(insetado === 0){
+  //   // $mensaje = 'Error no se ha podido realizar el insert';
+  //   // print json_encode($mensajeError);
+
+
+  // }else{
+  //   // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+  // }
+  // $datosRegistro = new Insertar();
+  // $registro=$datosRegistro->insertarRegistroProfesores($datos);
 } else {
 
   print '{ "mensage": "problemas ya existe este nick" }';

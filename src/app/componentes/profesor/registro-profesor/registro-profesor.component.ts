@@ -87,6 +87,11 @@ export class RegistroProfesorComponent implements OnInit {
       // consola con el console.log(error)
       (error: any) => {
         console.log(error);
+        Swal.fire(
+          'ERROR',
+          'Se ha producido un error',
+          'error'
+        )
       }
     )
   }
