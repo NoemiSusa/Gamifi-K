@@ -1,3 +1,4 @@
+//realizamos las importaciones necesarias
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Profesor } from 'src/app/models/profesor.model';
@@ -5,12 +6,13 @@ import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
 
-
 @Component({
   selector: 'app-registro-profesor',
   templateUrl: './registro-profesor.component.html',
   styleUrls: ['./registro-profesor.component.css']
 })
+
+//creamos la clase registro profesor
 export class RegistroProfesorComponent implements OnInit {
 
   //variables
@@ -19,9 +21,10 @@ export class RegistroProfesorComponent implements OnInit {
   submitted = false;
   mostrarMensaje = '';
 
-  //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
   constructor(
+    //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
+    //creamos el objeto profe del ServiceProfesor
     private profe: ProfesorService
   ) { }
 
@@ -40,7 +43,12 @@ export class RegistroProfesorComponent implements OnInit {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
     });
   }
-  prueba;
+
+  //sirve para ejecutar el control del formulario en el html
+  get controlFormulario() {
+    return this.profesor.controls;
+  }
+
 
   //funcion que se ejecuta al enviar el formulario
   onFormSubmit(): void {
@@ -54,15 +62,15 @@ export class RegistroProfesorComponent implements OnInit {
       this.profesor.controls.correoProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
-    console.log(this.nuevoRegistro);
+      console.log(this.nuevoRegistro);
 
-    //si todos los datos y campos son correctos se muestra la ventana emergente
-    Swal.fire('Los datos introducidos son corectos');
+      //si todos los datos y campos son correctos se muestra la ventana emergente
+      Swal.fire('Los datos introducidos son corectos');
 
-    // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
-    this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
-      (datos: any) => {
-        console.log(datos);
+      // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
+      this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
+        (datos: any) => {
+          console.log(datos);
         if (datos == 1) {
           console.log("usuario existe");
 
@@ -101,9 +109,6 @@ export class RegistroProfesorComponent implements OnInit {
   }
 
 
-  get controlFormulario() {
-    return this.profesor.controls;
-  }
 
 
 

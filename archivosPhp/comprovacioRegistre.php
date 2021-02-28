@@ -31,6 +31,7 @@ $datos= [];
 
 // hacemos un bucle para que mientras encuentre datos el resultado del select los vaya guardando en la variable datos []
 while($row = mysqli_fetch_assoc($resultado)) {
+  // si el profesor existe obtiene datos y los guarda en un array
   $datos[] = $row;
 }
 $conexion->close();
@@ -38,7 +39,7 @@ $conexion->close();
 //creamos la variable donde pondremos 0 cuando ese nick no exista en la bd o 1 en caso que ya exista.
 $valorRegistro;
 
-// si el profesor existe obtiene datos y los guarda en un array
+//si no ha recogido datos es que no exiete en la base de datos
 if (count($datos) === 0 ) {
 
   // creo el objeto datosRegistro de la clase Insertar y le paso los parametros para poder realizar el insert a la base de datos
@@ -54,13 +55,16 @@ if (count($datos) === 0 ) {
 
   // comprovamos que se haya realizado el insert
   if($insertado == 0){
-    //   // $mensaje = 'Error no se ha podido realizar el insert';
+      $mensaje = 'Error no se ha podido realizar el insert';
+      print json_encode($mensaje);
+
     //   // print json_encode($mensajeError);
-    print json_encode($insertado);
+    // print json_encode($insertado);
 
   }else{
-  //   // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
-    print json_encode($insertado);
+      $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+      print json_encode($mensaje);
+    // print json_encode($insertado);
   }
 } else {
 
