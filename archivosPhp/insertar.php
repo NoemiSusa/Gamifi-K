@@ -15,7 +15,7 @@ class Insertar {
     $conexion = conexion();
 
     // realizamos la query a la BD
-    $query =  "INSERT INTO `profesor`('nickProfesor', 'nombreProfesor', 'apellidosProfesor', 'emailProfesor', 'pasProfesor', 'centroProfesor', 'imagenProfesor')
+    $query =  "INSERT INTO 'profesor'('nickProfesor', 'nombreProfesor', 'apellidosProfesor', 'emailProfesor', 'pasProfesor', 'centroProfesor', 'imagenProfesor')
      VALUES ($param->nickProfesor,$param->nombreProfesor,$param->apellidoProfesor,$param->correoProfesor,$param->contrasenyaProfesor,$param->centroProfesor,'Profe')";
     $resultado =  mysqli_query($conexion, $query);
 
@@ -31,9 +31,7 @@ class Insertar {
     else {
       $insert = 0;
     }
-
-    // $result = json_encode($insert);
-    // echo $result;
+    // echo $insert;
     return $insert;
   }
 }

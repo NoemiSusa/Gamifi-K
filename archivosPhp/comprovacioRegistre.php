@@ -49,29 +49,30 @@ if (count($datos) === 0 ) {
   // insertado valdrá 1 si se ha realizado el insert a la base de datos o 0 en caso que haya fallado y no se haya realizado.
   $insertado=$datosRegistro->insertarRegistroProfesores($params);
 
+
   // $valorRegistro = 0;
-  // //  ***********print '{ "mensage": "0" }';
   // print json_encode($valorRegistro);
+  // //  ***********print '{ "mensage": "0" }';
 
   // comprovamos que se haya realizado el insert
   if($insertado == 0){
-      $mensaje = 'Error no se ha podido realizar el insert';
-      print json_encode($mensaje);
-
-    //   // print json_encode($mensajeError);
-    // print json_encode($insertado);
+      // $mensaje = 'Error no se ha podido realizar el insert';
+      // print json_encode($mensaje);
+      $insertado = 9;
+      // print json_encode($mensajeError);
+    print json_encode($insertado);
 
   }else{
-      $mensaje = 'perfecto te has registrado correctamente a la base de datos';
-      print json_encode($mensaje);
-    // print json_encode($insertado);
+      // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+      // print json_encode($mensaje);
+    print json_encode($insertado);
   }
 } else {
 
-  // print '{ "mensage": "problemas ya existe este nick" }';
   $valorRegistro = 1;
- // *******************print '{ "mensage": "1" }';
   print json_encode($valorRegistro);
+  // *******************print '{ "mensage": "1" }';
+
 }
 
 // // genera el json con los datos obtenidos
