@@ -58,11 +58,12 @@ if (count($datos) === 0 ) {
   if($insertado == 0){
       // $mensaje = 'Error no se ha podido realizar el insert';
       // print json_encode($mensaje);
-      // $datosRegistro = 9;
+      $insertado = 9;
       // print json_encode($mensajeError);
     print json_encode($insertado);
 
   }else{
+      $insertado=0;
       // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
       // print json_encode($mensaje);
     print json_encode($insertado);
