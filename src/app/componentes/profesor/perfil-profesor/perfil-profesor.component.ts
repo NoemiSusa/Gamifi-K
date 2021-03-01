@@ -10,7 +10,7 @@ import { Profesor } from '../../../models/profesor.model';
 })
 export class PerfilProfesorComponent implements OnInit {
 
-profesor: Profesor = null;
+profesor: Profesor;
 profesorArray: Profesor[] = [];
 response: string = null;
 
