@@ -47,7 +47,7 @@ if (count($datos) === 0 ) {
 
   //insertado recoje el resultado de ejecutar la función insertarRegistroProfesores($params) donde le hemos pasado los parametros que llevan los valores para realizar el insert
   // insertado valdrá 1 si se ha realizado el insert a la base de datos o 0 en caso que haya fallado y no se haya realizado.
-  $insertado=$datosRegistro->insertarRegistroProfesores($params);
+   $insertado=$datosRegistro->insertarRegistroProfesores($params);
 
 
   // $valorRegistro = 0;
@@ -58,7 +58,7 @@ if (count($datos) === 0 ) {
   if($insertado == 0){
       // $mensaje = 'Error no se ha podido realizar el insert';
       // print json_encode($mensaje);
-      $insertado = 9;
+      // $datosRegistro = 9;
       // print json_encode($mensajeError);
     print json_encode($insertado);
 
