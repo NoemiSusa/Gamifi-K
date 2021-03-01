@@ -2,7 +2,6 @@
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
 header('Content-Type: application/json');
-
 // header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 // header('Content-Type: text/html; charset=UTF-8');
 // header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -21,9 +20,9 @@ require_once 'insertar.php';
 // creamos la conexión
 $conexion = conexion();
 
-//consulta que se va a realizar
+//consulta que se va a realizar para comprovar si existe el nick
 $query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'";
-// realizamos la consulta a la BD y recojemos el resultado en $resultado
+// realizamos la consulta a la BD y recojemos el resultado en $resultado que será true o false en función de se ejecuta o no.
 $resultado = mysqli_query($conexion, $query);
 
 //iniciamos la variable $datos como array donde vamos a guardar los datos que obtengamos de la consulta.
@@ -31,16 +30,21 @@ $datos= [];
 
 // hacemos un bucle para que mientras encuentre datos el resultado del select los vaya guardando en la variable datos []
 while($row = mysqli_fetch_assoc($resultado)) {
-  // si el profesor existe obtiene datos y los guarda en un array
+  // si el profesor existe obtiene datos y los guarda en el array $datos
   $datos[] = $row;
 }
+//cerramos la conexion con la BD
 $conexion->close();
 
 //creamos la variable donde pondremos 0 cuando ese nick no exista en la bd o 1 en caso que ya exista.
 $valorRegistro;
 
-//si no ha recogido datos es que no exiete en la base de datos
+//si no ha recogido datos es que no exiete el nick en la base de datos i por lo tanto count($datos)=0
 if (count($datos) === 0 ) {
+  $valorRegistro = 0;
+  // print json_encode($valorRegistro);
+  // //  ***********print '{ "mensage": "0" }';
+
 
   // creo el objeto datosRegistro de la clase Insertar y le paso los parametros para poder realizar el insert a la base de datos
   $datosRegistro = new Insertar();
@@ -49,38 +53,34 @@ if (count($datos) === 0 ) {
   // insertado valdrá 1 si se ha realizado el insert a la base de datos o 0 en caso que haya fallado y no se haya realizado.
    $insertado=$datosRegistro->insertarRegistroProfesores($params);
 
-
-  // $valorRegistro = 0;
-  // print json_encode($valorRegistro);
-  // //  ***********print '{ "mensage": "0" }';
-
   // comprovamos que se haya realizado el insert
   if($insertado == 0){
-      // $mensaje = 'Error no se ha podido realizar el insert';
-      // print json_encode($mensaje);
+      //cambiamos el valor de insertado para que el registro-profesor.ts muestre el mensaje adecuado a la situación producida que en este caso es que ha fallado el insert y no se ha realizado.
       $insertado = 9;
-      // print json_encode($mensajeError);
+
+      /* $mensaje = 'Problemas no se ha realizado el insert';
+      // print json_encode($mensaje); */
+
+    //mandamos al service.ts el valor de insertado codificado con json
     print json_encode($insertado);
 
   }else{
+      //cambiamos el valor de insertado para que el registro-profesor.ts muestre el mensaje adecuado a la situación producida que en este caso es se ha realizado CORRECTAMENTE el insert.
       $insertado=0;
-      // $mensaje = 'perfecto te has registrado correctamente a la base de datos';
-      // print json_encode($mensaje);
+
+      /* $mensaje = 'perfecto te has registrado correctamente a la base de datos';
+      // print json_encode($mensaje);*/
+
+    //mandamos al service.ts el valor de insertado codificado con json
     print json_encode($insertado);
   }
 } else {
-
+  //en caso que el nick ya exista en la base de datos count($datos)=1
   $valorRegistro = 1;
+  //mandamos al service.ts el valor de valorRegistro codificado con json
   print json_encode($valorRegistro);
   // *******************print '{ "mensage": "1" }';
 
 }
-
-// // genera el json con los datos obtenidos
-// $json = json_encode($valorRegistro);
-// // muestra el json generado
-// echo $json;
-
-// return json_encode($valorRegistro);
 
 ?>

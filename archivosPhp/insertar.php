@@ -9,14 +9,16 @@ require_once 'conBDLocal.php';
 
 
 class Insertar {
-
+  //creamos la función y le pasamos el objeto con los datos
   public function insertarRegistroProfesores($param){
     // creamos la conexión
     $conexion = conexion();
 
-    // realizamos la query a la BD
+    // realizamos la query a la BD para realizar el insert con los valores que tendrá cada campo
     $query =  "INSERT INTO profesor(nickProfesor, nombreProfesor, apellidosProfesor, emailProfesor, pasProfesor, centroProfesor, imagenProfesor)
      VALUES ('".$param->nickProfesor."','".$param->nombreProfesor."','".$param->apellidoProfesor."','".$param->correoProfesor."','".$param->contrasenyaProfesor."','".$param->centroProfesor."','Profe')";
+
+    //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
 
     // Para cerrar la conexion con la base de datos.
@@ -31,7 +33,7 @@ class Insertar {
     else {
       $insert = 0;
     }
-    // echo $insert;
+    //devolver el valor del insert al comprovaciónRegistre.php
     return $insert;
   }
 }

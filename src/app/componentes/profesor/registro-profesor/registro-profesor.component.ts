@@ -67,7 +67,7 @@ export class RegistroProfesorComponent implements OnInit {
       //si todos los datos y campos son correctos se muestra la ventana emergente
       Swal.fire('Los datos introducidos son corectos');
 
-      // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el parámetro nickProfesor
+      // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
       this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
         (datos: any) => {
           console.log(datos);
