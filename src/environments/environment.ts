@@ -7,7 +7,10 @@ export const environment = {
 
 
   // variable global con la direccion del servidor
-  url: "http://localhost:8080/"
+  url: "http://localhost:8080/",
+
+vsesion: ""
+
 
 
 };

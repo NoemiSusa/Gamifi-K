@@ -16,6 +16,10 @@ require 'conBDLocal.php';
 $con = conexion();
 
 $query = "select * from `profesor` WHERE nickProfesor='$params->nickProfesor' AND pasProfesor='$params->contrasenyaProfesor'";
+
+
+// print '{ "msg": "Error al encontrar usuario" }';
+
 // $query = "SELECT * FROM alumno";
 $resultado = mysqli_query($con, $query);
 
@@ -35,6 +39,8 @@ while($row = mysqli_fetch_assoc($resultado)) {
 if (count($datos) === 0) {
 
   print '{ "msg": "Error al encontrar usuario" }';
+
+
 
 
 } else {

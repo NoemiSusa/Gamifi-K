@@ -16,6 +16,7 @@ import { NgSwitchDefault } from '@angular/common';
 //import sweet alert
 import swal from'sweetalert2';
 import Swal from'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-profesor',
@@ -81,6 +82,9 @@ export class LoginProfesorComponent implements OnInit {
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
 
+            environment.vsesion=profesor.nickProfesor;
+
+            Swal.fire(environment.vsesion+ " Variable de sesion ")
           }
         },
         (error: any) => {
