@@ -1,6 +1,8 @@
 import { ProfesorService } from './../../../services/profesor.service';
 import { Component, OnInit } from '@angular/core';
 import { Profesor } from '../../../models/profesor.model';
+import { LoginProfesorComponent } from '../login-profesor/login-profesor.component';
+import { get } from 'http';
 
 
 @Component({
@@ -17,7 +19,12 @@ response: string = null;
 
   constructor(
     private swService: ProfesorService
-    ) { }
+    ) {
+      this.profesor = get.LoginProfesor();
+      const profesore = localStorage.getItem('profesor');
+      this.profesor = JSON.parse(profesore);
+
+    }
 
   ngOnInit(): void {
 // usamos el servicio para pedir todos los datos en lugar de crearlos aquí
