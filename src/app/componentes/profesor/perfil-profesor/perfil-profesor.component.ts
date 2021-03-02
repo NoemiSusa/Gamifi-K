@@ -15,7 +15,9 @@ profesorArray: Profesor[] = [];
 response: string = null;
 
 
-  constructor(private swService: ProfesorService) { }
+  constructor(
+    private swService: ProfesorService
+    ) { }
 
   ngOnInit(): void {
 // usamos el servicio para pedir todos los datos en lugar de crearlos aquí
@@ -37,8 +39,7 @@ response: string = null;
       }
     );*/
 
-    this.profesorArray.push(new Profesor('NickProfesor', 'NombreProfesor', 'ApellidoProfesor', 'correo', 'contrasenyaProfesor', 'confirmarContrasenyaProfesor', 'centroProfesor'));
-  }
+    }
 
 
 }
