@@ -1,15 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-
-// import { InicioComponent } from './inicio/inicio.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentesComponent } from './componentes/componentes.component';
 import { ProfesorComponent } from './componentes/profesor/profesor.component';
 import { AlumnoComponent } from './componentes/alumno/alumno.component';
-import { LoginComponent } from './componentes/profesor/login/login.component';
 import { LoginProfesorComponent } from './componentes/profesor/login-profesor/login-profesor.component';
 import { RegistroProfesorComponent } from './componentes/profesor/registro-profesor/registro-profesor.component';
 import { PerfilProfesorComponent } from './componentes/profesor/perfil-profesor/perfil-profesor.component';
@@ -19,7 +15,8 @@ import { RegistroAlumnoComponent } from './componentes/alumno/registro-alumno/re
 import { PerfilAlumnoComponent } from './componentes/alumno/perfil-alumno/perfil-alumno.component';
 import { LogoutAlumnoComponent } from './componentes/alumno/logout-alumno/logout-alumno.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,7 +27,6 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     ComponentesComponent,
     ProfesorComponent,
     AlumnoComponent,
-    LoginComponent,
     LoginProfesorComponent,
     RegistroProfesorComponent,
     PerfilProfesorComponent,
@@ -39,14 +35,17 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     RegistroAlumnoComponent,
     PerfilAlumnoComponent,
     LogoutAlumnoComponent,
-    InicioComponent,
-
-    // InicioComponent,
+    InicioComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SweetAlert2Module,
+    HttpClientModule
+
 
   ],
   providers: [],

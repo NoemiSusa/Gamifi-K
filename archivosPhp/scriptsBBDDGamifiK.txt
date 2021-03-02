@@ -1,0 +1,22 @@
+create or replace TABLE profesor
+	(
+	nickProfesor VARCHAR(30) PRIMARY key, 
+	nombreProfesor VARCHAR(20) NOT null, 
+	apellidosProfesor VARCHAR(40) NOT null,
+	emailProfesor VARCHAR(40) NOT null,
+	pasProfesor VARCHAR(50) NOT null,
+	centroProfesor VARCHAR(20) NOT null,
+	imagenProfesor VARCHAR(50) NOT null
+	);
+ 
+ 
+CREATE TABLE alumno 
+ 	(
+ 	nickAlumno VARCHAR (30) PRIMARY key,
+ 	nombreAlumno VARCHAR (20) NOT NULL,
+ 	apellidoAlumno VARCHAR (40) NOT NULL,
+ 	emailAlumno VARCHAR (40) NOT NULL,
+ 	pasAlumno VARCHAR (50) NOT NULL,
+ 	imagenAlumno VARCHAR (50) NOT null
+ 	);
+ 	
