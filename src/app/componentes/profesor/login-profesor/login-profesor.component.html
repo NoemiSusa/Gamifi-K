@@ -1,1 +1,32 @@
-<p>login-profesor works!</p>
+<div class="card m-3">
+    <div class="card-body">
+        <!-- los datos del formulario los meto en la variable formgroup -->
+        <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
+        <form [formGroup]="loginFormProfesor" (ngSubmit)="loginProfesor()">
+            <div class="form-group col-5">
+                <label>Login Profesor</label>
+                <input type="text" formControlName="nickProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
+                <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
+                    <div *ngIf="controlFormulario.nickProfesor.errors.required">Nick requerido</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="contrasenyaProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
+                    <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1" type="submit">Login</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

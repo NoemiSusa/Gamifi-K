@@ -20,6 +20,15 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}comprovacioRegistre.php`,JSON.stringify(nuevoRegistro));
   }
 
+loginProfesorService(profesor: Profesor): Observable<any> {
+    
+	console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
+    
+	return this.http.post(`${environment.url}loginProfesor.php`, JSON.stringify(profesor));
+
+    //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
+
+  }
 
 
 }
