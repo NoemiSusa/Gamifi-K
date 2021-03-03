@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 
@@ -18,10 +19,11 @@ export class ProfesorService {
         return this.http.get(`${this.URL}comprovacioRegistre.php?nickProfesor=${nickProfesor}`);
       }
 
-    // Función para insertar los datos del nuevo registro en la DB
-      public insertarProfesorService(nuevoRegistro: Profesor) {
-        return this.http.get(`${this.URL}insertar.php?nuevoRegistro=${nuevoRegistro}`);
-      }
+
+    // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
+    public pedirDatosProfesor(datosPerfilProfesor: any): Observable<any> {
+      return this.http.post('S{environment.serverUrl}datosPerfil.php',JSON.stringify(datosPerfilProfesor));
+    }
 
 
 }
