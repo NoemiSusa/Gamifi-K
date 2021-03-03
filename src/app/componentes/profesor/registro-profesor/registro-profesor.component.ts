@@ -80,23 +80,7 @@ export class RegistroProfesorComponent implements OnInit {
               'Este usuario ya existe',
               'error'
             )
-        }else {
-
-            // Llamamos a la función insertarProfesorService (está en el profesorService) y le pasamos el objeto profesor
-            this.profe.insertarProfesorService(this.nuevoRegistro).subscribe(
-              (resp: any) => {
-                if ( resp == 1) {
-                  Swal.fire(
-                    'Insert realizado',
-                    'Usuario creado correctamente',
-                    'success'
-                  )
-                }
-
-              }
-            )
         }
-
       }
     )
   }

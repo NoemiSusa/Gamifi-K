@@ -2,7 +2,7 @@ import { Profesor } from './../../../models/profesor.model';
 import { environment } from './../../../../environments/environment';
 import { ProfesorService } from './../../../services/profesor.service';
 import { Component, OnInit } from '@angular/core';
-import { get } from 'http';
+//import { get } from 'http';
 
 
 
@@ -16,17 +16,14 @@ export class PerfilProfesorComponent implements OnInit {
 profesor: Profesor;
 profesorArray: Profesor[] = [];
 response: string = null;
-sesion: string = environment.vsesion;
+//sesion: string = environment.vsesion;
+sesion: string = 'adminNick';
 
 
   constructor (
     // creamos el objeto profe del ServiceProfesor
     private perfilProfesor: ProfesorService
-
-    ) {
-
-
-    }
+    ) { }
 
   ngOnInit(): void {
 
@@ -34,12 +31,9 @@ sesion: string = environment.vsesion;
 
 // usamos el servicio para pedir todos los campos del profesor logeado
   //  this.profesorArray = this.swService.getAllDades();
-
     // carreguem les dades que tinguem guardant previament en memoria del navegador
-        const profesore = localStorage.getItem('profesor');
-        this.profesor = JSON.parse(profesore);
-
-
+      //  const profesore = localStorage.getItem('profesor');
+        //this.profesor = JSON.parse(profesore);
 
     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
       (resp: any)=>{
