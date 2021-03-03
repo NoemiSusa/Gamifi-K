@@ -14,7 +14,6 @@ import { NgSwitchDefault } from '@angular/common';
 
 
 //import sweet alert
-import swal from'sweetalert2';
 import Swal from'sweetalert2';
 import { environment } from 'src/environments/environment';
 
@@ -33,7 +32,6 @@ export class LoginProfesorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _loginProfesor: ProfesorService
-
   ) { }
 
 
@@ -100,6 +98,7 @@ export class LoginProfesorComponent implements OnInit {
   }
 
 
+
   // funcion para el reset
   onReset() {
     this.submitted = false;
@@ -108,7 +107,3 @@ export class LoginProfesorComponent implements OnInit {
 
 
 }
-
-
-
-
