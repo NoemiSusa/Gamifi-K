@@ -20,6 +20,7 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}comprovacioRegistre.php`,JSON.stringify(nuevoRegistro));
   }
 
+
   loginProfesorService(profesor: Profesor): Observable<any> {
     console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
     return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
