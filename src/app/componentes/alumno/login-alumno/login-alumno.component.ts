@@ -14,7 +14,6 @@ import { NgSwitchDefault } from '@angular/common';
 
 //import sweet alert
 import swal from 'sweetalert2';
-import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -69,6 +68,7 @@ export class LoginAlumnoComponent implements OnInit {
           console.log(respuesta);
 
 
+
           if (respuesta[0] == null) {
             console.log("Usuario no existe");
             // mostrar una alerta con sweet alert
@@ -81,7 +81,9 @@ export class LoginAlumnoComponent implements OnInit {
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
 
-            environment.vsesion=alumno.nickAlumno;
+
+            environment.vsesion = alumno.nickAlumno;
+
 
 
           }
@@ -106,6 +108,5 @@ export class LoginAlumnoComponent implements OnInit {
   }
 
 }
-
 
 

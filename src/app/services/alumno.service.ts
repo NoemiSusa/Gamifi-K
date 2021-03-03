@@ -17,11 +17,15 @@ export class AlumnoService {
 
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
 
-    // const user = alumno.nickAlumno;ยบ
+    
+    // const user = alumno.nickAlumno;º
     // const pass = alumno.contrasenyaAlumno;
 
-    return this.http.post(`${environment.url}loginAlumno.php`, JSON.stringify(alumno));
+    return this.http.post(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno));
 
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(alumno));
 
   }
+
+}
+

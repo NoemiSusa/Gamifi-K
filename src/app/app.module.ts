@@ -19,8 +19,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,17 +34,15 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilAlumnoComponent,
     LogoutAlumnoComponent,
     InicioComponent
-
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SweetAlert2Module,
     HttpClientModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
