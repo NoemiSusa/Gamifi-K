@@ -81,7 +81,7 @@ export class LoginAlumnoComponent implements OnInit {
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
 
-            environment.vsesion=alumno.nickAlumno;
+            environment.vsesion = alumno.nickAlumno;
 
 
           }
