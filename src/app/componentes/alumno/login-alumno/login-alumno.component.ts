@@ -13,7 +13,7 @@ import { NgSwitchDefault } from '@angular/common';
 
 
 //import sweet alert
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 
 @Component({
