@@ -1,38 +1,38 @@
-<div *ngIf="profesor !== null" class="card" style="width: 18rem;">
-  <!-- recorre todo el profesor con el ngIf, mientras no se salga del array y no haya nada (null) -->
-  <a *ngFor="let profesor of profesorArray"></a>
-  <div class="card-body">
-      <img [src]="profesor.imagenProfesor" class="card-img-top" alt="">
+<div *ngIf="profesor !== null" class="card">
+    <!-- recorre todo el profesor con el ngIf, mientras no se salga del array y no haya nada (null) -->
+    <a *ngFor="let profesor of profesorArray"></a>
+    <div>ppp
+        <img [src]="//assets/images.jpeg" class="card-img-top" alt="">
 
-      <div class="card-body">
-          <h5 class="card-title"><strong>{{profesor.nombreProfesor}} {{profesor.apellidoProfesor}}</strong></h5>
-          <!-- saca por pantalla el nombre y apellido del profesor con un titulo -->
-      </div>
-      <form>
-          <div class="card-body">
-              <p class="card-text"><strong>Nick: </strong>{{profesor.nickProfesor}}</p>
-              <!-- saca por pantalla la descripcion -->
-          </div>
+        <div class="card-body1">
+            <h5 class="card-title">Joana Mateu<strong>{{profesor.nombreProfesor}} {{profesor.apellidoProfesor}}</strong></h5>
+            <!-- saca por pantalla el nombre y apellido del profesor con un titulo -->
+        </div>
+        <form>
+            <div class="card-body">
+                <p class="card-text"><strong>Nick: Joaneta</strong>{{profesor.nickProfesor}}</p>
+                <!-- saca por pantalla la descripcion -->
+            </div>
 
-          <div class="card-body">
-              <p class="card-text"><strong>Correo: </strong>{{profesor.correoProfesor}}</p>
-              <!-- saca por pantalla el correo -->
-          </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Correo: mateu@gmail.com</strong>{{profesor.correoProfesor}}</p>
+                <!-- saca por pantalla el correo -->
+            </div>
 
-          <div class="card-body">
-              <p class="card-text"><strong>Contraseña: </strong>{{profesor.contrasenyaProfesor}}</p>
-              <!-- saca por pantalla la contraseña -->
-          </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Contraseña: Mateu12345</strong>{{profesor.contrasenyaProfesor}}</p>
+                <!-- saca por pantalla la contraseña -->
+            </div>
 
-          <div class="card-body">
-              <p class="card-text"><strong>Centro: </strong>{{profesor.centroProfesor}}</p>
-              <!-- saca por pantalla el confirmar contraseña -->
-          </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Centro: Ilerna</strong>{{profesor.centroProfesor}}</p>
+                <!-- saca por pantalla el confirmar contraseña -->
+            </div>
 
-      </form>
+        </form>
 
 
 
-  </div>
+    </div>
 
 </div>

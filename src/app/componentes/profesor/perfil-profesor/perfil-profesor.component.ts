@@ -37,8 +37,9 @@ sesion: string = 'adminNick';
 
     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
       (resp: any)=>{
-        this.profesor = resp,
-        console.log(this.profesor);
+        //this.profesor = resp,
+        //console.log(this.profesor);
+        console.log(resp);
       },
       (error: any) => {
         console.log(error);
