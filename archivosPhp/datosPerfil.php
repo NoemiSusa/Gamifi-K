@@ -17,7 +17,7 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 // realizamos la query a la BD
-$query =  "SELECT * FROM profesor WHERE nickProfesor='$params'";
+$query =  "SELECT * FROM profesor WHERE nickProfesor='$params->sesion'";
 $resultado = mysqli_query($conexion, $query);
 
 // inciamos la variable $datos como array donde vamos a guardar los datos que obt4engamos de la consulta

@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilProfesorComponent implements OnInit {
 
 profesor: Profesor;
-resp;
+profesorArray: Profesor[] = [];
 response: string = null;
-sesion: string = environment.vsesion;
-
+//sesion: string = environment.vsesion;
+sesion: string = 'adminNick';
 
 
   constructor (
@@ -27,14 +27,18 @@ sesion: string = environment.vsesion;
 
   ngOnInit(): void {
 
+   // this.profesor.nickProfesor = this.sesion;
 
 // usamos el servicio para pedir todos los campos del profesor logeado
+  //  this.profesorArray = this.swService.getAllDades();
+    // carreguem les dades que tinguem guardant previament en memoria del navegador
+      //  const profesore = localStorage.getItem('profesor');
+        //this.profesor = JSON.parse(profesore);
 
     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
       (resp: any)=>{
-        //this.profesor = resp,
-        //console.log(this.profesor);
-        console.log(resp);
+        this.profesor = resp,
+        console.log(this.profesor);
       },
       (error: any) => {
         console.log(error);
