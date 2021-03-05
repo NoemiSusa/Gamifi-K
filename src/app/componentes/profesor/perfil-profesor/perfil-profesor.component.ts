@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilProfesorComponent implements OnInit {
 
 profesor: Profesor;
-profesorArray: Profesor[] = [];
+resp;
 response: string = null;
 //sesion: string = environment.vsesion;
 sesion: string = 'adminNick';
@@ -27,6 +27,8 @@ sesion: string = 'adminNick';
 
   ngOnInit(): void {
 
+    this.profesor = new Profesor();
+
    // this.profesor.nickProfesor = this.sesion;
 
 // usamos el servicio para pedir todos los campos del profesor logeado
@@ -36,13 +38,11 @@ sesion: string = 'adminNick';
         //this.profesor = JSON.parse(profesore);
 
     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
-      (resp: any)=>{
-<<<<<<< Updated upstream
-        this.profesor = resp,
-        console.log(this.profesor);
-=======
-        console.log(resp);
->>>>>>> Stashed changes
+      (resp: Profesor[])=>{
+        this.profesor = resp[0];
+
+        // console.log(resp);
+
       },
       (error: any) => {
         console.log(error);

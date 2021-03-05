@@ -1,6 +1,5 @@
 <div *ngIf="profesor !== null" class="card" style="width: 18rem;">
   <!-- recorre todo el profesor con el ngIf, mientras no se salga del array y no haya nada (null) -->
-  <a *ngFor="let profesor of profesorArray"></a>
   <div class="card-body">
       <img [src]="profesor.imagenProfesor" class="card-img-top" alt="">
 
