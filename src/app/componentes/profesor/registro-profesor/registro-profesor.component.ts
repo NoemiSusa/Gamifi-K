@@ -6,6 +6,9 @@ import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
 
+// Importo el service para encriptar la contraseña
+import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+
 @Component({
   selector: 'app-registro-profesor',
   templateUrl: './registro-profesor.component.html',
@@ -22,6 +25,10 @@ export class RegistroProfesorComponent implements OnInit {
   mostrarMensaje = '';
 
   constructor(
+    // declaro variable para encriptar
+    private encriptar: EncriptarDecriptarService,
+
+
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceProfesor
@@ -62,15 +69,24 @@ export class RegistroProfesorComponent implements OnInit {
       this.profesor.controls.correoProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
-      console.log(this.nuevoRegistro);
+    console.log(this.nuevoRegistro);
 
-      //si todos los datos y campos son correctos se muestra la ventana emergente
-      Swal.fire('Los datos introducidos son corectos');
 
-      // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
-      this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
-        (datos: any) => {
-          console.log(datos);
+    //passEncriptada= variable para guarda la contraseña encriptada
+    //this.encriptar.set("",this.nuevoRegistro.contrasenyaProfesor paso el valor de la contraseña y lo encripto
+    var passEncriptada = this.encriptar.set("", this.nuevoRegistro.contrasenyaProfesor);
+    //Guardo la contraseña encriptada en el objeto del profesor para luego hacerle el insert a la BD
+    this.nuevoRegistro.contrasenyaProfesor = passEncriptada;
+
+
+
+    //si todos los datos y campos son correctos se muestra la ventana emergente
+    // Swal.fire('Los datos introducidos son corectos+ Contraseña encriptada: ' + passEncriptada);
+
+    // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
+    this.profe.comprobarUsuarioService(this.nuevoRegistro).subscribe(
+      (datos: any) => {
+        console.log(datos);
         if (datos == 1) {
           console.log("usuario existe");
 
@@ -80,7 +96,7 @@ export class RegistroProfesorComponent implements OnInit {
             'error'
           );
 
-        } else if (datos == 0){
+        } else if (datos == 0) {
 
           Swal.fire(
             'Insert realizado',

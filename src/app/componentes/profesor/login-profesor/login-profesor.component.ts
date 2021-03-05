@@ -17,6 +17,9 @@ import { NgSwitchDefault } from '@angular/common';
 import Swal from'sweetalert2';
 import { environment } from 'src/environments/environment';
 
+// Importo el service para encriptar la contraseña
+import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+
 @Component({
   selector: 'app-login-profesor',
   templateUrl: './login-profesor.component.html',
@@ -30,8 +33,11 @@ export class LoginProfesorComponent implements OnInit {
   alerta:string="";
 
   constructor(
+    // declaro variable para encriptar
+    private encriptar : EncriptarDecriptarService,
     private formBuilder: FormBuilder,
     private _loginProfesor: ProfesorService
+
   ) { }
 
 

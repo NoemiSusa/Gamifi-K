@@ -13,7 +13,7 @@ import { NgSwitchDefault } from '@angular/common';
 
 
 //import sweet alert
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -28,6 +28,7 @@ export class LoginAlumnoComponent implements OnInit {
 
 
   alerta: string = "";
+  Router: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -81,9 +82,9 @@ export class LoginAlumnoComponent implements OnInit {
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
 
+              this.Router.navigate(['/perfilAlumno']);
 
             environment.vsesion = alumno.nickAlumno;
-
 
 
           }
