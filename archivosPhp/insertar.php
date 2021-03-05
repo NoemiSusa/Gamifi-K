@@ -2,27 +2,39 @@
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json');
 
 // importamos el archivo con la conexión a la BD
-require("conBDLocal.php");
+require_once 'conBDLocal.php';
 
-// creamos la conexión
-$conexion = conexion();
 
-// realizamos la query a la BD
-$registros =  mysqli_query($conexion, "INSERT * FROM profesores WHERE nickProfesor='$_GET[nickProfesor]'");
+class Insertar {
+  //creamos la función y le pasamos el objeto con los datos
+  public function insertarRegistroProfesores($param){
+    // creamos la conexión
+    $conexion = conexion();
 
-$resultado = mysqli_query($conexion, $registros);
+    // realizamos la query a la BD para realizar el insert con los valores que tendrá cada campo
+    $query =  "INSERT INTO profesor(nickProfesor, nombreProfesor, apellidosProfesor, emailProfesor, pasProfesor, centroProfesor, imagenProfesor)
+     VALUES ('".$param->nickProfesor."','".$param->nombreProfesor."','".$param->apellidoProfesor."','".$param->correoProfesor."','".$param->contrasenyaProfesor."','".$param->centroProfesor."','Profe')";
 
-if(!$resultado) {
+    //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
+    $resultado =  mysqli_query($conexion, $query);
 
-  $insert = 0;
+    // Para cerrar la conexion con la base de datos.
+    $conexion->close();
+
+    //variable donde vamos a guardar un 1 si se hace el insert a la base de datos o un 0 si no se ha podido realizar el insert.
+    $insert;
+
+    if($resultado) {
+      $insert = 1;
+    }
+    else {
+      $insert = 0;
+    }
+    //devolver el valor del insert al comprovaciónRegistre.php
+    return $insert;
+  }
 }
-else {
-  $insert = 1;
-}
-
-$result = json_encode($insert);
-echo $result;
-
 ?>
