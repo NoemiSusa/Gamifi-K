@@ -16,6 +16,11 @@ import { NgSwitchDefault } from '@angular/common';
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 
+// Importo el service para encriptar la contraseña
+import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+
+
+
 @Component({
   selector: 'app-login-alumno',
   templateUrl: './login-alumno.component.html',
@@ -31,6 +36,7 @@ export class LoginAlumnoComponent implements OnInit {
   Router: any;
 
   constructor(
+    private encriptar:EncriptarDecriptarService,
     private formBuilder: FormBuilder,
     private _loginAlumno: AlumnoService
 
@@ -64,6 +70,10 @@ export class LoginAlumnoComponent implements OnInit {
     }
     // en caso de que sea valido envio los datos al subscribe
     else {
+
+      var passEncriptada = this.encriptar.set("", alumno.contrasenyaAlumno);
+      alumno.contrasenyaAlumno = passEncriptada;
+
       this._loginAlumno.loginAlumnoService(alumno).subscribe(
         (respuesta: any) => {
           console.log(respuesta);
