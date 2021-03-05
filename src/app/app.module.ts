@@ -17,6 +17,7 @@ import { LogoutAlumnoComponent } from './componentes/alumno/logout-alumno/logout
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
+import { EditPerfilComponent } from './componentes/profesor/perfil-profesor/edit-perfil/edit-perfil.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroAlumnoComponent,
     PerfilAlumnoComponent,
     LogoutAlumnoComponent,
-    InicioComponent
+    InicioComponent,
+    EditPerfilComponent
   ],
   imports: [
     FormsModule,
