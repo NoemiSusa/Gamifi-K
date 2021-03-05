@@ -17,6 +17,7 @@ import { NgSwitchDefault } from '@angular/common';
 import Swal from'sweetalert2';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-login-profesor',
   templateUrl: './login-profesor.component.html',
@@ -106,4 +107,8 @@ export class LoginProfesorComponent implements OnInit {
   }
 
 
+
 }
+
+
+

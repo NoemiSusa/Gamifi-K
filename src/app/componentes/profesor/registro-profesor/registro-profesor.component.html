@@ -1,5 +1,6 @@
-<p>registro-profesor works!</p>
+<body>
 
+<h1 class="register-title">Registro de Profesor</h1>
 <div class="container">
 
   <!-- formulario de recogida de datos -->
@@ -8,8 +9,7 @@
     <!-- campo del nickProfesor (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Nick del profesor</label>
-        <input type="text" formControlName="nickProfesor" placeholder="nick" class="form-control"
+        <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.valid,
                     'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">
 
@@ -24,8 +24,7 @@
     <!-- campo del contraseña del Profesor -->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Contraseña del profesor</label>
-        <input type="password" formControlName="contrasenyaProfesor" placeholder="contraseña" class="form-control"
+        <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.valid,
                     'is-invalid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.invalid}">
 
@@ -57,8 +56,7 @@
     <!-- campo del nombreProfesor -->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Nombre del profesor</label>
-        <input type="text" formControlName="nombreProfesor" placeholder="nombre" class="form-control"
+        <input type="text" formControlName="nombreProfesor" placeholder="Nombre" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.valid,
                   'is-invalid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.invalid}">
 
@@ -72,7 +70,6 @@
     <!-- campo de apellidos del profesor -->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Apellidos del profesor</label>
         <input type="text" formControlName="apellidoProfesor" placeholder="Apellidos" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.valid,
                     'is-invalid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.invalid}">
@@ -87,7 +84,6 @@
     <!-- campo de correo del profesor -->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Correo del profesor</label>
         <input type="email" formControlName="correoProfesor" placeholder="prueba@prueba.com" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.valid,
                     'is-invalid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.invalid}">
@@ -102,8 +98,7 @@
     <!-- campo del centro del profesor -->
     <div class="form-row">
       <div class="form-group col-md-12">
-        <label class="control-Label">Centro del profesor</label>
-        <input type="text" formControlName="centroProfesor" placeholder="centro educativo" class="form-control"
+        <input type="text" formControlName="centroProfesor" placeholder="Centro Educativo" class="form-control"
           [ngClass]="{'is-valid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.valid,
                     'is-invalid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.invalid}">
 
@@ -118,7 +113,7 @@
     <!--botón registrarse-->
     <div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <button type="submit" class="register-button">Registrarse</button>
       </div>
     </div>
 
@@ -126,3 +121,5 @@
   </form>
 
 </div>
+
+</body>

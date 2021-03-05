@@ -21,6 +21,12 @@ export class ProfesorService {
   }
 
 
+    // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
+    public pedirDatosProfesor(sesion: any): Observable<any> {
+      return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
+    }
+
+
   loginProfesorService(profesor: Profesor): Observable<any> {
     console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
     return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
