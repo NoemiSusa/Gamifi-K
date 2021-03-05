@@ -37,8 +37,12 @@ sesion: string = 'adminNick';
 
     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
       (resp: any)=>{
+<<<<<<< Updated upstream
         this.profesor = resp,
         console.log(this.profesor);
+=======
+        console.log(resp);
+>>>>>>> Stashed changes
       },
       (error: any) => {
         console.log(error);
