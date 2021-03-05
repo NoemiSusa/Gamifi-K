@@ -92,7 +92,7 @@ export class LoginAlumnoComponent implements OnInit {
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
 
-              this.Router.navigate(['/perfilAlumno']);
+              // this.Router.navigate(['/perfilAlumno']);
 
             environment.vsesion = alumno.nickAlumno;
 
