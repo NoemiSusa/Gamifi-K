@@ -51,7 +51,7 @@ if (count($datos) === 0 ) {
 
   //insertado recoje el resultado de ejecutar la función insertarRegistroProfesores($params) donde le hemos pasado los parametros que llevan los valores para realizar el insert
   // insertado valdrá 1 si se ha realizado el insert a la base de datos o 0 en caso que haya fallado y no se haya realizado.
-   $insertado=$datosRegistro->insertarRegistroProfesores($params);
+   $insertado=$datosRegistro->insertarRegistroAlumno($params);
 
   // comprovamos que se haya realizado el insert
   if($insertado == 0){
