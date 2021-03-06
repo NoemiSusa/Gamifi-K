@@ -59,16 +59,8 @@ export class LoginProfesorComponent implements OnInit {
     let profesor = new Profesor(this.loginFormProfesor.controls.nickProfesor.value,
       this.loginFormProfesor.controls.contrasenyaProfesor.value);
 
-
-
-    this.submitted = true;
     // Con el submit compruebo si se ha  enviado el formulario para luego
-    //passEncriptada= variable para guarda la contraseña encriptada
-    //this.encriptar.set("",this.nuevoRegistro.contrasenyaProfesor paso el valor de la contraseña y lo encripto
-
-
-
-    //Guardo la contraseña encriptada en el objeto del profesor para luego hacerle el insert a la BD
+    this.submitted = true;
 
 
     // stop here if form is invalid
@@ -78,8 +70,11 @@ export class LoginProfesorComponent implements OnInit {
     }
     // en caso de que sea valido envio los datos al subscribe
     else {
+      //passEncriptada= variable para guarda la contraseña encriptada
+      //this.encriptar.set("",this.nuevoRegistro.contrasenyaProfesor paso el valor de la contraseña y lo encripto
       var passEncriptada = this.encriptar.set("", profesor.contrasenyaProfesor);
-     profesor.contrasenyaProfesor = passEncriptada;
+      //Guardo la contraseña encriptada en el objeto del profesor para luego hacerle el insert a la BD
+      profesor.contrasenyaProfesor = passEncriptada;
 
       this._loginProfesor.loginProfesorService(profesor).subscribe(
         (respuesta: any) => {
@@ -97,7 +92,7 @@ export class LoginProfesorComponent implements OnInit {
             console.log("Usuario existe");
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
-
+            // this.Router.navigate(['/perfilProfesor']);
             environment.vsesion=profesor.nickProfesor;
 
             Swal.fire(environment.vsesion+ " Variable de sesion ")
@@ -114,8 +109,6 @@ export class LoginProfesorComponent implements OnInit {
     }
 
   }
-
-
 
   // funcion para el reset
   onReset() {

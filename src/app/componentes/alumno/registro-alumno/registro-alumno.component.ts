@@ -5,6 +5,7 @@ import { Alumno } from 'src/app/models/alumno.model';
 import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { AlumnoService } from 'src/app/services/alumno.service';
+import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
 
 @Component({
   selector: 'app-registro-alumno',
@@ -22,6 +23,8 @@ export class RegistroAlumnoComponent implements OnInit {
   mostrarMensaje = '';
 
   constructor(
+    // declaro variable para encriptar
+    private encriptar: EncriptarDecriptarService,
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceAlumno
@@ -61,18 +64,23 @@ export class RegistroAlumnoComponent implements OnInit {
       this.alumno.controls.apellidoAlumno.value,
       this.alumno.controls.correoAlumno.value);
 
-      console.log(this.nuevoRegistro);
+    console.log(this.nuevoRegistro);
+
+    //passEncriptada= variable para guarda la contraseña encriptada
+    //this.encriptar.set("",this.nuevoRegistro.contrasenyaAlumno paso el valor de la contraseña y lo encripto
+    var passEncriptada = this.encriptar.set("", this.nuevoRegistro.contrasenyaAlumno);
+    //Guardo la contraseña encriptada en el objeto del alumno para luego hacerle el insert a la BD
+    this.nuevoRegistro.contrasenyaAlumno = passEncriptada;
 
       //si todos los datos y campos son correctos se muestra la ventana emergente
-      Swal.fire('Los datos introducidos son corectos');
+      //Swal.fire('Los datos introducidos son corectos');
 
-      // Llamamos a la función comprobarAlumnoService(está en el AlumnoService) y le pasamos el objeto con todos los datos del Alumno
-      this.alu.comprobarAlumnoService(this.nuevoRegistro).subscribe(
+    // Llamamos a la función comprobarAlumnoService(está en el AlumnoService) y le pasamos el objeto con todos los datos del Alumno
+    this.alu.comprobarAlumnoService(this.nuevoRegistro).subscribe(
         (datos: any) => {
           console.log(datos);
         if (datos == 1) {
           console.log("usuario existe");
-
           Swal.fire(
             'Problemas',
             'Este usuario ya existe',
@@ -80,12 +88,12 @@ export class RegistroAlumnoComponent implements OnInit {
           );
 
         } else if (datos == 0){
-
           Swal.fire(
             'Insert realizado',
             'Usuario creado correctamente',
             'success'
           )
+
         } else {
           console.log(datos);
           Swal.fire(
@@ -106,6 +114,4 @@ export class RegistroAlumnoComponent implements OnInit {
       }
     )
   }
-
-
 }

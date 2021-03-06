@@ -54,7 +54,10 @@ export class LoginAlumnoComponent implements OnInit {
   }
 
   // con el getter estoy estoy haciendo las comprobaciones del formulario y devolviendo los errores
-  get controlFormulario() { return this.loginForm.controls; }
+  get controlFormulario() {
+    return this.loginForm.controls;
+  }
+
   loginAlumno() {
     // creo una instancia para el service de login alumno pasandole los datos del formulario
     let alumno = new Alumno(this.loginForm.controls.nickAlumno.value,
@@ -78,39 +81,26 @@ export class LoginAlumnoComponent implements OnInit {
         (respuesta: any) => {
           console.log(respuesta);
 
-
-
           if (respuesta[0] == null) {
             console.log("Usuario no existe");
             // mostrar una alerta con sweet alert
-
             Swal.fire('Datos incorrectos', 'Verifica el nick o la contraseña y vuelve a intentarlo', 'error')
-          }
-
-          else {
+          }else {
             console.log("Usuario existe");
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
-
-              // this.Router.navigate(['/perfilAlumno']);
-
+            // this.Router.navigate(['/perfilAlumno']);
             environment.vsesion = alumno.nickAlumno;
 
-
+            Swal.fire(environment.vsesion+ " Variable de sesion ")
           }
         },
         (error: any) => {
           console.log(error);
         }
-
-
-
       )
-
     }
-
   }
-
 
   // funcion para el reset
   onReset() {

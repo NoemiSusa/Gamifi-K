@@ -5,8 +5,6 @@ import { Profesor } from 'src/app/models/profesor.model';
 import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
-
-// Importo el service para encriptar la contraseña
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
 
 @Component({
@@ -27,8 +25,6 @@ export class RegistroProfesorComponent implements OnInit {
   constructor(
     // declaro variable para encriptar
     private encriptar: EncriptarDecriptarService,
-
-
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceProfesor
