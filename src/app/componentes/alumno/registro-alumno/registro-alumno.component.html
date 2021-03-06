@@ -99,20 +99,6 @@
       </div>
     </div>
 
-    <!-- campo del centro del Alumno -->
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <label class="control-Label">Centro del Alumno</label>
-        <input type="text" formControlName="centroAlumno" placeholder="centro educativo" class="form-control"
-          [ngClass]="{'is-valid': controlFormulario.centroAlumno.touched && controlFormulario.centroAlumno.valid,
-                    'is-invalid': controlFormulario.centroAlumno.touched && controlFormulario.centroAlumno.invalid}">
-
-        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-        <div *ngIf="submitted && controlFormulario.centroAlumno.errors" class="invalid-feedback">
-          <div *ngIf="controlFormulario.centroAlumno.errors.required">Indicar el centro es obligatorio</div>
-        </div>
-      </div>
-    </div>
     <br>
     <br>
     <!--botón registrarse-->

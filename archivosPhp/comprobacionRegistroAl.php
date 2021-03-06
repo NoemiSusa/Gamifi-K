@@ -15,7 +15,7 @@ $params = json_decode($json);
 
 // importamos el archivo con la conexión a la BD y el fichero de insertar para luego realizar el insert
 require_once 'conBDLocal.php';
-require_once 'insertar.php';
+require_once 'insertarAl.php';
 
 // creamos la conexión
 $conexion = conexion();
@@ -47,7 +47,7 @@ if (count($datos) === 0 ) {
 
 
   // creo el objeto datosRegistro de la clase Insertar y le paso los parametros para poder realizar el insert a la base de datos
-  $datosRegistro = new Insertar();
+  $datosRegistro = new InsertarAl();
 
   //insertado recoje el resultado de ejecutar la función insertarRegistroProfesores($params) donde le hemos pasado los parametros que llevan los valores para realizar el insert
   // insertado valdrá 1 si se ha realizado el insert a la base de datos o 0 en caso que haya fallado y no se haya realizado.

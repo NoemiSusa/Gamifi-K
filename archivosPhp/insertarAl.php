@@ -8,15 +8,15 @@ header('Content-Type: application/json');
 require_once 'conBDLocal.php';
 
 
-class Insertar {
+class InsertarAl {
   //creamos la función y le pasamos el objeto con los datos
   public function insertarRegistroAlumno($param){
     // creamos la conexión
     $conexion = conexion();
 
     // realizamos la query a la BD para realizar el insert con los valores que tendrá cada campo
-    $query =  "INSERT INTO Alumno(nickAlumno, nombreAlumno, apellidosAlumno, emailAlumno, pasAlumno, centroAlumno, imagenAlumno)
-     VALUES ('".$param->nickAlumno."','".$param->nombreAlumno."','".$param->apellidoAlumno."','".$param->correoAlumno."','".$param->contrasenyaAlumno."','".$param->centroAlumno."','Alumno')";
+    $query =  "INSERT INTO alumno(nickAlumno, nombreAlumno, apellidoAlumno, emailAlumno, pasAlumno, imagenAlumno)
+     VALUES ('".$param->nickAlumno."','".$param->nombreAlumno."','".$param->apellidoAlumno."','".$param->correoAlumno."','".$param->contrasenyaAlumno."','Alumno')";
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
