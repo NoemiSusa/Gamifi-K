@@ -31,9 +31,15 @@ export class ProfesorService {
     console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
     return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
+  }
+
+    // Función para editar y modificar los datos del perfil
+    public editarDatosPerfil(datosPerfil: Profesor): Observable<any>  {
+      return this.http.post(`${environment.serverUrl}editarPerfil.php`,JSON.stringify(datosPerfil));
+    }
 
   }
-}
+
 
 
 

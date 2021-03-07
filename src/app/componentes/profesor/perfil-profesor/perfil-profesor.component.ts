@@ -1,7 +1,7 @@
 import { Profesor } from './../../../models/profesor.model';
 import { environment } from './../../../../environments/environment';
 import { ProfesorService } from './../../../services/profesor.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //import { get } from 'http';
 
 
@@ -18,6 +18,9 @@ resp;
 response: string = null;
 //sesion: string = environment.vsesion;
 sesion: string = 'adminNick';
+
+// Creamos un emisor de profesor para enviar los datos al componente hijo editar perfil
+@Output() editar: EventEmitter<Profesor> = new EventEmitter<Profesor>();
 
 
   constructor (
