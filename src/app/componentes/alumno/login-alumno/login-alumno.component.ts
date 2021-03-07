@@ -1,24 +1,18 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 // import { EventEmitter } from 'events';
-
 import { Alumno } from 'src/app/models/alumno.model';
-
 // importo el servicio alumno.service para luego enviarle los datos.
 import { AlumnoService } from 'src/app/services/alumno.service';
-
 //imports http client
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgSwitchDefault } from '@angular/common';
-
-
 //import sweet alert
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
-
 // Importo el service para encriptar la contraseña
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -38,7 +32,8 @@ export class LoginAlumnoComponent implements OnInit {
   constructor(
     private encriptar:EncriptarDecriptarService,
     private formBuilder: FormBuilder,
-    private _loginAlumno: AlumnoService
+    private _loginAlumno: AlumnoService,
+    private router: Router
 
   ) { }
 
@@ -87,12 +82,11 @@ export class LoginAlumnoComponent implements OnInit {
             Swal.fire('Datos incorrectos', 'Verifica el nick o la contraseña y vuelve a intentarlo', 'error')
           }else {
             console.log("Usuario existe");
-            // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
-            // this.Router.navigate(['/perfilAlumno']);
             environment.vsesion = alumno.nickAlumno;
-
-            Swal.fire(environment.vsesion+ " Variable de sesion ")
+            // Swal.fire(environment.vsesion+ " Variable de sesion ")
+            // aqui tengo que llamar el siguiente componente
+            this.router.navigate(['/perfilAlumno']);
           }
         },
         (error: any) => {

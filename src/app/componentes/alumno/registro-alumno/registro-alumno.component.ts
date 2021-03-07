@@ -30,7 +30,8 @@ export class RegistroAlumnoComponent implements OnInit {
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceAlumno
-    private alu: AlumnoService
+    private alu: AlumnoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -95,7 +96,7 @@ export class RegistroAlumnoComponent implements OnInit {
             'Usuario creado correctamente',
             'success'
           )
-          // this.router.navigate(['/loginAlumno']);
+          this.router.navigate(['/loginAlumno']);
 
         } else {
           console.log(datos);

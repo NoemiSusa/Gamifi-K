@@ -6,6 +6,7 @@ import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-profesor',
@@ -28,7 +29,9 @@ export class RegistroProfesorComponent implements OnInit {
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceProfesor
-    private profe: ProfesorService
+    private profe: ProfesorService,
+    //creamos el Router para moverte por las diferentes rutas
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -99,6 +102,8 @@ export class RegistroProfesorComponent implements OnInit {
             'Usuario creado correctamente',
             'success'
           )
+          this.router.navigate(['/loginProfesor']);
+
         } else {
           console.log(datos);
           Swal.fire(
