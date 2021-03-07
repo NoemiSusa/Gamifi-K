@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login-profesor',
   templateUrl: './login-profesor.component.html',
@@ -104,4 +105,8 @@ export class LoginProfesorComponent implements OnInit {
   }
 
 
+
 }
+
+
+
