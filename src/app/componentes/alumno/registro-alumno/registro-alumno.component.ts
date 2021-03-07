@@ -6,6 +6,7 @@ import { validarContrasenya } from './validarContrasenya'
 import Swal from 'sweetalert2';
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-alumno',
@@ -15,6 +16,7 @@ import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.
 
 //creamos la clase registro profesor
 export class RegistroAlumnoComponent implements OnInit {
+  [x: string]: any;
 
   //variables
   nuevoRegistro: Alumno = null;
@@ -93,6 +95,7 @@ export class RegistroAlumnoComponent implements OnInit {
             'Usuario creado correctamente',
             'success'
           )
+          // this.router.navigate(['/loginAlumno']);
 
         } else {
           console.log(datos);
