@@ -21,7 +21,7 @@ export class EditPerfilComponent implements OnInit {
   mostrarMensaje = '';
 
   // recogemos los datos del componente padre perfil
-  @Input () profesore: Profesor = null;
+ // @Input () profesore: Profesor = null;
 
 
   constructor(
