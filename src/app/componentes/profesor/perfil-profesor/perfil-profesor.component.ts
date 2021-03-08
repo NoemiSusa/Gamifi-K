@@ -16,8 +16,8 @@ export class PerfilProfesorComponent implements OnInit {
 profesor: Profesor;
 resp;
 response: string = null;
-//sesion: string = environment.vsesion;
-sesion: string = 'adminNick';
+sesion: string = environment.vsesion;
+// sesion: string = 'adminNick';
 
 
   constructor (
