@@ -10,10 +10,10 @@ import { validarContrasenya } from '../../../registro-profesor/validarContraseny
 export class CambiarContraProfesorComponent implements OnInit {
 
   formCambiarPass: FormGroup;
-  private formBuilder: FormBuilder;
+
   submitted = false;
   mostrarMensaje = '';
-  constructor() { }
+  constructor(  private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -27,6 +27,12 @@ export class CambiarContraProfesorComponent implements OnInit {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
     });
   }
+  
+    //sirve para ejecutar el control del formulario en el html
+    get controlFormulario() {
+      return this.formCambiarPass.controls;
+    }
+  
 
   formCambiarContrasenya(): void{
     //  guardamos los datos del nuevo usuario en un registro nuevo
@@ -44,11 +50,6 @@ export class CambiarContraProfesorComponent implements OnInit {
      
 
 
-    //sirve para ejecutar el control del formulario en el html
-    get controlFormulario() {
-      return this.formCambiarPass.controls;
-    }
-  
 
 
 }
