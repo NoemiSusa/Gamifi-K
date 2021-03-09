@@ -12,6 +12,7 @@ echo($json);
 $parametros = json_decode($json);
 
 require_once 'conBDLocal.php';
+require_once 'updatePass.php';
 
 $conexion = conexion();
 
