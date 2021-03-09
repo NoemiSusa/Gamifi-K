@@ -1,3 +1,4 @@
+import { EditPerfilComponent } from './componentes/profesor/perfil-profesor/edit-perfil/edit-perfil.component';
 import { CambiarContraProfesorComponent } from './componentes/profesor/perfil-profesor/edit-perfil/cambiar-contra-profesor/cambiar-contra-profesor.component';
 import  { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,7 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'perfilAlumno', component: PerfilAlumnoComponent },
   { path: 'logoutProfesor', component: LogoutProfesorComponent },
   { path: 'logoutAlumno', component: LogoutAlumnoComponent},
+  { path: 'editPerfil' , component: EditPerfilComponent},
   { path: 'cambiarContraProfesor', component: CambiarContraProfesorComponent},  
   { path: '**', redirectTo: 'inicio'}
 ];

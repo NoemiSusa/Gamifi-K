@@ -11,6 +11,8 @@ import { Contrasenyas } from '../models/Contrasenyas.model';
 })
 export class ProfesorService {
 
+  profesorObj: Profesor;
+
   constructor(private http: HttpClient) {
   }
 
@@ -34,13 +36,29 @@ export class ProfesorService {
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
   }
 
-  comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
 
+    // Función para editar y modificar los datos del perfil
+    public editarDatosPerfil(datosPerfil: Profesor): Observable<any>  {
+      return this.http.post(`${environment.serverUrl}editarPerfil.php`,JSON.stringify(datosPerfil));
+    }
+
+
+    setprofesor(profesor) {
+      this.profesorObj = profesor;
+    }
+
+    getprofesor() {
+      return this.profesorObj;
+    }
+
+  comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
     return this.http.post(`${environment.serverUrl}editarContraseñaProfesor.php`, JSON.stringify(modificarContra));
   }
 
 
+
 }
+
 
 
 
