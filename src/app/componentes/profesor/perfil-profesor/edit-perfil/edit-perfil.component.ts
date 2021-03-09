@@ -15,23 +15,44 @@ export class EditPerfilComponent implements OnInit {
 
 
   //variables
-  datosPerfil: Profesor = null;
+ // datosPerfil: Profesor;
   profesor: FormGroup;
   submitted = false;
   mostrarMensaje = '';
 
-  // recogemos los datos del componente padre perfil
- // @Input () profesore: Profesor = null;
+  //sesion: string = environment.vsesion;
+  sesion: string = 'adminNick';
 
+  profesore: Profesor;
+  perfilProfesor: any;
 
   constructor(
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
     //creamos el objeto profe del ServiceProfesor
+    private profeperfil: ProfesorService,
     private profe: ProfesorService
   ) { }
 
   ngOnInit(): void {
+
+    // del service llamo al getprofesor para recoger el objeto profesor
+   /* this.profesore = this.profe.getprofesor();
+    console.log(this.profesore);*/
+
+    // usamos el servicio para pedir todos los campos del profesor logeado
+    this.profeperfil.pedirDatosProfesor(this.sesion).subscribe(
+      (resp: Profesor[])=>{
+        this.profesore = resp[0];
+
+
+        // console.log(resp);
+
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
 
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
@@ -55,7 +76,7 @@ export class EditPerfilComponent implements OnInit {
   onFormSubmit(): void {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
-    this.datosPerfil = new Profesor(this.profesor.controls.nickProfesor.value,
+    this.profesore = new Profesor(this.profesor.controls.nickProfesor.value,
       this.profesor.controls.contrasenyaProfesor.value,
       this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
@@ -63,13 +84,13 @@ export class EditPerfilComponent implements OnInit {
       this.profesor.controls.correoProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
-      console.log(this.datosPerfil);
+      console.log(this.profesore);
 
       //si todos los datos y campos son correctos se muestra la ventana emergente
       Swal.fire('Los datos introducidos son corectos');
 
       // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
-      this.profe.editarDatosPerfil(this.datosPerfil).subscribe(
+      this.profe.editarDatosPerfil(this.profesore).subscribe(
         (datos: any) => {
           console.log(datos);
         if (datos == 1) {

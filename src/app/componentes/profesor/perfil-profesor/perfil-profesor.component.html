@@ -3,7 +3,7 @@
     <div class="card-body">
         <img src="../../../assets/imagenProfesora.jpeg" class="card-img-top" alt="">
 
-        <div class="card-body">
+        <div class="card-body col-md-12">
             <h5 class="card-title"><strong>{{profesor.nombreProfesor}} {{profesor.apellidoProfesor}}</strong></h5>
             <!-- saca por pantalla el nombre y apellido del profesor con un titulo -->
         </div>
@@ -45,11 +45,6 @@
           </svg> Edita tu perfil
       </button>
 
-      <!-- Queda comentada la parte del input
-        <div *ngif="categoria === 'editar'" class="row" style="margin-top: 1rem;">-->
-            <!-- enviamos los datos de profesor al componente editar perfil-->
-           <!-- <app-edit-perfil [profesore]="profesor"></app-edit-perfil>
-        </div> -->
     </div>
 
 </div>
