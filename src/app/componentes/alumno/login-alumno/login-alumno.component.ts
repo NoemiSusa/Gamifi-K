@@ -1,20 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 // import { EventEmitter } from 'events';
-
 import { Alumno } from 'src/app/models/alumno.model';
-
 // importo el servicio alumno.service para luego enviarle los datos.
 import { AlumnoService } from 'src/app/services/alumno.service';
-
 //imports http client
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgSwitchDefault } from '@angular/common';
-
-
 //import sweet alert
 import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+// Importo el service para encriptar la contraseña
+import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-alumno',
@@ -28,10 +27,13 @@ export class LoginAlumnoComponent implements OnInit {
 
 
   alerta: string = "";
+  Router: any;
 
   constructor(
+    private encriptar:EncriptarDecriptarService,
     private formBuilder: FormBuilder,
-    private _loginAlumno: AlumnoService
+    private _loginAlumno: AlumnoService,
+    private router: Router
 
   ) { }
 
@@ -47,7 +49,10 @@ export class LoginAlumnoComponent implements OnInit {
   }
 
   // con el getter estoy estoy haciendo las comprobaciones del formulario y devolviendo los errores
-  get controlFormulario() { return this.loginForm.controls; }
+  get controlFormulario() {
+    return this.loginForm.controls;
+  }
+
   loginAlumno() {
     // creo una instancia para el service de login alumno pasandole los datos del formulario
     let alumno = new Alumno(this.loginForm.controls.nickAlumno.value,
@@ -63,43 +68,33 @@ export class LoginAlumnoComponent implements OnInit {
     }
     // en caso de que sea valido envio los datos al subscribe
     else {
+
+      var passEncriptada = this.encriptar.set("", alumno.contrasenyaAlumno);
+      alumno.contrasenyaAlumno = passEncriptada;
+
       this._loginAlumno.loginAlumnoService(alumno).subscribe(
         (respuesta: any) => {
           console.log(respuesta);
 
-
-
           if (respuesta[0] == null) {
             console.log("Usuario no existe");
             // mostrar una alerta con sweet alert
-
             Swal.fire('Datos incorrectos', 'Verifica el nick o la contraseña y vuelve a intentarlo', 'error')
-          }
-
-          else {
+          }else {
             console.log("Usuario existe");
-            // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
-
-
             environment.vsesion = alumno.nickAlumno;
-
-
-
+            // Swal.fire(environment.vsesion+ " Variable de sesion ")
+            // aqui tengo que llamar el siguiente componente
+            this.router.navigate(['/perfilAlumno']);
           }
         },
         (error: any) => {
           console.log(error);
         }
-
-
-
       )
-
     }
-
   }
-
 
   // funcion para el reset
   onReset() {

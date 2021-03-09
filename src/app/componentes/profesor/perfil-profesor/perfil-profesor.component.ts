@@ -18,10 +18,12 @@ export class PerfilProfesorComponent implements OnInit {
 profesor: Profesor;
 resp;
 response: string = null;
+
 //categoria: string = null;
 
 //sesion: string = environment.vsesion;
 sesion: string = 'adminNick';
+
 
 
   constructor (
