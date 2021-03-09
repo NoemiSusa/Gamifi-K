@@ -37,7 +37,7 @@ while($row = mysqli_fetch_assoc($resultado)){
 // si no ha cojido datos es que la contraseña no coincide con el ncik
 if(count($datos)===0){
   $valorContrasenya=0;
-
+ print json_encode($valorContrasenya);
 }else{
   // si es 1 es coincide la contraseña
   $valorContrasenya=1;
@@ -48,10 +48,12 @@ if(count($datos)===0){
     if($updated==1){
       // si valor contraseña es =2 se ha realizado el update
       $valorContrasenya=2;
+      print json_encode($updated);
     }
     else{
       // quuiere decir que el problema esta en el fichero update pass
       $valorContrasenya=3;
+      print json_encode($updated);
     }
 
 

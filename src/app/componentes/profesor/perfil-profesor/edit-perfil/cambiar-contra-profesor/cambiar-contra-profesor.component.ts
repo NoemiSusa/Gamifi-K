@@ -70,6 +70,31 @@ export class CambiarContraProfesorComponent implements OnInit {
     this.contra.comprobarContrasenyaService(this.modificarContra).subscribe(
       (datos: any) => {
         console.log(datos);
+        if(datos==0){
+          Swal.fire(
+            'problemas la contraseña no coinide',
+            'te has equivocado de contraseña',
+            'error'
+          )
+        }else if(datos ==1){
+          Swal.fire(
+            'Bien la contraseña coincide',
+            'SE HA PRODUCIDO UN ERROR',
+            'warning'
+          )
+        }else if(datos ==2){
+          Swal.fire(
+            'Bien ',
+            'contraseña modificada',
+            'success'
+          )
+        }else{
+          Swal.fire(
+            'Problemas no se ha realizado el update',
+            'SE HA PRODUCIDO UN ERROR',
+            'warning'
+          )
+        }
 
       },
       (error: any) => {
