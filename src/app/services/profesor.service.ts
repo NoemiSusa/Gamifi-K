@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 import Swal from 'sweetalert2';
+import { Contrasenyas } from '../models/Contrasenyas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,14 @@ export class ProfesorService {
     console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
     return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
-
   }
+
+  comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
+
+    return this.http.post(`${environment.serverUrl}editarContraseñaProfesor.php`, JSON.stringify(modificarContra));
+  }
+
+
 }
 
 
