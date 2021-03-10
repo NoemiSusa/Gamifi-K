@@ -2,6 +2,7 @@ import { Profesor } from './../../../models/profesor.model';
 import { environment } from './../../../../environments/environment';
 import { ProfesorService } from './../../../services/profesor.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 //import { get } from 'http';
 
@@ -21,14 +22,15 @@ response: string = null;
 
 //categoria: string = null;
 
-//sesion: string = environment.vsesion;
-sesion: string = 'adminNick';
+sesion: string = environment.vsesion;
+// sesion: string = 'adminNick';
 
 
 
   constructor (
     // creamos el objeto profe del ServiceProfesor
-    private perfilProfesor: ProfesorService
+    private perfilProfesor: ProfesorService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,9 @@ sesion: string = 'adminNick';
 
 }
 
+// cambiarComponente(): void{
+//   this.router.navigate(['/perfil-profesor.component/edit-perfil.component']);
+// }
 
 
 }

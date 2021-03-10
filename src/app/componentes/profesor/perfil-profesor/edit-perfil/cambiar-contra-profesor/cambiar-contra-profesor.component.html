@@ -1,5 +1,6 @@
 
-<form [formGroup]="formCambiarPass"(ngSubmit)="formCambiarContrasenya()">
+<div>
+  <form [formGroup]="formCambiarPass"(ngSubmit)="formCambiarContrasenya()">
 
       <!-- campo del contraseña antigua del Profesor -->
       <div class="form-row">
@@ -57,3 +58,5 @@
       </div>
 
 </form>
+<button type="submit" class="btn btn-primary" [routerLink]="'/perfilProfesor'">Volver</button>
+</div>

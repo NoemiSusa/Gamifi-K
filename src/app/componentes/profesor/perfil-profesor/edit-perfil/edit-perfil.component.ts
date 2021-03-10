@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Profesor } from 'src/app/models/profesor.model';
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -20,8 +21,8 @@ export class EditPerfilComponent implements OnInit {
   submitted = false;
   mostrarMensaje = '';
 
-  //sesion: string = environment.vsesion;
-  sesion: string = 'adminNick';
+  sesion: string = environment.vsesion;
+  // sesion: string = 'adminNick';
 
   profesore: Profesor;
   perfilProfesor: any;
@@ -57,8 +58,8 @@ export class EditPerfilComponent implements OnInit {
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nickProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
-      confirmarContrasenyaProfesor: ['', [Validators.required, Validators.minLength(2)]],
+      // contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
+      // confirmarContrasenyaProfesor: ['', [Validators.required, Validators.minLength(2)]],
       nombreProfesor: ['', [Validators.required, Validators.minLength(2)]],
       apellidoProfesor: ['', [Validators.required, Validators.minLength(2)]],
       correoProfesor: ['', [Validators.required, Validators.email]],
