@@ -10,14 +10,33 @@ import Swal from 'sweetalert2';
 })
 export class AlumnoService {
 
+  alumnoObj: Alumno;
+
   constructor(private http: HttpClient) { }
 
   // Función para comprobar si el usuario que se quiere registrar existe previamente en la DB
   // esta función es llamada por profesro.ts y le pasa el parámetro(nuevoRegistro) y se va al PHP
   comprobarAlumnoService(nuevoRegistro: Alumno): Observable<any> {
     // Swal.fire('prueba Service',nuevoRegistro.nickAlumno );
-  return this.http.post(`${environment.serverUrl}comprobacionRegistroAl.php`,JSON.stringify(nuevoRegistro));
+    return this.http.post(`${environment.serverUrl}comprobacionRegistroAl.php`,JSON.stringify(nuevoRegistro));
   }
+
+//************ Recojer toda la info del Usuario Logueado para poderla llamar siempre que la necesites ***************************** */
+//**************************** quitar esta función  de aquí y del service Alumno **************************************** */
+//****** realitzar el subscribe del login aquí perquè sempre que necessiti info del objecte la tinguem aquí al service per poder fer un get del usuari des del component al service. ******************************************** */
+
+  // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
+  public pedirDatosAlumno(sesion: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}datosPerfilAl.php`,JSON.stringify(sesion));
+  }
+
+  // setprofesor(profesor) {
+  //   this.alumnoObj = profesor;
+  // }
+
+  // getprofesor() {
+  //   return this.alumnoObj;
+  // }
 
   //función para loguear el alumno.
   loginAlumnoService(alumno: Alumno): Observable<any> {

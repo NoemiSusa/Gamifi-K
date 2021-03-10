@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 
 $json = file_get_contents('php://input');
-echo($json);
+echo($json."este es el echo del php editPass");
 
 $parametros = json_decode($json);
 

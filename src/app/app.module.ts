@@ -19,6 +19,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { EditPerfilComponent } from './componentes/profesor/perfil-profesor/edit-perfil/edit-perfil.component';
 import { CambiarContraProfesorComponent } from './componentes/profesor/perfil-profesor/edit-perfil/cambiar-contra-profesor/cambiar-contra-profesor.component';
+import { EditPerfilAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/edit-perfil-al.component';
+import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/cambiar-contra-al/cambiar-contra-al.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { CambiarContraProfesorComponent } from './componentes/profesor/perfil-pr
     LogoutAlumnoComponent,
     InicioComponent,
     EditPerfilComponent,
-    CambiarContraProfesorComponent
+    CambiarContraProfesorComponent,
+    EditPerfilAlComponent,
+    CambiarContraAlComponent
   ],
   imports: [
     FormsModule,
