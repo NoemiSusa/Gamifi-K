@@ -8,7 +8,7 @@ import { ProfesorService } from 'src/app/services/profesor.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgSwitchDefault } from '@angular/common';
 //import sweet alert
-import Swal from'sweetalert2';
+import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 // Importo el service para encriptar la contraseña
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
@@ -24,11 +24,11 @@ export class LoginProfesorComponent implements OnInit {
   // variable loginForm de tipo FormGroup
   loginFormProfesor: FormGroup;
   submitted = false;
-  alerta:string="";
+  alerta: string = "";
 
   constructor(
     // declaro variable para encriptar
-    private encriptar : EncriptarDecriptarService,
+    private encriptar: EncriptarDecriptarService,
     private formBuilder: FormBuilder,
     private _loginProfesor: ProfesorService,
     private router: Router
@@ -82,11 +82,11 @@ export class LoginProfesorComponent implements OnInit {
               'Verifica el nick o la contraseña y vuelve a intentarlo',
               'error'
             )
-          }else {
+          } else {
             console.log("Usuario existe");
             // aqui tengo que llamar el siguiente componente
             Swal.fire('Usuario correcto')
-            environment.vsesion=profesor.nickProfesor;
+            environment.vsesion = profesor.nickProfesor;
             // Swal.fire(environment.vsesion+ " Variable de sesion ")
             this.router.navigate(['/perfilProfesor']);
           }

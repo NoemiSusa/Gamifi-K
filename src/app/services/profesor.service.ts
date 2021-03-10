@@ -23,8 +23,11 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}comprovacioRegistre.php`,JSON.stringify(nuevoRegistro));
   }
 
+//************ Recojer toda la info del Usuario Logueado para poderla llamar siempre que la necesites ***************************** */
+//**************************** quitar esta función  de aquí y del service Alumno **************************************** */
+//****** realitzar el subscribe del login aquí perquè sempre que necessiti info del objecte la tinguem aquí al service per poder fer un get del usuari des del component al service. ******************************************** */
 
-  // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
+// Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
   public pedirDatosProfesor(sesion: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
   }
