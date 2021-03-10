@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 import Swal from 'sweetalert2';
+import { Contrasenyas } from '../models/Contrasenyas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +24,10 @@ export class ProfesorService {
   }
 
 
-    // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
-    public pedirDatosProfesor(sesion: any): Observable<any> {
-      return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
-    }
+  // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
+  public pedirDatosProfesor(sesion: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
+  }
 
 
   loginProfesorService(profesor: Profesor): Observable<any> {
@@ -34,6 +35,7 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
   }
+
 
     // Función para editar y modificar los datos del perfil
     public editarDatosPerfil(datosPerfil: Profesor): Observable<any>  {
@@ -49,7 +51,13 @@ export class ProfesorService {
       return this.profesorObj;
     }
 
+  comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
+    return this.http.post(`${environment.serverUrl}editarContraseñaProfesor.php`, JSON.stringify(modificarContra));
   }
+
+
+
+}
 
 
 
