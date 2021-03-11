@@ -8,20 +8,19 @@ header('Content-Type: application/json');
 require_once 'conBDLocal.php';
 
 
-class Modificar {
+class ModificarAl {
   //creamos la función y le pasamos el objeto con los datos
-  public function modificacionPerfil($param){
+  public function modificacionPerfilAl($param){
     // creamos la conexión
     $conexion = conexion();
 
     // realizamos la query que actualizara los valores en la base de datos
-    $query =  "UPDATE profesor SET nickProfesor='".$param->nickProfesor."',
-									nombreProfesor='".$param->nombreProfesor."',
-									apellidosProfesor='".$param->apellidoProfesor."',
-									emailProfesor='".$param->correoProfesor."',
-									centroProfesor='".$param->centroProfesor."',
-									imagenProfesor='".$param->imagenProfesor "'
-								WHERE nickProfesor='$params->nickProfesor'";
+    $query =  "UPDATE alumno SET nickAlumno='".$param->nickAlumno."',
+									nombreAlumno='".$param->nombreAlumno."',
+									apellidosAlumno='".$param->apellidoAlumno."',
+									emailAlumno='".$param->correoAlumno."',
+									imagenAlumno='".$param->imagenAlumno "'
+								WHERE nickAlumno='$params->nickAlumno'";
 
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.

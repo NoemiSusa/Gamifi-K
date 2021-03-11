@@ -46,13 +46,13 @@ export class ProfesorService {
     }
 
 
-    setprofesor(profesor) {
-      this.profesorObj = profesor;
-    }
+    // setprofesor(profesor) {
+    //   this.profesorObj = profesor;
+    // }
 
-    getprofesor() {
-      return this.profesorObj;
-    }
+    // getprofesor() {
+    //   return this.profesorObj;
+    // }
 
   comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
     return this.http.post(`${environment.serverUrl}editarContraseñaProfesor.php`, JSON.stringify(modificarContra));

@@ -104,16 +104,7 @@ export class CambiarContraProfesorComponent implements OnInit {
           'SE HA PRODUCIDO UN ERROR',
           'error'
         )
-
       }
-
     )
-
-
   }
-
-
-
-
-
 }
