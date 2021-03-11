@@ -77,12 +77,14 @@ export class EditPerfilComponent implements OnInit {
   onFormSubmit(): void {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
-    this.profesore = new Profesor(this.profesor.controls.nickProfesor.value,
-      this.profesor.controls.contrasenyaProfesor.value,
-      this.profesor.controls.confirmarContrasenyaProfesor.value,
+    this.profesore = new Profesor(
+      //this.profesor.controls.nickProfesor.value,
+      // this.profesor.controls.contrasenyaProfesor.value,
+      // this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
       this.profesor.controls.apellidoProfesor.value,
       this.profesor.controls.correoProfesor.value,
+      // this.profesor.controls.imagenProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
       console.log(this.profesore);
@@ -123,7 +125,7 @@ export class EditPerfilComponent implements OnInit {
       (error: any) => {
         console.log(error);
         Swal.fire(
-          'FATAL ERROR',
+          'FATAL ERROR 3',
           'Se ha producido un error',
           'error'
         )
