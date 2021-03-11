@@ -18,10 +18,12 @@ export class PerfilProfesorComponent implements OnInit {
 profesor: Profesor;
 resp;
 response: string = null;
-categoria: string = null;
+
+//categoria: string = null;
 
 //sesion: string = environment.vsesion;
 sesion: string = 'adminNick';
+
 
 
   constructor (
@@ -38,6 +40,7 @@ sesion: string = 'adminNick';
       (resp: Profesor[])=>{
         this.profesor = resp[0];
 
+
         // console.log(resp);
 
       },
@@ -45,12 +48,9 @@ sesion: string = 'adminNick';
         console.log(error);
       }
     )
+
 }
 
 
-// Función para cuando hacemos (click) a editar nos haga el cambio al componente editar-perfil
-cambiarAccio(categoria: string):void {
-  this.categoria = categoria;
-}
 
 }
