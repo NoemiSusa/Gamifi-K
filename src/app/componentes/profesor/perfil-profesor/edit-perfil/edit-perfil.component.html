@@ -8,19 +8,19 @@
       <form [formGroup]="profesor" (ngSubmit)="onFormSubmit()">
 
         <!-- campo del nickProfesor (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
-        <div class="form-row">
+        <!-- <div class="form-row">
           <div class="form-group col-md-12">
             <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control"
               [ngClass]="{'is-valid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.valid,
-                      'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">{{profesore.nickProfesor}}
+                      'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">{{profesore.nickProfesor}} -->
 
             <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-            <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
+            <!-- <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
               <div *ngIf="controlFormulario.nickProfesor.errors.required">El nick es obligatorio</div>
             </div>
 
           </div>
-        </div>
+        </div> -->
 
         <!-- campo del contraseña del Profesor -->
         <!-- <div class="form-row">
@@ -99,9 +99,8 @@
             <button type="submit" class="register-button">Guardar Datos</button>
           </div>
         </div>
-
-
       </form>
+
       <button [routerLink]="'/perfilProfesor'">Volver</button>
     </div>
   </div>

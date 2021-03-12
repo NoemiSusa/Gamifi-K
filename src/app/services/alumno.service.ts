@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Contrasenyas } from '../models/Contrasenyas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,28 @@ export class AlumnoService {
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
     return this.http.post(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno));
     //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(alumno));
+  }
 
+
+  // Función para editar y modificar los datos del perfil
+  public editarDatosPerfilAl(datosPerfil: Alumno): Observable<any>  {
+    return this.http.post(`${environment.serverUrl}editarPerfilAl.php`,JSON.stringify(datosPerfil));
+  }
+
+
+  // setprofesor(alumno) {
+  //   this.alumnoObj = alumno;
+  // }
+
+  // getprofesor() {
+  //   return this.alumnoObj;
+  // }
+
+
+
+
+  comprobarContrasenyaService(modificarContraAl : Contrasenyas):Observable<any>{
+    return this.http.post(`${environment.serverUrl}editarContraseñaAl.php`, JSON.stringify(modificarContraAl));
   }
 
 }
