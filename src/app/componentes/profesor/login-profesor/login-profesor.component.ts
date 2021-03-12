@@ -70,7 +70,7 @@ export class LoginProfesorComponent implements OnInit {
       //Guardo la contraseña encriptada en el objeto del profesor para luego hacerle el insert a la BD
       profesor.contrasenyaProfesor = passEncriptada;
 
-      //llamamos a la función loginProfesorService y le pasamos el objeto profesor que
+      //llamamos a la función loginProfesorService y le pasamos el objeto profesor
       this._loginProfesor.loginProfesorService(profesor);
     }
   }

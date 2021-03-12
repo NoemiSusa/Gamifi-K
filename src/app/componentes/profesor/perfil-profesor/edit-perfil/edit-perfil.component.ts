@@ -41,7 +41,7 @@ export class EditPerfilComponent implements OnInit {
    /* this.profesore = this.profe.getprofesor();
     console.log(this.profesore);*/
 
-    // usamos el servicio para pedir todos los campos del profesor logeado
+    // usamos el servicio para pedir todos los campos del profesor logeado y le pasamos el valor del nick que tenemos guardado en la variable VSesion de environment
     this.profeperfil.pedirDatosProfesor(this.sesion).subscribe(
       (resp: Profesor[])=>{
         this.profesore = resp[0];

@@ -33,7 +33,8 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
   }
 
-//
+//ejecutamos la función loginProfesorService que ha sido llamada des del login-Profesor.components.ts y
+  //realiza la llamada al servidor para obtener todos los datos del Profesor para que queden guardarlos en el service.
   loginProfesorService(profesor: Profesor): void {
     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
