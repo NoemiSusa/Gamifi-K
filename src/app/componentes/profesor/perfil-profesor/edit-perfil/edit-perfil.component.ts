@@ -80,8 +80,8 @@ export class EditPerfilComponent implements OnInit {
       this.profesor.controls.contrasenyaProfesor.value,
       this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
-      this.profesor.controls.apellidoProfesor.value,
-      this.profesor.controls.correoProfesor.value,
+      this.profesor.controls.apellidosProfesor.value,
+      this.profesor.controls.emailProfesor.value,
       // this.profesor.controls.imagenProfesor.value,
       this.profesor.controls.centroProfesor.value);
 

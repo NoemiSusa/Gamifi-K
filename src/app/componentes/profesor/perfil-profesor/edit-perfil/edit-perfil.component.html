@@ -24,7 +24,8 @@
         <!-- campo del nombreProfesor -->
         <div class="form-row">
           <div class="form-group col-md-12">
-            <input type="text" formControlName="nombreProfesor" placeholder="{{'profesore.nombreProfesor'}}" class="form-control"
+            <label for="">{{profesore.nombreProfesor}}</label>
+            <input type="text" formControlName="nombreProfesor" placeholder="" class="form-control"
               [ngClass]="{'is-valid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.valid,
                     'is-invalid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.invalid}">
 
@@ -38,7 +39,8 @@
         <!-- campo de apellidos del profesor -->
         <div class="form-row">
           <div class="form-group col-md-12">
-            <input type="text" formControlName="apellidoProfesor" placeholder="{{'profesore.apellidosProfesor'}}" class="form-control"
+            <label for="">{{profesore.apellidosProfesor}}</label>
+            <input type="text" formControlName="apellidoProfesor" placeholder="" class="form-control"
               [ngClass]="{'is-valid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.valid,
                       'is-invalid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.invalid}">
 
@@ -52,7 +54,8 @@
         <!-- campo de correo del profesor -->
         <div class="form-row">
           <div class="form-group col-md-12">
-            <input type="email" formControlName="correoProfesor" placeholder="{{'profesore.emailProfesor'}}" class="form-control"
+            <label for="">{{profesore.emailProfesor}}</label>
+            <input type="email" formControlName="correoProfesor" placeholder="" class="form-control"
               [ngClass]="{'is-valid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.valid,
                       'is-invalid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.invalid}">
             <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->

@@ -1,0 +1,11 @@
+h2 {
+  color: black;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#id {
+  margin-top: 100px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
