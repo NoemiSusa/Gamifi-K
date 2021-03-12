@@ -1,20 +1,21 @@
-<div class="card m-3">
-    <div class="card-body">
+<div >
+
+  <h1 class="register-title">Login</h1>
+    <div class="container">
         <!-- los datos del formulario los meto en la variable formgroup -->
         <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
         <form [formGroup]="loginFormProfesor" (ngSubmit)="loginProfesor()">
-            <div class="form-group col-5">
-                <label>Login Profesor</label>
-                <input type="text" formControlName="nickProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
+           <div class="form-row">
+          <div class="form-group col-md-12">
+                <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
                 <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
-                    <div *ngIf="controlFormulario.nickProfesor.errors.required">Nick requerido</div>
+                    <div *ngIf="controlFormulario.nickProfesor.errors.required"></div>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col">
-                    <label>Password</label>
-                    <input type="password" formControlName="contrasenyaProfesor" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
+                <div class="form-group col-md-12">
+                    <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
                     <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres
@@ -23,12 +24,11 @@
                 </div>
             </div>
 
-            <div class="text-center">
-                <button class="btn btn-primary mr-1" type="submit">Login</button>
+                <button class="register-button" type="submit">Login</button>
                 <!-- BOTON PARA REINICIAR LOS VALORES  -->
-                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                <button class="register-button text-danger"  type="reset" (click)="onReset()">Cancel</button>
             </div>
         </form>
-        <button class="btn btn-secondary" type="submit" [routerLink]="'/registroProfesor'">No tienes cuenta? Registrate</button>
+        <button class="register-button" type="button" [routerLink]="'/registroProfesor'">No tienes cuenta? Registrate</button>
     </div>
 </div>
