@@ -57,9 +57,6 @@ export class EditPerfilComponent implements OnInit {
 
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
-      // nickProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      // contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
-      // confirmarContrasenyaProfesor: ['', [Validators.required, Validators.minLength(2)]],
       nombreProfesor: ['', [Validators.required, Validators.minLength(2)]],
       apellidoProfesor: ['', [Validators.required, Validators.minLength(2)]],
       correoProfesor: ['', [Validators.required, Validators.email]],
@@ -77,10 +74,11 @@ export class EditPerfilComponent implements OnInit {
   onFormSubmit(): void {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
-    this.modificarProfe = new Profesor(
-      //this.profesor.controls.nickProfesor.value,
-      // this.profesor.controls.contrasenyaProfesor.value,
-      // this.profesor.controls.confirmarContrasenyaProfesor.value,
+
+    this.profesore = new Profesor(
+      this.profesor.controls.nickProfesor.value,
+      this.profesor.controls.contrasenyaProfesor.value,
+      this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
       this.profesor.controls.apellidoProfesor.value,
       this.profesor.controls.correoProfesor.value,
