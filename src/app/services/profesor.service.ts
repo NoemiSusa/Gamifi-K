@@ -5,15 +5,16 @@ import { environment } from 'src/environments/environment';
 import { Profesor } from '../models/profesor.model';
 import Swal from 'sweetalert2';
 import { Contrasenyas } from '../models/Contrasenyas.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfesorService {
 
-  profesorObj: Profesor;
+  profesorObj: Profesor = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   // Función para comprobar si el usuario que se quiere registrar existe previamente en la DB
@@ -32,11 +33,36 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
   }
 
+//
+  loginProfesorService(profesor: Profesor): void {
+    // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
-  loginProfesorService(profesor: Profesor): Observable<any> {
-    console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
-    return this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor));
-    //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(profesor));  // db nube
+    this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
+      (respuesta: any) => {
+        console.log(respuesta);
+
+        if (respuesta[0] == null) {
+          console.log("Usuario no existe");
+          // mostrar una alerta con sweet alert
+          Swal.fire(
+            'Datos incorrectos',
+            'Verifica el nick o la contraseña y vuelve a intentarlo',
+            'error'
+          )
+        } else {
+          console.log("Usuario existe");
+          // aqui tengo que llamar el siguiente componente
+          Swal.fire('Usuario correcto')
+          environment.vsesion = profesor.nickProfesor;
+          // Swal.fire(environment.vsesion+ " Variable de sesion ")
+          this.router.navigate(['/perfilProfesor']);
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
+
   }
 
 

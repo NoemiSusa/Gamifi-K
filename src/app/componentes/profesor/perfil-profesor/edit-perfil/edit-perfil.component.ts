@@ -75,7 +75,7 @@ export class EditPerfilComponent implements OnInit {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
 
-    this.profesore = new Profesor(
+    this.modificarProfe = new Profesor(
       this.profesor.controls.nickProfesor.value,
       this.profesor.controls.contrasenyaProfesor.value,
       this.profesor.controls.confirmarContrasenyaProfesor.value,
