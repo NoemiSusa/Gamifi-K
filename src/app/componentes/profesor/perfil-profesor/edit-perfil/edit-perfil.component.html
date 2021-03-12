@@ -69,7 +69,8 @@
         <!-- campo del centro del profesor -->
         <div class="form-row">
           <div class="form-group col-md-12">
-            <input type="text" formControlName="centroProfesor" placeholder="{{'profesore.centroProfesor'}}" class="form-control"
+            <label for="">{{profesore.centroProfesor}}</label>
+            <input type="text" formControlName="centroProfesor" placeholder="" class="form-control"
               [ngClass]="{'is-valid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.valid,
                       'is-invalid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.invalid}">
 
