@@ -22,13 +22,13 @@ export class CambiarContraProfesorComponent implements OnInit {
   contrasenyas: String[] = [];
   submitted = false;
   mostrarMensaje = '';
-
+  prueba: String="patata";
   modificarContra: Contrasenyas = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private encriptar: EncriptarDecriptarService,
-    private contra: ProfesorService
+    private contra: ProfesorService,
 
 
   ) { }
