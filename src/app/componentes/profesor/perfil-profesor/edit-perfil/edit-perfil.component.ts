@@ -20,7 +20,7 @@ export class EditPerfilComponent implements OnInit {
   profesor: FormGroup;
   submitted = false;
   mostrarMensaje = '';
-
+  modificarProfe: Profesor;
   sesion: string = environment.vsesion;
   // sesion: string = 'adminNick';
 
@@ -74,23 +74,24 @@ export class EditPerfilComponent implements OnInit {
   onFormSubmit(): void {
 
     //guardamos los datos del nuevo usuario en un registro nuevo
+
     this.profesore = new Profesor(
       this.profesor.controls.nickProfesor.value,
-       this.profesor.controls.contrasenyaProfesor.value,
-       this.profesor.controls.confirmarContrasenyaProfesor.value,
+      this.profesor.controls.contrasenyaProfesor.value,
+      this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
       this.profesor.controls.apellidoProfesor.value,
       this.profesor.controls.correoProfesor.value,
       // this.profesor.controls.imagenProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
-      console.log(this.profesore);
+      console.log(this.modificarProfe);
 
       //si todos los datos y campos son correctos se muestra la ventana emergente
       Swal.fire('Los datos introducidos son corectos');
 
       // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
-      this.profe.editarDatosPerfil(this.profesore).subscribe(
+      this.profe.editarDatosPerfil(this.modificarProfe).subscribe(
         (datos: any) => {
           console.log(datos);
         if (datos == 1) {
