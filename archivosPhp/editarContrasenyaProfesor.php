@@ -20,7 +20,9 @@ require_once 'updatePass.php';
 
 $conexion = conexion();
 
-$consulta = "SELECT pasProfesor from profesor WHERE nickProfesor='".$parametros->nick."'";
+$consulta = "SELECT pasProfesor from profesor WHERE nickProfesor='".$parametros->nick."' AND pasProfesor='".$parametros->contraVieja."'";
+
+// echo ("@Esta es la consulta@@@@  ".$consulta." @@@@Esta es la consulta@");
 
 // echo json_encode("Resp: "+$parametros->nick);
 
@@ -32,66 +34,50 @@ $datos=[];
 while($row = mysqli_fetch_assoc($resultadoContraVieja)){
     //si la contraseña existe y es la misma obtiene datos y los guarda en el array $datos
   $datos[] = $row;
+
   }
   $conexion->close();
+
+
 
 
 
   // creamos la variable donde pondremos un 0 cuando esa contraseña no coincida con el nick de usuario en la db o 1 en caso de que coincida
   $valorContrasenya;
 
-
-// // si no ha cojido datos es que la contraseña no coincide con el ncik
-// if(count($datos)===0){
-//   $valorContrasenya=0;
-//  print json_encode($valorContrasenya);
-// }else{
-//  // si es 1 es coincide la contraseña
-//  $valorContrasenya=1;
-
-//   if(count($datos)===1){
-//     $updatePass = new UpdatePass();
-//     $updated=$updatePass->updatePassword($parametros);
-//     if($updated==1){
-//       // si valor contraseña es =2 se ha realizado el update
-//       $valorContrasenya=2;
-//       print json_encode($updated);
-//     $valorContrasenya=2;
-//     }
-//     else{
-//       // quuiere decir que el problema esta en el fichero update pass
-//       $valorContrasenya=3;
-//       print json_encode($updated);
-//     }
-//   }
-//   // $parametros
-// }
-
-
 // si  ha cojido datos es que la contraseña  coincide con el nick
 if(count($datos)===1){
   $valorContrasenya=1;
   // print json_encode($valorContrasenya);
+
+  // creo una instancia de la clase updatePass
   $updatePass = new UpdatePass();
+
+  // creo una variable que la igualo a la vez a la instancia de la clase updatePass
+
+  //a la variable updatePass estoy haciendo una instancia en la funcion de update password que esta en update pass y le paso los parametros.
   $updated=$updatePass->updatePassword($parametros);
 
 
   if($updated==1){
     // si valor contraseña es =2 se ha realizado el update
     $valorContrasenya=2;
-    print json_encode($updated);
-  $valorContrasenya=2;
+    // print json_encode("@@ PRINT ENCODE UPDATED 1".$updated."@@ FINAL 1@");
+    print json_encode($valorContrasenya);
+
   }
   else{
     // quuiere decir que el problema esta en el fichero update pass
     $valorContrasenya=3;
-    print json_encode($updated);
+    // print json_encode("@@ PRINT ENCODE UPDATED 2".$updated."@@ FINAL 2@");
+    print json_encode($valorContrasenya);
   }
 }else{
   // si es 0 es que no coincide la contraseña
     $valorContrasenya=0;
+    print json_encode($valorContrasenya);
 }
   // $parametros
-}
+
 
 ?>

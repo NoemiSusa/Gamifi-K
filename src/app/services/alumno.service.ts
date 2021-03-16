@@ -66,7 +66,7 @@ export class AlumnoService {
 
 
   comprobarContrasenyaService(modificarContraAl : Contrasenyas):Observable<any>{
-    return this.http.post(`${environment.serverUrl}editarContraseñaAl.php`, JSON.stringify(modificarContraAl));
+    return this.http.post(`${environment.serverUrl}editarContrasenyaAl.php`, JSON.stringify(modificarContraAl));
   }
 
 }

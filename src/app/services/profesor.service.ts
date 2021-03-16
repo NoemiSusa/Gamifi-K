@@ -81,12 +81,7 @@ export class ProfesorService {
     // }
 
   comprobarContrasenyaService(modificarContra : Contrasenyas):Observable<any>{
-
-
-
-    return this.http.post(`${environment.serverUrl}editarContraseñaProfesor.php`, JSON.stringify(modificarContra));
-
-
+    return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
 
 
