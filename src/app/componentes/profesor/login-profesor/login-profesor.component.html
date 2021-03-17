@@ -7,6 +7,7 @@
     </div>
 
 </div>
+
 <div class="container my-5">
     <!-- los datos del formulario los meto en la variable formgroup -->
     <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
@@ -24,8 +25,7 @@
                     <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
                     <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
-                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres
-                        </div>
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres</div>
                     </div>
                 </div>
             </div>
