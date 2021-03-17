@@ -79,6 +79,7 @@ export class LoginProfesorComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.loginFormProfesor.reset();
+
   }
 
 

@@ -68,7 +68,7 @@ export class CambiarContraProfesorComponent implements OnInit {
 
 
     this.contra.comprobarContrasenyaService(this.modificarContra).subscribe(
-      (datos: number) => {
+      (datos: any) => {
         console.log(datos);
 
 
