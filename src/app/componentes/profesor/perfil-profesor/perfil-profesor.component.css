@@ -1,3 +1,11 @@
+.main-section {
+  position: relative;
+  background: linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 73, .7), rgba(0, 0, 0, .7)), url("/assets/imgSites/Hexagon.png");
+  height: 100;
+
+
+}
+
 .card-title {
     width: 200px;
     margin: 50px auto 20px;
