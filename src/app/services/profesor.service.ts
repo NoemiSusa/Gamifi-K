@@ -38,10 +38,11 @@ export class ProfesorService {
     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
     this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
-      (respuesta: any) => {
+      (respuesta: Profesor[]) => {
         console.log(respuesta);
 
-        if (respuesta[0] == null) {
+        // if (respuesta[0] == null) {
+          if (respuesta.length === 0) {
           console.log("Usuario no existe");
           // mostrar una alerta con sweet alert
           Swal.fire(
@@ -54,6 +55,7 @@ export class ProfesorService {
           // aqui tengo que llamar el siguiente componente
           Swal.fire('Usuario correcto')
           environment.vsesion = profesor.nickProfesor;
+          this.profesorObj = respuesta[0];
           // Swal.fire(environment.vsesion+ " Variable de sesion ")
           this.router.navigate(['/perfilProfesor']);
         }

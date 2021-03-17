@@ -55,12 +55,14 @@ export class EditPerfilComponent implements OnInit {
       }
     )
 
+    this.profesore = this.profeperfil.profesorObj;
+
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
-      nombreProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      apellidoProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      correoProfesor: ['', [Validators.required, Validators.email]],
-      centroProfesor: ['', [Validators.required, Validators.minLength(2)]]
+      nombreProfesor: [this.profesore.nombreProfesor, [Validators.required, Validators.minLength(2)]],
+      apellidoProfesor: [this.profesore.apellidoProfesor, [Validators.required, Validators.minLength(2)]],
+      correoProfesor: [this.profesore.correoProfesor, [Validators.required, Validators.email]],
+      centroProfesor: [this.profesore.centroProfesor, [Validators.required, Validators.minLength(2)]]
     });
   }
 
