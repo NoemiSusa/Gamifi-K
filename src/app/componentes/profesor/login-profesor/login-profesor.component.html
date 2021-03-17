@@ -1,12 +1,19 @@
-<div >
+<div class="container-fluid mt-5">
 
-  <h1 class="register-title">Login</h1>
-    <div class="container">
-        <!-- los datos del formulario los meto en la variable formgroup -->
-        <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
-        <form [formGroup]="loginFormProfesor" (ngSubmit)="loginProfesor()">
-           <div class="form-row">
-          <div class="form-group col-md-12">
+    <div class="text-center">
+        <button class="btn register-title ml-5" type="button" [routerLink]="'/inicio'" alt="">Volver a INICIO</button>&nbsp;&nbsp;&nbsp;
+
+        <button class="btn register-title mr-5" type="button" [routerLink]="'/registroProfesor'" alt="">Regístrate</button>
+    </div>
+
+</div>
+
+<div class="container my-5">
+    <!-- los datos del formulario los meto en la variable formgroup -->
+    <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
+    <form [formGroup]="loginFormProfesor" (ngSubmit)="loginProfesor()">
+        <div class="form-row">
+            <div class="form-group col-md-12">
                 <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
                 <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickProfesor.errors.required"></div>
@@ -18,17 +25,14 @@
                     <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
                     <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
-                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres
-                        </div>
+                        <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres</div>
                     </div>
                 </div>
             </div>
 
-                <button class="register-button" type="submit">Login</button>
-                <!-- BOTON PARA REINICIAR LOS VALORES  -->
-                <button class="register-button text-danger"  type="reset" (click)="onReset()">Cancel</button>
-            </div>
-        </form>
-        <button class="register-button" type="button" [routerLink]="'/registroProfesor'">No tienes cuenta? Registrate</button>
-    </div>
+            <button class="register-button" type="submit">Login</button>
+            <!-- BOTON PARA REINICIAR LOS VALORES  -->
+            <button class="register-button text-danger" type="reset" (click)="onReset()">Borrar</button>
+        </div>
+    </form>
 </div>

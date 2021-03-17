@@ -1,5 +1,13 @@
 <div>
-    <h1 class="register-title">Edita tu contraseña</h1>
+    <div class="container-fluid mt-2">
+
+        <div class="text-center">
+            <button class="btn register-title ml-5" type="button" [routerLink]="'/perfilProfesor'" alt="">Volver a PERFIL</button>&nbsp;&nbsp;&nbsp;
+
+            <button class="btn register-title mr-5" type="button" [routerLink]="'/logioutProfesor'" alt="">LOGOUT</button>
+        </div>
+
+    </div>
     <div class="container">
         <form [formGroup]="formCambiarPass" (ngSubmit)="formCambiarContrasenya()">
 
