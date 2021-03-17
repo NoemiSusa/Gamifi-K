@@ -1,9 +1,21 @@
-<div class="mx-auto " style="width: 100px;">
-    <div class="col-sm-4">
-        <img src="../../../assets/profe1.jpg" class="rounded-circle float-left" type="submit" [routerLink]="'/loginProfesor'" alt="">
+<div class="container-fluid main-section">
+    <div class="row">
+        <div class="offset-lg-2 col-lg-8  text-center">
+            <div class="mt-5"><br><br>
+                <h1>BIENVENID@ A GAMIFI-K</h1>
+            </div><br><br><br><br>
+            <div>
+                <div class="float-left ml-5">
+                    <h3>ZONA ALUMN@</h3>
+                    <button class="btn btn-danger" type="submit" [routerLink]="'/loginAlumno'" alt="">Click Me</button>
+                </div>
+                <div class="float-right mr-5">
+                    <h3>ZONA DOCENTE</h3>
+                    <button class="btn btn-danger" type="sumbit" [routerLink]="'/loginProfesor'" alt="">Click Me</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col-sm-4">
-        <img src="../../../assets/alumno.jpg" class="rounded-circle float-right" type="submit" [routerLink]="'/loginAlumno'" alt="">
-    </div>
+    <i class="fa fa-angle-double-down blink" aria-hidden="true"></i>
 </div>

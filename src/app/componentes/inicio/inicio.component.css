@@ -1,0 +1,78 @@
+h1,
+h3 {
+    color: rgb(3, 1, 14);
+}
+
+
+/*
+.main-section {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(235, 82, 73, .7), rgba(0, 0, 0, .7)), url("http://nicesnippets.com/demo/service-bg01.png");
+    height: 500px;
+    background-size: cover;
+}
+*/
+
+.main-section {
+    position: relative;
+    background: linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 73, .7), rgba(0, 0, 0, .7)), url("../../../assets/imgSites/robot.png");
+    height: 950px;
+    background-size: cover;
+}
+
+.main-section i {
+    font-size: 35px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+}
+
+.main-section .section-part {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@-webkit-keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.0;
+    }
+}
+
+
+/* Blink es un motor de renderizado para navegadores de código abierto desarrolado por Google, es una copia de la librería WebCore de WebKit que se encarga del
+diseño renderizado, y del DOM*/
+
+.blink {
+    text-decoration: blink;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate;
+}
+
+button {
+    width: 200px;
+    margin: 50px auto 20px;
+    font-size: 19px;
+    font-weight: 500;
+    color: white;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    background: #d7604b;
+    border-radius: 3px;
+    background-image: -webkit-linear-gradient(top, #dc745e, #d45742);
+    background-image: -moz-linear-gradient(top, #dc745e, #d45742);
+    background-image: -o-linear-gradient(top, #dc745e, #d45742);
+    background-image: linear-gradient(to bottom, #dc745e, #d45742);
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+}

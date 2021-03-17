@@ -1,93 +1,101 @@
 <div>
 
-  <h1 class="register-title">Edita tu perfil</h1>
-  <div class="container">
-    <div *ngIf="profesore !== null">
+    <div class="container-fluid mt-2">
 
-      <!-- formulario de recogida de datos -->
-      <form [formGroup]="profesor" (ngSubmit)="onFormSubmit()">
+        <div class="text-center">
+            <button class="btn register-title ml-5" type="button" [routerLink]="'/inicio'" alt="">Volver a PERFIL</button>&nbsp;&nbsp;&nbsp;
 
-        <!-- campo del nickProfesor (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
-         <div class="form-row">
-          <div class="form-group col-md-12">
-            <input type="text" formControlName="nickProfesor" placeholder="{{'profesore.nickProfesor'}}" readonly class="form-control">
-          </div>
+            <button class="btn register-title mr-5" type="button" [routerLink]="'/loginProfesor'" alt="">LOGOUT</button>
         </div>
 
-        <!-- campo del contraseña del Profesor -->
-         <div class="form-row">
-                <div class="form-group col-md-12">
-                    <input type="password" formControlName="contrasenyaProfesor" placeholder="**********" readonly class="form-control">
-                </div>
-            </div>
+    </div>
+    <div class="container">
+        <div *ngIf="profesore !== null">
 
-        <!-- campo del nombreProfesor -->
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <input type="text" formControlName="nombreProfesor" placeholder="{{'profesore.nombreProfesor'}}" class="form-control"
-              [ngClass]="{'is-valid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.valid,
+            <!-- formulario de recogida de datos -->
+            <form [formGroup]="profesor" (ngSubmit)="onFormSubmit()">
+
+                <!-- campo del nickProfesor (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="text" formControlName="nickProfesor" placeholder="{{'profesore.nickProfesor'}}" readonly class="form-control">
+                    </div>
+                </div>
+
+                <!-- campo del contraseña del Profesor -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="password" formControlName="contrasenyaProfesor" placeholder="**********" readonly class="form-control">
+                    </div>
+                </div>
+
+                <!-- campo del nombreProfesor -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">{{profesore.nombreProfesor}}</label>
+                        <input type="text" formControlName="nombreProfesor" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.valid,
                     'is-invalid': controlFormulario.nombreProfesor.touched && controlFormulario.nombreProfesor.invalid}">
 
-            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-            <div *ngIf="submitted && controlFormulario.nombreProfesor.errors" class="invalid-feedback">
-              <div *ngIf="controlFormulario.nombreProfesor.errors.required">El nombre es obligatorio</div>
-            </div>
-          </div>
-        </div>
+                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                        <div *ngIf="submitted && controlFormulario.nombreProfesor.errors" class="invalid-feedback">
+                            <div *ngIf="controlFormulario.nombreProfesor.errors.required">El nombre es obligatorio</div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- campo de apellidos del profesor -->
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <input type="text" formControlName="apellidoProfesor" placeholder="{{'profesore.apellidosProfesor'}}" class="form-control"
-              [ngClass]="{'is-valid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.valid,
+                <!-- campo de apellidos del profesor -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">{{profesore.apellidosProfesor}}</label>
+                        <input type="text" formControlName="apellidoProfesor" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.valid,
                       'is-invalid': controlFormulario.apellidoProfesor.touched && controlFormulario.apellidoProfesor.invalid}">
 
-            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-            <div *ngIf="submitted && controlFormulario.apellidoProfesor.errors" class="invalid-feedback">
-              <div *ngIf="controlFormulario.apellidoProfesor.errors.required">Los apellidos son obligatorios</div>
-            </div>
-          </div>
-        </div>
+                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                        <div *ngIf="submitted && controlFormulario.apellidoProfesor.errors" class="invalid-feedback">
+                            <div *ngIf="controlFormulario.apellidoProfesor.errors.required">Los apellidos son obligatorios</div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- campo de correo del profesor -->
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <input type="email" formControlName="correoProfesor" placeholder="{{'profesore.emailProfesor'}}" class="form-control"
-              [ngClass]="{'is-valid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.valid,
+                <!-- campo de correo del profesor -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">{{profesore.emailProfesor}}</label>
+                        <input type="email" formControlName="correoProfesor" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.valid,
                       'is-invalid': controlFormulario.correoProfesor.touched && controlFormulario.correoProfesor.invalid}">
-            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-            <div *ngIf="submitted && controlFormulario.correoProfesor.errors" class="invalid-feedback">
-              <div *ngIf="controlFormulario.correoProfesor.errors.required">El correo es obligatorio</div>
-              <div *ngIf="controlFormulario.correoProfesor.errors.email">El correo no es valido</div>
-            </div>
-          </div>
-        </div>
+                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                        <div *ngIf="submitted && controlFormulario.correoProfesor.errors" class="invalid-feedback">
+                            <div *ngIf="controlFormulario.correoProfesor.errors.required">El correo es obligatorio</div>
+                            <div *ngIf="controlFormulario.correoProfesor.errors.email">El correo no es valido</div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- campo del centro del profesor -->
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <input type="text" formControlName="centroProfesor" placeholder="{{'profesore.centroProfesor'}}" class="form-control"
-              [ngClass]="{'is-valid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.valid,
+                <!-- campo del centro del profesor -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">{{profesore.centroProfesor}}</label>
+                        <input type="text" formControlName="centroProfesor" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.valid,
                       'is-invalid': controlFormulario.centroProfesor.touched && controlFormulario.centroProfesor.invalid}">
 
-            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-            <div *ngIf="submitted && controlFormulario.centroProfesor.errors" class="invalid-feedback">
-              <div *ngIf="controlFormulario.centroProfesor.errors.required">Indicar el centro es obligatorio</div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <br>
-        <!--botón registrarse-->
-        <div>
-          <div class="form-group">
-            <button type="submit" class="register-button">Guardar Datos</button>
-          </div>
-        </div>
-      </form>
+                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                        <div *ngIf="submitted && controlFormulario.centroProfesor.errors" class="invalid-feedback">
+                            <div *ngIf="controlFormulario.centroProfesor.errors.required">Indicar el centro es obligatorio</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!--botón registrarse-->
+                <div>
+                    <div class="form-group">
+                        <button type="submit" class="register-button">Guardar Datos</button>
+                    </div>
+                </div>
+            </form>
 
-      <button [routerLink]="'/perfilProfesor'">Volver</button>
+            <button [routerLink]="'/perfilProfesor'">Volver</button>
+        </div>
     </div>
-  </div>
 
 </div>
