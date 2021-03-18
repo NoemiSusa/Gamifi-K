@@ -1,20 +1,28 @@
-<div class="card m-3">
-    <div class="card-body">
-        <!-- los datos del formulario los meto en la variable formgroup -->
-        <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
-        <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
-            <div class="form-group col-5">
-                <label>Login Alumno</label>
-                <input type="text" formControlName="nickAlumno" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickAlumno.errors }" />
+<div class="container-fluid mt-5">
+
+    <div class="text-center">
+        <button class="btn register-title ml-5" type="button" [routerLink]="'/inicio'" alt="">Volver a INICIO</button>&nbsp;&nbsp;&nbsp;
+
+        <button class="btn register-title mr-5" type="button" [routerLink]="'//registroAlumno'" alt="">Regístrate</button>
+    </div>
+
+</div>
+
+<div class="container my-5">
+    <!-- los datos del formulario los meto en la variable formgroup -->
+    <!-- luego hago un submit en la funcion del type script que se llama loginAlumno -->
+    <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="text" formControlName="nickAlumno" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickAlumno.errors }" />
                 <div *ngIf="submitted && controlFormulario.nickAlumno.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickAlumno.errors.required">Nick requerido</div>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col">
-                    <label>Password</label>
-                    <input type="password" formControlName="contrasenyaAlumno" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaAlumno.errors }" />
+                <div class="form-group col-md-12">
+                    <input type="password" formControlName="contrasenyaAlumno" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaAlumno.errors }" />
                     <div *ngIf="submitted && controlFormulario.contrasenyaAlumno.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Inserte la contraseña</div>
                         <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Minimo tiene que tener 6 caracteres
@@ -23,11 +31,11 @@
                 </div>
             </div>
 
-            <div class="text-center">
-                <button class="btn btn-primary mr-1" type="submit">Login</button>
-                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-            </div>
-        </form>
-        <button class="btn btn-secondary" type="submit" [routerLink]="'/registroAlumno'">No tienes cuenta? Registrate</button>
-    </div>
+
+            <button class="register-button" type="submit">Login</button>
+            <button class="register-button text-danger" type="reset" (click)="onReset()">Borrar</button>
+        </div>
+    </form>
+
+
 </div>
