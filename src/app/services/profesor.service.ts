@@ -55,6 +55,7 @@ export class ProfesorService {
           // aqui tengo que llamar el siguiente componente
           Swal.fire('Usuario correcto')
           environment.vsesion = profesor.nickProfesor;
+          // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
           this.profesorObj = respuesta[0];
           // Swal.fire(environment.vsesion+ " Variable de sesion ")
           this.router.navigate(['/perfilProfesor']);

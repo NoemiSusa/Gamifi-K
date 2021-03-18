@@ -23,8 +23,8 @@ class Modificar {
     $query =  "UPDATE profesor SET
                   nickProfesor='".$param->nickProfesor."',
 									nombreProfesor='".$param->nombreProfesor."',
-									apellidosProfesor='".$param->apellidoProfesor."',
-									emailProfesor='".$param->correoProfesor."',
+									apellidosProfesor='".$param->apellidosProfesor."',
+									emailProfesor='".$param->emailProfesor."',
 									centroProfesor='".$param->centroProfesor."',
                   imagenProfesor='Imagen',
 								WHERE nickProfesor='".$params->nickProfesor."'";

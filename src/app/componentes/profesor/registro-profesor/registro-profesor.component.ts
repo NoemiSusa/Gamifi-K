@@ -42,8 +42,8 @@ export class RegistroProfesorComponent implements OnInit {
       contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern('((?=.*[a-z])(?=.*[A-Z]).{6,20})')]],
       confirmarContrasenyaProfesor: ['', [Validators.required, Validators.minLength(2)]],
       nombreProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      apellidoProfesor: ['', [Validators.required, Validators.minLength(2)]],
-      correoProfesor: ['', [Validators.required, Validators.email]],
+      apellidosProfesor: ['', [Validators.required, Validators.minLength(2)]],
+      emailProfesor: ['', [Validators.required, Validators.email]],
       centroProfesor: ['', [Validators.required, Validators.minLength(2)]]
     }, {
       validator: validarContrasenya('contrasenyaProfesor', 'confirmarContrasenyaProfesor')
@@ -64,8 +64,8 @@ export class RegistroProfesorComponent implements OnInit {
       this.profesor.controls.contrasenyaProfesor.value,
       this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
-      this.profesor.controls.apellidoProfesor.value,
-      this.profesor.controls.correoProfesor.value,
+      this.profesor.controls.apellidosProfesor.value,
+      this.profesor.controls.emailProfesor.value,
       this.profesor.controls.centroProfesor.value);
 
     console.log(this.nuevoRegistro);
