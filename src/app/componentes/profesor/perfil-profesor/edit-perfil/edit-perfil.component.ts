@@ -55,13 +55,14 @@ export class EditPerfilComponent implements OnInit {
       }
     )
 
+    // profeperfil instancia la clase de profesorservice profesorObj, y guarda el objeto en profesore, que es lo que se visualiza para editar perfil
     this.profesore = this.profeperfil.profesorObj;
 
     //creamos las condiciones de los campos del formulario de registro
     this.profesor = this.formBuilder.group({
       nombreProfesor: [this.profesore.nombreProfesor, [Validators.required, Validators.minLength(2)]],
-      apellidoProfesor: [this.profesore.apellidoProfesor, [Validators.required, Validators.minLength(2)]],
-      correoProfesor: [this.profesore.correoProfesor, [Validators.required, Validators.email]],
+      apellidosProfesor: [this.profesore.apellidosProfesor, [Validators.required, Validators.minLength(2)]],
+      emailProfesor: [this.profesore.emailProfesor, [Validators.required, Validators.email]],
       centroProfesor: [this.profesore.centroProfesor, [Validators.required, Validators.minLength(2)]]
     });
   }
