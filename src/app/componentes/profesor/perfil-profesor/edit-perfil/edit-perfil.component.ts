@@ -79,9 +79,10 @@ export class EditPerfilComponent implements OnInit {
     //guardamos los datos del nuevo usuario en un registro nuevo
 
     this.modificarProfe = new Profesor(
-      this.profesor.controls.nickProfesor.value,
-      this.profesor.controls.contrasenyaProfesor.value,
-      this.profesor.controls.confirmarContrasenyaProfesor.value,
+      environment.vsesion,
+      /***********cal posar valor a la contrasenya  i  confirmar contrasenya  que pot ser el que te el objecte que recollim del service per omplir tot l'objecte per fer el update****************************************** */
+      // this.profesor.controls.contrasenyaProfesor.value,
+      // this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
       this.profesor.controls.apellidosProfesor.value,
       this.profesor.controls.emailProfesor.value,
