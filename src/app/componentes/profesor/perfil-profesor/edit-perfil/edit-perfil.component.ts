@@ -42,28 +42,33 @@ export class EditPerfilComponent implements OnInit {
     console.log(this.profesore);*/
 
     // usamos el servicio para pedir todos los campos del profesor logeado
-    this.profeperfil.pedirDatosProfesor(this.sesion).subscribe(
-      (resp: Profesor[])=>{
-        this.profesore = resp[0];
+    // this.profeperfil.pedirDatosProfesor(this.sesion).subscribe(
+    //   (resp: Profesor[])=>{
+    //     this.profesore = resp[0];
 
 
-        // console.log(resp);
+    //     // console.log(resp);
 
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    )
+    //   },
+    //   (error: any) => {
+    //     console.log(error);
+    //   }
+    // )
 
     // profeperfil instancia la clase de profesorservice profesorObj, y guarda el objeto en profesore, que es lo que se visualiza para editar perfil
     this.profesore = this.profeperfil.profesorObj;
 
-    //creamos las condiciones de los campos del formulario de registro
+    //creamos las condiciones de los campos del formulario para realizar el update
+      // dentro de cada campo le ponemos los datos que tiene que mostrar en pantalla solamente mostrar el formulario
     this.profesor = this.formBuilder.group({
+      nickProfesor:[this.profesore.nickProfesor],
+      contrasenyaProfesor: [this.profesore.contrasenyaProfesor],
+      // confirmarContrasenyaProfesor: [this.profesore.contrasenyaProfesor],
       nombreProfesor: [this.profesore.nombreProfesor, [Validators.required, Validators.minLength(2)]],
       apellidosProfesor: [this.profesore.apellidosProfesor, [Validators.required, Validators.minLength(2)]],
       emailProfesor: [this.profesore.emailProfesor, [Validators.required, Validators.email]],
-      centroProfesor: [this.profesore.centroProfesor, [Validators.required, Validators.minLength(2)]]
+      centroProfesor: [this.profesore.centroProfesor, [Validators.required, Validators.minLength(2)]],
+      imagenProfesor:[this.profesore.imagenProfesor]
     });
   }
 
@@ -76,46 +81,47 @@ export class EditPerfilComponent implements OnInit {
   //funcion que se ejecuta al enviar el formulario
   onFormSubmit(): void {
 
-    //guardamos los datos del nuevo usuario en un registro nuevo
-
+    //guardamos los datos del usuario obteniendo todos los datos que va a recojer en el submit para editar y hacer el update
+      //a cada campo recojemos el valor que se modifica del formulario
     this.modificarProfe = new Profesor(
-      environment.vsesion,
+      this.profesor.controls.nickProfesor.value,
       /***********cal posar valor a la contrasenya  i  confirmar contrasenya  que pot ser el que te el objecte que recollim del service per omplir tot l'objecte per fer el update****************************************** */
-      // this.profesor.controls.contrasenyaProfesor.value,
+      // this.profesore.contrasenyaProfesor, -> hem dona error de Undefined
+      // this.profesor.contrasenyaProfesor.value,
+      this.profesor.controls.contrasenyaProfesor.value,
+      this.profesor.controls.contrasenyaProfesor.value,
       // this.profesor.controls.confirmarContrasenyaProfesor.value,
       this.profesor.controls.nombreProfesor.value,
       this.profesor.controls.apellidosProfesor.value,
       this.profesor.controls.emailProfesor.value,
-      // this.profesor.controls.imagenProfesor.value,
-      this.profesor.controls.centroProfesor.value);
+      this.profesor.controls.centroProfesor.value,
+      this.profesor.controls.imagenProfesor.value
+    );
 
       console.log(this.modificarProfe);
-
-      //si todos los datos y campos son correctos se muestra la ventana emergente
-      Swal.fire('Los datos introducidos son corectos');
 
       // Llamamos a la función comprobarUsuarioService(está en el profesorService) y le pasamos el objeto con todos los datos del Profesor
       this.profe.editarDatosPerfil(this.modificarProfe).subscribe(
         (datos: any) => {
           console.log(datos);
         if (datos == 1) {
-          console.log("usuario existe");
+          // console.log("usuario existe");
 
           Swal.fire(
-            'Problemas',
-            'Este usuario ya existe',
-            'error'
+            'Bien',
+            'Has actualizado tu perfil',
+            'success'
           );
 
         } else if (datos == 0){
 
           Swal.fire(
-            'Insert realizado',
-            'Usuario creado correctamente',
-            'success'
+            'Problemas',
+            'No se ha actualizado el perfil',
+            'error'
           )
         } else {
-          console.log(datos);
+          // console.log(datos);
           Swal.fire(
             'Datos no insertados',
             'problemas con el paso de los datos',
@@ -128,7 +134,7 @@ export class EditPerfilComponent implements OnInit {
         console.log(error);
         Swal.fire(
           'FATAL ERROR 3',
-          'Se ha producido un error',
+          'Se ha producido un error en update Profe',
           'error'
         )
       }

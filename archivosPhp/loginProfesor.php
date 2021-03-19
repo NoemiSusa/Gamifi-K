@@ -15,7 +15,7 @@ require 'conBDLocal.php';
 // creamos la conexión
 $con = conexion();
 
-$query = "select * from `profesor` WHERE nickProfesor='$params->nickProfesor' AND pasProfesor='$params->contrasenyaProfesor'";
+$query = "select * from `profesor` WHERE nickProfesor='$params->nickProfesor' AND contrasenyaProfesor='$params->contrasenyaProfesor'";
 
 
 // print '{ "msg": "Error al encontrar usuario" }';
