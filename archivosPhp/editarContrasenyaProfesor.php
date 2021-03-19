@@ -20,7 +20,7 @@ require_once 'updatePass.php';
 
 $conexion = conexion();
 
-$consulta = "SELECT pasProfesor from profesor WHERE nickProfesor='".$parametros->nick."' AND contrasenyaProfesor='".$parametros->contraVieja."'";
+$consulta = "SELECT contrasenyaProfesor from profesor WHERE nickProfesor='".$parametros->nick."' AND contrasenyaProfesor='".$parametros->contraVieja."'";
 
 // echo ("@Esta es la consulta@@@@  ".$consulta." @@@@Esta es la consulta@");
 
