@@ -35,10 +35,12 @@ while($row = mysqli_fetch_assoc($resultado)) {
      // aqui vamos a poner la variable de sesion "CREO"
      $conectado = true;
 }
+
+$conexion->close();
 //si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if (count($datos) === 0) {
 
-  print '{ "msg": "Error al encontrar usuario" }';
+  // print '{ "msg": "Error al encontrar usuario" }';
 
 
 
