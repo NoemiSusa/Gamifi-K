@@ -61,6 +61,7 @@ export class EditPerfilComponent implements OnInit {
     //creamos las condiciones de los campos del formulario para realizar el update
       // dentro de cada campo le ponemos los datos que tiene que mostrar en pantalla solamente mostrar el formulario
     this.profesor = this.formBuilder.group({
+      //camp bbdd : [valor que printara al html,[validadors del formulari reactiu]]
       nickProfesor:[this.profesore.nickProfesor],
       contrasenyaProfesor: [this.profesore.contrasenyaProfesor],
       // confirmarContrasenyaProfesor: [this.profesore.contrasenyaProfesor],
