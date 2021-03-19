@@ -6,11 +6,12 @@ header('Content-Type: application/json');
 
 require_once 'conBDLocal.php';
 
-class UpdatePass{
+
+class UpdatePassAl{
   public function updatePassword($parametros){
     $conexion = conexion();
 
-    $update= "UPDATE alumno SET 'pasAlumno'='$parametros->contranueva' WHERE 'nickAlumno' = '$parametros->nick'";
+    $update= "UPDATE alumno SET pasAlumno='".$parametros->contranueva."' WHERE nickAlumno = '".$parametros->nick."'";
 
     $resultado=mysqli_query($conexion,$update);
     $conexion->close();
@@ -23,7 +24,11 @@ class UpdatePass{
     else{
       // si es 0 no se ha realizado el update
       $nupdate=0;
+
     }
+
+    // echo("@fichero updatePass: ".$nupdate ." :final var nupdate@");
+
     return $nupdate;
 
   }
