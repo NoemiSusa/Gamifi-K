@@ -1,7 +1,8 @@
-body {
-    font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #404040;
-    background: #2d4259;
+.main-section {
+    position: relative;
+    background: linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 73, .7), rgba(0, 0, 0, .7));
+    height: 950px;
+    background-size: cover;
 }
 
 .register-title {

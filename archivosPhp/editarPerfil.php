@@ -13,23 +13,23 @@ $json = file_get_contents('php://input');
 //guardamos en la variable params los datos descodificados que recojemos del JSON que nos manda el ts
 $params = json_decode($json);
 
-class Modificar {
+// class Modificar {
   //creamos la función y le pasamos el objeto con los datos
-  public function modificacionPerfil($param){
+  // public function modificacionPerfil($param){
     // creamos la conexión
     $conexion = conexion();
 
     // realizamos la query que actualizara los valores en la base de datos
     $query =  "UPDATE profesor SET
-                  nickProfesor='".$param->nickProfesor."',
-									nombreProfesor='".$param->nombreProfesor."',
-									apellidosProfesor='".$param->apellidoProfesor."',
-									emailProfesor='".$param->correoProfesor."',
-									centroProfesor='".$param->centroProfesor."',
-                  imagenProfesor='Imagen',
+									nombreProfesor='".$params->nombreProfesor."',
+									apellidosProfesor='".$params->apellidosProfesor."',
+									emailProfesor='".$params->emailProfesor."',
+									centroProfesor='".$params->centroProfesor."',
+                  imagenProfesor='".$params->imagenProfesor."'
 								WHERE nickProfesor='".$params->nickProfesor."'";
-//imagenProfesor='".$param->imagenProfesor."'
-//nickProfesor='".$param->nickProfesor."',
+                  //imagenProfesor='".$param->imagenProfesor."'
+                  //nickProfesor='".$param->nickProfesor."',
+                  //nickProfesor='".$param->nickProfesor."',
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
@@ -47,7 +47,9 @@ class Modificar {
       $insert = 0;
     }
     //devolver el valor del insert al modificar el perfil.php
-    return $insert;
-  }
-}
+    // return $insert;
+    print json_encode($insert);
+
+  // }
+// }
 ?>

@@ -14,7 +14,9 @@
     <form [formGroup]="loginFormProfesor" (ngSubmit)="loginProfesor()">
         <div class="form-row">
             <div class="form-group col-md-12">
-                <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickProfesor.errors }" />
+                <input type="text" formControlName="nickProfesor" placeholder="Nick" class="form-control"
+                [ngClass]="{'is-valid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.valid,
+                    'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">
                 <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickProfesor.errors.required"></div>
                 </div>
@@ -22,7 +24,9 @@
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaProfesor.errors }" />
+                    <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control"
+                    [ngClass]="{'is-valid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.valid,
+                    'is-invalid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.invalid}">
                     <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
                         <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres</div>
@@ -36,4 +40,3 @@
         </div>
     </form>
 </div>
-

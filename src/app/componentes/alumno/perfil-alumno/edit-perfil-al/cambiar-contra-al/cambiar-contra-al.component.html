@@ -1,4 +1,15 @@
 <div>
+  <div class="container-fluid mt-2">
+
+      <div class="text-center">
+          <button class="btn register-title ml-5" type="button" [routerLink]="'/perfilAlumno'" alt="">Volver a PERFIL</button>&nbsp;&nbsp;&nbsp;
+
+          <button class="btn register-title mr-5" type="button" [routerLink]="'/inicio'" alt="">LOGOUT</button>
+      </div>
+
+  </div>
+
+<div class="container">
   <form [formGroup]="formCambiarPassAl" (ngSubmit)="formCambiarContrasenyaAl()">
 
     <!-- campo del contraseña antigua del Alumno -->
@@ -53,10 +64,10 @@
 
     <div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <button type="submit" class="register-button">Confirmar</button>
       </div>
     </div>
 
   </form>
-  <button type="submit" class="btn btn-primary" [routerLink]="'/perfilAlumno'">Volver</button>
+  <button type="submit" class="register-button" [routerLink]="'/perfilAlumno'">Volver</button>
 </div>

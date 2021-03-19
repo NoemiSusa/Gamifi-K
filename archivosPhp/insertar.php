@@ -15,8 +15,8 @@ class Insertar {
     $conexion = conexion();
 
     // realizamos la query a la BD para realizar el insert con los valores que tendrá cada campo
-    $query =  "INSERT INTO profesor(nickProfesor, nombreProfesor, apellidosProfesor, emailProfesor, pasProfesor, centroProfesor, imagenProfesor)
-     VALUES ('".$param->nickProfesor."','".$param->nombreProfesor."','".$param->apellidoProfesor."','".$param->correoProfesor."','".$param->contrasenyaProfesor."','".$param->centroProfesor."','Profe')";
+    $query =  "INSERT INTO profesor(nickProfesor, nombreProfesor, apellidosProfesor, emailProfesor, contrasenyaProfesor, centroProfesor, imagenProfesor)
+     VALUES ('".$param->nickProfesor."','".$param->nombreProfesor."','".$param->apellidosProfesor."','".$param->emailProfesor."','".$param->contrasenyaProfesor."','".$param->centroProfesor."','Profe')";
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
