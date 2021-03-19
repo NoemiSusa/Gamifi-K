@@ -11,7 +11,7 @@ class UpdatePass{
   public function updatePassword($parametros){
     $conexion = conexion();
 
-    $update= "UPDATE profesor SET pasProfesor='".$parametros->contranueva."' WHERE nickProfesor = '".$parametros->nick."'";
+    $update= "UPDATE profesor SET contrasenyaProfesor='".$parametros->contranueva."' WHERE nickProfesor = '".$parametros->nick."'";
 
     $resultado=mysqli_query($conexion,$update);
     $conexion->close();
