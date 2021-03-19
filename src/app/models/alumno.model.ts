@@ -5,7 +5,7 @@ export class Alumno {
     public contrasenyaAlumno?: string,
     public nombreAlumno?: string,
     public apellidoAlumno?: string,
-    public correoAlumno?: string,
+    public emailAlumno?: string,
     public imagenAlumno?: number
   ) { }
 

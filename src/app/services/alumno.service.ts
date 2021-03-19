@@ -31,13 +31,7 @@ export class AlumnoService {
     return this.http.post(`${environment.serverUrl}datosPerfilAl.php`,JSON.stringify(sesion));
   }
 
-  // setprofesor(profesor) {
-  //   this.alumnoObj = profesor;
-  // }
 
-  // getprofesor() {
-  //   return this.alumnoObj;
-  // }
 
   //función para loguear el alumno.
   loginAlumnoService(alumno: Alumno): Observable<any> {

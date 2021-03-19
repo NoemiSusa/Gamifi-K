@@ -73,12 +73,12 @@
             <!-- campo de apellidos del Alumno -->
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <input type="text" formControlName="apellidoAlumno" placeholder="Apellidos" class="form-control" [ngClass]="{'is-valid': controlFormulario.apellidoAlumno.touched && controlFormulario.apellidoAlumno.valid,
-                    'is-invalid': controlFormulario.apellidoAlumno.touched && controlFormulario.apellidoAlumno.invalid}">
+                    <input type="text" formControlName="emailAlumno" placeholder="Apellidos" class="form-control" [ngClass]="{'is-valid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.valid,
+                    'is-invalid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.invalid}">
 
                     <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                    <div *ngIf="submitted && controlFormulario.apellidoAlumno.errors" class="invalid-feedback">
-                        <div *ngIf="controlFormulario.apellidoAlumno.errors.required">Los apellidos son obligatorios</div>
+                    <div *ngIf="submitted && controlFormulario.emailAlumno.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.emailAlumno.errors.required">Los apellidos son obligatorios</div>
                     </div>
                 </div>
             </div>
