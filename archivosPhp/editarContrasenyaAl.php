@@ -7,23 +7,23 @@ header('Content-Type: application/json');
 
 
 $json = file_get_contents('php://input');
-// echo($json."este es el echo del php editPass");
 
 $parametros = json_decode($json);
 
 require_once 'conBDLocal.php';
-require_once 'updatePass.php';
+require_once 'updatePassAl.php';
 
 $conexion = conexion();
 
-$consulta = "SELECT pasProfesor from profesor WHERE nickProfesor='$parametros->nick'";
+$consulta = "SELECT contrasenyaAlumno from alumno WHERE nickAlumno='".$parametros->nick."' AND contrasenyaAlumno='".$parametros->contraVieja."'";
+
 
 $resultadoContraVieja = mysqli_query($conexion,$consulta);
 
-// inciiamos la variabgle datos como array donde vamos a guardar los datos que vamos a guardar en la consulta
+// inciamos la variabgle datos como array donde vamos a guardar los datos que vamos a guardar en la consulta
 $datos=[];
 
-while($row = mysqli_fetch_assoc($resultado)){
+while($row = mysqli_fetch_assoc($resultadoContraVieja)){
     //si la contraseña existe y es la misma obtiene datos y los guarda en el array $datos
   $datos[] = $row;
   }
@@ -35,39 +35,32 @@ while($row = mysqli_fetch_assoc($resultado)){
   $valorContrasenya;
 
 
-// si no ha cojido datos es que la contraseña no coincide con el ncik
-if(count($datos)===0){
-  $valorContrasenya=0;
- print json_encode($valorContrasenya);
-}else{
-  // si es 1 es coincide la contraseña
+// si  ha cojido datos es que la contraseña  coincide con el nick
+if(count($datos)===1){
   $valorContrasenya=1;
-  if(count($datos)===1){
-    $updatePass = new UpdatePass();
-    $updated=$updatePass->updatePassword($parametros);
+  // print json_encode($valorContrasenya);
 
-    if($updated==1){
-      // si valor contraseña es =2 se ha realizado el update
-      $valorContrasenya=2;
-      print json_encode($updated);
-    }
-    else{
-      // quuiere decir que el problema esta en el fichero update pass
-      $valorContrasenya=3;
-      print json_encode($updated);
-    }
+  // creo una instancia de la clase updatePass
+  $updatePass = new UpdatePassAl();
+  // creo una variable que la igualo a la vez a la instancia de la clase updatePass
+  //a la variable updatePass estoy haciendo una instancia en la funcion de update password que esta en update pass y le paso los parametros.
+  $updated=$updatePass->updatePasswordAl($parametros);
 
-
+  if($updated==1){
+    // si valor contraseña es =2 se ha realizado el update
+    $valorContrasenya=2;
+    echo json_encode($valorContrasenya);
   }
-
-
-  // $parametros
-
-
-
-
-
-
+  else{
+    // quuiere decir que el problema esta en el fichero update pass
+    $valorContrasenya=3;
+    echo json_encode($valorContrasenya);
+  }
+}else{
+  // si es 0 es que no coincide la contraseña
+    $valorContrasenya=0;
+    echo json_encode($valorContrasenya);
 }
+  // $parametros
 
 ?>
