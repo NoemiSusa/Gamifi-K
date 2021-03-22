@@ -4,7 +4,7 @@ export class Alumno {
     public nickAlumno?: string,
     public contrasenyaAlumno?: string,
     public nombreAlumno?: string,
-    public apellidoAlumno?: string,
+    public apellidosAlumno?: string,
     public emailAlumno?: string,
     public imagenAlumno?: number
   ) { }

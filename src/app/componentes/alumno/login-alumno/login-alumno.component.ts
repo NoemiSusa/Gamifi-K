@@ -72,27 +72,7 @@ export class LoginAlumnoComponent implements OnInit {
       var passEncriptada = this.encriptar.set("", alumno.contrasenyaAlumno);
       alumno.contrasenyaAlumno = passEncriptada;
 
-      this._loginAlumno.loginAlumnoService(alumno).subscribe(
-        (respuesta: any) => {
-          console.log(respuesta);
-
-          if (respuesta[0] == null) {
-            console.log("Usuario no existe");
-            // mostrar una alerta con sweet alert
-            Swal.fire('Datos incorrectos', 'Verifica el nick o la contraseña y vuelve a intentarlo', 'error')
-          }else {
-            console.log("Usuario existe");
-            Swal.fire('Usuario correcto')
-            environment.vsesion = alumno.nickAlumno;
-            // Swal.fire(environment.vsesion+ " Variable de sesion ")
-            // aqui tengo que llamar el siguiente componente
-            this.router.navigate(['/perfilAlumno']);
-          }
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      )
+      this._loginAlumno.loginAlumnoService(alumno)
     }
   }
 

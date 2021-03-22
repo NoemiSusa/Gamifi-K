@@ -69,26 +69,26 @@ export class CambiarContraAlComponent implements OnInit {
         console.log(datos);
         if(datos==0){
           Swal.fire(
-            'problemas la contraseña no coinide',
+            'CONTRASEÑA NO EXISTE',
             'te has equivocado de contraseña',
             'error'
           )
         }else if(datos ==1){
           Swal.fire(
-            'Bien la contraseña alumno coincide',
-            'SE HA PRODUCIDO UN ERROR',
+            'EXISTE CONTRASEÑA',
+            'EXISTE CONTRASEÑA',
             'warning'
           )
         }else if(datos ==2){
           Swal.fire(
             'Bien ',
-            'contraseña alumno modificada',
+            'contraseña modificada',
             'success'
           )
         }else{
           Swal.fire(
-            'Problemas no se ha realizado el update alumno',
-            'SE HA PRODUCIDO UN ERROR',
+            'Problemas no se ha realizado el update',
+            'SE HA PRODUCIDO UN ERROR EN EL PASO DE DATOS',
             'warning'
           )
         }
@@ -97,7 +97,7 @@ export class CambiarContraAlComponent implements OnInit {
       (error: any) => {
         console.log(error);
         Swal.fire(
-          'FATAL ERROR cambi Contra',
+          'FATAL ERROR cambio Contraseña',
           'SE HA PRODUCIDO UN ERROR',
           'error'
         )
