@@ -33,41 +33,75 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`,JSON.stringify(sesion));
   }
 
+// //
+//   loginProfesorService(profesor: Profesor): void {
+//     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
+
+//     this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
+//       (respuesta: Profesor[]) => {
+//         console.log(respuesta);
+
+//         // if (respuesta[0] == null) {
+//           if (respuesta.length === 0) {
+//           console.log("Usuario no existe");
+//           // mostrar una alerta con sweet alert
+//           Swal.fire(
+//             'Datos incorrectos',
+//             'Verifica el nick o la contraseña y vuelve a intentarlo',
+//             'error'
+//           )
+//         } else {
+//           console.log("Usuario existe");
+//           // aqui tengo que llamar el siguiente componente
+//           Swal.fire('Usuario correcto')
+//           environment.vsesion = profesor.nickProfesor;
+//           // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
+//           this.profesorObj = respuesta[0];
+//           // Swal.fire(environment.vsesion+ " Variable de sesion ")
+//           this.router.navigate(['/perfilProfesor']);
+//         }
+//       },
+//       (error: any) => {
+//         console.log(error);
+//       }
+//     )
+
+//   }
+
 //
-  loginProfesorService(profesor: Profesor): void {
-    // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
+loginProfesorService(profesor: Profesor): void {
+  // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
-    this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
-      (respuesta: Profesor[]) => {
-        console.log(respuesta);
+  this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
+    (respuesta: Profesor[]) => {
+      console.log(respuesta);
 
-        // if (respuesta[0] == null) {
-          if (respuesta.length === 0) {
-          console.log("Usuario no existe");
-          // mostrar una alerta con sweet alert
-          Swal.fire(
-            'Datos incorrectos',
-            'Verifica el nick o la contraseña y vuelve a intentarlo',
-            'error'
-          )
-        } else {
-          console.log("Usuario existe");
-          // aqui tengo que llamar el siguiente componente
-          Swal.fire('Usuario correcto')
-          environment.vsesion = profesor.nickProfesor;
-          // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
-          this.profesorObj = respuesta[0];
-          // Swal.fire(environment.vsesion+ " Variable de sesion ")
-          this.router.navigate(['/perfilProfesor']);
-        }
-      },
-      (error: any) => {
-        console.log(error);
+      // if (respuesta[0] == null) {
+        if (respuesta.length === 0) {
+        console.log("Usuario no existe");
+        // mostrar una alerta con sweet alert
+        Swal.fire(
+          'Datos incorrectos',
+          'Verifica el nick o la contraseña y vuelve a intentarlo',
+          'error'
+        )
+      } else {
+        console.log("Usuario existe");
+        // aqui tengo que llamar el siguiente componente
+        Swal.fire('Usuario correcto')
+        environment.vsesion = profesor.nickProfesor;
+        // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
+        this.profesorObj = respuesta[0];
+        // Swal.fire(environment.vsesion+ " Variable de sesion ")
+        this.router.navigate(['/perfilProfesor']);
       }
-    )
+    },
+    (error: any) => {
+      console.log(error);
+    }
+  )
 
-  }
-
+}
 
     // Función para editar y modificar los datos del perfil
     public editarDatosPerfil(datosPerfil: Profesor): Observable<any>  {

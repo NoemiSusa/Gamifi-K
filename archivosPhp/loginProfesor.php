@@ -15,7 +15,7 @@ require 'conBDLocal.php';
 // creamos la conexión
 $con = conexion();
 
-$query = "SELECT * from profesor WHERE nickProfesor='".$params->nickProfesor."' AND contrasenyaProfesor='".$params->contrasenyaProfesor."'";
+$query = "SELECT * from `profesor` WHERE nickProfesor='$params->nickProfesor' AND contrasenyaProfesor='$params->contrasenyaProfesor'";
 
 $resultado = mysqli_query($con, $query);
 
@@ -32,12 +32,12 @@ while($row = mysqli_fetch_assoc($resultado)) {
   $conectado = true;
 }
 
-$con->close();
+// $con->close();
 
 //si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if (count($datos) === 0) {
 
-  // print '{ "msg": "Error al encontrar usuario" }';
+  print '{ "msg": "Error al encontrar usuario" }';
 
 } else {
 
