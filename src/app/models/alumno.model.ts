@@ -6,7 +6,7 @@ export class Alumno {
     public nombreAlumno?: string,
     public apellidosAlumno?: string,
     public emailAlumno?: string,
-    public imagenAlumno?: number
+    public imagenAlumno?: string
   ) { }
 
 }

@@ -6,11 +6,11 @@ header('Content-Type: application/json');
 
 require_once 'conBDLocal.php';
 
-class UpdatePass{
-  public function updatePassword($parametros){
+class UpdatePassAl{
+  public function updatePasswordAl($parametros){
     $conexion = conexion();
 
-    $update= "UPDATE alumno SET 'pasAlumno'='$parametros->contranueva' WHERE 'nickAlumno' = '$parametros->nick'";
+    $update= "UPDATE alumno SET contrasenyaAlumno='".$parametros->contranueva."' WHERE nickAlumno = '".$parametros->nick."'";
 
     $resultado=mysqli_query($conexion,$update);
     $conexion->close();
