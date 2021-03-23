@@ -71,27 +71,28 @@
             </div>
 
             <!-- campo de apellidos del Alumno -->
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <input type="text" formControlName="apellidosAlumno" placeholder="Apellidos" class="form-control"
+            [ngClass]="{'is-valid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.valid,
+                    'is-invalid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.invalid}">
+
+          <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+          <div *ngIf="submitted && controlFormulario.apellidosAlumno.errors" class="invalid-feedback">
+            <div *ngIf="controlFormulario.apellidosAlumno.errors.required">Los apellidos son obligatorios</div>
+          </div>
+        </div>
+      </div>
+
+            <!-- campo de email del Alumno -->
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <input type="text" formControlName="emailAlumno" placeholder="Apellidos" class="form-control" [ngClass]="{'is-valid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.valid,
+                    <input type="text" formControlName="emailAlumno" placeholder="email@ejemplo.com" class="form-control" [ngClass]="{'is-valid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.valid,
                     'is-invalid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.invalid}">
 
                     <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
                     <div *ngIf="submitted && controlFormulario.emailAlumno.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.emailAlumno.errors.required">Los apellidos son obligatorios</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- campo de correo del Alumno -->
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <input type="email" formControlName="correoAlumno" placeholder="prueba@prueba.com" class="form-control" [ngClass]="{'is-valid': controlFormulario.correoAlumno.touched && controlFormulario.correoAlumno.valid,
-                    'is-invalid': controlFormulario.correoAlumno.touched && controlFormulario.correoAlumno.invalid}">
-                    <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                    <div *ngIf="submitted && controlFormulario.correoAlumno.errors" class="invalid-feedback">
-                        <div *ngIf="controlFormulario.correoAlumno.errors.required">El correo es obligatorio</div>
-                        <div *ngIf="controlFormulario.correoAlumno.errors.email">El correo no es valido</div>
                     </div>
                 </div>
             </div>
