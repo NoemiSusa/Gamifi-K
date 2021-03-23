@@ -1,4 +1,4 @@
-create or replace TABLE profesor
+create TABLE profesor
 	(
 	nickProfesor VARCHAR(30) PRIMARY key,
 	nombreProfesor VARCHAR(20) NOT null,
