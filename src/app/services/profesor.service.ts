@@ -50,8 +50,9 @@ export class ProfesorService {
             'Verifica el nick o la contraseña y vuelve a intentarlo',
             'error'
           )
-        } else {
+        } else if (respuesta.length>0) {
           console.log("Usuario existe");
+
           // aqui tengo que llamar el siguiente componente
           Swal.fire('Usuario correcto')
           environment.vsesion = profesor.nickProfesor;

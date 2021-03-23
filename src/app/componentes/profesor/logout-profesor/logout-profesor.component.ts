@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 import { Routes, RouterModule, RouterLink ,Router} from '@angular/router';
+import { maxHeaderSize } from 'http';
 
 @Component({
   selector: 'app-logout-profesor',
@@ -19,13 +20,19 @@ private router: Router,
 
   ngOnInit(): void {
     Swal.fire({
+      width: 600,
+      heightAuto:true,
+      background:"#EAEAEA",
       title: 'Estas seguro que quieres salir?',
       // text: "You won't be able to revert this!",
-      icon: 'warning',
+      // icon: 'warning',
+
       showCancelButton: true,
+      cancelButtonText:"NO",
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'SI'
+      confirmButtonText: 'SI',
+
     }).then((result) => {
       if (result.isConfirmed) {
         environment.vsesion="";
@@ -38,6 +45,10 @@ private router: Router,
         //   'success'
         // )
       }
+      else if (result.isConfirmed===false){
+          this.router.navigate(['/perfilProfesor']);
+      }
+
     })
 
   }
