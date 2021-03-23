@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 import { Routes, RouterModule, RouterLink ,Router} from '@angular/router';
-import { maxHeaderSize } from 'http';
+
 
 @Component({
   selector: 'app-logout-profesor',
