@@ -7,18 +7,23 @@ header('Content-Type: application/json');
 // importamos el archivo con la conexión a la BD
 require_once 'conBDLocal.php';
 
+//recoje los datos que le pasa el sevice en formato json
+$json = file_get_contents('php://input');
 
-class ModificarAl {
-  //creamos la función y le pasamos el objeto con los datos
-  public function modificacionPerfilAl($param){
+//guardamos en la variable params los datos descodificados que recojemos del JSON que nos manda el ts
+$params = json_decode($json);
+
+// class ModificarAl {
+//   //creamos la función y le pasamos el objeto con los datos
+//   public function modificacionPerfilAl($param){
     // creamos la conexión
     $conexion = conexion();
 
     // realizamos la query que actualizara los valores en la base de datos
-    $query =  "UPDATE alumno SET nickAlumno='".$param->nickAlumno."',
+    $query =  "UPDATE alumno SET
 									nombreAlumno='".$param->nombreAlumno."',
-									apellidosAlumno='".$param->apellidoAlumno."',
-									emailAlumno='".$param->correoAlumno."',
+									apellidosAlumno='".$param->apellidosAlumno."',
+									emailAlumno='".$param->emailAlumno."',
 									imagenAlumno='".$param->imagenAlumno "'
 								WHERE nickAlumno='$params->nickAlumno'";
 
@@ -39,7 +44,7 @@ class ModificarAl {
       $insert = 0;
     }
     //devolver el valor del insert al modificar el perfil.php
-    return $insert;
-  }
-}
+    print json_encode($insert);
+//   }
+// }
 ?>

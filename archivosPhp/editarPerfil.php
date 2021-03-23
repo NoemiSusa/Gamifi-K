@@ -27,9 +27,8 @@ $params = json_decode($json);
 									centroProfesor='".$params->centroProfesor."',
                   imagenProfesor='".$params->imagenProfesor."'
 								WHERE nickProfesor='".$params->nickProfesor."'";
-                  //imagenProfesor='".$param->imagenProfesor."'
                   //nickProfesor='".$param->nickProfesor."',
-                  //nickProfesor='".$param->nickProfesor."',
+
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
