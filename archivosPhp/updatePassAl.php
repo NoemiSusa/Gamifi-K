@@ -12,6 +12,7 @@ class UpdatePassAl{
 
     $update= "UPDATE alumno SET contrasenyaAlumno='".$parametros->contranueva."' WHERE nickAlumno = '".$parametros->nick."'";
 
+
     $resultado=mysqli_query($conexion,$update);
     $conexion->close();
 
@@ -23,7 +24,11 @@ class UpdatePassAl{
     else{
       // si es 0 no se ha realizado el update
       $nupdate=0;
+
     }
+
+    // echo("@fichero updatePass: ".$nupdate ." :final var nupdate@");
+
     return $nupdate;
 
   }

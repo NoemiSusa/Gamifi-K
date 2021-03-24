@@ -68,7 +68,7 @@ export class ProfesorService {
 
 //   }
 
-//
+
 loginProfesorService(profesor: Profesor): void {
   // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 

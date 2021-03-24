@@ -17,6 +17,7 @@ import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edi
 import { EditPerfilAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/edit-perfil-al.component';
 
 
+
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'inicio', component: InicioComponent }, //aqui vamos a poner las rutas de los componentes
   { path: 'profesor', component: ProfesorComponent },

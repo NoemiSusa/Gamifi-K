@@ -1,5 +1,6 @@
 <div class="container-fluid main-section">
 
+
     <div class="row ">
         <div class="col-sm-6 mt-5 ml-5">
             <div *ngIf="alumno !== null" class="card" style="width: 45rem;">
@@ -51,6 +52,7 @@
       </svg> Edita tu perfil
     </button>
 
+
             <!-- Botón para acceder a los rankings -->
             <button id="btnGroupDrop1" type="button" class="btn card-title dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -66,7 +68,7 @@
 
 
             <!-- Botón para logout -->
-            <button type="button" class="btn card-title" [routerLink]="'/inicio'">
+            <button type="button" class="btn card-title" [routerLink]="'/logoutAlumno'">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open"
             viewBox="0 0 16 16">
             <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />

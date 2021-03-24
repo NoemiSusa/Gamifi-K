@@ -1,0 +1,21 @@
+    #imgTitle {
+        width: 80%;
+        animation: opacidad-mostrar 1s ease-in;
+    }
+    
+    #imgGAMIFIK {
+        width: 60%;
+        /* animation: opacidad-mostrar 1s ease-in; */
+        /* animation: moverArribaAbajo 1s ease-in; */
+    }
+    /* body {
+    font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #404040;
+    background: rgb(24, 125, 237);
+    background: radial-gradient(circle, rgba(24, 125, 237, 0.9920343137254902) 0%, rgba(37, 27, 241, 1) 100%);
+} */
+    
+    .general {
+        background: rgb(215, 50, 142);
+        background: radial-gradient(circle, rgba(67, 151, 216, 0.992) 0%, rgba(37, 27, 241, 1) 100%);
+    }

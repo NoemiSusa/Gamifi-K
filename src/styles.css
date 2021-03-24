@@ -1,5 +1,44 @@
 body {
-  font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
-  background: #2d4259;
+    font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #404040;
+    background: #2d4259;
+}
+
+
+/*ANIMACIONES*/
+
+@keyframes opacidad-mostrar {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cambiarColorFondo {
+    from {
+        background-color: none;
+    }
+    to {
+        background-color: white;
+    }
+}
+
+@keyframes sinFondo {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: none;
+    }
+}
+
+@keyframes moverArribaAbajo {
+    from {
+        top: -500%;
+    }
+    to {
+        top: 0%;
+    }
 }
