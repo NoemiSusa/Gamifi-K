@@ -21,11 +21,11 @@ $params = json_decode($json);
 
     // realizamos la query que actualizara los valores en la base de datos
     $query =  "UPDATE alumno SET
-									nombreAlumno='".$param->nombreAlumno."',
-									apellidosAlumno='".$param->apellidosAlumno."',
-									emailAlumno='".$param->emailAlumno."',
-									imagenAlumno='".$param->imagenAlumno "'
-								WHERE nickAlumno='$params->nickAlumno'";
+									nombreAlumno='".$params->nombreAlumno."',
+									apellidosAlumno='".$params->apellidosAlumno."',
+									emailAlumno='".$params->emailAlumno."',
+									imagenAlumno='".$params->imagenAlumno. "'
+								WHERE nickAlumno='".$params->nickAlumno."'";
 
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.

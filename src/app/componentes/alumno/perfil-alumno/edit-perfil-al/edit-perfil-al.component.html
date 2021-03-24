@@ -1,90 +1,89 @@
 <div>
 
-    <div class="container-fluid mt-2">
+  <div class="container-fluid mt-2">
 
-        <div class="text-center">
-            <button class="btn register-title ml-5" type="button" [routerLink]="'/perfilAlumno'" alt="">Volver a PERFIL</button>&nbsp;&nbsp;&nbsp;
+    <div class="text-center">
+      <button class="btn register-title ml-5" type="button" [routerLink]="'/perfilAlumno'" alt="">Volver a
+        PERFIL</button>&nbsp;&nbsp;&nbsp;
 
-            <button class="btn register-title mr-5" type="button" [routerLink]="'/inicio'" alt="">LOGOUT</button>
+      <button class="btn register-title mr-5" type="button" [routerLink]="'/inicio'" alt="">LOGOUT</button>
+    </div>
+
+  </div>
+  <div class="container">
+    <div *ngIf="alumne !== null">
+
+      <!-- formulario de recogida de datos -->
+      <form [formGroup]="alumno" (ngSubmit)="onFormSubmit()">
+
+        <!-- campo del nickAlumno (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input type="text" formControlName="nickAlumno" placeholder="" readonly class="form-control">
+          </div>
         </div>
 
-    </div>
-    <div class="container">
-        <div *ngIf="alumne !== null">
+        <!-- campo del nombreAlumno -->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input type="text" formControlName="nombreAlumno" placeholder="" class="form-control"
+              [ngClass]="{'is-valid': controlFormulario.nombreAlumno.touched && controlFormulario.nombreAlumno.valid,
+                    'is-invalid': controlFormulario.nombreAlumno.touched && controlFormulario.nombreAlumno.invalid}">
 
-            <!-- formulario de recogida de datos -->
-            <form [formGroup]="alumno" (ngSubmit)="onFormSubmit()">
-
-                <!-- campo del nickAlumno (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="text" formControlName="nickAlumno" placeholder="" readonly class="form-control">
-                    </div>
-                </div>
-
-                <!-- campo del contraseña del Alumno -->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="password" formControlName="contrasenyaAlumno" placeholder="" readonly class="form-control">
-                    </div>
-                </div>
-
-                <!-- campo del nombreAlumno -->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="text" formControlName="nombreAlumno" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.nombreAlumno.touched && controlFormulario.nombreAlumno.valid,
-                  'is-invalid': controlFormulario.nombreAlumno.touched && controlFormulario.nombreAlumno.invalid}">
-
-                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                        <div *ngIf="submitted && controlFormulario.nombreAlumno.errors" class="invalid-feedback">
-                            <div *ngIf="controlFormulario.nombreAlumno.errors.required">El nombre es obligatorio</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- campo de apellidos del Alumno -->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="text" formControlName="apellidosAlumno" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.valid,
-                    'is-invalid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.invalid}">
-
-                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                        <div *ngIf="submitted && controlFormulario.apellidoAlumno.errors" class="invalid-feedback">
-                            <div *ngIf="controlFormulario.apellidoAlumno.errors.required">Los apellidos son obligatorios</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- campo de correo del Alumno -->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="email" formControlName="emailAlumno" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.valid,
-                    'is-invalid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.invalid}">
-                        <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                        <div *ngIf="submitted && controlFormulario.emailAlumno.errors" class="invalid-feedback">
-                            <div *ngIf="controlFormulario.emailAlumno.errors.required">El correo es obligatorio</div>
-                            <div *ngIf="controlFormulario.emailAlumno.errors.email">El correo no es valido</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- campo de la Imagen del alumno -->
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <input type="text" formControlName="imagenAlumno" placeholder="" class="form-control" [ngClass]="{'is-valid': controlFormulario.imagenAlumno.touched && controlFormulario.imagenAlumno.valid,
-                        'is-invalid': controlFormulario.imagenAlumno.touched && controlFormulario.imagenAlumno.invalid}">
-                    </div>
-                </div>
-                <br>
-                <br>
-                <!--botón registrarse-->
-                <div>
-                    <div class="form-group">
-                        <button type="submit" class="register-button">Guardar Datos</button>
-                    </div>
-                </div>
-            </form>
+            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+            <div *ngIf="submitted && controlFormulario.nombreAlumno.errors" class="invalid-feedback">
+              <div *ngIf="controlFormulario.nombreAlumno.errors.required">El nombre es obligatorio</div>
+            </div>
+          </div>
         </div>
+
+        <!-- campo de apellidos del alumno -->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input type="text" formControlName="apellidosAlumno" placeholder="" class="form-control"
+              [ngClass]="{'is-valid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.valid,
+                      'is-invalid': controlFormulario.apellidosAlumno.touched && controlFormulario.apellidosAlumno.invalid}">
+
+            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+            <div *ngIf="submitted && controlFormulario.apellidosAlumno.errors" class="invalid-feedback">
+              <div *ngIf="controlFormulario.apellidosAlumno.errors.required">Los apellidos son obligatorios</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- campo de correo del alumno -->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input type="email" formControlName="emailAlumno" placeholder="" class="form-control"
+              [ngClass]="{'is-valid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.valid,
+                      'is-invalid': controlFormulario.emailAlumno.touched && controlFormulario.emailAlumno.invalid}">
+            <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+            <div *ngIf="submitted && controlFormulario.emailAlumno.errors" class="invalid-feedback">
+              <div *ngIf="controlFormulario.emailAlumno.errors.required">El correo es obligatorio</div>
+              <div *ngIf="controlFormulario.emailAlumno.errors.email">El correo no es valido</div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- campo del Imagen del alumno -->
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input type="text" formControlName="imagenAlumno" placeholder="" class="form-control"
+              [ngClass]="{'is-valid': controlFormulario.imagenAlumno.touched && controlFormulario.imagenAlumno.valid,
+                                    'is-invalid': controlFormulario.imagenAlumno.touched && controlFormulario.imagenAlumno.invalid}">
+          </div>
+        </div>
+        <br>
+        <br>
+        <!--botón registrarse-->
+        <div>
+          <div class="form-group">
+            <button type="submit" class="register-button">Guardar Datos</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
 </div>
