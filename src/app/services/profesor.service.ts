@@ -73,6 +73,7 @@ export class ProfesorService {
   loginProfesorService(profesor: Profesor): void {
     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
 
+    // envio unos valores que seran de tipo respuesta
     this.http.post<Respuesta>(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
       (respuesta: Respuesta) => {
         console.log(respuesta);
