@@ -41,7 +41,7 @@ export class EditPerfilAlComponent implements OnInit {
     this.alumno = this.formBuilder.group({
       nickAlumno: [this.alumne.nickAlumno],
       nombreAlumno: [this.alumne.nombreAlumno, [Validators.required, Validators.minLength(2)]],
-      apellidoAlumno: [this.alumne.apellidosAlumno, [Validators.required, Validators.minLength(2)]],
+      apellidosAlumno: [this.alumne.apellidosAlumno, [Validators.required, Validators.minLength(2)]],
       emailAlumno: [this.alumne.emailAlumno, [Validators.required, Validators.email]],
       imagenAlumno: [this.alumne.imagenAlumno]
     });
@@ -68,7 +68,7 @@ export class EditPerfilAlComponent implements OnInit {
       console.log(this.modificarAlumno);
 
       //si todos los datos y campos son correctos se muestra la ventana emergente
-      Swal.fire('Los datos introducidos son corectos2');
+     // Swal.fire('Los datos introducidos son corectos2');
 
       // Llamamos a la función comprobarUsuarioService(está en el alumnoService) y le pasamos el objeto con todos los datos del Alumno
       this.alu.editarDatosPerfilAl(this.alumne).subscribe(

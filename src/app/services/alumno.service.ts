@@ -13,7 +13,7 @@ import { Contrasenyas } from '../models/Contrasenyas.model';
 })
 export class AlumnoService {
 
-  alumnoObj: Alumno;
+  alumnoObj: Alumno = null;
 
   constructor(private http: HttpClient, private router: Router) { }
 
