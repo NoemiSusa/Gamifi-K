@@ -33,15 +33,26 @@ while($row = mysqli_fetch_assoc($resultado)) {
 }
 
 // $con->close();
+$respuesta;
 
 //si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if (count($datos) === 0) {
 
-  print '{ "msg": "Error al encontrar usuario" }';
+  $respuesta->resultado = false;
+  $respuesta->msg = "Verifica el nick o la contraseña y vuelve a intentarlo";
+  $respuesta->datos = [];
+
+  echo json_encode($respuesta);
+
+  // print '{ "result": false, "msg": "Usuario no encontrado" }';
 
 } else {
 
-  print json_encode($datos);
+  $respuesta->resultado = true;
+  $respuesta->msg = "Usuario correcto";
+  $respuesta->datos = $datos;
+
+  echo json_encode($respuesta);
 
 }
 
