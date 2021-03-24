@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Alumno } from 'src/app/models/alumno.model';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +7,7 @@ import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Contrasenyas } from '../models/Contrasenyas.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,7 @@ export class AlumnoService {
 
   alumnoObj: Alumno;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // Función para comprobar si el usuario que se quiere registrar existe previamente en la DB
   // esta función es llamada por profesro.ts y le pasa el parámetro(nuevoRegistro) y se va al PHP
@@ -31,22 +33,36 @@ export class AlumnoService {
     return this.http.post(`${environment.serverUrl}datosPerfilAl.php`,JSON.stringify(sesion));
   }
 
-  // setprofesor(profesor) {
-  //   this.alumnoObj = profesor;
-  // }
 
-  // getprofesor() {
-  //   return this.alumnoObj;
-  // }
 
-  //función para loguear el alumno.
-  loginAlumnoService(alumno: Alumno): Observable<any> {
-    console.log(alumno.nickAlumno + " " + alumno.contrasenyaAlumno + " Datos del formulario");
+  // Función para loguear el alumno.
+  loginAlumnoService(alumno: Alumno): void{
+
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
-    return this.http.post(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno));
-    //return this.http.post(`${environment.url}db_nube.php`,JSON.stringify(alumno));
-  }
+     this.http.post(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno)).subscribe(
+      (respuesta: Alumno[]) => {
+        console.log(respuesta);
 
+        if (respuesta.length === 0) {
+          console.log("Usuario no existe");
+          // mostrar una alerta con sweet alert
+          Swal.fire('Datos incorrectos',
+          'Verifica el nick o la contraseña y vuelve a intentarlo',
+          'error')
+        }else {
+        console.log("Usuario existe");
+        Swal.fire('Usuario correcto')
+        environment.vsesion = alumno.nickAlumno;
+        this.alumnoObj = respuesta[0];
+        // aqui tengo que llamar el siguiente componente
+        this.router.navigate(['/perfilAlumno']);
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+     )
+}
 
   // Función para editar y modificar los datos del perfil
   public editarDatosPerfilAl(datosPerfil: Alumno): Observable<any>  {
@@ -54,17 +70,8 @@ export class AlumnoService {
   }
 
 
-  // setprofesor(alumno) {
-  //   this.alumnoObj = alumno;
-  // }
 
-  // getprofesor() {
-  //   return this.alumnoObj;
-  // }
-
-
-
-
+// Función para editar contraseña
   comprobarContrasenyaService(modificarContraAl : Contrasenyas):Observable<any>{
     return this.http.post(`${environment.serverUrl}editarContrasenyaAl.php`, JSON.stringify(modificarContraAl));
   }

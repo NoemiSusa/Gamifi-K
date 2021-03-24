@@ -14,6 +14,8 @@ import { PerfilProfesorComponent } from './componentes/profesor/perfil-profesor/
 import { ProfesorComponent } from './componentes/profesor/profesor.component';
 import { RegistroProfesorComponent } from './componentes/profesor/registro-profesor/registro-profesor.component';
 import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/cambiar-contra-al/cambiar-contra-al.component';
+import { EditPerfilAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/edit-perfil-al.component';
+
 
 
 const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
@@ -29,9 +31,9 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'logoutProfesor', component: LogoutProfesorComponent },
   { path: 'logoutAlumno', component: LogoutAlumnoComponent},
   { path: 'editPerfil' , component: EditPerfilComponent},
+  { path: 'editPerfilAl' , component:EditPerfilAlComponent},
   { path: 'cambiarContraProfesor', component: CambiarContraProfesorComponent},
-  {path: 'cambiarContraAlumno', component: CambiarContraAlComponent},
-
+  { path: 'cambiarContraAl', component: CambiarContraAlComponent} ,
   { path: '**', redirectTo: 'inicio'}
 ];
 
