@@ -21,6 +21,10 @@ import { EditPerfilComponent } from './componentes/profesor/perfil-profesor/edit
 import { CambiarContraProfesorComponent } from './componentes/profesor/perfil-profesor/edit-perfil/cambiar-contra-profesor/cambiar-contra-profesor.component';
 import { EditPerfilAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/edit-perfil-al.component';
 import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/cambiar-contra-al/cambiar-contra-al.component';
+import { DesktopComponent } from './componentes/inicio/desktop/desktop.component';
+import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/generar-ranking.component';
+import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
+import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edi
     EditPerfilComponent,
     CambiarContraProfesorComponent,
     EditPerfilAlComponent,
-    CambiarContraAlComponent
+    CambiarContraAlComponent,
+    DesktopComponent,
+    GenerarRankingComponent,
+    ListarRankingsComponent,
+    EditarRankingComponent
   ],
   imports: [
     FormsModule,

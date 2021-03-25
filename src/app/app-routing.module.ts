@@ -15,6 +15,10 @@ import { ProfesorComponent } from './componentes/profesor/profesor.component';
 import { RegistroProfesorComponent } from './componentes/profesor/registro-profesor/registro-profesor.component';
 import { CambiarContraAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/cambiar-contra-al/cambiar-contra-al.component';
 import { EditPerfilAlComponent } from './componentes/alumno/perfil-alumno/edit-perfil-al/edit-perfil-al.component';
+import { DesktopComponent } from './componentes/inicio/desktop/desktop.component';
+import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/generar-ranking.component';
+import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
+import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
 
 
 
@@ -34,6 +38,10 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'editPerfilAl' , component:EditPerfilAlComponent},
   { path: 'cambiarContraProfesor', component: CambiarContraProfesorComponent},
   { path: 'cambiarContraAl', component: CambiarContraAlComponent} ,
+  { path: 'desktop', component: DesktopComponent},
+  { path: 'generarRanking', component: GenerarRankingComponent},
+  { path: 'listarRankings', component: ListarRankingsComponent},
+  { path: 'editarRanking', component: EditarRankingComponent},
   { path: '**', redirectTo: 'inicio'}
 ];
 
