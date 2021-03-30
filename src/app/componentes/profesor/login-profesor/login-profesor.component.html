@@ -18,7 +18,7 @@
               [ngClass]="{'is-valid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.valid,
                   'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">
               <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
-                  <div *ngIf="controlFormulario.nickProfesor.errors.required"></div>
+                  <div *ngIf="controlFormulario.nickProfesor.errors.required">Este campo es obligatorio</div>
               </div>
           </div>
 
