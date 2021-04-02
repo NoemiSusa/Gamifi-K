@@ -15,7 +15,7 @@ require 'conBDLocal.php';
 // creamos la conexión
 $con = conexion();
 
-$query = "SELECT * from `profesor` WHERE nickProfesor='$params->nickProfesor' AND contrasenyaProfesor='$params->contrasenyaProfesor'";
+$query = "SELECT * from profesor WHERE nickProfesor='".$params->nickProfesor."' AND contrasenyaProfesor='".$params->contrasenyaProfesor."'";
 
 $resultado = mysqli_query($con, $query);
 
@@ -31,7 +31,7 @@ while($row = mysqli_fetch_assoc($resultado)) {
   // aqui vamos a poner la variable de sesion "CREO"
   $conectado = true;
 }
-
+$con->close();
 // $con->close();
 $respuesta;
 
@@ -42,7 +42,7 @@ if (count($datos) === 0) {
   $respuesta->msg = "Verifica el nick o la contraseña y vuelve a intentarlo";
   $respuesta->datos = [];
 
-  echo json_encode($respuesta);
+  print json_encode($respuesta);
 
   // print '{ "result": false, "msg": "Usuario no encontrado" }';
 
@@ -52,7 +52,7 @@ if (count($datos) === 0) {
   $respuesta->msg = "Usuario correcto";
   $respuesta->datos = $datos;
 
-  echo json_encode($respuesta);
+  print json_encode($respuesta);
 
 }
 
