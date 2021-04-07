@@ -24,7 +24,7 @@ $params = json_decode($json);
 									nombreAlumno='".$params->nombreAlumno."',
 									apellidosAlumno='".$params->apellidosAlumno."',
 									emailAlumno='".$params->emailAlumno."',
-									imagenAlumno='".$params->imagenAlumno. "'
+									imagenAlumno='".$params->imagenAlumno."'
 								WHERE nickAlumno='".$params->nickAlumno."'";
 
 

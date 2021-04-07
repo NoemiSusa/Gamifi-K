@@ -37,6 +37,24 @@ export class EditPerfilComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // del service llamo al getprofesor para recoger el objeto profesor
+   /* this.profesore = this.profe.getprofesor();
+    console.log(this.profesore);*/
+
+    // usamos el servicio para pedir todos los campos del profesor logeado
+    // this.profeperfil.pedirDatosProfesor(this.sesion).subscribe(
+    //   (resp: Profesor[])=>{
+    //     this.profesore = resp[0];
+
+
+    //     // console.log(resp);
+
+    //   },
+    //   (error: any) => {
+    //     console.log(error);
+    //   }
+    // )
+
     // profeperfil instancia la clase de profesorservice profesorObj, y guarda el objeto en profesore, que es lo que se visualiza para editar perfil
     this.profesore = this.profeperfil.profesorObj;
 
@@ -45,6 +63,8 @@ export class EditPerfilComponent implements OnInit {
     this.profesor = this.formBuilder.group({
       //camp bbdd : [valor que printara al html,[validadors del formulari reactiu]]
       nickProfesor:[this.profesore.nickProfesor],
+      contrasenyaProfesor: [this.profesore.contrasenyaProfesor],
+      // confirmarContrasenyaProfesor: [this.profesore.contrasenyaProfesor],
       nombreProfesor: [this.profesore.nombreProfesor, [Validators.required, Validators.minLength(2)]],
       apellidosProfesor: [this.profesore.apellidosProfesor, [Validators.required, Validators.minLength(2)]],
       emailProfesor: [this.profesore.emailProfesor, [Validators.required, Validators.email]],
@@ -127,3 +147,5 @@ export class EditPerfilComponent implements OnInit {
 
 
 }
+
+

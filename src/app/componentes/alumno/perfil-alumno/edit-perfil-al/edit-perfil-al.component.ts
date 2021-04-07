@@ -40,6 +40,7 @@ export class EditPerfilAlComponent implements OnInit {
     //creamos las condiciones de los campos del formulario de registro
     this.alumno = this.formBuilder.group({
       nickAlumno: [this.alumne.nickAlumno],
+      contrasenyaAlumno: [this.alumne.contrasenyaAlumno],
       nombreAlumno: [this.alumne.nombreAlumno, [Validators.required, Validators.minLength(2)]],
       apellidosAlumno: [this.alumne.apellidosAlumno, [Validators.required, Validators.minLength(2)]],
       emailAlumno: [this.alumne.emailAlumno, [Validators.required, Validators.email]],
@@ -59,6 +60,8 @@ export class EditPerfilAlComponent implements OnInit {
     //guardamos los datos del nuevo usuario en un registro nuevo
     this.modificarAlumno = new Alumno(
       this.alumno.controls.nickAlumno.value,
+      this.alumno.controls.contrasenyaAlumno.value,
+      this.alumno.controls.contrasenyaAlumno.value,
       this.alumno.controls.nombreAlumno.value,
       this.alumno.controls.apellidosAlumno.value,
       this.alumno.controls.emailAlumno.value,
@@ -71,12 +74,12 @@ export class EditPerfilAlComponent implements OnInit {
      // Swal.fire('Los datos introducidos son corectos2');
 
       // Llamamos a la función comprobarUsuarioService(está en el alumnoService) y le pasamos el objeto con todos los datos del Alumno
-      this.alu.editarDatosPerfilAl(this.alumne).subscribe(
+      this.alu.editarDatosPerfilAl(this.modificarAlumno).subscribe(
         (datos: any) => {
           console.log(datos);
         if (datos == 1) {
           Swal.fire(
-            'Bine',
+            'Bien',
             'Has actualizado tu perfil',
             'success'
           );
