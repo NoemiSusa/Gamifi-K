@@ -19,3 +19,13 @@ CREATE TABLE alumno
  	contrasenyaAlumno VARCHAR (50) NOT NULL,
  	imagenAlumno VARCHAR (50) NOT null
  	);
+
+Create table Rankings
+( nombreRanking VARCHAR(30) NOT null,
+nickProfesorRK VARCHAR(30) NOT null,
+fechaInicio date NOT null,
+codigoAcceso VARCHAR(30) NOT null,
+fechaFinal date,
+PRIMARY KEY (nombreRanking,nickProfesor,fechaInicio),
+FOREIGN KEY (nickProfesor) REFERENCES profesor (nickProfesor)
+);
