@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Contrasenyas } from '../models/Contrasenyas.model';
+import { Respuesta } from '../models/respuesta.model';
 
 
 @Injectable({
@@ -39,21 +40,25 @@ export class AlumnoService {
   loginAlumnoService(alumno: Alumno): void{
 
     // cojo el valor de la variable global URL y le paso ademas el archivo que tengo creado en la carpeta servidor  (db.php)
-     this.http.post(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno)).subscribe(
-      (respuesta: Alumno[]) => {
+     this.http.post<Respuesta>(`${environment.serverUrl}loginAlumno.php`, JSON.stringify(alumno)).subscribe(
+      (respuesta: Respuesta) => {
         console.log(respuesta);
 
-        if (respuesta.length === 0) {
-          console.log("Usuario no existe");
+        if (!respuesta.resultado) {
+          console.log("Alumno no existe");
           // mostrar una alerta con sweet alert
-          Swal.fire('Datos incorrectos',
-          'Verifica el nick o la contraseña y vuelve a intentarlo',
+          Swal.fire('Datos del alumno incorrectos',
+          respuesta.msg,
           'error')
         }else {
-        console.log("Usuario existe");
-        Swal.fire('Usuario correcto')
+        console.log("Usuario Alumno existe");
+        Swal.fire(
+          'Bienvenido/a ' + respuesta.datos[0].nickAlumno,
+          '',
+          "success"
+        );
         environment.vsesion = alumno.nickAlumno;
-        this.alumnoObj = respuesta[0];
+        this.alumnoObj = respuesta.datos[0];
         // aqui tengo que llamar el siguiente componente
         this.router.navigate(['/perfilAlumno']);
         }

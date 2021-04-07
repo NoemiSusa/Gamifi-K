@@ -35,12 +35,15 @@ $con->close();
 
 //si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if (count($datos) === 0) {
-  print '{ "msg": "Error al encontrar usuario" }';
-// print json_encode(0);
+  $respuesta->resultado = false;
+  $respuesta->msg = "Verifica el nick y/o la contraseña y vuelve a intentarlo";
+  $respuesta->datos = [];
+  echo json_encode($respuesta);
 } else {
-
-  print json_encode($datos);
-
+  $respuesta->resultado = true;
+  $respuesta->msg = "Usuario correcto";
+  $respuesta->datos = $datos;
+  echo json_encode($respuesta);
 }
 
 ?>
