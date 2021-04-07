@@ -32,6 +32,7 @@ while($row = mysqli_fetch_assoc($resultado)) {
   $conectado = true;
 }
 $con->close();
+$respuesta = new \stdClass();
 
 //si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if (count($datos) === 0) {
