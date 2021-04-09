@@ -26,6 +26,17 @@ nickProfesorRK VARCHAR(30) NOT null,
 fechaInicio date NOT null,
 codigoAcceso VARCHAR(30) NOT null,
 fechaFinal date,
-PRIMARY KEY (nombreRanking,nickProfesor,fechaInicio),
-FOREIGN KEY (nickProfesor) REFERENCES profesor (nickProfesor)
+PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
+FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor)
 );
+
+create table tareas
+(nombreTarea varchar(30),
+ nickAlumnoTarea varchar(30),
+ puntuacion integer,
+ nombreRankingTarea varchar(30),
+ PRIMARY KEY (nombreTarea,nickAlumnoTarea),
+ FOREIGN KEY (nombreRankingTarea) REFERENCES rankings (nombreRanking),
+ FOREIGN KEY (nickAlumnoTarea) REFERENCES alumno (nickAlumno)
+);
+
