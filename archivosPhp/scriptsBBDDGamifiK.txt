@@ -20,10 +20,10 @@ CREATE TABLE alumno
  	imagenAlumno VARCHAR (50) NOT null
  	);
 
-Create table Rankings
+Create table rankings
 ( nombreRanking VARCHAR(30) NOT null,
 nickProfesorRK VARCHAR(30) NOT null,
-fechaInicio date NOT null,
+fechaInicio VARCHAR(10) NOT null,
 codigoAcceso VARCHAR(30) NOT null,
 fechaFinal date,
 PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
