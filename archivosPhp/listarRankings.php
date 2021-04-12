@@ -11,7 +11,7 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "SELECT * FROM rankings where nickprofesorRK='".$params->nickprofesor."'";
+$query = "SELECT * FROM rankings where nickProfesorRK='".$params->nickprofesor."'";
 $resultado = mysqli_query($conexion, $query);
 
 $datos = [];

@@ -56,13 +56,13 @@ if (count($datos) === 0) {
   $respuesta->datos = new \stdClass();
   $respuesta->datos->profesor = $datos;
 
-  // $query = "SELECT * FROM rankings where nickprofesorRK='".$params->nickprofesor."'";
-  // $resultado = mysqli_query($con, $query);
-  // $respuesta->datos->rankings = [];
+  $query = "SELECT * FROM rankings where nickProfesorRK='".$params->nickprofesor."'";
+  $resultado = mysqli_query($con, $query);
+  $respuesta->datos->rankings = [];
 
-  // while ($row = mysqli_fetch_assoc($resultado)) {
-  //   $respuesta->datos->rankings[] = $row;
-  // }
+  while ($row = mysqli_fetch_assoc($resultado)) {
+    $respuesta->datos->rankings[] = $row;
+  }
   $con->close();
 
   echo json_encode($respuesta);
