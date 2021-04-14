@@ -25,7 +25,7 @@ Create table rankings
   nombreRanking VARCHAR(30) NOT null,
   nickProfesorRK VARCHAR(30) NOT null,
   fechaInicio VARCHAR(10) NOT null,
-  codigoAcceso integer NOT null,
+  codigoAcceso BIGINT(13) NOT NULL,
   fechaFinal VARCHAR(10),
   PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
   FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor)

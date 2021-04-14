@@ -17,14 +17,14 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 
-//query que mostra les dades de l'alumne i la puntuació en 2 columnes i una fila per alumne
-$query = "SELECT concat( al.nickAlumno, concat( ' ', concat( al.apellidosAlumno, concat( ' ', concat( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, sum( t.puntuacion ) AS Puntuación
+//query que mostra les dades de l'alumne i la puntuació en 2 columnes i una fila per alumne ordenat de major a menor puntuació
+$query = "SELECT CONCAT( al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, SUM( t.puntuacion ) AS Puntuación
           FROM alumno al, rankings r, tareas t
-          WHERE r.nombreRanking = '".$params->nombreRanking."'
-            AND t.nombreRankingTarea = r.nombreRanking
-            AND t.nickAlumnoTarea = al.nickAlumno
-          GROUP BY al.nickAlumno
-          ORDER BY al.apellidosAlumno";
+          WHERE r.nombreRanking = 'rkg1'
+          AND t.nombreRankingTarea = r.nombreRanking
+          AND t.nickAlumnoTarea = al.nickAlumno
+          GROUP BY t.nickAlumnoTarea
+          ORDER BY SUM( t.puntuacion ) DESC";
 
 
 $resultado = mysqli_query($conexion, $query);
@@ -35,7 +35,7 @@ $datos = [];
 // bucle para que guarde los datos encontrados con el select de la consulta en el array
 while ($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
-
+}
 
 
 // cerramos la conexión a la BD
