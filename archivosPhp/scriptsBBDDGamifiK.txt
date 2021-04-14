@@ -21,22 +21,24 @@ CREATE TABLE alumno
  	);
 
 Create table rankings
-( nombreRanking VARCHAR(30) NOT null,
-nickProfesorRK VARCHAR(30) NOT null,
-fechaInicio VARCHAR(10) NOT null,
-codigoAcceso VARCHAR(30) NOT null,
-fechaFinal VARCHAR(10),
-PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
-FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor)
-);
+  (
+  nombreRanking VARCHAR(30) NOT null,
+  nickProfesorRK VARCHAR(30) NOT null,
+  fechaInicio VARCHAR(10) NOT null,
+  codigoAcceso integer NOT null,
+  fechaFinal VARCHAR(10),
+  PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
+  FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor)
+  );
 
 create table tareas
-(nombreTarea varchar(30),
- nickAlumnoTarea varchar(30),
- puntuacion double,
- nombreRankingTarea varchar(30),
- PRIMARY KEY (nombreTarea,nickAlumnoTarea,nombreRankingTarea),
- FOREIGN KEY (nombreRankingTarea) REFERENCES rankings (nombreRanking),
- FOREIGN KEY (nickAlumnoTarea) REFERENCES alumno (nickAlumno)
-);
+  (
+  nombreTarea varchar(30),
+  nickAlumnoTarea varchar(30),
+  puntuacion double,
+  nombreRankingTarea varchar(30),
+  PRIMARY KEY (nombreTarea,nickAlumnoTarea,nombreRankingTarea),
+  FOREIGN KEY (nombreRankingTarea) REFERENCES rankings (nombreRanking),
+  FOREIGN KEY (nickAlumnoTarea) REFERENCES alumno (nickAlumno)
+  );
 

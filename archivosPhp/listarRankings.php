@@ -11,6 +11,7 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
+//lista todos los rankings de un profesor
 $query = "SELECT * FROM rankings where nickProfesorRK='".$params->nickprofesor."'";
 $resultado = mysqli_query($conexion, $query);
 
@@ -21,6 +22,21 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
 $conexion->close();
 
-print json_encode($datos);
+if(count($datos)==0){
+  $respuesta->resultado = false;
+  $respuesta->msg = "No existen rankings";
+  $respuesta->datos = [];
+
+  print json_encode($respuesta);
+
+}else {
+
+  $respuesta->resultado = true;
+  $respuesta->msg = "Aquí van los rankings";
+  $respuesta->datos = $datos;
+
+  print json_encode($respuesta);
+
+}
 
 ?>
