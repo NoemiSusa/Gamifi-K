@@ -1,3 +1,4 @@
+import { Ranking } from 'src/app/models/ranking.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,50 +26,10 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}comprovacioRegistre.php`, JSON.stringify(nuevoRegistro));
   }
 
-  //************ Recojer toda la info del Usuario Logueado para poderla llamar siempre que la necesites ***************************** */
-  //**************************** quitar esta función  de aquí y del service Alumno **************************************** */
-  //****** realitzar el subscribe del login aquí perquè sempre que necessiti info del objecte la tinguem aquí al service per poder fer un get del usuari des del component al service. ******************************************** */
-
   // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de vsesion con el nickProfesor
   public pedirDatosProfesor(sesion: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`, JSON.stringify(sesion));
   }
-
-  // //
-  //   loginProfesorService(profesor: Profesor): void {
-  //     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
-
-  //     this.http.post(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
-  //       (respuesta: Profesor[]) => {
-  //         console.log(respuesta);
-
-  //         // if (respuesta[0] == null) {
-  //           if (respuesta.length === 0) {
-  //           console.log("Usuario no existe");
-  //           // mostrar una alerta con sweet alert
-  //           Swal.fire(
-  //             'Datos incorrectos',
-  //             'Verifica el nick o la contraseña y vuelve a intentarlo',
-  //             'error'
-  //           )
-  //         } else {
-  //           console.log("Usuario existe");
-  //           // aqui tengo que llamar el siguiente componente
-  //           Swal.fire('Usuario correcto')
-  //           environment.vsesion = profesor.nickProfesor;
-  //           // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
-  //           this.profesorObj = respuesta[0];
-  //           // Swal.fire(environment.vsesion+ " Variable de sesion ")
-  //           this.router.navigate(['/perfilProfesor']);
-  //         }
-  //       },
-  //       (error: any) => {
-  //         console.log(error);
-  //       }
-  //     )
-
-  //   }
-
 
   loginProfesorService(profesor: Profesor): void {
     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
@@ -126,6 +87,12 @@ export class ProfesorService {
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
+
+  altaRankingService(rankingTs:Ranking):Observable<any>{
+    return this.http.post(`${environment.serverUrl}generarRanking.php`, JSON.stringify(rankingTs));
+     
+  }
+
 
 
 

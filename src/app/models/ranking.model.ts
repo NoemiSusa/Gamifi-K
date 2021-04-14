@@ -3,8 +3,8 @@ export class Ranking {
   constructor(
     public nombreRanking?: string,
     public nickProfesorRK?: string,
-    public fechaInicio?: Date,
-    public codigoAcceso?: string,
+    public fechaInicio?: string,
+    public codigoAcceso?: number,
     public fechaFinal?: Date
   ) { }
 

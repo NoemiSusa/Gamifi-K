@@ -7,7 +7,6 @@ header('Content-Type: application/json');
 // importamos el archivo con la conexión a la BD
 require_once 'conBDLocal.php';
 
-
 class Insertar {
   //creamos la función y le pasamos el objeto con los datos
   public function insertarRegistroProfesores($param){

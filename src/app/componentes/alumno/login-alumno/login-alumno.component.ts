@@ -83,5 +83,3 @@ export class LoginAlumnoComponent implements OnInit {
   }
 
 }
-
-
