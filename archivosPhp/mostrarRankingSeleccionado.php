@@ -17,10 +17,15 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 
-/** revisar la query de la base de datos **/
-$query = "SELECT al.nickAlumno, al.apellidosAlumno, al.nombreAlumno, t.puntuacion
-            FROM alumno al, rankings r, tareas t
-            WHERE r.nombreRanking='".$params->nombreRanking."' and t.nombreRankingTarea = r.nombreRanking and al.nickAlumno ='".$params->nickAlumno."' and t.nickAlumnoTarea = al.nickAlumno";
+//query que mostra les dades de l'alumne i la puntuació en 2 columnes i una fila per alumne
+$query = "SELECT concat( al.nickAlumno, concat( ' ', concat( al.apellidosAlumno, concat( ' ', concat( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, sum( t.puntuacion ) AS Puntuación
+          FROM alumno al, rankings r, tareas t
+          WHERE r.nombreRanking = '".$params->nombreRanking."'
+            AND t.nombreRankingTarea = r.nombreRanking
+            AND t.nickAlumnoTarea = al.nickAlumno
+          GROUP BY al.nickAlumno
+          ORDER BY al.apellidosAlumno";
+
 
 $resultado = mysqli_query($conexion, $query);
 
@@ -30,6 +35,8 @@ $datos = [];
 // bucle para que guarde los datos encontrados con el select de la consulta en el array
 while ($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
+
+
 
 // cerramos la conexión a la BD
 $conexion->close();
@@ -42,3 +49,4 @@ print json_encode($datos);
 }
 
 ?>
+
