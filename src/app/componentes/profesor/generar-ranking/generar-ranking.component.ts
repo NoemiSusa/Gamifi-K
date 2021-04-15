@@ -83,7 +83,7 @@ this.rankingProfesor = this.formBuilder.group({
 
         (errorDelProfesorServiceTs:any)=>{
           console.log(errorDelProfesorServiceTs);
-          Swal.fire('Titulo Error','MensajeAlerta','warning');
+          Swal.fire('Fallo','Fallo desconocido en el servidor','error');
         }
         
    

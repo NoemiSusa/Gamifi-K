@@ -89,7 +89,7 @@ export class ProfesorService {
   }
 
   altaRankingService(rankingTs:Ranking):Observable<any>{
-    return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
+    return this.http.post(`${environment.serverUrl}comprobacionRankingg.php`, JSON.stringify(rankingTs));
      
   }
 
