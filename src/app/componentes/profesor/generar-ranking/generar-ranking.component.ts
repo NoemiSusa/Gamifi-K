@@ -1,3 +1,4 @@
+import { Respuesta } from './../../../models/respuesta.model';
 import  Swal  from 'sweetalert2';
 // import { environment } from './../../../../environments/environment';
 import { DatePipe, formatDate } from '@angular/common';
@@ -67,10 +68,19 @@ this.rankingProfesor = this.formBuilder.group({
       console.log(this.nuevoRanking);
 
       this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
-        (datosDelProfesorServiceTs:any)=>{
-          console.log(datosDelProfesorServiceTs);
-          Swal.fire('Titulo Succes','Ha funcionado','success');
+        (datosDelProfesorServiceTsPHP:any)=>{
+          console.log(datosDelProfesorServiceTsPHP);
+          if(datosDelProfesorServiceTsPHP.resultado){
+            Swal.fire('Genial',datosDelProfesorServiceTsPHP.msg,'success');
+          }
+
+          // si es false
+          else if (!datosDelProfesorServiceTsPHP.resultado){
+            Swal.fire('Problemas',datosDelProfesorServiceTsPHP.msg,'warning');
+          }
+       
         },
+
         (errorDelProfesorServiceTs:any)=>{
           console.log(errorDelProfesorServiceTs);
           Swal.fire('Titulo Error','MensajeAlerta','warning');

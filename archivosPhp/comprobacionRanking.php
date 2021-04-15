@@ -21,20 +21,48 @@ require_once 'generarRanking.php';
 $conexion = conexion();
 
 //consulta que se va a realizar para comprovar si existe el nick
-$query = "SELECT * FROM profesor WHERE nickProfesor='$params->nickProfesor'";
+$query = "SELECT * FROM rankings WHERE nickProfesorRK='".$params->nickProfesorRK."' AND nombreRanking ='".$params->nombreRanking."' AND fechaInicio = '".$params->fechaInicio."'";
+
+ 
 // realizamos la consulta a la BD y recojemos el resultado en $resultado que será true o false en función de se ejecuta o no.
 $resultado = mysqli_query($conexion, $query);
-
-//iniciamos la variable $datos como array donde vamos a guardar los datos que obtengamos de la consulta.
-$datos= [];
-
-// hacemos un bucle para que mientras encuentre datos el resultado del select los vaya guardando en la variable datos []
+$datos=[];
 while($row = mysqli_fetch_assoc($resultado)) {
-  // si el profesor existe obtiene datos y los guarda en el array $datos
+  // si el ranking existe obtiene datos y los guarda en el array $datos
   $datos[] = $row;
 }
-//cerramos la conexion con la BD
+
 $conexion->close();
+
+$respuesta = new \stdClass(); 
+
+
+if (count($datos)!=0){
+
+  $respuesta->resultado = false;
+  $respuesta->msg = "Error hay datos en la base de datos";
+  echo json_encode($respuesta);
+}
+
+else if (count($datos)==0) {
+        $datosRegistro=new GenerarRanking();
+        // el insertado es lo que me devuelve de la clase generarRanking.php
+        $insertado=$datosRegistro->insertRanking($params);
+  if($insertado==1){
+    $respuesta->resultado = true;
+        $respuesta->msg = "Ranking generado correctamente";
+        echo json_encode($respuesta);
+  }
+  else if ($insertado==0){
+    $respuesta->resultado = false;
+    $respuesta->msg = "Fallo al insertar los datos";
+    echo json_encode($respuesta);
+  }
+
+
+}
+
+
 
 
 
