@@ -68,6 +68,7 @@ this.rankingProfesor = this.formBuilder.group({
       console.log(this.nuevoRanking);
 
       this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
+        // lo primero si ha funcionado
         (datosDelProfesorServiceTsPHP:any)=>{
           console.log(datosDelProfesorServiceTsPHP);
           if(datosDelProfesorServiceTsPHP.resultado){
@@ -80,7 +81,7 @@ this.rankingProfesor = this.formBuilder.group({
           }
        
         },
-
+//lo segundo que se espera es si no hay datos
         (errorDelProfesorServiceTs:any)=>{
           console.log(errorDelProfesorServiceTs);
           Swal.fire('Fallo','Fallo desconocido en el servidor','error');
