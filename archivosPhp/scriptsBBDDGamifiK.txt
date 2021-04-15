@@ -35,8 +35,8 @@ create table tareas
   (
   nombreTarea varchar(30),
   nickAlumnoTarea varchar(30),
-  puntuacion double,
   nombreRankingTarea varchar(30),
+  puntuacion double,
   PRIMARY KEY (nombreTarea,nickAlumnoTarea,nombreRankingTarea),
   FOREIGN KEY (nombreRankingTarea) REFERENCES rankings (nombreRanking),
   FOREIGN KEY (nickAlumnoTarea) REFERENCES alumno (nickAlumno)

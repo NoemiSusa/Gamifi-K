@@ -37,15 +37,25 @@ while ($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
 }
 
-
 // cerramos la conexión a la BD
 $conexion->close();
 
+if (count($datos) === 0) {
 
+  $respuesta->resultado = false;
+  $respuesta->msg = "no hay datos a seleccionar en la tabla";
+  $respuesta->datos = [];
 
+  print json_encode($respuesta);
 
+} else {
 
-print json_encode($datos);
+  $respuesta->resultado = true;
+  $respuesta->msg = "Los datos del ranking son los siguientes";
+  $respuesta->datos = $datos;
+
+  print json_encode($respuesta);
+
 }
 
 ?>

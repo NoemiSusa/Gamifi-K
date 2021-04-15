@@ -11,8 +11,12 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-//lista todos los rankings de un profesor
-$query = "DELETE FROM rankings where nombreRanking = '".$params->nombreRanking."' and nickProfesorRK = '".$params->nickProfesor."'";
+//elimina el ranking seleccionado
+$query = "DELETE FROM rankings
+          where nombreRanking = '".$params->nombreRanking."'
+            and nickProfesorRK = '".$params->nickProfesor."'
+            and fechaInicio = '".$params->fechaInicio."'";
+
 $resultado = mysqli_query($conexion, $query);
 
 $datos = -1;

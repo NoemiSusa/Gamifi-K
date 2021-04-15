@@ -32,7 +32,22 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 // cerramos la conexión a la BD
 $conexion->close();
 
-print json_encode($datos);
+
+if (count($datos) === 0) {
+
+  $respuesta->resultado = false;
+  $respuesta->msg = "no hay datos en la tabla";
+  $respuesta->datos = [];
+
+  print json_encode($respuesta);
+
+} else {
+
+  $respuesta->resultado = true;
+  $respuesta->msg = "datos del ranking";
+  $respuesta->datos = $datos;
+
+  print json_encode($respuesta);
 
 }
 

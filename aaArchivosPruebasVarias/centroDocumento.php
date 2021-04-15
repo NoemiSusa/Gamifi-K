@@ -4,6 +4,11 @@ $conexion = conexion();
 $query= "";
 
 
+//coje la puntuación de un usuario en una tarea concreta
+$query = "SELECT t.puntuacion FROM tareas t where t.nickAlumnoTarea='".$params->nickAlumno."' and t.nombreTarea = '".$params->nombreTarea."'";
+
+
+
 
 
 

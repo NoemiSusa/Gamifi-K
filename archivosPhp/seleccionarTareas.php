@@ -11,11 +11,14 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-//coje la puntuación de un usuario en una tarea concreta
-$query = "SELECT t.puntuacion FROM tareas t where t.nickAlumnoTarea='".$params->nickAlumno."' and t.nombreTarea = '".$params->nombreTarea."'";
-
-
-
+//coje todas las tareas de un ranking de un profesor concreto
+$query = "SELECT t.nombreTarea
+          FROM tareas t, rankings r, profesor p
+          where t.nombreRankingTarea = '".$params->nombreRankingTarea."'
+            and t.nombreRankingTarea = r.nombreRanking
+            and r.nickProfesorRK = '".$params->nickProfesorRK."'
+            and r.nickProfesorRK = p.nickProfesor
+          GROUP by t.nombreTarea";
 
 $resultado = mysqli_query($conexion, $query);
 
