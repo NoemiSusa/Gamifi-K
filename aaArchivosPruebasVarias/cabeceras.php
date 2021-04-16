@@ -14,7 +14,7 @@ $conexion = conexion();
 $query
 
 
-
+/***** aquí va el centro del documento ******/
 
 
 
@@ -37,9 +37,8 @@ $conexion->close();
 
 
 
-print json_encode($datos);
 
-}
+
 
 ?>
 

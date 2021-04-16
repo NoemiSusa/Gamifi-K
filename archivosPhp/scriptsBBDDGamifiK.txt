@@ -22,12 +22,14 @@ CREATE TABLE alumno
 
 Create table rankings
   (
+  idRanking integer auto_increment,
   nombreRanking VARCHAR(30) NOT null,
   nickProfesorRK VARCHAR(30) NOT null,
   fechaInicio VARCHAR(10) NOT null,
   codigoAcceso BIGINT(13) NOT NULL,
   fechaFinal VARCHAR(10),
-  PRIMARY KEY (nombreRanking,nickProfesorRK,fechaInicio),
+  PRIMARY KEY (idRanking),
+  UNIQUE(nombreRanking,nickProfesorRK,fechaInicio),
   FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor) on delete cascade
   );
 
@@ -35,10 +37,10 @@ create table tareas
   (
   nombreTarea varchar(30),
   nickAlumnoTarea varchar(30),
-  nombreRankingTarea varchar(30),
+  idRankingTarea integer,
   puntuacion double,
-  PRIMARY KEY (nombreTarea,nickAlumnoTarea,nombreRankingTarea),
-  FOREIGN KEY (nombreRankingTarea) REFERENCES rankings (nombreRanking) on delete cascade,
+  PRIMARY KEY (nombreTarea,nickAlumnoTarea,idRankingTarea),
+  FOREIGN KEY (idRankingTarea) REFERENCES rankings (idRanking) on delete cascade,
   FOREIGN KEY (nickAlumnoTarea) REFERENCES alumno (nickAlumno) on delete cascade
   );
 

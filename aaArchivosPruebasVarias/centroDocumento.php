@@ -11,8 +11,21 @@ $query = "SELECT t.puntuacion FROM tareas t where t.nickAlumnoTarea='".$params->
 
 
 //eliminar en cascade ponerlo en la sentencia de create table
-FOREIGN KEY (dni) REFERENCES clientes (dni) ON DELETE CASCADE
-FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor) on delete cascade
+$query = FOREIGN KEY (dni) REFERENCES clientes (dni) ON DELETE CASCADE;
+$query = FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor) on delete cascade
+
+//Listado de tareas: coje todas las tareas de un ranking de un profesor concreto
+$query = "SELECT t.nombreTarea
+          FROM tareas t, rankings r, profesor p
+          where t.nombreRankingTarea = '".$params->nombreRankingTarea."'
+            and t.nombreRankingTarea = r.nombreRanking
+            and r.nickProfesorRK = '".$params->nickProfesorRK."'
+            and r.nickProfesorRK = p.nickProfesor
+            and r.fechaInicio = '".$params->fechaInicio."'
+          GROUP by t.nombreTarea";
+
+
+
 
 
 
@@ -28,4 +41,5 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 }
 // cerramos la conexión a la BD
 $conexion->close();
+
 ?>
