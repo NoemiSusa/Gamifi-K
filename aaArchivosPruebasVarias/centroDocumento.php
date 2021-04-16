@@ -10,8 +10,9 @@ $query = "SELECT t.puntuacion FROM tareas t where t.nickAlumnoTarea='".$params->
 
 
 
-
-
+//eliminar en cascade ponerlo en la sentencia de create table
+FOREIGN KEY (dni) REFERENCES clientes (dni) ON DELETE CASCADE
+FOREIGN KEY (nickProfesorRK) REFERENCES profesor (nickProfesor) on delete cascade
 
 
 
