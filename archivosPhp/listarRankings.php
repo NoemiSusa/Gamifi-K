@@ -11,7 +11,7 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-//lista todos los rankings de un profesor
+//lista todos los rankings de un profesor (es el que le pasamos como parametro)
 $query = "SELECT * FROM rankings where nickProfesorRK='".$params->nickprofesor."'";
 $resultado = mysqli_query($conexion, $query);
 

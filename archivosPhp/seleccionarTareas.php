@@ -13,11 +13,9 @@ $conexion = conexion();
 
 //coje todas las tareas de un ranking de un profesor concreto
 $query = "SELECT t.nombreTarea
-          FROM tareas t, rankings r, profesor p
+          FROM tareas t, rankings r
           where t.idRankingTarea = '".$params->idRanking."'
             and t.idRankingTarea = r.idRanking
-            and r.nickProfesorRK = '".$params->nickProfesorRK."'
-            and r.nickProfesorRK = p.nickProfesor
           GROUP by t.nombreTarea";
 
 $resultado = mysqli_query($conexion, $query);

@@ -15,7 +15,7 @@ $query = "UPDATE tareas
           SET puntuacion = '".$params->nuevaPuntuacion."'
           where nickAlumnoTarea='".$params->nickAlumno."'
             and nombreTarea = '".$params->nombreTarea."'
-            and nombreRankingTarea = '".$params->nombreRankingRK."'";
+            and idRankingTarea = '".$params->idRankingRK."'";
 
 $resultado = mysqli_query($conexion, $query);
 

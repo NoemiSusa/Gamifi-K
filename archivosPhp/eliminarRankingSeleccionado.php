@@ -13,7 +13,7 @@ $conexion = conexion();
 
 //elimina el ranking seleccionado
 $query = "DELETE FROM rankings
-          where nombreRanking = '".$params->nombreRanking."'
+          where idRanking = '".$params->idRanking."'
             and nickProfesorRK = '".$params->nickProfesor."'
             and fechaInicio = '".$params->fechaInicio."'";
 
