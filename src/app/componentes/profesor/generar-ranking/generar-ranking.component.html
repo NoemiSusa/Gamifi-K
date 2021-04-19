@@ -1,1 +1,64 @@
 <p>generar-ranking works!</p>
+
+
+<body>
+
+    <h1 class="col-6 container-fluid">Generar Ranking</h1>
+
+
+    <div class="container-fluid mt-2">
+
+        <div class="text-center">
+            <button class="btn register-title ml-5" type="button" [routerLink]="'/inicio'" alt="">Volver a
+        INICIO</button>&nbsp;&nbsp;&nbsp;
+
+            <button class="btn register-title mr-5" type="button" [routerLink]="'/loginProfesor'" alt="">LOGIN</button>
+        </div>
+
+    </div>
+    <div class="container col-6 container-fluid">
+        <!-- formulario de recogida de datos -->
+        <form [formGroup]="rankingProfesor" (ngSubmit)="formularioRankingFuncion()">
+
+            <!-- campo del nombreRanking (La variable formControlName es una etiqueta que atiende los cambios al valor del control)-->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="text" formControlName="nombreRanking" placeholder="Nombre Ranking" class="form-control" [ngClass]="{'is-valid': controlFormulario.nombreRanking.touched && controlFormulario.nombreRanking.valid,
+                    'is-invalid': controlFormulario.nombreRanking.touched && controlFormulario.nombreRanking.invalid}">
+
+                    <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                    <div *ngIf="submitted && controlFormulario.nombreRanking.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.nombreRanking.errors.required">El nombre del ranking es obligatorio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- campo del contraseña del Profesor -->
+
+            <!-- campo del fechaInicio -->
+            <!-- <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Fecha Inicio</label>
+                    <input type="date" formControlName="fechaInicio" placeholder="Fecha Inicio" class="form-control" [ngClass]="{'is-valid': controlFormulario.fechaInicio.touched && controlFormulario.fechaInicio.valid,
+                  'is-invalid': controlFormulario.fechaInicio.touched && controlFormulario.fechaInicio.invalid}"> -->
+
+                    <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                    <!-- <div *ngIf="submitted && controlFormulario.fechaInicio.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.fechaInicio.errors.required">El nombre es obligatorio</div>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+            <br>
+            <br>
+            <!--botón registrarse-->
+            <div>
+                <div class="form-group">
+                    <button type="submit" class="register-button">Crear Ranking</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

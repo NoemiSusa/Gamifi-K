@@ -7,7 +7,7 @@ export class Respuesta{
     public msg: string,
 
     // los datos que sera el id usuario o contraseña usuario
-    public datos: any
+    public datos?: any
   ){}
 }
 

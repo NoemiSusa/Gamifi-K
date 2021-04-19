@@ -1,3 +1,4 @@
+import { Ranking } from 'src/app/models/ranking.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -86,6 +87,12 @@ export class ProfesorService {
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
+
+  altaRankingService(rankingTs:Ranking):Observable<any>{
+    return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
+     
+  }
+
 
 
 
