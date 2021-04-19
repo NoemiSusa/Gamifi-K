@@ -23,14 +23,16 @@ export class EditPerfilComponent implements OnInit {
   modificarProfe: Profesor;
   sesion: string = environment.vsesion;
   // sesion: string = 'adminNick';
-
+//guardamos los datos que vamos a cambiar
   profesore: Profesor;
   perfilProfesor: any;
 
   constructor(
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
     private formBuilder: FormBuilder,
-    //creamos el objeto profe del ServiceProfesor
+
+
+    //creamos el objeto profe del ServiceProfesor que es el objeto que tenemos guardado en el servicio
     private profeperfil: ProfesorService,
     private profe: ProfesorService
   ) { }

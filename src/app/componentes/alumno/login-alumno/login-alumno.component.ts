@@ -71,7 +71,6 @@ export class LoginAlumnoComponent implements OnInit {
 
       var passEncriptada = this.encriptar.set("", alumno.contrasenyaAlumno);
       alumno.contrasenyaAlumno = passEncriptada;
-
       this._loginAlumno.loginAlumnoService(alumno)
     }
   }
@@ -83,5 +82,3 @@ export class LoginAlumnoComponent implements OnInit {
   }
 
 }
-
-
