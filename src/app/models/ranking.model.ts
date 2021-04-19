@@ -5,7 +5,7 @@ export class Ranking {
     public nickProfesorRK?: string,
     public fechaInicio?: string,
     public codigoAcceso?: number,
-    public fechaFinal?: Date
+    public fechaFinal?: string
   ) { }
 
 }
