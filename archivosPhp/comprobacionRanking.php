@@ -23,7 +23,7 @@ $conexion = conexion();
 //consulta que se va a realizar para comprovar si existe el nick
 $query = "SELECT * FROM rankings WHERE nickProfesorRK='".$params->nickProfesorRK."' AND nombreRanking ='".$params->nombreRanking."' AND fechaInicio = '".$params->fechaInicio."'";
 
- 
+
 // realizamos la consulta a la BD y recojemos el resultado en $resultado que será true o false en función de se ejecuta o no.
 $resultado = mysqli_query($conexion, $query);
 $datos=[];
@@ -34,7 +34,7 @@ while($row = mysqli_fetch_assoc($resultado)) {
 
 $conexion->close();
 
-$respuesta = new \stdClass(); 
+$respuesta = new \stdClass();
 
 
 if (count($datos)!=0){
