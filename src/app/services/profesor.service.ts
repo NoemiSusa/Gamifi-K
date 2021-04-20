@@ -59,7 +59,7 @@ export class ProfesorService {
           // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
           this.profesorObj = respuesta.datos[0];
           // Swal.fire(environment.vsesion+ " Variable de sesion ")
-          this.router.navigate(['/perfilProfesor']);
+          this.router.navigate(['/desktop']);
         }
       },
       (error: any) => {
@@ -75,24 +75,19 @@ export class ProfesorService {
   }
 
 
-  // setprofesor(profesor) {
-  //   this.profesorObj = profesor;
-  // }
-
-  // getprofesor() {
-  //   return this.profesorObj;
-  // }
-
-
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
 
   altaRankingService(rankingTs:Ranking):Observable<any>{
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
-     
+
   }
 
+  // Función para pedir listado de rankings por profesor
+  public pedirListadoRankings(sesion: any): Observable<any>  {
+    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
+  }
 
 
 

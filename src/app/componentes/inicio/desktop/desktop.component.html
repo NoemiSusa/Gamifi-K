@@ -1,1 +1,24 @@
-<p>desktop works!</p>
+<div class="container-fluid main-section">
+  <div class="row">
+      <div class="offset-lg-2 col-lg-8  text-center">
+          <div class="mt-5"><br><br>
+           <!-- <div *ngIf="profesor !== null"> -->
+              <h1>ZONA DOCENTE</h1>
+              <h1>Bienvenid@ {{sesion}}</h1>
+           <!-- </div> -->
+          </div><br><br><br><br>
+          <div>
+              <div class="float-left ml-5">
+                  <h3>PERFIL</h3>
+                  <button class="btn btn-danger" type="submit" [routerLink]="'/perfilProfesor'" alt="">Click Me</button>
+              </div>
+              <div class="float-right mr-5">
+                  <h3>RANKINGS</h3>
+                  <button class="btn btn-danger" type="sumbit" [routerLink]="'/listarRankings'" alt="">Click Me</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <i class="fa fa-angle-double-down blink" aria-hidden="true"></i>
+</div>
