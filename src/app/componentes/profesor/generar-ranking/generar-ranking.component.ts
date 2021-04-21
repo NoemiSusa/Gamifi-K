@@ -8,6 +8,7 @@ import { format } from 'crypto-js';
 import { Ranking } from 'src/app/models/ranking.model';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { environment } from 'src/environments/environment';
+import { invalid } from '@angular/compiler/src/render3/view/util';
 
 
 
@@ -23,6 +24,8 @@ export class GenerarRankingComponent implements OnInit {
   rankingProfesor: FormGroup;
   submitted = false;
 
+  fechavalida = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService
@@ -33,11 +36,14 @@ export class GenerarRankingComponent implements OnInit {
   ngOnInit() {
     this.rankingProfesor = this.formBuilder.group({
       nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
+      dataFin: ["", Validators.required ],
+
       // fechaInicio:['',[Validators.required]]
     }, {});
   }
   get controlFormulario() {
     return this.rankingProfesor.controls;
+
   }
 
   //sirve para ejecutar el control del formulario en el html
@@ -45,6 +51,37 @@ export class GenerarRankingComponent implements OnInit {
 
   formularioRankingFuncion() {
     this.nuevoRanking = new Ranking(this.rankingProfesor.controls.nombreRanking.value);
+    var dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
+
+
+    var dataFinParced = dataFinNoParsed.split("-",);
+
+    for (let i = 0; i < 3; i++) {
+      console.log(dataFinParced[i] + "año mes y dia");
+    }
+
+    var diaFin = dataFinParced[2];
+    var mesFin = dataFinParced[1];
+    var añoFin = dataFinParced[0];
+
+
+
+
+
+
+
+
+
+    this.nuevoRanking.fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
+
+    console.log(this.nuevoRanking.fechaFinal + "TODOS LOS DATOS @@@@@@@@@@");
+
+
+
+
+    console.log(dataFinParced)
+
+
     // if (this.nuevoRanking.nombreRanking.length < 1) {
     //   return;
     // }
@@ -54,14 +91,16 @@ export class GenerarRankingComponent implements OnInit {
 
     this.submitted = true;
 
-    if(this.rankingProfesor.invalid){
-      return;
-    }
+
+
+
 
     this.nuevoRanking.nickProfesorRK = environment.vsesion;
     this.nuevoRanking.codigoAcceso = Date.now();
-
     var fechaEntera = new Date();
+
+
+
 
     var dia = fechaEntera.getDate();
     var mes = fechaEntera.getMonth() + 1;
@@ -75,6 +114,18 @@ export class GenerarRankingComponent implements OnInit {
 
     console.log(this.nuevoRanking);
 
+
+
+    if(año < añoFin || año == añoFin && mes<mesFin || año==añoFin && mes==mesFin &&dia<diaFin){
+      this.fechavalida=true;
+
+      }
+      console.log(this.fechavalida + " ESTADO DE LA FECHA VALIDA")
+
+      if (this.rankingProfesor.invalid && this.fechavalida==true) {
+
+        return;
+      }
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
       // lo primero si ha funcionado
       (datosDelProfesorServiceTsPHP: any) => {
