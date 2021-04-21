@@ -28,9 +28,9 @@
                                 <button type="button" class="btn card-title">Export</button>
                             </div>
                             <button type="button" class="btn card-title dropdown-toggle">
-            <span data-feather="calendar"></span>
-            Calendario
-          </button>
+                              <span data-feather="calendar"></span>
+                              Calendario
+                            </button>
                         </div>
                     </div>
 
@@ -49,43 +49,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <a *ngFor="let respuesta of respuestaR">
+                                <div *ngFor="let respuesta of respuestaR">
+                                 <!-- <div *ngIf="respuestaR !== null"> -->
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>{{respuesta.nombreRanking}}</td>
+                                        <td>{{respuesta[0]['nombreRanking']}}</td>
+                                        <td>{{respuesta[1]['nombreRanking']}}</td>
+                                        <!-- <td>{{respuestaR['idRanking']}}</td> -->
 
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>amet</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Integer</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>libero</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>dapibus</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>Nulla</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">7</th>
-                                        <td>nibh</td>
-
-                                    </tr>
-                                </a>
+                                  </div>
                             </tbody>
                         </table>
                     </div>

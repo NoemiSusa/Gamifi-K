@@ -14,9 +14,11 @@ export class ListarRankingsComponent implements OnInit {
 
 // Variables
 //rankingsArray: Ranking[] = null;
-respuestaR: Respuesta;
+respuestaR: string [];
 resp;
-response: string = null;
+
+nombreRanking: string;
+
 
 sesion: string = environment.vsesion;
 
@@ -32,10 +34,13 @@ sesion: string = environment.vsesion;
 
 // Usamos el servicio par pedir todos los campos del ranking y poder listarlo
     this.listarRankings.pedirListadoRankings(this.sesion).subscribe(
-      (resp: Respuesta) => {
+      (resp: any) => {
         this.respuestaR = resp;
 
         console.log(this.respuestaR);
+        console.log(this.respuestaR[0]['nombreRanking']);
+        console.log(this.respuestaR[1]['nombreRanking']);
+
       },
       (error: any) => {
         console.log(error);

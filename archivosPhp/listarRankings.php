@@ -4,7 +4,6 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 header('Content-Type: application/json');
 
 $json = file_get_contents('php://input');
-
 $params = json_decode($json);
 
 require_once 'conBDLocal.php';
@@ -12,15 +11,18 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 //lista todos los rankings de un profesor (es el que le pasamos como parametro)
-$query = "SELECT * FROM rankings where nickProfesorRK='".$params->nickprofesor."'";
+$query = "SELECT nombreRanking, idRanking FROM rankings where nickProfesorRK='".$params."'";
 $resultado = mysqli_query($conexion, $query);
 
 $datos = [];
 
 while ($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
+}
 
 $conexion->close();
+
+$respuesta = new \stdClass();
 
 if(count($datos)==0){
   $respuesta->resultado = false;
@@ -31,12 +33,11 @@ if(count($datos)==0){
 
 }else {
 
-  $respuesta->resultado = true;
-  $respuesta->msg = "Aquí van los rankings";
-  $respuesta->datos = $datos;
+  // $respuesta->resultado = true;
+  // $respuesta->msg = "Aquí van los rankings";
+  // $respuesta->datos = $datos;
 
-  print json_encode($respuesta);
-
+  print json_encode($datos);
 }
 
 ?>
