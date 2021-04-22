@@ -32,7 +32,7 @@ idRanking: string = environment.vsesion;
 
 
 // Usamos el servicio par pedir todos los campos del ranking y poder listarlo
-    this.listarRankings.pedirInfoRanking(this.idRanking).subscribe(
+    this.listarRankings.pedirRankingaEditar(this.idRanking).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
 

@@ -75,39 +75,25 @@ export class ProfesorService {
   }
 
 
-  // setprofesor(profesor) {
-  //   this.profesorObj = profesor;
-  // }
-
-  // getprofesor() {
-  //   return this.profesorObj;
-  // }
-
-
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
 
-  altaRankingService(rankingTs:Ranking):Observable<any>{
+  altaRankingService(rankingTs: Ranking): Observable<any> {
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
 
+  }
+
+  // Función para pedir listado de rankings por profesor
+  public pedirListadoRankings(sesion: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
   }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  pedirInfoRanking(idRanking:String):Observable<any>{
+  //Función para pedir todos los datos del
+  pedirRankingaEditar(idRanking: String): Observable<any> {
     return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoApellidos.php`, JSON.stringify(idRanking));
   }
 
