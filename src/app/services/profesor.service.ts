@@ -89,6 +89,11 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
   }
 
+  // Función para eliminar ranking seleccionado
+  public eliminarRanking(ranking: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}eliminarRankingSeleccionado.php`, JSON.stringify(ranking));
+  }
+
 
 
 }

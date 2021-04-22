@@ -17,7 +17,8 @@ export class ListarRankingsComponent implements OnInit {
 respuestaR: string [];
 resp;
 
-nombreRanking: string;
+nombreRanking: string = null;
+rankingSelected: string = null;
 
 
 sesion: string = environment.vsesion;
@@ -29,8 +30,6 @@ sesion: string = environment.vsesion;
   ) { }
 
   ngOnInit(): void {
-
-
 
 // Usamos el servicio par pedir todos los campos del ranking y poder listarlo
     this.listarRankings.pedirListadoRankings(this.sesion).subscribe(
@@ -48,4 +47,8 @@ sesion: string = environment.vsesion;
     )
   }
 
+// Función que se ejecuta con click en el ranking que queremos seleccionar para editar
+    selectRanking(nombreRanking: string):void  {
+      this.rankingSelected = nombreRanking;
+    }
 }
