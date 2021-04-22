@@ -93,7 +93,7 @@ export class ProfesorService {
 
 
   //Función para pedir todos los datos del
-  pedirRankingaEditar(idRanking: String): Observable<any> {
+  pedirRankingaEditar(idRanking: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoApellidos.php`, JSON.stringify(idRanking));
   }
 
