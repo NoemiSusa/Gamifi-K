@@ -90,18 +90,25 @@ export class ProfesorService {
 
   altaRankingService(rankingTs:Ranking):Observable<any>{
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
-     
+
   }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  pedirInfoRanking(idRanking:String):Observable<any>{
+    return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoApellidos.php`, JSON.stringify(idRanking));
+  }
+
 }
-
-
-
-
-
-
-
-

@@ -1,1 +1,85 @@
 <p>editar-ranking works!</p>
+<!-- Custom styles for this template -->
+<link href="https://getbootstrap.com/docs/4.5/examples/dashboard/dashboard.css" rel="stylesheet">
+
+
+<div class="container-fluid ">
+
+  <body class="main-section mt-2">
+    <nav class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 card-body">Nombre Profesor</a>&nbsp;
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+        viewBox="0 0 16 16">
+        <path
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+      </svg>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search Ranking" aria-label="Search">
+
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+            <h1>Rankings</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn card-title" [routerLink]="'/desktop'">Volver</button>
+                <button type="button" class="btn card-title" [routerLink]="'/generarRanking'">Generar R.</button>
+                <button type="button" class="btn card-title">Export</button>
+              </div>
+              <button type="button" class="btn card-title dropdown-toggle">
+                <span data-feather="calendar"></span>
+                Calendario
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="thead-">
+                <tr>
+                  <th scope="col">
+                    <h2>Num.</h2>
+                  </th>
+                  <th scope="col">
+                    <h2>Nombre Ranking</h2>
+
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <div *ngIf="respuestaR !== null">
+                  <div *ngFor="let nombreRanking of respuestaR">
+
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>{{nombreRanking['nombreRanking']}}</td>
+                    </tr>
+
+                  </div>
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script>
+      window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')
+    </script>
+    <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</div>
