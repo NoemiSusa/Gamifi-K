@@ -38,8 +38,8 @@ sesion: string = environment.vsesion;
         this.respuestaR = resp;
 
         console.log(this.respuestaR);
-        console.log(this.respuestaR[0]['nombreRanking']);
-        console.log(this.respuestaR[1]['nombreRanking']);
+       // console.log(this.respuestaR[0]['nombreRanking']);
+
 
       },
       (error: any) => {

@@ -49,16 +49,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <div *ngFor="let respuesta of respuestaR">
-                                 <!-- <div *ngIf="respuestaR !== null"> -->
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>{{respuesta[0]['nombreRanking']}}</td>
-                                        <td>{{respuesta[1]['nombreRanking']}}</td>
-                                        <!-- <td>{{respuestaR['idRanking']}}</td> -->
+                                <div *ngIf="respuestaR !== null">
+                                    <div *ngFor="let nombreRanking of respuestaR">
 
-                                    </tr>
-                                  </div>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <!-- <td>{{respuestaR[0]['nombreRanking']}}</td> -->
+                                            <!-- <td>{{respuestaR[1]['nombreRanking']}}</td> -->
+                                            <td>{{nombreRanking['nombreRanking']}}</td>
+
+                                            <!-- <td>{{respuestaR['idRanking']}}</td> -->
+
+                                        </tr>
+                                    </div>
+                                </div>
                             </tbody>
                         </table>
                     </div>
