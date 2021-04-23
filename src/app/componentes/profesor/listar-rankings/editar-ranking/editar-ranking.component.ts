@@ -18,8 +18,8 @@ resp;
 
 nombreRanking: string;
 
-
-idRanking: string = environment.vsesion;
+sesion:string = environment.vsesion;
+idRanking: number = environment.rkg;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
@@ -32,7 +32,7 @@ idRanking: string = environment.vsesion;
 
 
 // Usamos el servicio par pedir todos los campos del ranking y poder listarlo
-    this.listarRankings.pedirRankingaEditar(this.idRanking).subscribe(
+    this.listarRankings.pedirRankingaEditar(this.sesion,this.idRanking).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
 
