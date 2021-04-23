@@ -195,7 +195,7 @@
 }
 
 th,
-td {
+tr {
     font-size: large;
     font-weight: bold;
 }
@@ -205,5 +205,7 @@ ss {
 }
 
 td {
+    font-size: large;
+    font-weight: bold;
     text-align: center;
 }
