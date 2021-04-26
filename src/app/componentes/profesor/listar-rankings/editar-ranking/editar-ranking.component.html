@@ -33,18 +33,18 @@
               </div>
               <button type="button" class="btn card-title dropdown-toggle">
                 <span data-feather="calendar"></span>
-                Calendario
+                Tarea
               </button>
             </div>
           </div>
 
           <div class="table-responsive">
             <table class="table table-striped">
-              <thead class="thead-">
+              <thead class="thead">
                 <tr>
-                  <th scope="col">
-                    <h2>Num.</h2>
-                  </th>
+                  <!-- <th scope="col">
+                    <h2>Código Ranking.</h2>
+                  </th> -->
                   <th scope="col">
                     <h2>Alumnos</h2>
                   </th>
@@ -57,17 +57,16 @@
               <tbody>
                 <div *ngIf="respuestaR !== null">
                   <div *ngFor="let nombreRanking of respuestaR">
-
                     <tr>
-                      <th scope="row">1</th>
-                      <td>{{nombreRanking['nombreRanking']}}</td>
-                      <td>{{nombreRanking['alumno']}}</td>
+                      <!-- <th scope="row">1</th> -->
+                      <td>{{nombreRanking['Alumno']}}</td>
+                      <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}">{{nombreRanking['Puntuacion']}}</td>
                     </tr>
-
                   </div>
                 </div>
               </tbody>
             </table>
+
           </div>
         </main>
       </div>
