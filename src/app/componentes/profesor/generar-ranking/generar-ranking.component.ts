@@ -26,17 +26,47 @@ export class GenerarRankingComponent implements OnInit {
 
   fechavalida = false;
 
+  // prueba de la data minima
+  public mindate: String;
+  public fechaMinimaParsed: String;
   constructor(
     private formBuilder: FormBuilder,
-    private rankingTs: ProfesorService
+    private rankingTs: ProfesorService,
+
   ) {
 
   }
 
   ngOnInit() {
+
+    var fechaminima = new Date();
+    var dia = fechaminima.getDate();
+    var mes = fechaminima.getMonth() + 1;
+    var año = fechaminima.getFullYear();
+
+    if (mes<10){
+      var fechaMinimaParsed: string = (año + "-" +"0"+ mes + "-" + dia);
+    }
+    else{
+      var fechaMinimaParsed: string = (año + "-" + mes + "-" + dia);
+    }
+
+
+
+    console.log(fechaMinimaParsed+" data minima @@@@@@@@@@@@@@@@@@@@@");
+
+
+
+
+
+
+
+    // this.mindate.toUTCString();
+    // console.log(this.mindate+" data minima @@@@@@@@@@@@@@@@@@@@@");
+
     this.rankingProfesor = this.formBuilder.group({
       nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
-      dataFin: ["", Validators.required ],
+      dataFin: ["", Validators.required],
 
       // fechaInicio:['',[Validators.required]]
     }, {});
@@ -46,13 +76,15 @@ export class GenerarRankingComponent implements OnInit {
 
   }
 
+
   //sirve para ejecutar el control del formulario en el html
 
 
   formularioRankingFuncion() {
+    console.log(this.mindate + "   mindate@@@@@@@@@@");
+
     this.nuevoRanking = new Ranking(this.rankingProfesor.controls.nombreRanking.value);
     var dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
-
 
     var dataFinParced = dataFinNoParsed.split("-",);
 
@@ -97,11 +129,8 @@ export class GenerarRankingComponent implements OnInit {
 
     this.nuevoRanking.nickProfesorRK = environment.vsesion;
     this.nuevoRanking.codigoAcceso = Date.now();
+
     var fechaEntera = new Date();
-
-
-
-
     var dia = fechaEntera.getDate();
     var mes = fechaEntera.getMonth() + 1;
     var año = fechaEntera.getFullYear();
@@ -116,16 +145,19 @@ export class GenerarRankingComponent implements OnInit {
 
 
 
-    if(año < añoFin || año == añoFin && mes<mesFin || año==añoFin && mes==mesFin &&dia<diaFin){
-      this.fechavalida=true;
 
-      }
-      console.log(this.fechavalida + " ESTADO DE LA FECHA VALIDA")
+    if (año < añoFin || año == añoFin && mes < mesFin || año == añoFin && mes == mesFin && dia < diaFin) {
+      this.fechavalida = true;
 
-      if (this.rankingProfesor.invalid && this.fechavalida==true) {
+    } else {
+      this.fechavalida = false;
+    }
+    console.log(this.fechavalida + " ESTADO DE LA FECHA VALIDA")
 
-        return;
-      }
+    if (this.rankingProfesor.invalid && this.fechavalida == false) {
+
+      return;
+    }
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
       // lo primero si ha funcionado
       (datosDelProfesorServiceTsPHP: any) => {

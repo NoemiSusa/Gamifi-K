@@ -34,12 +34,18 @@
             </div>
 
             <div class=" form-row mt-5">
-                <input type="date" placeholder="Data fin" formControlName="dataFin" class="form-control" [ngClass]="{'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid,
-                'is-invalid': controlFormulario.dataFin.touched && controlFormulario.dataFin.invalid}">
+                <input type="date" min="2021-04-27" placeholder="Data fin" formControlName="dataFin" class="form-control" [ngClass]="{'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid &&fechavalida==true,
+                'is-invalid': controlFormulario.dataFin.touched && controlFormulario.dataFin.invalid && fechavalida==false}">
 
                 <div *ngIf="submitted && controlFormulario.dataFin.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.dataFin.errors.required">Data Fin es obligatoria</div>
                 </div>
+
+                <div *ngIf="submitted && controlFormulario.dataFin.errors" class="invalid-feedback">
+                    <div *ngIf="controlFormulario.dataFin.errors.fechaInvalida">Data Fin invalida</div>
+                </div>
+
+
 
             </div>
 

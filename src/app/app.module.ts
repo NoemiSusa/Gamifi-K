@@ -58,7 +58,8 @@ import { EditarRankingComponent } from './componentes/profesor/listar-rankings/e
     FormsModule,
     ReactiveFormsModule,
     SweetAlert2Module,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
