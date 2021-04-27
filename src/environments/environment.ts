@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   serverUrl: 'http://localhost:8080/',
-  vsesion: "Su"
+  vsesion: "",
+  idRanking: null
 
 };
 

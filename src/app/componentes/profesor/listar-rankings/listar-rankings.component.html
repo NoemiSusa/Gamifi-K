@@ -49,13 +49,13 @@
                             </thead>
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
-                                <tr *ngFor="let nombreRanking of respuestaR" class="text-center " [ngClass]="{ 'active': rankingSelected=== nombreRanking }" (click)="selectRanking(nombreRanking)">
+                                <tr *ngFor="let nombreRanking of respuestaR" class="text-center " [ngClass]="{ 'active': rankingSelected=== nombreRanking }" (click)="selectRanking(idRanking)">
 
                                     <!-- <tr> -->
                                     <td>{{nombreRanking['idRanking']}}</td>
                                     <td>{{nombreRanking['nombreRanking']}}</td>
                                     <td>
-                                        <a class="btn btn-primary" style="color: white;">Modificar</a> ||
+                                        <a class="btn btn-primary" [routerLink]="'/desktop'" style="color: white;">Modificar</a> ||
                                         <a class="btn btn-danger" style="color:white;">Eliminar</a>
                                     </td>
                                     <!-- </tr> -->

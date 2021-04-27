@@ -22,6 +22,7 @@ rankingSelected: string = null;
 
 
 sesion: string = environment.vsesion;
+idRanking: number = environment.idRanking;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
@@ -50,5 +51,6 @@ sesion: string = environment.vsesion;
 // Función que se ejecuta con click en el ranking que queremos seleccionar para editar
     selectRanking(nombreRanking: string):void  {
       this.rankingSelected = nombreRanking;
+      environment.idRanking = nombreRanking['nombreRanking'];
     }
 }
