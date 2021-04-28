@@ -44,7 +44,7 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'generarRanking', component: GenerarRankingComponent},
   { path: 'listarRankings', component: ListarRankingsComponent},
   { path: 'editarRanking', component: EditarRankingComponent},
-  { path: 'modificarDatosRankin', component: ModificarDatosRankingComponent},
+  { path: 'modificarDatosRanking', component: ModificarDatosRankingComponent},
   { path: 'vistaRanking', component: VistaRankingComponent},
   { path: '**', redirectTo: 'inicio'}
 ];

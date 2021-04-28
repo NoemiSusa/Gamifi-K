@@ -55,8 +55,11 @@
                                     <td>{{nombreRanking['idRanking']}}</td>
                                     <td>{{nombreRanking['nombreRanking']}}</td>
                                     <td>
-                                        <a class="btn btn-primary" [routerLink]="'/desktop'" style="color: white;">Modificar</a> ||
-                                        <a class="btn btn-danger" style="color:white;">Eliminar</a>
+                                        <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(idRanking)">Visualizar</a> ||
+                                        <a class="register-button" [routerLink]="'/modificarDatosRanking'" style="color: white;">Editar</a> ||
+                                        <a class="register-button" [routerLink]="'/editarRanking'" style="color: white;">Tareas</a> ||
+                                        <a class="register-button" style="color:red;">Eliminar</a>
+
                                     </td>
                                     <!-- </tr> -->
 

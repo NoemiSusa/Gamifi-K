@@ -52,5 +52,6 @@ idRanking: number = environment.idRanking;
     selectRanking(nombreRanking: string):void  {
       this.rankingSelected = nombreRanking;
       environment.idRanking = nombreRanking['nombreRanking'];
+      console.log(environment.idRanking);
     }
 }
