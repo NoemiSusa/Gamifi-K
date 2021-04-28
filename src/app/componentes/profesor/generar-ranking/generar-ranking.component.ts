@@ -80,21 +80,9 @@ export class GenerarRankingComponent implements OnInit {
 
     var dataFinParced = dataFinNoParsed.split("-",);
 
-    for (let i = 0; i < 3; i++) {
-      console.log(dataFinParced[i] + "año mes y dia");
-    }
-
     var diaFin = dataFinParced[2];
     var mesFin = dataFinParced[1];
     var añoFin = dataFinParced[0];
-
-
-
-
-
-
-
-
 
     this.nuevoRanking.fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
 
@@ -149,12 +137,10 @@ export class GenerarRankingComponent implements OnInit {
         if (datosDelProfesorServiceTsPHP.resultado) {
           Swal.fire('Genial', datosDelProfesorServiceTsPHP.msg, 'success');
         }
-
         // si es false
         else if (!datosDelProfesorServiceTsPHP.resultado) {
           Swal.fire('Problemas', datosDelProfesorServiceTsPHP.msg, 'warning');
         }
-
       },
       //lo segundo que se espera es si no hay datos
       (errorDelProfesorServiceTs: any) => {
