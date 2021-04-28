@@ -34,7 +34,7 @@
             </div>
 
             <div class=" form-row mt-5">
-                <input type="date" min="2021-04-27" placeholder="Data fin" formControlName="dataFin" class="form-control" [ngClass]="{'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid &&fechavalida==true,
+                <input type="date" [min]="fechaMinimaParsed" placeholder="Data fin" formControlName="dataFin" class="form-control" [ngClass]="{'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid &&fechavalida==true,
                 'is-invalid': controlFormulario.dataFin.touched && controlFormulario.dataFin.invalid && fechavalida==false}">
 
                 <div *ngIf="submitted && controlFormulario.dataFin.errors" class="invalid-feedback">

@@ -29,6 +29,8 @@ export class GenerarRankingComponent implements OnInit {
   // prueba de la data minima
   public mindate: String;
   public fechaMinimaParsed: String;
+
+
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService,
@@ -45,29 +47,19 @@ export class GenerarRankingComponent implements OnInit {
     var año = fechaminima.getFullYear();
 
     if (mes<10){
-      var fechaMinimaParsed: string = (año + "-" +"0"+ mes + "-" + dia);
+      this.fechaMinimaParsed = (año + "-" +"0"+ mes + "-" + dia);
     }
     else{
-      var fechaMinimaParsed: string = (año + "-" + mes + "-" + dia);
+      this.fechaMinimaParsed = (año + "-" + mes + "-" + dia);
     }
 
-
-
-    console.log(fechaMinimaParsed+" data minima @@@@@@@@@@@@@@@@@@@@@");
-
-
-
-
-
-
+    console.log(this.fechaMinimaParsed+" data minima @@@@@@@@@@@@@@@@@@@@@");
 
     // this.mindate.toUTCString();
     // console.log(this.mindate+" data minima @@@@@@@@@@@@@@@@@@@@@");
-
     this.rankingProfesor = this.formBuilder.group({
       nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
       dataFin: ["", Validators.required],
-
       // fechaInicio:['',[Validators.required]]
     }, {});
   }
@@ -106,20 +98,12 @@ export class GenerarRankingComponent implements OnInit {
 
     this.nuevoRanking.fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
 
-    console.log(this.nuevoRanking.fechaFinal + "TODOS LOS DATOS @@@@@@@@@@");
+    console.log(this.nuevoRanking.fechaFinal + "DATA-FIN-FINAL");
 
 
 
 
     console.log(dataFinParced)
-
-
-    // if (this.nuevoRanking.nombreRanking.length < 1) {
-    //   return;
-    // }
-
-    // this.rankingProfesor.controls.fechaInicio.value,
-
 
     this.submitted = true;
 
