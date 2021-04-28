@@ -46,7 +46,7 @@
                     <h2>Código Ranking.</h2>
                   </th> -->
                   <th scope="col">
-                    <h2>Alumnos</h2>
+                    <h2 class="text-align-left">Alumnos</h2>
                   </th>
                   <th scope="col">
                     <h2>Puntuación</h2>
@@ -55,15 +55,17 @@
                 </tr>
               </thead>
               <tbody>
-                <div *ngIf="respuestaR !== null">
-                  <div *ngFor="let nombreRanking of respuestaR">
-                    <tr>
+                <!-- <div *ngIf="respuestaR !== null"> -->
+                  <tr *ngFor="let nombreRanking of respuestaR" class="text-align-left">
+                  <!-- <div *ngFor="let nombreRanking of respuestaR"> -->
+                    <!-- <tr> -->
                       <!-- <th scope="row">1</th> -->
                       <td>{{nombreRanking['Alumno']}}</td>
-                      <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}">{{nombreRanking['Puntuacion']}}</td>
+                      <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}"></td>
                     </tr>
-                  </div>
-                </div>
+                  <!-- </tr> -->
+                  <!-- </div> -->
+                <!-- </div> -->
               </tbody>
             </table>
 

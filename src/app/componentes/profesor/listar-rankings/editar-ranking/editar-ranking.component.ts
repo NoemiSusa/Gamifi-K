@@ -11,33 +11,47 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./editar-ranking.component.css']
 })
 export class EditarRankingComponent implements OnInit {
-// Variables
-//rankingsArray: Ranking[] = null;
-respuestaR: string [];
-resp;
+  // Variables
+  //rankingsArray: Ranking[] = null;
+  respuestaR: string[];
+  resp;
+  respuesta:string[];
 
-nombreRanking: string;
+  nombreRanking: string;
 
-sesion:string = environment.vsesion;
-idRanking: number = environment.rkg;
+  sesion: string = environment.vsesion;
+  idRanking: number = environment.rkg;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
+    private listarTareas: ProfesorService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    //En esta función recojemos todas las tareas que tiene asignadas este ranking
+    this.listarTareas.pedirListaTareas(this.idRanking).subscribe(
+      (resp: any) => {
+        this.respuesta = resp;
+
+        console.log(this.respuesta);
+        // console.log(this.respuestaR[0]['nombreRanking']);
 
 
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
 
-// Usamos el servicio par pedir todos los campos del ranking y poder listarlo
-    this.listarRankings.pedirRankingaEditar(this.sesion,this.idRanking).subscribe(
+    // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
+    this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
 
         console.log(this.respuestaR);
-       // console.log(this.respuestaR[0]['nombreRanking']);
+        // console.log(this.respuestaR[0]['nombreRanking']);
 
 
       },

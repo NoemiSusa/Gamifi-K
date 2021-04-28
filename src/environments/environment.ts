@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   serverUrl: 'http://localhost:8080/',
   vsesion: "Prova9",
-  rkg:1
+  rkg:1,
+  tarea:""
 
 };
 

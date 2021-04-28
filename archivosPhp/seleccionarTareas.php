@@ -12,10 +12,10 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 //coje todas las tareas de un ranking de un profesor concreto
-$query = "SELECT t.nombreTarea
+$query = "SELECT t.nombreTarea as tareas
           FROM tareas t, rankings r
-          where t.idRankingTarea = '".$params->idRanking."'
-            and t.idRankingTarea = r.idRanking
+          where t.idRankingTarea = ".$params.
+          " AND t.idRankingTarea = r.idRanking
           GROUP by t.nombreTarea";
 
 $resultado = mysqli_query($conexion, $query);
