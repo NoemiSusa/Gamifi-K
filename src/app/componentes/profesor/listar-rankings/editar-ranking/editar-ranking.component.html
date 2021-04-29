@@ -31,10 +31,14 @@
                 <button type="button" class="btn card-title" [routerLink]="'/generarRanking'">Generar R.</button>
                 <button type="button" class="btn card-title">Export</button>
               </div>
-              <button type="button" class="btn card-title dropdown-toggle">
-                <span data-feather="calendar"></span>
-                Tarea
-              </button>
+                <div class="dropdown">
+                  <button class="btn btn-secondary card-title dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tareas
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" *ngFor="let tarea of listaTareas">{{tarea}}</a>
+                  </div>
+                </div>
             </div>
           </div>
 

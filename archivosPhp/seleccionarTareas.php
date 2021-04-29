@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 header('Content-Type: application/json');
 
 $json = file_get_contents('php://input');
-
+echo($json);
 $params = json_decode($json);
 
 require_once 'conBDLocal.php';
@@ -12,9 +12,9 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 //coje todas las tareas de un ranking de un profesor concreto
-$query = "SELECT t.nombreTarea as tareas
-          FROM tareas t, rankings r
-          where t.idRankingTarea = ".$params.
+$query = "SELECT t.nombreTarea as tareas".
+          " FROM tareas t, rankings r".
+          " where t.idRankingTarea = ".$params.
           " AND t.idRankingTarea = r.idRanking
           GROUP by t.nombreTarea";
 

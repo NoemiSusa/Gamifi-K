@@ -92,7 +92,8 @@ export class ProfesorService {
 
 
   //Función que se usa para obtener la lista de tareas que tiene un ranking
-  pedirListaTareas(idRanking:number): Observable<any>{
+  pedirListaTareas(idRanking:any): Observable<any>{
+    console.log(idRanking);
     return this.http.post(`${environment.serverUrl}seleccionarTareas.php`, JSON.stringify(idRanking));
   }
 

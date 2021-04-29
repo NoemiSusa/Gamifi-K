@@ -15,7 +15,8 @@ export class EditarRankingComponent implements OnInit {
   //rankingsArray: Ranking[] = null;
   respuestaR: string[];
   resp;
-  respuesta:string[];
+  listaTareas:string[];
+  // =["tarea 1","tarea 2","tarea 3", "todas"];
 
   nombreRanking: string;
 
@@ -24,7 +25,7 @@ export class EditarRankingComponent implements OnInit {
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
-    private listarRankings: ProfesorService,
+    // private listarRankings: ProfesorService,
     private listarTareas: ProfesorService,
     private router: Router
   ) { }
@@ -33,9 +34,9 @@ export class EditarRankingComponent implements OnInit {
     //En esta función recojemos todas las tareas que tiene asignadas este ranking
     this.listarTareas.pedirListaTareas(this.idRanking).subscribe(
       (resp: any) => {
-        this.respuesta = resp;
+        this.listaTareas = resp;
 
-        console.log(this.respuesta);
+        console.log(this.listaTareas);
         // console.log(this.respuestaR[0]['nombreRanking']);
 
 
@@ -45,20 +46,20 @@ export class EditarRankingComponent implements OnInit {
       }
     )
 
-    // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
-    this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking).subscribe(
-      (resp: any) => {
-        this.respuestaR = resp;
-
-        console.log(this.respuestaR);
-        // console.log(this.respuestaR[0]['nombreRanking']);
-
-
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    )
   }
+  // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
+      // pedirRankingaEditar(sesion, idRanking).subscribe(
+      //   (resp: any) => {
+      //     this.respuestaR = resp;
+
+      //     console.log(this.respuestaR);
+      //     // console.log(this.respuestaR[0]['nombreRanking']);
+
+
+      //   },
+      //   (error: any) => {
+      //     console.log(error);
+      //   }
+      // )
 
 }
