@@ -18,11 +18,12 @@ respuestaR: string [];
 resp;
 
 nombreRanking: string = null;
-rankingSelected: string = null;
+rankingSelected: number = null;
+idR: number = null;
 
 
 sesion: string = environment.vsesion;
-idRanking: number = environment.idRanking;
+//idRanking: number = environment.idRanking;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
@@ -49,9 +50,10 @@ idRanking: number = environment.idRanking;
   }
 
 // Función que se ejecuta con click en el ranking que queremos seleccionar para editar
-    selectRanking(nombreRanking: string):void  {
-      this.rankingSelected = nombreRanking;
-      environment.idRanking = nombreRanking['nombreRanking'];
-      console.log(environment.idRanking);
+    selectRanking(idR: number):void  {
+      this.rankingSelected = idR;
+      console.log(this.rankingSelected);
+      //this.idRanking = nombreRanking['idRanking'];
+     // console.log(this.idRanking);
     }
 }

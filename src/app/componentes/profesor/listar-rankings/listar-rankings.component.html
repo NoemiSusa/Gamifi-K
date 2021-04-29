@@ -49,13 +49,13 @@
                             </thead>
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
-                                <tr *ngFor="let nombreRanking of respuestaR" class="text-center " [ngClass]="{ 'active': rankingSelected=== nombreRanking }" (click)="selectRanking(idRanking)">
+                                <tr *ngFor="let nombreRanking of respuestaR" class="text-center">
 
                                     <!-- <tr> -->
                                     <td>{{nombreRanking['idRanking']}}</td>
                                     <td>{{nombreRanking['nombreRanking']}}</td>
                                     <td>
-                                        <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(idRanking)">Visualizar</a> ||
+                                        <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(idR)">Visualizar</a> ||
                                         <a class="register-button" [routerLink]="'/modificarDatosRanking'" style="color: white;">Editar</a> ||
                                         <a class="register-button" [routerLink]="'/editarRanking'" style="color: white;">Tareas</a> ||
                                         <a class="register-button" style="color:red;">Eliminar</a>

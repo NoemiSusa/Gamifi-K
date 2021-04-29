@@ -35,7 +35,7 @@ idRanking: number = environment.idRanking;
 
 
 // Usamos el servicio par pedir todos los campos del ranking y poder listarlo
-    this.listarRanking.pedirListadoRanking(this.sesion).subscribe(
+    this.listarRanking.pedirListadoRanking(this.idRanking).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
 
@@ -50,10 +50,4 @@ idRanking: number = environment.idRanking;
     )
   }
 
-// Función que se ejecuta con click en el ranking que queremos seleccionar para editar
-    selectRanking(nombreRanking: string):void  {
-      this.rankingSelected = nombreRanking;
-      environment.idRanking = nombreRanking['nombreRanking'];
-      console.log(environment.idRanking);
-    }
 }
