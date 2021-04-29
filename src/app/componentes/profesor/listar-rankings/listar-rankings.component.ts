@@ -14,16 +14,15 @@ export class ListarRankingsComponent implements OnInit {
 
 // Variables
 //rankingsArray: Ranking[] = null;
-respuestaR: string [];
+respuestaR: Ranking;
 resp;
 
-nombreRanking: string = null;
-rankingSelected: number = null;
+nombreRanking: Ranking;
+rankingSelected: Ranking;
 idR: number = null;
 
-
 sesion: string = environment.vsesion;
-//idRanking: number = environment.idRanking;
+idRanking: number;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
@@ -50,10 +49,12 @@ sesion: string = environment.vsesion;
   }
 
 // Función que se ejecuta con click en el ranking que queremos seleccionar para editar
-    selectRanking(idR: number):void  {
-      this.rankingSelected = idR;
-      console.log(this.rankingSelected);
-      //this.idRanking = nombreRanking['idRanking'];
-     // console.log(this.idRanking);
+    selectRanking(nombreRanking: Ranking):void  {
+     // this.rankingSelected = nombreRanking;
+      console.log(nombreRanking);
+      // especifico el campo del objeto que quiero guardar como variable global
+      environment.idRanking  = nombreRanking['idRanking'];
+      //environment.idRanking = this.idRanking;
+      console.log(environment.idRanking);
     }
 }
