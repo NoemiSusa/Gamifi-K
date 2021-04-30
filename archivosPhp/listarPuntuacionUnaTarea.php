@@ -4,21 +4,22 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 header('Content-Type: application/json');
 
 $json = file_get_contents('php://input');
-
+// echo($json);
 $params = json_decode($json);
 
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "SELECT CONCAT( al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, t.puntuacion AS Puntuacion".
-          " FROM tareas t, alumno al,rankings r".
-          " where r.idRanking =".$params->idRanking.
-          " AND t.idRankingTarea = r.idRanking".
-          " AND t.nickAlumnoTarea = al.nickAlumno".
-          "  AND t.nombreTarea = '".$params->nombreTarea."'
-          GROUP BY al.nickAlumno
-          ORDER BY al.apellidosAlumno";
+// $query = "SELECT CONCAT( al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, t.puntuacion AS Puntuacion".
+//           " FROM tareas t, alumno al,rankings r".
+//           " where r.idRanking =".$params->idRanking.
+//           " AND t.idRankingTarea = r.idRanking".
+//           " AND t.nickAlumnoTarea = al.nickAlumno".
+//           "  AND t.nombreTarea = '".$params->nombreTarea."'";
+//             " GROUP BY al.nickAlumno".
+//             " ORDER BY al.apellidosAlumno";
+$query = "SELECT nickAlumnoTarea as Alumno, puntuacion as Puntuacion FROM tareas Where nombreTarea ='act1' ";
 // echo($query);
 $resultado = mysqli_query($conexion, $query);
 
