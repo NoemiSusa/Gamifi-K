@@ -19,7 +19,7 @@ $datos = [];
 
 while ($row = mysqli_fetch_assoc($resultado)) {
   $datos[] = $row;
-
+}
 $conexion->close();
 
 if(count($datos)==0){

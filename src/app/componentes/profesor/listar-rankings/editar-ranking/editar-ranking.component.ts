@@ -17,14 +17,14 @@ export class EditarRankingComponent implements OnInit {
   resp;
   listaTareas:string[];
   //  =["tarea 1","tarea 2","tarea 3", "todas"];
-
+  nombreTarea: string;
   nombreRanking: string = environment.nombrerkg;
   sesion: string = environment.vsesion;
   idRanking: number = environment.rkg;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
-    // private listarRankings: ProfesorService,
+    private listarRankings: ProfesorService,
     private listarTareas: ProfesorService,
     private router: Router
   ) { }
@@ -46,20 +46,27 @@ export class EditarRankingComponent implements OnInit {
     )
 
   }
-  // // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
-  //   pedirRankingaEditar(sesion, idRanking).subscribe(
-  //   (resp: any) => {
-  //     this.respuestaR = resp;
 
-  //     console.log(this.respuestaR);
-  //     // console.log(this.respuestaR[0]['nombreRanking']);
+  seleccionarTarea(tarea: string):void{
+    this.nombreTarea = tarea;
+    console.log(this.nombreTarea);
+
+     // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
+      this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking,this.nombreTarea).subscribe(
+      (resp: any) => {
+        this.respuestaR = resp;
+
+        console.log(this.respuestaR);
+        // console.log(this.respuestaR[0]['nombreRanking']);
 
 
-  //   },
-  //   (error: any) => {
-  //     console.log(error);
-  //   }
-  // )
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
+  }
+
 
 
 }
