@@ -40,8 +40,14 @@
                             <thead class="thead">
                                 <tr>
                                     <th scope="col">
-                                        <h2>Nombre Alumno</h2>
+                                      <h2>#</h2>
                                     </th>
+                                    <th scope="col">
+                                        <h2>Nick Alumno</h2>
+                                    </th>
+                                    <th scope="col">
+                                      <h2>Nombre Alumno</h2>
+                                  </th>
                                     <th scope="col">
                                         <h2>Puntuación</h2>
                                     </th>
@@ -50,14 +56,10 @@
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR" class="text-center">
-
-                                    <!-- <tr> -->
-                                    <td>#1</td>
-                                    <td>{{nombreRanking['nickAlumnoTarea']}}</td>
-                                    <td>{{nombreRanking['puntuacion']}}</td>
-
-                                    <!-- </tr> -->
-
+                                    <td>1#</td>
+                                    <td>{{nombreRanking['nickAlumno']}}</td>
+                                    <td>{{nombreRanking['Alumno']}}</td>
+                                    <td>{{nombreRanking['Puntuacion']}}</td>
                                     <!-- </a> -->
                             </tbody>
                         </table>
