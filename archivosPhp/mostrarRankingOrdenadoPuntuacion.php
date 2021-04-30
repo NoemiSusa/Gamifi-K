@@ -18,13 +18,13 @@ $conexion = conexion();
 
 
 //query que mostra les dades de l'alumne i la puntuació en 2 columnes i una fila per alumne ordenat de major a menor puntuació
-$query = "SELECT CONCAT( al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, SUM( t.puntuacion ) AS Puntuación
-          FROM alumno al, rankings r, tareas t
-          WHERE r.idRanking = '".$params->idRanking."'
-          AND t.idRankingTarea = r.idRanking
-          AND t.nickAlumnoTarea = al.nickAlumno
-          GROUP BY t.nickAlumnoTarea
-          ORDER BY SUM( t.puntuacion ) DESC";
+$query = "SELECT CONCAT( al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) ) ) AS Alumno, SUM( t.puntuacion ) AS Puntuación".
+          " FROM alumno al, rankings r, tareas t".
+          " WHERE r.idRanking = 1".
+          " AND t.idRankingTarea = r.idRanking".
+          " AND t.nickAlumnoTarea = al.nickAlumno".
+          " GROUP BY t.nickAlumnoTarea".
+          " ORDER BY SUM( t.puntuacion ) DESC";
 
 $resultado = mysqli_query($conexion, $query);
 
