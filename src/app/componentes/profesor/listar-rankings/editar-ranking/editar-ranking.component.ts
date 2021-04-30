@@ -16,10 +16,9 @@ export class EditarRankingComponent implements OnInit {
   respuestaR: string[];
   resp;
   listaTareas:string[];
-  // =["tarea 1","tarea 2","tarea 3", "todas"];
+  //  =["tarea 1","tarea 2","tarea 3", "todas"];
 
-  nombreRanking: string;
-
+  nombreRanking: string = environment.nombrerkg;
   sesion: string = environment.vsesion;
   idRanking: number = environment.rkg;
 
@@ -47,19 +46,20 @@ export class EditarRankingComponent implements OnInit {
     )
 
   }
-  // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
-      // pedirRankingaEditar(sesion, idRanking).subscribe(
-      //   (resp: any) => {
-      //     this.respuestaR = resp;
+  // // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
+  //   pedirRankingaEditar(sesion, idRanking).subscribe(
+  //   (resp: any) => {
+  //     this.respuestaR = resp;
 
-      //     console.log(this.respuestaR);
-      //     // console.log(this.respuestaR[0]['nombreRanking']);
+  //     console.log(this.respuestaR);
+  //     // console.log(this.respuestaR[0]['nombreRanking']);
 
 
-      //   },
-      //   (error: any) => {
-      //     console.log(error);
-      //   }
-      // )
+  //   },
+  //   (error: any) => {
+  //     console.log(error);
+  //   }
+  // )
+
 
 }

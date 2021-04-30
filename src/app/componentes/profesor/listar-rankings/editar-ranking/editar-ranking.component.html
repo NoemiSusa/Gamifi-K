@@ -36,7 +36,7 @@
                     Tareas
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" *ngFor="let tarea of listaTareas">{{tarea}}</a>
+                    <a class="dropdown-item" *ngFor="let tarea of listaTareas" (click)="pedirRankingaEditar(tarea)">{{tarea['tareas']}} </a>
                   </div>
                 </div>
             </div>
