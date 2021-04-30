@@ -46,6 +46,11 @@ export class GenerarRankingComponent implements OnInit {
     var mes = fechaminima.getMonth() + 1;
     var año = fechaminima.getFullYear();
 
+
+
+    if(dia<10){
+      this.fechaMinimaParsed = (año + "-" + mes + "-" +"0"+ dia);
+    }
     if (mes<10){
       this.fechaMinimaParsed = (año + "-" +"0"+ mes + "-" + dia);
     }
@@ -75,6 +80,7 @@ export class GenerarRankingComponent implements OnInit {
   formularioRankingFuncion() {
     console.log(this.mindate + "   mindate@@@@@@@@@@");
 
+    //guardo los valores del formulario en la variable nuevo ranking
     this.nuevoRanking = new Ranking(this.rankingProfesor.controls.nombreRanking.value);
     var dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
 
@@ -110,13 +116,8 @@ export class GenerarRankingComponent implements OnInit {
     var datainicio: string = (dia + "/" + mes + "/" + año);
 
     this.nuevoRanking.fechaInicio = datainicio;
-
     console.log(datainicio);
-
     console.log(this.nuevoRanking);
-
-
-
 
     if (año < añoFin || año == añoFin && mes < mesFin || año == añoFin && mes == mesFin && dia < diaFin) {
       this.fechavalida = true;
@@ -126,11 +127,12 @@ export class GenerarRankingComponent implements OnInit {
     }
     console.log(this.fechavalida + " ESTADO DE LA FECHA VALIDA")
 
-    if (this.rankingProfesor.invalid && this.fechavalida == false) {
-
+    if (this.rankingProfesor.invalid) {
       return;
     }
+
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
+
       // lo primero si ha funcionado
       (datosDelProfesorServiceTsPHP: any) => {
         console.log(datosDelProfesorServiceTsPHP);
@@ -147,7 +149,6 @@ export class GenerarRankingComponent implements OnInit {
         console.log(errorDelProfesorServiceTs);
         Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
       }
-
 
     )
 
