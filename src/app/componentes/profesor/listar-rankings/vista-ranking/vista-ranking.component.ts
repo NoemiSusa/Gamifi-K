@@ -39,9 +39,7 @@ idRanking: number = environment.idRanking;
       (resp: any) => {
         this.respuestaR = resp;
 
-        //console.log(this.respuestaR);
-       // console.log(this.respuestaR[0]['nombreRanking']);
-
+        console.log(this.respuestaR);
 
       },
       (error: any) => {
