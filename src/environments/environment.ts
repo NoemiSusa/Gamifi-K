@@ -7,7 +7,7 @@ export const environment = {
   serverUrl: 'http://localhost:8080/',
   vsesion: "Prova9",
   rkg:1,
-  nombrerkg:"Ranking 1",
+  nombrerkg:"",
   tarea:""
 };
 
