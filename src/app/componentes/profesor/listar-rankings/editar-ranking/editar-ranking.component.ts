@@ -4,6 +4,7 @@ import { Ranking } from 'src/app/models/ranking.model';
 import { Respuesta } from 'src/app/models/respuesta.model';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-ranking',
@@ -22,10 +23,12 @@ export class EditarRankingComponent implements OnInit {
   sesion: string = environment.vsesion;
   idRanking: number = environment.rkg;
 
+
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
     private listarTareas: ProfesorService,
+    private nuevaPuntuacion:ProfesorService,
     private router: Router
   ) { }
 
@@ -66,7 +69,31 @@ export class EditarRankingComponent implements OnInit {
       }
     )
   }
+  // actualizarPuntuacion(nickAlumno:string,nuevaPuntuacion: number):void{
+  //   this.nuevaPuntuacion.actualizarPuntuacion(this.sesion, this.idRanking,this.nombreTarea, nickAlumno).subscribe(
+        // (respuesta: Respuesta) => {
+        // console.log(respuesta);
 
+        // if (!respuesta.resultado) {
+        //   Swal.fire(
+        //     'Datos incorrectos',
+        //     respuesta.msg,
+        //     'error'
+        //   )
+
+        // } else {
+        //   console.log("Usuario existe");
+        //   Swal.fire(
+        //     'Perfecto ',
+        //     respuesta.msg,
+        //     'success'
+        //   );
+
+  // }
+
+  // onFormSubmit(): void {
+
+  // }
 
 
 }

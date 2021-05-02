@@ -110,4 +110,13 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}listarPuntuacionUnaTarea.php`, body);
   }
 
+  actualizarPuntuacion(idRanking:number,nombreTarea:string, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
+    const body ={
+      idRanking,
+      nombreTarea,
+      nickAlumno,
+      nuevaPuntuacion
+    }
+    return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
+  }
 }

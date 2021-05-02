@@ -44,13 +44,14 @@
 
           <div class="table-responsive">
             <table class="table table-striped">
+              <!-- <form [formGroup]="nuevaPuntuacion" (ngSubmit)="onFormSubmit()"> -->
               <thead class="thead">
                 <tr>
-                  <!-- <th scope="col">
-                    <h2>Código Ranking.</h2>
-                  </th> -->
                   <th scope="col">
-                    <h2 class="text-align-left">Alumnos</h2>
+                    <h2>Nick</h2>
+                  </th>
+                  <th scope="col">
+                    <h2>Alumnos</h2>
                   </th>
                   <th scope="col">
                     <h2>Puntuación</h2>
@@ -58,23 +59,25 @@
 
                 </tr>
               </thead>
-              <!-- <form> -->
               <tbody>
                 <!-- <div *ngIf="respuestaR !== null"> -->
                   <tr *ngFor="let nombreRanking of respuestaR" class="text-align-left">
                   <!-- <div *ngFor="let nombreRanking of respuestaR"> -->
                     <!-- <tr> -->
                       <!-- <th scope="row">1</th> -->
+                      <td>{{nombreRanking['Nick']}}</td>
                       <td>{{nombreRanking['Alumno']}}</td>
-                      <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}"></td>
-                    </tr>
-                  <!-- </tr> -->
+                      <td><input type="number" placeholder="{{nombreRanking['Puntuacion']}}"></td>
+                      <!-- <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}"> || <button type="submit" (click)="actualizarPuntuacion(nickAlumno,nuevaPuntuacion)">Guardar cambios</button></td> -->
+
+                    <!-- </tr> -->
+                  </tr>
                   <!-- </div> -->
                 <!-- </div> -->
               </tbody>
               <!-- <div class="form-group">
                 <button type="submit" class="register-button">Guardar Datos</button>
-              </div> -->
+              </div>  -->
               <!-- </form> -->
             </table>
 

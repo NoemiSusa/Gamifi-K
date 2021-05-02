@@ -15,7 +15,7 @@ $query = "UPDATE tareas
           SET puntuacion = '".$params->nuevaPuntuacion."'
           where nickAlumnoTarea='".$params->nickAlumno."'
             and nombreTarea = '".$params->nombreTarea."'
-            and idRankingTarea = '".$params->idRankingRK."'";
+            and idRankingTarea = '".$params->idRanking."'";
 
 $resultado = mysqli_query($conexion, $query);
 
@@ -37,7 +37,7 @@ if ($resultado) {
 
 } else {
   $respuesta->resultado = false;
-  $respuesta->msg = "No se ha podido modificar la puntuación de la tarea";
+  $respuesta->msg = "No se han actualizado las puntuaciones";
   $respuesta->datos = [];
 
 
