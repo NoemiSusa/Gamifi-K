@@ -41,9 +41,6 @@ idRanking: number = environment.idRanking;
         this.respuestaR = resp;
 
         console.log(this.respuestaR);
-       // console.log(this.respuestaR[0]['nombreRanking']);
-
-
       },
       (error: any) => {
         console.log(error);
@@ -62,16 +59,9 @@ idRanking: number = environment.idRanking;
 
 // Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
     selectRankingNombre(nombreRanking: Ranking):void  {
-      console.log(nombreRanking['nombreRanking']);
-      console.log(nombreRanking['idRanking']);
-
-      environment.idRanking  = nombreRanking['idRanking'];
-      this.idRanking = environment.idRanking;
-      console.log(this.idRanking);
-
       Swal
     .fire({
-        title: "Modifica el nombre del Ranking " + this.idRanking,
+        title: "Modifica el nombre del Ranking " + nombreRanking['nombreRanking'],
         input: "text",
         showCancelButton: true,
         confirmButtonText: "Guardar",
@@ -82,14 +72,12 @@ idRanking: number = environment.idRanking;
             let nombre = resultado.value;
             console.log("Hola, " + nombre);
 
-            this.cambiarNombre.selectRankingNombre(this.idRanking, nombre).subscribe(
+            //this.cambiarNombre.selectRankingNombre(this.idRanking, nombre).subscribe(
+              this.cambiarNombre.selectRankingNombre(nombreRanking['idRanking'], nombre).subscribe(
               (resp: any) => {
                 this.respuestaR = resp;
 
                 console.log(this.respuestaR);
-               // console.log(this.respuestaR[0]['nombreRanking']);
-
-
               },
               (error: any) => {
                 console.log(error);

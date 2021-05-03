@@ -13,17 +13,29 @@ $conexion = conexion();
 
 $query = "UPDATE rankings
           SET nombreRanking = '".$params->nombre."'
-          where idRanking='".$params->idR."'";
+          where idRanking='".$params->idRanking."'";
 
 $resultado = mysqli_query($conexion, $query);
 
 $conexion->close();
 
-
 $respuesta = new \stdClass();
 
-//si el contador de datos es = 0 me muestra el mensaje de error al encontrar la session
 if ($resultado) {
+
+  $conexion = conexion();
+
+//lista todos los rankings de un profesor (es el que le pasamos como parametro)
+$query = "SELECT * FROM rankings where nickProfesorRK='".$params."'";
+$resultado = mysqli_query($conexion, $query);
+
+$datos = [];
+
+while ($row = mysqli_fetch_assoc($resultado)) {
+  $datos[] = $row;
+}
+
+$conexion->close();
 
   $respuesta->resultado = true;
   $respuesta->msg = "Se ha modificado correctamente el nombre del Ranking";
