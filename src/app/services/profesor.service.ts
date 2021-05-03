@@ -92,7 +92,17 @@ export class ProfesorService {
   // Función para pedir listado de ranking seleccionado
   public pedirListadoRanking(idRanking: number ): Observable<any>  {
     return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
+  }
 
+  // Función para modificar el nombre del ranking seleccionado
+  public selectRankingNombre(idRanking: number, nombre: string ): Observable<any>  {
+    const body ={
+      idRanking,
+      nombre
+    }
+    // console.log(JSON.stringify(body));
+     console.log(idRanking, nombre);
+    return this.http.post(`${environment.serverUrl}modificarNombreRanking.php`, body);
   }
 
   // Función para eliminar ranking seleccionado
