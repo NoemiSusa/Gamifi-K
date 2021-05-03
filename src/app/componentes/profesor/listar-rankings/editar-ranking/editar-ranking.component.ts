@@ -22,13 +22,15 @@ export class EditarRankingComponent implements OnInit {
   nombreRanking: string = environment.nombrerkg;
   sesion: string = environment.vsesion;
   idRanking: number = environment.rkg;
+  nickAlumno: string;
+  nuevaPuntuacion:number;
 
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
     private listarTareas: ProfesorService,
-    private nuevaPuntuacion:ProfesorService,
+    private actualizaPuntuacion:ProfesorService,
     private router: Router
   ) { }
 
@@ -69,28 +71,30 @@ export class EditarRankingComponent implements OnInit {
       }
     )
   }
-  // actualizarPuntuacion(nickAlumno:string,nuevaPuntuacion: number):void{
-  //   this.nuevaPuntuacion.actualizarPuntuacion(this.sesion, this.idRanking,this.nombreTarea, nickAlumno).subscribe(
-        // (respuesta: Respuesta) => {
-        // console.log(respuesta);
+  actualizarPuntuacion(nombreRanking:any,nuevaPuntuacion:number):void{
+    this.nombreRanking = nombreRanking;
+    this.nuevaPuntuacion =nuevaPuntuacion;
+      this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking,this.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
+        (respuesta: Respuesta) => {
+          console.log(respuesta);
 
-        // if (!respuesta.resultado) {
-        //   Swal.fire(
-        //     'Datos incorrectos',
-        //     respuesta.msg,
-        //     'error'
-        //   )
+          if (!respuesta.resultado) {
+            Swal.fire(
+              'Datos incorrectos',
+              respuesta.msg,
+              'error'
+            )
 
-        // } else {
-        //   console.log("Usuario existe");
-        //   Swal.fire(
-        //     'Perfecto ',
-        //     respuesta.msg,
-        //     'success'
-        //   );
-
-  // }
-
+          } else {
+            console.log("Usuario existe");
+            Swal.fire(
+              'Perfecto ',
+              respuesta.msg,
+              'success');
+          }
+        }
+      );
+  }
   // onFormSubmit(): void {
 
   // }

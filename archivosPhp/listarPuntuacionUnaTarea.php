@@ -17,7 +17,7 @@ $query = "SELECT al.nickAlumno as Nick, CONCAT( al.apellidosAlumno, CONCAT( ' ',
           " where r.idRanking =".$params->idRanking.
           " AND t.idRankingTarea = r.idRanking".
           " AND t.nickAlumnoTarea = al.nickAlumno".
-          "  AND t.nombreTarea = '".$tarea."'";
+          "  AND t.nombreTarea = '".$tarea."'".
             " GROUP BY al.nickAlumno".
             " ORDER BY al.apellidosAlumno";
 // $query = "SELECT nickAlumnoTarea as Alumno, puntuacion as Puntuacion FROM tareas Where nombreTarea ='act1' ";

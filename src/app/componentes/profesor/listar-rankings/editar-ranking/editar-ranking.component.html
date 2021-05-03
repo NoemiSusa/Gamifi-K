@@ -67,8 +67,8 @@
                       <!-- <th scope="row">1</th> -->
                       <td>{{nombreRanking['Nick']}}</td>
                       <td>{{nombreRanking['Alumno']}}</td>
-                      <td><input type="number" placeholder="{{nombreRanking['Puntuacion']}}"></td>
-                      <!-- <td><input type="number" placeholder="  {{nombreRanking['Puntuacion']}}"> || <button type="submit" (click)="actualizarPuntuacion(nickAlumno,nuevaPuntuacion)">Guardar cambios</button></td> -->
+                      <!-- <td><input type="number" placeholder="{{nombreRanking['Puntuacion']}}"></td> -->
+                      <td><input type="number" #nuevaPuntuacion placeholder="{{nombreRanking['Puntuacion']}}"> || <button type="submit" (click)="actualizarPuntuacion(nombreRanking,nuevaPuntuacion.value)">Guardar cambios</button></td>
 
                     <!-- </tr> -->
                   </tr>

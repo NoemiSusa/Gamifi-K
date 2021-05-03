@@ -4,19 +4,20 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 header('Content-Type: application/json');
 
 $json = file_get_contents('php://input');
-
+// echo($json);
 $params = json_decode($json);
+$tarea = $params->nombreTarea->tarea
 
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "UPDATE tareas
-          SET puntuacion = '".$params->nuevaPuntuacion."'
-          where nickAlumnoTarea='".$params->nickAlumno."'
-            and nombreTarea = '".$params->nombreTarea."'
-            and idRankingTarea = '".$params->idRanking."'";
-
+$query = "UPDATE tareas".
+          " SET puntuacion = '".$params->nuevaPuntuacion."'".
+          " WHERE nickAlumnoTarea='".$params->nickAlumno."'".
+          " AND nombreTarea = '".$tarea."'".
+          " AND idRankingTarea = ".$params->idRanking."";
+// echo($query);
 $resultado = mysqli_query($conexion, $query);
 
 $conexion->close();
@@ -44,3 +45,4 @@ if ($resultado) {
   print json_encode($respuesta);
 
 }
+?>
