@@ -62,7 +62,8 @@ import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vi
     FormsModule,
     ReactiveFormsModule,
     SweetAlert2Module,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

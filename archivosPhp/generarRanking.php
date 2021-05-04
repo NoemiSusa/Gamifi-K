@@ -24,7 +24,7 @@ $conexion = conexion();
 
 // realizamos la query a la BD para realizar el insert con los valores que tendrá cada campo
 $query =  "INSERT INTO rankings(nombreRanking,nickProfesorRK,codigoAcceso,fechaInicio,fechaFinal)
-VALUES ('".$params->nombreRanking."','".$params->nickProfesorRK."','".$params->codigoAcceso."','".$params->fechaInicio."','String')";
+VALUES ('".$params->nombreRanking."','".$params->nickProfesorRK."','".$params->codigoAcceso."','".$params->fechaInicio."','".$params->fechaFinal."')";
 
 
 // nombreRanking	nickProfesorRK	fechaInicio	codigoAcceso	fechaFinal
@@ -34,16 +34,16 @@ VALUES ('".$params->nombreRanking."','".$params->nickProfesorRK."','".$params->c
     // Para cerrar la conexion con la base de datos.
     $conexion->close();
    $insertado=-1;
-    
-    
+
+
 
     if ($resultado==true){
         $insertado=1;
- 
+
     }
     else if ($resultado==false){
         $insertado=0;
     }
     return  $insertado;
-  }    
+  }
 }
