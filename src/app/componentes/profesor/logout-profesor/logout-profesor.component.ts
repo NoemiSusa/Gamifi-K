@@ -46,7 +46,7 @@ private router: Router,
         // )
       }
       else if (result.isConfirmed===false){
-          this.router.navigate(['/perfilProfesor']);
+          this.router.navigate(['/desktop']);
       }
 
     })
