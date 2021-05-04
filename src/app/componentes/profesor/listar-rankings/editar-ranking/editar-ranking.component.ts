@@ -16,21 +16,21 @@ export class EditarRankingComponent implements OnInit {
   //rankingsArray: Ranking[] = null;
   respuestaR: string[];
   resp;
-  listaTareas:string[];
+  listaTareas: string[];
   //  =["tarea 1","tarea 2","tarea 3", "todas"];
   nombreTarea: string;
   nombreRanking: string = environment.nombrerkg;
   sesion: string = environment.vsesion;
   idRanking: number = environment.rkg;
   nickAlumno: string;
-  nuevaPuntuacion:number;
+  nuevaPuntuacion: number;
 
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
     private listarTareas: ProfesorService,
-    private actualizaPuntuacion:ProfesorService,
+    private actualizaPuntuacion: ProfesorService,
     private router: Router
   ) { }
 
@@ -52,12 +52,12 @@ export class EditarRankingComponent implements OnInit {
 
   }
 
-  seleccionarTarea(tarea: string):void{
+  seleccionarTarea(tarea: string): void {
     this.nombreTarea = tarea;
     console.log(this.nombreTarea);
 
-     // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
-      this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking,this.nombreTarea).subscribe(
+    // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
+    this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking, this.nombreTarea).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
 
@@ -71,29 +71,35 @@ export class EditarRankingComponent implements OnInit {
       }
     )
   }
-  actualizarPuntuacion(nombreRanking:any,nuevaPuntuacion:number):void{
+  // actualizarPuntuacion(nombreRanking:any):void{
+
+  actualizarPuntuacion(nombreRanking: any, nuevaPuntuacion: number): void {
+    console.log(nombreRanking);
+
+    this.nickAlumno = nombreRanking['Nick'];
     this.nombreRanking = nombreRanking;
-    this.nuevaPuntuacion =nuevaPuntuacion;
-      this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking,this.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
-        (respuesta: Respuesta) => {
-          console.log(respuesta);
+    this.nuevaPuntuacion = nuevaPuntuacion;
 
-          if (!respuesta.resultado) {
-            Swal.fire(
-              'Datos incorrectos',
-              respuesta.msg,
-              'error'
-            )
+    this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking, this.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
+      (respuesta: Respuesta) => {
+        console.log(respuesta);
 
-          } else {
-            console.log("Usuario existe");
-            Swal.fire(
-              'Perfecto ',
-              respuesta.msg,
-              'success');
-          }
+        if (!respuesta.resultado) {
+          Swal.fire(
+            'Datos incorrectos',
+            respuesta.msg,
+            'error'
+          )
+
+        } else {
+          console.log("Usuario existe");
+          Swal.fire(
+            'Perfecto ',
+            respuesta.msg,
+            'success');
         }
-      );
+      }
+    );
   }
   // onFormSubmit(): void {
 
@@ -101,3 +107,4 @@ export class EditarRankingComponent implements OnInit {
 
 
 }
+

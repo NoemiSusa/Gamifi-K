@@ -3,20 +3,24 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
 header('Content-Type: application/json');
 
+
 $json = file_get_contents('php://input');
 // echo($json);
-$params = json_decode($json);
-$tarea = $params->nombreTarea->tarea
+// echo('{ "json": "hola" } ');
 
+$params = json_decode($json);
+$tarea = $params->nombreTarea->tareas;
+$nuevaPuntuacion = (double)$params->nuevaPuntuacion;
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "UPDATE tareas".
-          " SET puntuacion = '".$params->nuevaPuntuacion."'".
+$query = "UPDATE tareas
+          SET puntuacion = ".$params->nuevaPuntuacion.
           " WHERE nickAlumnoTarea='".$params->nickAlumno."'".
           " AND nombreTarea = '".$tarea."'".
-          " AND idRankingTarea = ".$params->idRanking."";
+          " AND idRankingTarea = ".$params->idRanking;
+
 // echo($query);
 $resultado = mysqli_query($conexion, $query);
 
@@ -33,8 +37,6 @@ if ($resultado) {
   $respuesta->datos = $datos;
 
   print json_encode($respuesta);
-
-  // print '{ "result": false, "msg": "Usuario no encontrado" }';
 
 } else {
   $respuesta->resultado = false;

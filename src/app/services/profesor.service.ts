@@ -117,6 +117,8 @@ export class ProfesorService {
       nickAlumno,
       nuevaPuntuacion
     }
-    return this.http.put(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
+    console.log(body);
+
+    return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
   }
 }
