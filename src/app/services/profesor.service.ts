@@ -102,7 +102,7 @@ export class ProfesorService {
     }
     // console.log(JSON.stringify(body));
      console.log(idRanking, nombre);
-    return this.http.put(`${environment.serverUrl}modificarNombreRanking.php`, body);
+    return this.http.post(`${environment.serverUrl}modificarNombreRanking.php`, body);
   }
 
   // Función para eliminar ranking seleccionado

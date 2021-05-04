@@ -17,6 +17,7 @@ export class ListarRankingsComponent implements OnInit {
 // Variables
 //rankingsArray: Ranking[] = null;
 respuestaR: Ranking;
+respuestaRR: Ranking;
 resp;
 
 nombreRanking: Ranking;
@@ -72,12 +73,12 @@ idRanking: number = environment.idRanking;
             let nombre = resultado.value;
             console.log("Hola, " + nombre);
 
-            //this.cambiarNombre.selectRankingNombre(this.idRanking, nombre).subscribe(
               this.cambiarNombre.selectRankingNombre(nombreRanking['idRanking'], nombre).subscribe(
               (resp: any) => {
                 this.respuestaR = resp;
 
                 console.log(this.respuestaR);
+
               },
               (error: any) => {
                 console.log(error);

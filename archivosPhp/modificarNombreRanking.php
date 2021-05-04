@@ -7,6 +7,8 @@ $json = file_get_contents('php://input');
 
 $params = json_decode($json);
 
+echo($params->nombre);
+
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
