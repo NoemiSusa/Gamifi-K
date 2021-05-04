@@ -110,6 +110,7 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}listarPuntuacionUnaTarea.php`, body);
   }
 
+  //función para hacer el update de la puntuación en la base de datos.
   actualizarPuntuacion(idRanking:number,nombreTarea:string, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
     const body ={
       idRanking,
@@ -118,7 +119,6 @@ export class ProfesorService {
       nuevaPuntuacion
     }
     console.log(body);
-
     return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
   }
 }
