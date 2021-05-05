@@ -1,4 +1,7 @@
 export class Ranking {
+  map(arg0: (value: Ranking) => void) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     public idRanking?: number,

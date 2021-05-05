@@ -6,6 +6,7 @@ import { Ranking } from 'src/app/models/ranking.model';
 import { Respuesta } from 'src/app/models/respuesta.model';
 import Swal from 'sweetalert2';
 import { env } from 'process';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-listar-rankings',
@@ -14,18 +15,18 @@ import { env } from 'process';
 })
 export class ListarRankingsComponent implements OnInit {
 
-// Variables
-//rankingsArray: Ranking[] = null;
-respuestaR: Ranking;
-respuestaRR: Ranking;
-resp;
+  // Variables
+  //rankingsArray: Ranking[] = null;
+  respuestaR: Ranking[];
+  respuestaRR: Ranking;
+  resp;
 
-nombreRanking: Ranking;
-rankingSelected: Ranking;
-idR: number = null;
+  nombreRanking: Ranking;
+  rankingSelected: Ranking;
+  idR: number = null;
 
-sesion: string = environment.vsesion;
-idRanking: number = environment.idRanking;
+  sesion: string = environment.vsesion;
+  idRanking: number = environment.idRanking;
   rankingmap: any;
 
   constructor(
@@ -37,7 +38,7 @@ idRanking: number = environment.idRanking;
 
   ngOnInit(): void {
 
-// Usamos el servicio para pedir todos los campos del ranking y poder listarlo
+    // Usamos el servicio para pedir todos los campos del ranking y poder listarlo
     this.listarRankings.pedirListadoRankings(this.sesion).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
@@ -50,45 +51,52 @@ idRanking: number = environment.idRanking;
     )
   }
 
-// Función que se ejecuta con click en el ranking que queremos seleccionar para editar
-    selectRanking(nombreRanking: Ranking):void  {
-      console.log(nombreRanking);
-      // especifico el campo del objeto que quiero guardar como variable global
-      environment.idRanking  = nombreRanking['idRanking'];
-      this.idRanking = environment.idRanking;
-      console.log(this.idRanking);
-    }
+  // Función que se ejecuta con click en el ranking que queremos seleccionar para editar
+  selectRanking(nombreRanking: Ranking): void {
+    console.log(nombreRanking);
+    // especifico el campo del objeto que quiero guardar como variable global
+    environment.idRanking = nombreRanking['idRanking'];
+    this.idRanking = environment.idRanking;
+    console.log(this.idRanking);
+  }
 
-// Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
-    selectRankingNombre(nombreRanking: Ranking):void  {
-      Swal
-    .fire({
+  // Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
+  selectRankingNombre(nombreRanking: Ranking): void {
+    Swal
+      .fire({
         title: "Modifica el nombre del Ranking " + nombreRanking['nombreRanking'],
         input: "text",
         showCancelButton: true,
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar",
-    })
-    .then(resultado => {
+      })
+      .then(resultado => {
         if (resultado.value) {
-            let nombre = resultado.value;
-            console.log("Hola, " + nombre);
+          let nombre = resultado.value;
+          console.log("Hola, " + nombre);
 
-              this.cambiarNombre.selectRankingNombre(nombreRanking['idRanking'], nombre).subscribe(
-              (resp: any) => {
-                this.respuestaR = resp;
-                console.log(this.respuestaR);
+          // Funció que permet canviar el nom del ranking seleccionat, envia al service l'id del ranking seleccionat i el nom que s'ha canviat al sweetAlert
+          this.cambiarNombre.selectRankingNombre(nombreRanking['idRanking'], nombre).subscribe(
+            (resp: any) => {
+              this.respuestaRR = resp;
 
-                this.rankingmap.map((value: Ranking)) =>  {
+              nombreRanking.nombreRanking = nombre;
+              console.log(nombreRanking.nombreRanking);
 
+              this.respuestaR.map((value: Ranking) => {
+
+                if (value['idRanking'] === environment.idRanking) {
+                  value['nombreRanking'] = nombre;
                 }
-
-              },
-              // // (error: any) => {
-              //   console.log(error);
-              // }
-            )
+              }
+              );
+              //this.nombreRanking['idRanking']
+            },
+            (error: any) => {
+              console.log(error);
+            }
+          )
         }
-    });
-}
+      });
+  }
 }

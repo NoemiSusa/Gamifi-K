@@ -7,8 +7,6 @@ $json = file_get_contents('php://input');
 
 $params = json_decode($json);
 
-echo($params->nombre);
-
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
@@ -21,36 +19,7 @@ $resultado = mysqli_query($conexion, $query);
 
 $conexion->close();
 
-$respuesta = new \stdClass();
-
-if ($resultado) {
-
-  $conexion = conexion();
-
-//lista todos los rankings de un profesor (es el que le pasamos como parametro)
-$query = "SELECT * FROM rankings where nickProfesorRK='".$params."'";
-$resultado = mysqli_query($conexion, $query);
-
-$datos = [];
-
-while ($row = mysqli_fetch_assoc($resultado)) {
-  $datos[] = $row;
-}
-
-$conexion->close();
-
-  $respuesta->resultado = true;
-  $respuesta->msg = "Se ha modificado correctamente el nombre del Ranking";
-  $respuesta->datos = $datos;
-
-  print json_encode($respuesta);
+echo($json);
 
 
-} else {
-  $respuesta->resultado = false;
-  $respuesta->msg = "No se ha podido modificar el nombre del Ranking";
-  $respuesta->datos = [];
-
-  print json_encode($respuesta);
-
-}
+?>
