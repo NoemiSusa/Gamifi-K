@@ -99,19 +99,6 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}eliminarRankingSeleccionado.php`, JSON.stringify(idRanking));
   }
 
-
-//************ @@@@@@@@@@@@@@@@@@@@ ********************/
-}
-/******************  ***********************************/
-  }
-
-  // Función para pedir listado de rankings por profesor
-  public pedirListadoRankings(sesion: any): Observable<any> {
-    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
-  }
-
-
-
   //Función que se usa para obtener la lista de tareas que tiene un ranking
   pedirListaTareas(idRanking:any): Observable<any>{
     console.log(idRanking);
