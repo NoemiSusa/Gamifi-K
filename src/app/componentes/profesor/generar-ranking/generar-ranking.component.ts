@@ -26,11 +26,12 @@ export class GenerarRankingComponent implements OnInit {
 
   fechavalida = false;
 
+  public datainicio: string;
   // prueba de la data minima
-  public mindate: String;
-  public fechaMinimaParsed: String;
+  public fechaMinimaParsed: string;
 
 
+  public dataFinNoParsed
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService,
@@ -47,65 +48,70 @@ export class GenerarRankingComponent implements OnInit {
     var año = fechaminima.getFullYear();
 
 
-
-    if(dia<10){
-      this.fechaMinimaParsed = (año + "-" + mes + "-" +"0"+ dia);
+    if (dia < 10 && mes < 10) {
+      this.fechaMinimaParsed = (año + "-" + "0" + mes + "-" + "0" + dia);
+      console.log(this.fechaMinimaParsed + " data minima 1");
     }
-    if (mes<10){
-      this.fechaMinimaParsed = (año + "-" +"0"+ mes + "-" + dia);
+    else if (mes < 10 && dia > 9) {
+      this.fechaMinimaParsed = (año + "-" + "0" + mes + "-" + dia);
+      console.log(this.fechaMinimaParsed + " data minima 2");
     }
-    else{
+    else if (mes > 9 && dia > 9) {
       this.fechaMinimaParsed = (año + "-" + mes + "-" + dia);
+      console.log(this.fechaMinimaParsed + " data minima 3");
     }
 
-    console.log(this.fechaMinimaParsed+" data minima @@@@@@@@@@@@@@@@@@@@@");
+    console.log(this.fechaMinimaParsed + " data minima @@@@@@@@@@@@@@@@@@@@@");
 
-    // this.mindate.toUTCString();
-    // console.log(this.mindate+" data minima @@@@@@@@@@@@@@@@@@@@@");
+
     this.rankingProfesor = this.formBuilder.group({
       nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
-      dataFin: ["", Validators.required],
-      // fechaInicio:['',[Validators.required]]
+      dataFin: ['', Validators.required]
+
     }, {});
   }
-  get controlFormulario() {
-    return this.rankingProfesor.controls;
 
-  }
-
-
-  //sirve para ejecutar el control del formulario en el html
 
 
   formularioRankingFuncion() {
-    console.log(this.mindate + "   mindate@@@@@@@@@@");
 
     //guardo los valores del formulario en la variable nuevo ranking
     this.nuevoRanking = new Ranking(this.rankingProfesor.controls.nombreRanking.value);
-    var dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
+    this.nuevoRanking.idRanking=null;
 
-    var dataFinParced = dataFinNoParsed.split("-",);
+    this.dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
+
+    console.log(this.dataFinNoParsed +"  datafinnoparced");
+
+
+
+
+
+    var dataFinParced = this.dataFinNoParsed.split("-",);
+      console.log(dataFinParced+ "Fecha fin :   datafinparce");
+
 
     var diaFin = dataFinParced[2];
     var mesFin = dataFinParced[1];
     var añoFin = dataFinParced[0];
 
-    this.nuevoRanking.fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
+    var fechaFinRkg = diaFin + "/" + mesFin + "/" + añoFin;
+
+
+    console.log(fechaFinRkg+ "  Fecha fin :   fechaFinRkg" );
+
+    //guardo la fecha fin en el objeto
+    this.nuevoRanking.fechaFinal = fechaFinRkg;
+
+
 
     console.log(this.nuevoRanking.fechaFinal + "DATA-FIN-FINAL");
 
-
-
-
     console.log(dataFinParced)
-
     this.submitted = true;
 
-
-
-
-
     this.nuevoRanking.nickProfesorRK = environment.vsesion;
+    //codigo de acceso
     this.nuevoRanking.codigoAcceso = Date.now();
 
     var fechaEntera = new Date();
@@ -113,23 +119,28 @@ export class GenerarRankingComponent implements OnInit {
     var mes = fechaEntera.getMonth() + 1;
     var año = fechaEntera.getFullYear();
 
-    var datainicio: string = (dia + "/" + mes + "/" + año);
+    if (dia < 10 && mes < 10) {
+      this.datainicio = ("0" + dia + "/" + "0" + mes + "/" + año);
+    }
+    else if (dia < 10 && mes > 9) {
+      this.datainicio = ("0" + dia + "/" + mes + "/" + año);
+    }
+    else
+      this.datainicio = (dia + "/" + mes + "/" + año);
 
-    this.nuevoRanking.fechaInicio = datainicio;
-    console.log(datainicio);
+
+    this.nuevoRanking.fechaInicio = this.datainicio;
+    console.log(this.datainicio);
     console.log(this.nuevoRanking);
 
-    if (año < añoFin || año == añoFin && mes < mesFin || año == añoFin && mes == mesFin && dia < diaFin) {
-      this.fechavalida = true;
 
-    } else {
-      this.fechavalida = false;
-    }
-    console.log(this.fechavalida + " ESTADO DE LA FECHA VALIDA")
 
     if (this.rankingProfesor.invalid) {
       return;
     }
+
+
+
 
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
 
@@ -155,7 +166,10 @@ export class GenerarRankingComponent implements OnInit {
 
   }
 
-
+  //sirve para ejecutar el control del formulario en el html
+  get controlFormulario() {
+    return this.rankingProfesor.controls;
+  }
 
 
 }
