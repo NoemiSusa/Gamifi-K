@@ -13,14 +13,12 @@ $conexion = conexion();
 
 //elimina el ranking seleccionado
 $query = "DELETE FROM rankings
-          where idRanking = '".$params->idRanking."'
-            and nickProfesorRK = '".$params->nickProfesor."'
-            and fechaInicio = '".$params->fechaInicio."'";
+          where idRanking = ".$params." ";
+
+
 
 $resultado = mysqli_query($conexion, $query);
-
 $datos = -1;
-
 $conexion->close();
 
 if(!$resultado){

@@ -79,27 +79,28 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
 
-  altaRankingService(rankingTs:Ranking):Observable<any>{
+  altaRankingService(rankingTs: Ranking): Observable<any> {
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
 
   }
 
   // Función para pedir listado de rankings por profesor
-  public pedirListadoRankings(sesion: any): Observable<any>  {
+  public pedirListadoRankings(sesion: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
   }
 
   // Función para pedir listado de ranking seleccionado
-  public pedirListadoRanking(idRanking: any ): Observable<any>  {
+  public pedirListadoRanking(idRanking: any): Observable<any> {
     console.log(JSON.stringify(idRanking))
     return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
 
   }
 
   // Función para eliminar ranking seleccionado
- /* public eliminarRanking(idRanking: any): Observable<any> {
+  public eliminarRanking(idRanking: any): Observable<any> {
+
     return this.http.post(`${environment.serverUrl}eliminarRankingSeleccionado.php`, JSON.stringify(idRanking));
-  }*/
+  }
 
 
 
