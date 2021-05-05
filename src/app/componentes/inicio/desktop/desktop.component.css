@@ -58,7 +58,7 @@ diseño renderizado, y del DOM*/
     -webkit-animation-direction: alternate;
 }
 
-button {
+.but {
     width: 200px;
     margin: 50px auto 20px;
     font-size: 19px;

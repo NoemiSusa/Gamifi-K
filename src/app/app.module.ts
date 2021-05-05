@@ -25,7 +25,6 @@ import { DesktopComponent } from './componentes/inicio/desktop/desktop.component
 import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/generar-ranking.component';
 import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
 import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
-import { ModificarDatosRankingComponent } from './componentes/profesor/listar-rankings/modificar-datos-ranking/modificar-datos-ranking.component';
 import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vista-ranking/vista-ranking.component';
 
 
@@ -52,7 +51,6 @@ import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vi
     GenerarRankingComponent,
     ListarRankingsComponent,
     EditarRankingComponent,
-    ModificarDatosRankingComponent,
     VistaRankingComponent
   ],
   imports: [

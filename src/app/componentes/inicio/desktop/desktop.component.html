@@ -1,24 +1,35 @@
 <div class="container-fluid main-section">
-  <div class="row">
-      <div class="offset-lg-2 col-lg-8  text-center">
-          <div class="mt-5"><br><br>
-           <!-- <div *ngIf="profesor !== null"> -->
-              <h1>ZONA DOCENTE</h1>
-              <h1>Bienvenid@ {{sesion}}</h1>
-           <!-- </div> -->
-          </div><br><br><br><br>
-          <div>
-              <div class="float-left ml-5">
-                  <h3>PERFIL</h3>
-                  <button class="btn btn-danger" type="submit" [routerLink]="'/perfilProfesor'" alt="">Click Me</button>
-              </div>
-              <div class="float-right mr-5">
-                  <h3>RANKINGS</h3>
-                  <button class="btn btn-danger" type="sumbit" [routerLink]="'/listarRankings'" alt="">Click Me</button>
-              </div>
-          </div>
-      </div>
-  </div>
+    <button type="button" class="btn btn-outline-danger float-right mr-3 mt-3" [routerLink]="'/logoutProfesor'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+<path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"></path>
+<path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"></path>
+</svg>
+      LOG OUT
+    </button>
+    <div class="row">
 
-  <i class="fa fa-angle-double-down blink" aria-hidden="true"></i>
+        <div class="offset-lg-2 col-lg-8  text-center">
+
+            <div class="mt-5"><br><br>
+
+
+                <!-- <div *ngIf="profesor !== null"> -->
+                <h1>ZONA DOCENTE</h1>
+                <h1>Bienvenid@ {{sesion}}</h1>
+                <!-- </div> -->
+            </div><br><br><br><br>
+            <div>
+                <div class="float-left ml-5">
+                    <h3>PERFIL</h3>
+                    <button class=" but btn btn-danger" type="submit" [routerLink]="'/perfilProfesor'" alt="">Click Me</button>
+                </div>
+                <div class="float-right mr-5">
+                    <h3>RANKINGS</h3>
+                    <button class=" but btn btn-danger" type="sumbit" [routerLink]="'/listarRankings'" alt="">Click Me</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <i class="fa fa-angle-double-down blink" aria-hidden="true"></i>
 </div>
