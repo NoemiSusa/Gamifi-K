@@ -20,11 +20,9 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 })
 export class GenerarRankingComponent implements OnInit {
   //variable de tipo ranking para rellenar los datos del formulario
-  nuevoRanking: Ranking;
-  rankingProfesor: FormGroup;
-  submitted = false;
-
-  fechavalida = false;
+  public nuevoRanking: Ranking;
+  public rankingProfesor: FormGroup;
+  public submitted = false;
 
   public datainicio: string;
   // prueba de la data minima
@@ -41,13 +39,19 @@ export class GenerarRankingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.rankingProfesor = this.formBuilder.group({
+      nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
+      dataFin: ['', Validators.required]
+    }, {});
 
+    // creo variable para que me ponga toda la fecha en fechaminima
     var fechaminima = new Date();
+    // cojo las partes de la fecha por separado
     var dia = fechaminima.getDate();
     var mes = fechaminima.getMonth() + 1;
     var año = fechaminima.getFullYear();
 
-
+    // valido la fecha
     if (dia < 10 && mes < 10) {
       this.fechaMinimaParsed = (año + "-" + "0" + mes + "-" + "0" + dia);
       console.log(this.fechaMinimaParsed + " data minima 1");
@@ -60,36 +64,31 @@ export class GenerarRankingComponent implements OnInit {
       this.fechaMinimaParsed = (año + "-" + mes + "-" + dia);
       console.log(this.fechaMinimaParsed + " data minima 3");
     }
-
     console.log(this.fechaMinimaParsed + " data minima @@@@@@@@@@@@@@@@@@@@@");
-
-
-    this.rankingProfesor = this.formBuilder.group({
-      nombreRanking: ['', [Validators.required, Validators.minLength(2)]],
-      dataFin: ['', Validators.required]
-
-    }, {});
+  }
+  //sirve para ejecutar el control del formulario en el html
+  get controlFormulario() {
+    return this.rankingProfesor.controls;
   }
 
 
-
-  formularioRankingFuncion() {
+  formularioRankingFuncion(): void {
+    console.log(this.rankingProfesor.controls.nombreRanking.value + " hibirihibiri");
 
     //guardo los valores del formulario en la variable nuevo ranking
-    this.nuevoRanking = new Ranking(this.rankingProfesor.controls.nombreRanking.value);
-    this.nuevoRanking.idRanking=null;
+    this.nuevoRanking = new Ranking(null,
+      this.rankingProfesor.controls.nombreRanking.value);
+    console.log(this.nuevoRanking.nombreRanking + " nuevoranking");
 
+
+
+    console.log(this.nuevoRanking.nombreRanking + " Nuevo ranking ");
+    //cojo la fecha del formulario en su formato para luego formatearla correctamente
     this.dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
-
-    console.log(this.dataFinNoParsed +"  datafinnoparced");
-
-
-
 
 
     var dataFinParced = this.dataFinNoParsed.split("-",);
-      console.log(dataFinParced+ "Fecha fin :   datafinparce");
-
+    console.log(dataFinParced + "Fecha fin :   datafinparce");
 
     var diaFin = dataFinParced[2];
     var mesFin = dataFinParced[1];
@@ -98,7 +97,7 @@ export class GenerarRankingComponent implements OnInit {
     var fechaFinRkg = diaFin + "/" + mesFin + "/" + añoFin;
 
 
-    console.log(fechaFinRkg+ "  Fecha fin :   fechaFinRkg" );
+    console.log(fechaFinRkg + "  Fecha fin :   fechaFinRkg");
 
     //guardo la fecha fin en el objeto
     this.nuevoRanking.fechaFinal = fechaFinRkg;
@@ -166,10 +165,7 @@ export class GenerarRankingComponent implements OnInit {
 
   }
 
-  //sirve para ejecutar el control del formulario en el html
-  get controlFormulario() {
-    return this.rankingProfesor.controls;
-  }
+
 
 
 }

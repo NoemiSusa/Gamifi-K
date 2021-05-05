@@ -1,5 +1,7 @@
 export class Ranking {
 
+
+
   constructor(
     public idRanking?: number,
     public nombreRanking?: string,
