@@ -19,10 +19,8 @@ class Insertar {
 
     //recojemos el resultado de si se ha ejecutado correctamente o no la query obteniendo true en caso que si o false en caso que no.
     $resultado =  mysqli_query($conexion, $query);
-
     // Para cerrar la conexion con la base de datos.
     $conexion->close();
-
     //variable donde vamos a guardar un 1 si se hace el insert a la base de datos o un 0 si no se ha podido realizar el insert.
     $insert;
 

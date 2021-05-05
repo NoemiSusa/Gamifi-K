@@ -3,25 +3,20 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
 header('Content-Type: application/json');
 
-
 $json = file_get_contents('php://input');
-// echo($json);
-// echo('{ "json": "hola" } ');
 
 $params = json_decode($json);
-$tarea = $params->nombreTarea->tareas;
-$nuevaPuntuacion = (double)$params->nuevaPuntuacion;
+
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "UPDATE tareas
-          SET puntuacion = ".$params->nuevaPuntuacion.
-          " WHERE nickAlumnoTarea='".$params->nickAlumno."'".
-          " AND nombreTarea = '".$tarea."'".
-          " AND idRankingTarea = ".$params->idRanking;
+$query = "UPDATE ranking
+          SET nombreRanking = '".$params->nombreRanking."',
+          codigoAcceso = '".$params->codigoAcceso."',
+          fechaFinal = '".$params->fechaFinal."'
+          where idRanking=".$params->idRanking.;
 
-// echo($query);
 $resultado = mysqli_query($conexion, $query);
 
 $conexion->close();
@@ -38,13 +33,14 @@ if ($resultado) {
 
   print json_encode($respuesta);
 
+  // print '{ "result": false, "msg": "Usuario no encontrado" }';
+
 } else {
   $respuesta->resultado = false;
-  $respuesta->msg = "No se han actualizado las puntuaciones";
+  $respuesta->msg = "No se ha podido modificar la puntuación de la tarea";
   $respuesta->datos = [];
 
 
   print json_encode($respuesta);
 
 }
-?>

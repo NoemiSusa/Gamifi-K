@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { env } from 'process';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
+
 @Component({
   selector: 'app-listar-rankings',
   templateUrl: './listar-rankings.component.html',
@@ -29,6 +30,7 @@ export class ListarRankingsComponent implements OnInit {
   idRanking: number = environment.idRanking;
   rankingmap: any;
 
+
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
@@ -37,6 +39,7 @@ export class ListarRankingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
 
     // Usamos el servicio para pedir todos los campos del ranking y poder listarlo
     this.listarRankings.pedirListadoRankings(this.sesion).subscribe(
@@ -100,3 +103,4 @@ export class ListarRankingsComponent implements OnInit {
       });
   }
 }
+

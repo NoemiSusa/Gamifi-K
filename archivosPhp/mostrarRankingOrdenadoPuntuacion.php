@@ -28,6 +28,7 @@ $query = "SELECT  al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT
  // $query = "SELECT * FROM tareas WHERE idRankingTarea='".$params."'" ;
 
 
+
 $resultado = mysqli_query($conexion, $query);
 
 // inciamos la variable $datos como array donde vamos a guardar los datos que obtengamos de la consulta

@@ -74,18 +74,17 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}editarPerfil.php`, JSON.stringify(datosPerfil));
   }
 
-
+  //esta función se ejecuta para comprobar que la contraseña es correcta
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
-
-  altaRankingService(rankingTs:Ranking):Observable<any>{
+  //esta función se llama para poder generar un ranking
+  altaRankingService(rankingTs: Ranking): Observable<any> {
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
-
   }
 
   // Función para pedir listado de rankings por profesor
-  public pedirListadoRankings(sesion: any): Observable<any>  {
+  public pedirListadoRankings(sesion: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
   }
 
@@ -106,18 +105,38 @@ export class ProfesorService {
   }
 
   // Función para eliminar ranking seleccionado
- /* public eliminarRanking(idRanking: any): Observable<any> {
+  public eliminarRanking(idRanking: any): Observable<any> {
     return this.http.post(`${environment.serverUrl}eliminarRankingSeleccionado.php`, JSON.stringify(idRanking));
-  }*/
+  }
 
+  //Función que se usa para obtener la lista de tareas que tiene un ranking
+  pedirListaTareas(idRanking:any): Observable<any>{
+    console.log(idRanking);
+    return this.http.post(`${environment.serverUrl}seleccionarTareas.php`, JSON.stringify(idRanking));
+  }
 
+  //Función para pedir todos los datos del ranking a la base de datos.
+    //creamos la constante body para generar un objeto ya que el service debe mandar un objeto al php y generamos el objeto con los valores que nosotros necessitamos.
+  pedirRankingaEditar(sesion:string, idRanking:number, nombreTarea:string): Observable<any> {
+    //sirve para crear un objeto con las dos o más variables que le queremos pasar al php porque el php solo puede recibir objetos.
+    const body ={
+      sesion,
+      idRanking,
+      nombreTarea
+    }
+    // console.log(JSON.stringify(body));
+    return this.http.post(`${environment.serverUrl}listarPuntuacionUnaTarea.php`, body);
+  }
 
+  //función para hacer el update de la puntuación en la base de datos.
+  actualizarPuntuacion(idRanking:number,nombreTarea:string, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
+    const body ={
+      idRanking,
+      nombreTarea,
+      nickAlumno,
+      nuevaPuntuacion
+    }
+    console.log(body);
+    return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
+  }
 }
-
-
-
-
-
-
-
-
