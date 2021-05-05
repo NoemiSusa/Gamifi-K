@@ -1,6 +1,6 @@
 import { EditPerfilComponent } from './componentes/profesor/perfil-profesor/edit-perfil/edit-perfil.component';
 import { CambiarContraProfesorComponent } from './componentes/profesor/perfil-profesor/edit-perfil/cambiar-contra-profesor/cambiar-contra-profesor.component';
-import  { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlumnoComponent } from './componentes/alumno/alumno.component';
 import { LoginAlumnoComponent } from './componentes/alumno/login-alumno/login-alumno.component';
@@ -19,6 +19,8 @@ import { DesktopComponent } from './componentes/inicio/desktop/desktop.component
 import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/generar-ranking.component';
 import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
 import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
+import { ModificarDatosRankingComponent } from './componentes/profesor/listar-rankings/modificar-datos-ranking/modificar-datos-ranking.component';
+import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vista-ranking/vista-ranking.component';
 
 
 
@@ -42,6 +44,8 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'generarRanking', component: GenerarRankingComponent},
   { path: 'listarRankings', component: ListarRankingsComponent},
   { path: 'editarRanking', component: EditarRankingComponent},
+  { path: 'modificarDatosRanking', component: ModificarDatosRankingComponent},
+  { path: 'vistaRanking', component: VistaRankingComponent},
   { path: '**', redirectTo: 'inicio'}
 ];
 

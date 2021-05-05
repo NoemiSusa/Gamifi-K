@@ -59,7 +59,7 @@ export class ProfesorService {
           // profesorObj declarado arriba aquí recoge el objeto respuesta del PHP
           this.profesorObj = respuesta.datos[0];
           // Swal.fire(environment.vsesion+ " Variable de sesion ")
-          this.router.navigate(['/perfilProfesor']);
+          this.router.navigate(['/desktop']);
         }
       },
       (error: any) => {
@@ -74,14 +74,35 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}editarPerfil.php`, JSON.stringify(datosPerfil));
   }
 
-
+  //esta función se ejecuta para comprobar que la contraseña es correcta
   comprobarContrasenyaService(modificarContra: Contrasenyas): Observable<any> {
     return this.http.post(`${environment.serverUrl}editarContrasenyaProfesor.php`, JSON.stringify(modificarContra));
   }
-
+  //esta función se llama para poder generar un ranking
   altaRankingService(rankingTs: Ranking): Observable<any> {
     return this.http.post(`${environment.serverUrl}comprobacionRanking.php`, JSON.stringify(rankingTs));
+  }
 
+  // Función para pedir listado de rankings por profesor
+  public pedirListadoRankings(sesion: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
+  }
+
+  // Función para pedir listado de ranking seleccionado
+  public pedirListadoRanking(idRanking: any): Observable<any> {
+    console.log(JSON.stringify(idRanking))
+    return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
+  }
+
+  // Función para eliminar ranking seleccionado
+  public eliminarRanking(idRanking: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}eliminarRankingSeleccionado.php`, JSON.stringify(idRanking));
+  }
+
+
+//************ @@@@@@@@@@@@@@@@@@@@ ********************/
+}
+/******************  ***********************************/
   }
 
   // Función para pedir listado de rankings por profesor

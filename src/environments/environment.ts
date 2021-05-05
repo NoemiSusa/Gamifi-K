@@ -7,7 +7,8 @@ export const environment = {
   serverUrl: 'http://localhost:8080/',
   vsesion: "",
   rkg:null,
-  tarea:""
+  tarea:"",
+  idRanking: null
 };
 
 /*
