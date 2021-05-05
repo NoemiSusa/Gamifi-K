@@ -19,7 +19,7 @@ export class EditarRankingComponent implements OnInit {
   nombreTarea: string;
   nombreRanking: string;
   sesion: string = environment.vsesion;
-  idRanking: number = environment.rkg;
+  idRanking: number = environment.idRanking;
   nickAlumno: string;
   nuevaPuntuacion: number;
 

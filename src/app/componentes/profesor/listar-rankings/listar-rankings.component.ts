@@ -21,7 +21,7 @@ export class ListarRankingsComponent implements OnInit {
   respuestaR: Ranking[];
   respuestaRR: Ranking;
   resp;
-
+  respuesta:Respuesta;
   nombreRanking: Ranking;
   rankingSelected: Ranking;
   idR: number = null;
@@ -62,6 +62,23 @@ export class ListarRankingsComponent implements OnInit {
     this.idRanking = environment.idRanking;
     console.log(this.idRanking);
   }
+  // Función que se ejecuta con click en el ranking que queremos seleccionar para cambiar las puntuaciones
+  selectRankingTarea(nombreRanking: Ranking): void {
+    console.log(nombreRanking);
+    // especifico el campo del objeto que quiero guardar como variable global
+    environment.idRanking = nombreRanking['idRanking'];
+    this.idRanking = environment.idRanking;
+    console.log(this.idRanking);
+  }
+
+  // // Función que se ejecuta con click en el ranking que queremos seleccionar para eliminarlo
+  // eliminarRanking(nombreRanking: Ranking): void {
+  //   console.log(nombreRanking);
+  //   // especifico el campo del objeto que quiero guardar como variable global
+  //   environment.idRanking = nombreRanking['idRanking'];
+  //   this.idRanking = environment.idRanking;
+  //   console.log(this.idRanking);
+  // }
 
   // Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
   selectRankingNombre(nombreRanking: Ranking): void {
@@ -101,6 +118,39 @@ export class ListarRankingsComponent implements OnInit {
           )
         }
       });
+  }
+
+  eliminarRanking(nombreRanking : Ranking): void {
+    environment.idRanking = nombreRanking['idRanking'];
+    console.log(environment.idRanking+"  El id del ranking line 64: ");
+    Swal.fire({
+      title: 'Estas seguro que quieres borrar el ranking?',
+      text: "No pueder revertir la decision",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(result);
+        this.listarRankings.eliminarRanking(environment.idRanking).subscribe(
+          (resp: any) => {
+            this.respuesta = resp;
+            console.log(this.respuesta);
+            Swal.fire(
+              'Borrado!',
+              this.respuesta.msg,
+              'success'
+            )
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        )
+      }
+    }
+    )
   }
 }
 

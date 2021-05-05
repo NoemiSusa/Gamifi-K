@@ -15,9 +15,11 @@ $conexion = conexion();
 $query = "DELETE FROM rankings
           where idRanking = ".$params." ";
 
-
-
 $resultado = mysqli_query($conexion, $query);
+
+//iniciem la variable respuesta i la habilitem per diferents tipus de dades.
+$respuesta = new \stdClass();
+
 $datos = -1;
 $conexion->close();
 

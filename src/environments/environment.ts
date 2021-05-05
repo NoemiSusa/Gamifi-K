@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   serverUrl: 'http://localhost:8080/',
   vsesion: "",
-  rkg:null,
   tarea:"",
   idRanking: null
 };

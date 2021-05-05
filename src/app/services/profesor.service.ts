@@ -31,10 +31,11 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}datosPerfil.php`, JSON.stringify(sesion));
   }
 
+  //función que sirve para poder loguear un profesor
   loginProfesorService(profesor: Profesor): void {
     // console.log(profesor.nickProfesor + " " + profesor.contrasenyaProfesor + " Datos del formulario");
     console.log(profesor);
-    // envio unos valores que seran de tipo respuesta
+    // envio unos valores para que se ejecute el php y devuelva una respuesta de tipo respuesta
     this.http.post<Respuesta>(`${environment.serverUrl}loginProfesor.php`, JSON.stringify(profesor)).subscribe(
       (respuesta: Respuesta) => {
         console.log(respuesta);
