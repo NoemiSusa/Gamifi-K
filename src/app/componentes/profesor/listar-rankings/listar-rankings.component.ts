@@ -26,6 +26,7 @@ idR: number = null;
 
 sesion: string = environment.vsesion;
 idRanking: number = environment.idRanking;
+  rankingmap: any;
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
@@ -36,7 +37,7 @@ idRanking: number = environment.idRanking;
 
   ngOnInit(): void {
 
-// Usamos el servicio par pedir todos los campos del ranking y poder listarlo
+// Usamos el servicio para pedir todos los campos del ranking y poder listarlo
     this.listarRankings.pedirListadoRankings(this.sesion).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
@@ -76,13 +77,16 @@ idRanking: number = environment.idRanking;
               this.cambiarNombre.selectRankingNombre(nombreRanking['idRanking'], nombre).subscribe(
               (resp: any) => {
                 this.respuestaR = resp;
-
                 console.log(this.respuestaR);
 
+                this.rankingmap.map((value: Ranking)) =>  {
+
+                }
+
               },
-              (error: any) => {
-                console.log(error);
-              }
+              // // (error: any) => {
+              //   console.log(error);
+              // }
             )
         }
     });
