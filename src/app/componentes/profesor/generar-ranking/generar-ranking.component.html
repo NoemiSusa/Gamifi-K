@@ -25,16 +25,14 @@
 
         <div class=" form-row mt-5">
             <h5 class="ml-3 mb-3" id="fechaFinal">Fecha final</h5>
-            <input type="date" [min]="fechaMinimaParsed" placeholder="Data fin" formControlName="dataFin" class="form-control" [ngClass]="{'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid &&fechavalida==true,
-                'is-invalid': controlFormulario.dataFin.touched && controlFormulario.dataFin.invalid && fechavalida==false}">
+            <input type="date" [min]="fechaMinimaParsed" placeholder="dataFin" formControlName="dataFin" class="form-control " [ngClass]="{ 'is-valid': controlFormulario.dataFin.touched && controlFormulario.dataFin.valid,
+            'is-invalid': controlFormulario.dataFin.touched
+                && controlFormulario.dataFin.invalid} ">
 
-            <div *ngIf="submitted && controlFormulario.dataFin.errors" class="invalid-feedback">
-                <div *ngIf="controlFormulario.dataFin.errors.required">Data Fin es obligatoria</div>
+            <div *ngIf="submitted && controlFormulario.dataFin.errors " class="invalid-feedback ">
+                <div *ngIf="controlFormulario.dataFin.errors.required ">Data Fin es obligatoria</div>
             </div>
 
-            <div *ngIf="submitted && controlFormulario.dataFin.errors" class="invalid-feedback">
-                <div *ngIf="controlFormulario.dataFin.errors.fechaInvalida">Data Fin invalida</div>
-            </div>
         </div>
 
 
@@ -45,8 +43,8 @@
         <br>
         <!--botón registrarse-->
         <div>
-            <div class="form-group">
-                <button type="submit" class="register-button">Crear Ranking</button>
+            <div class="form-group ">
+                <button type="submit " class="register-button ">Crear Ranking</button>
             </div>
         </div>
     </form>

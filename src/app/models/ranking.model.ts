@@ -3,6 +3,8 @@ export class Ranking {
     throw new Error('Method not implemented.');
   }
 
+
+
   constructor(
     public idRanking?: number,
     public nombreRanking?: string,
