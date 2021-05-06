@@ -59,9 +59,9 @@
                                     <td>{{nombreRanking['nombreRanking']}}</td>
                                     <td>
                                         <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(nombreRanking)">Visualizar</a> ||
-                                        <a class="register-button" style="color: white;" (click)="selectRankingNombre(nombreRanking)">Editar</a> ||
+                                        <a class="register-button" style="color: white; cursor: pointer;" (click)="selectRankingNombre(nombreRanking)">Editar</a> ||
                                         <a class="register-button" [routerLink]="'/editarRanking'" style="color: white;" (click)="selectRankingTarea(nombreRanking)">Tareas</a> ||
-                                        <a class="register-button" style="color:red;" (click)="eliminarRanking(nombreRanking) ">Eliminar</a>
+                                        <a class="register-button" style="color:red; cursor: pointer;" (click)="eliminarRanking(nombreRanking) ">Eliminar</a>
 
                                     </td>
                                     <!-- </a> -->

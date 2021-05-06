@@ -71,15 +71,6 @@ export class ListarRankingsComponent implements OnInit {
     console.log(this.idRanking);
   }
 
-  // // Función que se ejecuta con click en el ranking que queremos seleccionar para eliminarlo
-  // eliminarRanking(nombreRanking: Ranking): void {
-  //   console.log(nombreRanking);
-  //   // especifico el campo del objeto que quiero guardar como variable global
-  //   environment.idRanking = nombreRanking['idRanking'];
-  //   this.idRanking = environment.idRanking;
-  //   console.log(this.idRanking);
-  // }
-
   // Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
   selectRankingNombre(nombreRanking: Ranking): void {
     Swal
@@ -103,6 +94,12 @@ export class ListarRankingsComponent implements OnInit {
               nombreRanking.nombreRanking = nombre;
               console.log(nombreRanking.nombreRanking);
 
+              Swal.fire(
+                'Nombre Ranking modificado correctamente!',
+                '',
+                'success'
+              )
+
               this.respuestaR.map((value: Ranking) => {
 
                 if (value['idRanking'] === environment.idRanking) {
@@ -120,6 +117,7 @@ export class ListarRankingsComponent implements OnInit {
       });
   }
 
+  // Función que permite eliminar el ranking seleccionado
   eliminarRanking(nombreRanking : Ranking): void {
     environment.idRanking = nombreRanking['idRanking'];
     console.log(environment.idRanking+"  El id del ranking line 64: ");
