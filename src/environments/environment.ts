@@ -5,11 +5,12 @@
 export const environment = {
   production: false,
   serverUrl: 'http://localhost:8080/',
-  vsesion: "Lucian123",
+  vsesion: "",
   rkg:null,
   tarea:"",
   idRanking: null
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
