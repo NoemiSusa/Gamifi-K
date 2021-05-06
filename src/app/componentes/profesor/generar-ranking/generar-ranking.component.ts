@@ -9,7 +9,7 @@ import { Ranking } from 'src/app/models/ranking.model';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { environment } from 'src/environments/environment';
 import { invalid } from '@angular/compiler/src/render3/view/util';
-
+import { Router } from '@angular/router';
 
 
 
@@ -30,6 +30,8 @@ export class GenerarRankingComponent implements OnInit {
 
 
   public dataFinNoParsed
+  router: Router;
+
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService,
@@ -148,6 +150,7 @@ export class GenerarRankingComponent implements OnInit {
         console.log(datosDelProfesorServiceTsPHP);
         if (datosDelProfesorServiceTsPHP.resultado) {
           Swal.fire('Genial', datosDelProfesorServiceTsPHP.msg, 'success');
+         // this.router.navigate(['/listarRankings']);
         }
         // si es false
         else if (!datosDelProfesorServiceTsPHP.resultado) {
