@@ -1,0 +1,4 @@
+coses a revisar despres de fer tots els merges:
+- al delete ranking que un cop s'accepta el sweetAlert de confirmació fer que REFRESC DE LA PAGINA la pagina.
+
+

@@ -1,0 +1,10 @@
+
+DELETE EN CASCADE PHP:
+https://www.youtube.com/watch?v=nm8y9gSi7O8
+
+COMO MOSTRAR FECHA Y HORAS 
+https://www.javatpoint.com/typescript-date-object   -> PARA Ts
+https://norfipc.com/web/como-mostrar-fecha-hora-paginas-web-javascript.html
+
+COMPARAR FECHAS:
+https://expertcodeblog.wordpress.com/2018/03/12/typescript-how-to-compare-two-dates/
