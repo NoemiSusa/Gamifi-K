@@ -5,6 +5,7 @@ import { Profesor } from 'src/app/models/profesor.model';
 import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class EditPerfilComponent implements OnInit {
 //guardamos los datos que vamos a cambiar
   profesore: Profesor;
   perfilProfesor: any;
+  router: Router;
 
   constructor(
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
@@ -87,14 +89,18 @@ export class EditPerfilComponent implements OnInit {
       this.profe.editarDatosPerfil(this.modificarProfe).subscribe(
         (datos: any) => {
           console.log(datos);
-        if (datos == 1) {
+        if (datos == 1){
           // console.log("usuario existe");
 
           Swal.fire(
             'Bien',
             'Has actualizado tu perfil',
             'success'
+
           );
+          this.router.navigate(['/perfilProfesor']);
+
+
 
         } else if (datos == 0){
 
@@ -130,4 +136,8 @@ export class EditPerfilComponent implements OnInit {
 
 }
 
+
+function confirmButtonText(arg0: string, arg1: string, arg2: string, confirmButtonText: any, arg4: string) {
+  throw new Error('Function not implemented.');
+}
 
