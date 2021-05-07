@@ -35,8 +35,9 @@ export class GenerarRankingComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService,
+    router: Router,
 
-  ) {
+  ) {this.router = router;
 
   }
 
@@ -150,7 +151,7 @@ export class GenerarRankingComponent implements OnInit {
         console.log(datosDelProfesorServiceTsPHP);
         if (datosDelProfesorServiceTsPHP.resultado) {
           Swal.fire('Genial', datosDelProfesorServiceTsPHP.msg, 'success');
-         // this.router.navigate(['/listarRankings']);
+          this.router.navigate(['/listarRankings']);
         }
         // si es false
         else if (!datosDelProfesorServiceTsPHP.resultado) {
