@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proves`
 --
+CREATE DATABASE IF NOT EXISTS `proves` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gamifik`;
 
 -- --------------------------------------------------------
 
