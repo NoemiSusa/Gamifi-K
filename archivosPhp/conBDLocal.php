@@ -6,10 +6,7 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
 // conexion a la base de datos local
   // global $enlace;
     function conexion(){
-      $con = mysqli_connect('localhost', 'root', 'usbw', 'gamifik');
+      $con = mysqli_connect('localhost', 'root', 'usbw', 'proves');
       return $con;
     }
-
-
-
 ?>

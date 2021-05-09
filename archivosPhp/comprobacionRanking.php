@@ -40,28 +40,35 @@ $respuesta = new \stdClass();
 if (count($datos)!=0){
 
   $respuesta->resultado = false;
-  $respuesta->msg = "Error hay datos en la base de datos";
-  echo json_encode($respuesta);
+  $respuesta->msg = "Error ya existe este ranking";
+  print json_encode($respuesta);
 }
-
 else if (count($datos)==0) {
-        $datosRegistro=new GenerarRanking();
-        // el insertado es lo que me devuelve de la clase generarRanking.php
-        $insertado=$datosRegistro->insertRanking($params);
+  $datosRegistro=new GenerarRanking();
+  // el insertado es lo que me devuelve de la clase generarRanking.php
+  $insertado=$datosRegistro->insertRanking($params);
+
+  // en funcion del resultado que recibimos de la función sabemos donde ha fallado el programa o si lo ha generado correctamente
   if($insertado==1){
-    $respuesta->resultado = true;
-        $respuesta->msg = "Ranking generado correctamente";
-        echo json_encode($respuesta);
-  }
-  else if ($insertado==0){
     $respuesta->resultado = false;
-    $respuesta->msg = "Fallo al insertar los datos";
-    echo json_encode($respuesta);
+    $respuesta->msg = "Ranking generado correctamente pero no ha llegado a ejecutar la creación de las tareas";
+    print json_encode($respuesta);
+
+  }else if ($insertado==0){
+    $respuesta->resultado = false;
+    $respuesta->msg = "No se ha podido crear el Ranking";
+    print json_encode($respuesta);
+
+  }else if ($insertado==2){
+    $respuesta->resultado = true;
+    $respuesta->msg = "Se ha generado el Ranking y creado las tareas del mismo";
+    print json_encode($respuesta);
+
+  }else if ($insertado==3){
+    $respuesta->resultado = false;
+    $respuesta->msg = "Se ha generado el Ranking pèro no se han podido generar las tareas.";
+    print json_encode($respuesta);
   }
-
-
-}
-
 
 
 
