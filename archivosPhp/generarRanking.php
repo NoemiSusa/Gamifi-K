@@ -51,15 +51,17 @@ class GenerarRanking{
 
       $resultado = mysqli_query($conexion, $query);
 
-      $datos=[];
+     // $datos=[];
       while($row = mysqli_fetch_assoc($resultado)) {
         // si el ranking existe obtiene datos y los guarda en el array $datos
-        $datos[]= $row;
+        //$datos[]= $row;
+        $idRanking = $row["idRanking"];
       }
 
-      $idRanking = $datos[0];
-      $conexion->close();
+      //$idRanking = $datos[0];
 
+      $conexion->close();
+      // echo($datos.'datos del idRKG en php GenerarRKG');
       //vamos a crear las 50 tareas del ranking que acabamos de generar.
       $datosTareas = new CrearTareas();
       $nuevasTareas = $datosTareas->generar50Tareas($idRanking);
@@ -70,10 +72,14 @@ class GenerarRanking{
       }else{
         $insertado=3;
       }
-    //en caso que no se genere el ranking
+
+
+
+      //en caso que no se genere el ranking
     }else if ($resultado==false){
         $insertado=0;
     }
     return  $insertado;
   }
 }
+?>

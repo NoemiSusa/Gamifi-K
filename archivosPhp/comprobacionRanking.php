@@ -12,7 +12,7 @@ $json = file_get_contents('php://input');
 
 //guardamos en la variable params los datos descodificados que recojemos del JSON que nos manda el ts
 $params = json_decode($json);
-
+// echo($params);
 // importamos el archivo con la conexión a la BD y el fichero de insertar para luego realizar el insert
 require_once 'conBDLocal.php';
 require_once 'generarRanking.php';
@@ -70,7 +70,7 @@ else if (count($datos)==0) {
     print json_encode($respuesta);
   }
 
-
+}
 
 
 

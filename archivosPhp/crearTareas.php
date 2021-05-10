@@ -7,64 +7,78 @@ header('Content-Type: application/json');
 require_once 'conBDLocal.php';
 
 class CrearTareas{
-  public function generar50Tareas($params){
+  public function generar50Tareas($idRanking){
 
     $conexion = conexion();
 
-    $query ="INSERT INTO `tareas`(`nombreTarea`, `idRankingTarea`)
-    VALUES
-    ('Tarea 1',$params),
-    ('Tarea 2',$params),
-    ('Tarea 3',$params),
-    ('Tarea 4',$params),
-    ('Tarea 5',$params),
-    ('Tarea 6',$params),
-    ('Tarea 7',$params),
-    ('Tarea 8',$params),
-    ('Tarea 9',$params),
-    ('Tarea 10',$params),
-    ('Tarea 11',$params),
-    ('Tarea 12',$params),
-    ('Tarea 13',$params),
-    ('Tarea 14',$params),
-    ('Tarea 15',$params),
-    ('Tarea 16',$params),
-    ('Tarea 17',$params),
-    ('Tarea 18',$params),
-    ('Tarea 19',$params),
-    ('Tarea 20',$params),
-    ('Tarea 21',$params),
-    ('Tarea 22',$params),
-    ('Tarea 23',$params),
-    ('Tarea 24',$params),
-    ('Tarea 25',$params),
-    ('Tarea 26',$params),
-    ('Tarea 27',$params),
-    ('Tarea 28',$params),
-    ('Tarea 29',$params),
-    ('Tarea 30',$params),
-    ('Tarea 31',$params),
-    ('Tarea 32',$params),
-    ('Tarea 33',$params),
-    ('Tarea 34',$params),
-    ('Tarea 35',$params),
-    ('Tarea 36',$params),
-    ('Tarea 37',$params),
-    ('Tarea 38',$params),
-    ('Tarea 39',$params),
-    ('Tarea 40',$params),
-    ('Tarea 41',$params),
-    ('Tarea 42',$params),
-    ('Tarea 43',$params),
-    ('Tarea 44',$params),
-    ('Tarea 45',$params),
-    ('Tarea 46',$params),
-    ('Tarea 47',$params),
-    ('Tarea 48',$params),
-    ('Tarea 49',$params),
-    ('Tarea 50',$params)";
+    // $query ="INSERT INTO tareas (nombreTarea, idRankingTarea)".
+    // " VALUES".
+    // " ('Tarea 01',".$idRanking."),".
+    // " ('Tarea 02',".$idRanking."),".
+    // " ('Tarea 03',".$idRanking."),".
+    // " ('Tarea 04',".$idRanking."),".
+    // " ('Tarea 05',".$idRanking."),".
+    // " ('Tarea 06',".$idRanking."),".
+    // " ('Tarea 07',".$idRanking."),".
+    // " ('Tarea 08',".$idRanking."),".
+    // " ('Tarea 09',".$idRanking."),".
+    // " ('Tarea 10',".$idRanking."),".
+    // " ('Tarea 11',".$idRanking."),".
+    // " ('Tarea 12',".$idRanking."),".
+    // " ('Tarea 13',".$idRanking."),".
+    // " ('Tarea 14',".$idRanking."),".
+    // " ('Tarea 15',".$idRanking."),".
+    // " ('Tarea 16',".$idRanking."),".
+    // " ('Tarea 17',".$idRanking."),".
+    // " ('Tarea 18',".$idRanking."),".
+    // " ('Tarea 19',".$idRanking."),".
+    // " ('Tarea 20',".$idRanking."),".
+    // " ('Tarea 21',".$idRanking."),".
+    // " ('Tarea 22',".$idRanking."),".
+    // " ('Tarea 23',".$idRanking."),".
+    // " ('Tarea 24',".$idRanking."),".
+    // " ('Tarea 25',".$idRanking."),".
+    // " ('Tarea 26',".$idRanking."),".
+    // " ('Tarea 27',".$idRanking."),".
+    // " ('Tarea 28',".$idRanking."),".
+    // " ('Tarea 29',".$idRanking."),".
+    // " ('Tarea 30',".$idRanking."),".
+    // " ('Tarea 31',".$idRanking."),".
+    // " ('Tarea 32',".$idRanking."),".
+    // " ('Tarea 33',".$idRanking."),".
+    // " ('Tarea 34',".$idRanking."),".
+    // " ('Tarea 35',".$idRanking."),".
+    // " ('Tarea 36',".$idRanking."),".
+    // " ('Tarea 37',".$idRanking."),".
+    // " ('Tarea 38',".$idRanking."),".
+    // " ('Tarea 39',".$idRanking."),".
+    // " ('Tarea 40',".$idRanking."),".
+    // " ('Tarea 41',".$idRanking."),".
+    // " ('Tarea 42',".$idRanking."),".
+    // " ('Tarea 43',".$idRanking."),".
+    // " ('Tarea 44',".$idRanking."),".
+    // " ('Tarea 45',".$idRanking."),".
+    // " ('Tarea 46',".$idRanking."),".
+    // " ('Tarea 47',".$idRanking."),".
+    // " ('Tarea 48',".$idRanking."),".
+    // " ('Tarea 49',".$idRanking."),".
+    // " ('Tarea 50',".$idRanking.")";
 
-    $resultado = mysqli_query($conexion, $query);
+    for($contador = 1; $contador < 51; $contador++){
+      $nombreTarea = "Tarea ";
+      if ($contador < 10){
+        $nombreTarea = $nombreTarea . "0";
+      }
+
+      $nombreTarea = $nombreTarea . $contador;
+
+      $query = "INSERT INTO tareas (nombreTarea, idRankingTarea) VALUES  ('".$nombreTarea."',".$idRanking.")";
+      //$query = "INSERT INTO tareas (nombreTarea, idRankingTarea) VALUES  ('".$nombreTarea."',5)";
+      //echo($idRanking);
+      $resultado = mysqli_query($conexion, $query);
+    }
+
+    //$resultado = mysqli_query($conexion, $query);
 
     $conexion->close();
 
@@ -75,8 +89,10 @@ class CrearTareas{
     }else{
       $tareasCreadas = -50;
     }
+
+    // devuelve el valor a generar Ranking para poder validar los diferentes resultados 50 si se han creado o -50 si no se han creado
     return $tareasCreadas;
 
   }
-
 }
+?>
