@@ -50,7 +50,7 @@ create TABLE tareaAlumno
 );
 
 --insretar las 50 tareas al crear el ranking
-INSERT INTO `tareas`(`nombreTarea`, `idRankingTarea`)
+INSERT INTO tareas(nombreTarea, idRankingTarea)
 VALUES
 ('Tarea 01',1),
 ('Tarea 02',1),
@@ -156,7 +156,7 @@ VALUES
 ('Tarea 49',2),
 ('Tarea 50',2);
 
-INSERT INTO tareas ('nombreTarea', 'idRankingTarea')
+INSERT INTO tareas (nombreTarea, idRankingTarea)
 VALUES
 ('Tarea 01',3),
 ('Tarea 02',3),
