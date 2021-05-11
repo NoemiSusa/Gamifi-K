@@ -45,7 +45,7 @@
                             <thead class="thead">
                                 <tr>
                                     <th scope="col">
-                                        <h2>Código Ranking</h2>
+                                        <h2>Código Acceso Ranking</h2>
                                     </th>
                                     <th scope="col">
                                         <h2>Nombre Ranking</h2>
@@ -55,7 +55,7 @@
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR" class="text-center">
-                                    <td>{{nombreRanking['idRanking']}}</td>
+                                    <td>{{nombreRanking['codigoAcceso']}}</td>
                                     <td>{{nombreRanking['nombreRanking']}}</td>
                                     <td>
                                         <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(nombreRanking)">Visualizar</a> ||
