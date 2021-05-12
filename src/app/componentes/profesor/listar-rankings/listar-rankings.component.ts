@@ -145,7 +145,7 @@ export class ListarRankingsComponent implements OnInit {
 
               if (value['idRanking'] === environment.idRanking) {
                value['nombreRanking'] = null;
-               value['idRanking'] = null;
+               value['codigoAcceso'] = null;
               }
             }
             );
