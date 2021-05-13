@@ -179,9 +179,9 @@ export class GenerarRankingComponent implements OnInit {
     this.nuevoCodigoRanking = new Ranking();
 
     this.nuevoCodigoRanking.codigoAcceso=Date.now();
-    this.nuevoCodigoRanking.idRanking=1;
+    this.nuevoCodigoRanking.idRanking=environment.idRanking;
     // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
-    this.nuevoCodigoRanking.nickProfesorRK="Lucian123";
+    this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
     console.log(this.nuevoCodigoRanking)
 
 
