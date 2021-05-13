@@ -26,6 +26,9 @@ import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/
 import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
 import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
 import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vista-ranking/vista-ranking.component';
+import { DesktopAlumnoComponent } from './componentes/inicio/desktop-alumno/desktop-alumno.component';
+import { ListarRankingsAlumnoComponent } from './componentes/alumno/listar-rankings-alumno/listar-rankings-alumno.component';
+import { VistaRankingsAlumnoComponent } from './componentes/alumno/listar-rankings-alumno/vista-rankings-alumno/vista-rankings-alumno.component';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vi
     GenerarRankingComponent,
     ListarRankingsComponent,
     EditarRankingComponent,
-    VistaRankingComponent
+    VistaRankingComponent,
+    DesktopAlumnoComponent,
+    ListarRankingsAlumnoComponent,
+    VistaRankingsAlumnoComponent
   ],
   imports: [
     FormsModule,
