@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { EncriptarDecriptarService } from 'src/app/services/encriptar-decriptar.service';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-registro-profesor',
