@@ -140,4 +140,11 @@ export class ProfesorService {
     console.log(body);
     return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
   }
+
+
+  modificarCodigoRkg(nuevoCodigoRanking:Ranking): Observable<any>{
+    console.log(nuevoCodigoRanking.codigoAcceso+ " datos del service");
+    return this.http.post(`${environment.serverUrl}modificarCodRanking.php`, JSON.stringify(nuevoCodigoRanking));
+  }
+
 }

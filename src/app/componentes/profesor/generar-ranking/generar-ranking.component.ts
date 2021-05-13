@@ -28,14 +28,20 @@ export class GenerarRankingComponent implements OnInit {
   // prueba de la data minima
   public fechaMinimaParsed: string;
 
-
   public dataFinNoParsed
   router: Router;
+
+
+
+  public nuevoCodigoRanking:Ranking;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private rankingTs: ProfesorService,
+    private cambiarCodigoRKGService: ProfesorService,
     router: Router,
+
 
   ) {this.router = router;
 
@@ -170,6 +176,44 @@ export class GenerarRankingComponent implements OnInit {
 
   }
 
+
+
+  ModificarCodigoRKG(){
+    this.nuevoCodigoRanking = new Ranking();
+
+    this.nuevoCodigoRanking.codigoAcceso=Date.now();
+    this.nuevoCodigoRanking.idRanking=environment.idRanking;
+    // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+    this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+    console.log(this.nuevoCodigoRanking)
+
+
+
+
+    this.cambiarCodigoRKGService.modificarCodigoRkg(this.nuevoCodigoRanking).subscribe(
+
+      // lo primero si ha funcionado
+      (datosDelPhpService: any) => {
+        console.log(datosDelPhpService);
+        if (datosDelPhpService.resultado) {
+          Swal.fire('Genial', datosDelPhpService.msg, 'success');
+         // this.router.navigate(['/listarRankings']);
+        }
+        // si es false
+        else if (!datosDelPhpService.resultado) {
+          Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
+        }
+      },
+      //lo segundo que se espera es si no hay datos
+      (errorDelProfesorServiceTs: any) => {
+        console.log(errorDelProfesorServiceTs);
+        Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
+      }
+
+    )
+
+
+  }
 
 
 
