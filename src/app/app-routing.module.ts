@@ -20,6 +20,10 @@ import { GenerarRankingComponent } from './componentes/profesor/generar-ranking/
 import { ListarRankingsComponent } from './componentes/profesor/listar-rankings/listar-rankings.component';
 import { EditarRankingComponent } from './componentes/profesor/listar-rankings/editar-ranking/editar-ranking.component';
 import { VistaRankingComponent } from './componentes/profesor/listar-rankings/vista-ranking/vista-ranking.component';
+import { DesktopAlumnoComponent } from './componentes/inicio/desktop-alumno/desktop-alumno.component';
+import { ListarRankingsAlumnoComponent } from './componentes/alumno/listar-rankings-alumno/listar-rankings-alumno.component';
+import { VistaRankingsAlumnoComponent } from './componentes/alumno/listar-rankings-alumno/vista-rankings-alumno/vista-rankings-alumno.component';
+
 
 
 
@@ -44,6 +48,9 @@ const routes: Routes = [{path: '',pathMatch: 'full', redirectTo: 'inicio'},
   { path: 'listarRankings', component: ListarRankingsComponent},
   { path: 'editarRanking', component: EditarRankingComponent},
   { path: 'vistaRanking', component: VistaRankingComponent},
+  { path: 'desktopAlumno', component: DesktopAlumnoComponent},
+  { path: 'listarRankingsAlumno', component: ListarRankingsAlumnoComponent},
+  { path: 'vistaRankingsAlumno', component: VistaRankingsAlumnoComponent},
   { path: '**', redirectTo: 'inicio'}
 ];
 

@@ -60,7 +60,7 @@ export class AlumnoService {
         environment.vsesion = alumno.nickAlumno;
         this.alumnoObj = respuesta.datos[0];
         // aqui tengo que llamar el siguiente componente
-        this.router.navigate(['/perfilAlumno']);
+        this.router.navigate(['/desktopAlumno']);
         }
       },
       (error: any) => {
