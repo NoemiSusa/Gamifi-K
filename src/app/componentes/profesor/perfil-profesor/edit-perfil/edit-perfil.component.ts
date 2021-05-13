@@ -31,13 +31,13 @@ export class EditPerfilComponent implements OnInit {
 
   constructor(
     //iniciamos la variable formBuilder(se ha importado arriba) del tipo FormBuilder
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder, router: Router,
 
 
     //creamos el objeto profe del ServiceProfesor que es el objeto que tenemos guardado en el servicio
     private profeperfil: ProfesorService,
     private profe: ProfesorService
-  ) { }
+   ) {this.router = router }
 
   ngOnInit(): void {
 
@@ -97,7 +97,7 @@ export class EditPerfilComponent implements OnInit {
             'Has actualizado tu perfil',
             'success'
 
-          );
+          )
           this.router.navigate(['/perfilProfesor']);
 
 

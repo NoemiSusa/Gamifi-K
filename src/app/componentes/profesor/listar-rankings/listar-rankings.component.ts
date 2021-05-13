@@ -107,7 +107,7 @@ export class ListarRankingsComponent implements OnInit {
                 }
               }
               );
-              //this.nombreRanking['idRanking']
+
             },
             (error: any) => {
               console.log(error);
@@ -141,6 +141,15 @@ export class ListarRankingsComponent implements OnInit {
               this.respuesta.msg,
               'success'
             )
+            this.respuestaR.map((value: Ranking) => {
+
+              if (value['idRanking'] === environment.idRanking) {
+               value['nombreRanking'] = null;
+               value['codigoAcceso'] = null;
+              }
+            }
+            );
+            this.router.navigate(['/listarRankings']);
           },
           (error: any) => {
             console.log(error);
