@@ -33,17 +33,11 @@ class RegistrarAlumno{
     //una vez insertados los datos volver a la pagina que lista todos los rankings del alumno.
 
     if ($resultado) {
-      // $respuesta->resultado = true;
-      // $respuesta->msg = "Se ha registrado el alumno al ranking correctamente";
-      // $respuesta->datos = 50;
-      // print json_encode($respuesta);
+
       $tareasAlumnoCreadas = 50;
 
     } else {
-      // $respuesta->resultado = false;
-      // $respuesta->msg = "No se ha registrado correctamente el alumno al ranking vuelva a intentarlo";
-      // $respuesta->datos = 0;
-      // print json_encode($respuesta);
+
       $tareasAlumnoCreadas = -50;
     }
     return($tareasAlumnoCreadas);
