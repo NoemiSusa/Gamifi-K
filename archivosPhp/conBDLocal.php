@@ -9,7 +9,4 @@ header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Ac
       $con = mysqli_connect('localhost', 'root', 'usbw', 'gamifik');
       return $con;
     }
-
-
-
 ?>

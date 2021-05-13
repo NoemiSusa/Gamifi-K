@@ -69,6 +69,7 @@ export class GenerarRankingComponent implements OnInit {
     }
     console.log(this.fechaMinimaParsed + " data minima @@@@@@@@@@@@@@@@@@@@@");
   }
+
   //sirve para ejecutar el control del formulario en el html
   get controlFormulario() {
     return this.rankingProfesor.controls;
@@ -143,7 +144,7 @@ export class GenerarRankingComponent implements OnInit {
 
 
 
-
+    // funcion que llama al service y le pasa los valores para poder crear el nuevo RKG
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
 
       // lo primero si ha funcionado

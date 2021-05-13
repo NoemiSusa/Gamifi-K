@@ -12,14 +12,26 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "SELECT al.nickAlumno as Nick, CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) AS Alumno, t.puntuacion AS Puntuacion".
-          " FROM tareas t, alumno al,rankings r".
-          " where r.idRanking =".$params->idRanking.
-          " AND t.idRankingTarea = r.idRanking".
-          " AND t.nickAlumnoTarea = al.nickAlumno".
-          "  AND t.nombreTarea = '".$tarea."'".
-            " GROUP BY al.nickAlumno".
-            " ORDER BY al.apellidosAlumno";
+// $query = "SELECT al.nickAlumno as Nick, CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) AS Alumno, t.puntuacion AS Puntuacion".
+//           " FROM tareas t, alumno al,rankings r".
+//           " where r.idRanking =".$params->idRanking.
+//           " AND t.idRankingTarea = r.idRanking".
+//           " AND t.nickAlumnoTarea = al.nickAlumno".
+//           "  AND t.nombreTarea = '".$tarea."'".
+//             " GROUP BY al.nickAlumno".
+//             " ORDER BY al.apellidosAlumno";
+
+
+$query = "SELECT  al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) )  AS Alumno, round(ta.puntuacion, 2) AS Puntuacion
+            FROM alumno al, tareas t, tareaalumno ta
+            WHERE ta.nickAlumnoTarea = al.nickAlumno
+             AND ta.idtareaal = t.idTarea
+             AND ta.idtareaal = '".$tarea."'
+             AND t.idRankingTarea =".$params->idRanking.
+             " GROUP BY al.nickAlumno, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) )
+             ORDER BY al.apellidosAlumno";
+
+
 // $query = "SELECT nickAlumnoTarea as Alumno, puntuacion as Puntuacion FROM tareas Where nombreTarea ='act1' ";
 // echo($query);
 $resultado = mysqli_query($conexion, $query);
