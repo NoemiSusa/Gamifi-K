@@ -24,27 +24,26 @@
                     <div *ngIf="controlFormulario.nickProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.nickProfesor.errors.required">El nick es obligatorio</div>
                         <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Mínimo 2 carácteres</div>
-                        <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Máximo 20 carácteres</div>
-                        <div *ngIf="controlFormulario.nickProfesor.errors.pattern">Debe tener al menos un número y una mayúscula</div>
                     </div>
                 </div>
             </div>
 
-           <!-- campo del contraseña del Profesor -->
-           <div class="form-row">
-            <div class="form-group col-md-12">
-                <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{'is-valid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.valid,
+            <!-- campo del contraseña del Profesor -->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control" [ngClass]="{'is-valid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.valid,
                 'is-invalid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.invalid}">
 
-                <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                <div *ngIf="controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
-                    <a style="font-size: small; color: red">Mínimo 6 carácteres con al menos una Mayúscula y números</a>
-                    <div *ngIf="controlFormulario.nickProfesor.errors.required">La contraseña es obligatoria</div>
+                    <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
+                    <div *ngIf="controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
+                        <div *ngIf="controlFormulario.nickProfesor.errors.required">La contraseña es obligatoria</div>
                         <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Mínimo 6 carácteres</div>
-                </div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.maxlength">Máximo 20 carácteres</div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.pattern">Debe tener al menos un número y una mayúscula</div>
+                    </div>
 
+                </div>
             </div>
-        </div>
 
             <!-- campo repetir contraseña del Profesor -->
             <div class="form-row">
