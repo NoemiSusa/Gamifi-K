@@ -1,3 +1,4 @@
+import { Ranking } from 'src/app/models/ranking.model';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Alumno } from 'src/app/models/alumno.model';
@@ -81,5 +82,10 @@ export class AlumnoService {
     return this.http.post(`${environment.serverUrl}editarContrasenyaAl.php`, JSON.stringify(modificarContraAl));
   }
 
+// Función para pedir listado de rankings por alumno
+  public pedirListadoRankingsAlumno(sesion: any): Observable<any> {
+    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
 }
 
+
+}
