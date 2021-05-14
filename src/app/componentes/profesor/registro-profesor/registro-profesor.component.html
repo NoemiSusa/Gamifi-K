@@ -21,8 +21,11 @@
                     'is-invalid': controlFormulario.nickProfesor.touched && controlFormulario.nickProfesor.invalid}">
 
                     <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                    <div *ngIf="submitted && controlFormulario.nickProfesor.errors" class="invalid-feedback">
+                    <div *ngIf="controlFormulario.nickProfesor.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.nickProfesor.errors.required">El nick es obligatorio</div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Mínimo 2 carácteres</div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Máximo 20 carácteres</div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.pattern">Debe tener al menos un número y una mayúscula</div>
                     </div>
                 </div>
             </div>
@@ -34,14 +37,11 @@
                 'is-invalid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.invalid}">
 
                 <!-- El controlFormulario viene del TS y en caso que se cumplan las 2 condiciones se convierte en true -->
-                <!-- <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback"> -->
-                <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">
+                <div *ngIf="controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                     <a style="font-size: small; color: red">Mínimo 6 carácteres con al menos una Mayúscula y números</a>
-
-                  <!-- <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlenght">
-                    <a style="font-size: small; color: red">Mínimo 6 carácteres con al menos una Mayúscula y números</a>" -->
-                  </div>
-                <!-- </div> -->
+                    <div *ngIf="controlFormulario.nickProfesor.errors.required">La contraseña es obligatoria</div>
+                        <div *ngIf="controlFormulario.nickProfesor.errors.minlength">Mínimo 6 carácteres</div>
+                </div>
 
             </div>
         </div>

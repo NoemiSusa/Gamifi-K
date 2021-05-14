@@ -27,7 +27,7 @@
                   <input type="password" formControlName="contrasenyaProfesor" placeholder="Contraseña" class="form-control"
                   [ngClass]="{'is-valid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.valid,
                   'is-invalid': controlFormulario.contrasenyaProfesor.touched && controlFormulario.contrasenyaProfesor.invalid}">
-                  <div *ngIf="submitted && controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
+                  <div *ngIf="controlFormulario.contrasenyaProfesor.errors" class="invalid-feedback">
                       <div *ngIf="controlFormulario.contrasenyaProfesor.errors.required">Inserte la contraseña</div>
                       <div *ngIf="controlFormulario.contrasenyaProfesor.errors.minlength">Minimo tiene que tener 6 caracteres</div>
                   </div>

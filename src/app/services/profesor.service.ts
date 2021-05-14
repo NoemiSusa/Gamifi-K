@@ -129,7 +129,7 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}listarPuntuacionUnaTarea.php`, body);
   }
 
-  //función para hacer el update de la puntuación en la base de datos.
+  // función para hacer el update de la puntuación en la base de datos.
   actualizarPuntuacion(idRanking:number,nombreTarea:string, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
     const body ={
       idRanking,
@@ -141,7 +141,7 @@ export class ProfesorService {
     return this.http.post(`${environment.serverUrl}modificarPuntuacionUnaTarea.php`, body);
   }
 
-
+  // función para generar un nuevo código de un ranking ya existente
   modificarCodigoRkg(nuevoCodigoRanking:Ranking): Observable<any>{
     console.log(nuevoCodigoRanking.codigoAcceso+ " datos del service");
     return this.http.post(`${environment.serverUrl}modificarCodRanking.php`, JSON.stringify(nuevoCodigoRanking));

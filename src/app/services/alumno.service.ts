@@ -87,5 +87,9 @@ export class AlumnoService {
     return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
 }
 
+// Función para pedir listado de ranking seleccionado
+public pedirListadoRankingAlumno(idRanking: number ): Observable<any>  {
+  return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
+}
 
 }

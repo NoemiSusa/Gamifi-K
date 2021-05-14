@@ -14,19 +14,18 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
         <div class="form-row">
             <div class="form-group col-md-12">
-                <input type="text" formControlName="nickAlumno" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.nickAlumno.errors }" />
-                <div *ngIf="submitted && controlFormulario.nickAlumno.errors" class="invalid-feedback">
+                <input type="text" formControlName="nickAlumno" placeholder="Nick" class="form-control" [ngClass]="{ 'is-invalid':  controlFormulario.nickAlumno.errors }" />
+                <div *ngIf=" controlFormulario.nickAlumno.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickAlumno.errors.required">Nick requerido</div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <input type="password" formControlName="contrasenyaAlumno" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid': submitted && controlFormulario.contrasenyaAlumno.errors }" />
-                    <div *ngIf="submitted && controlFormulario.contrasenyaAlumno.errors" class="invalid-feedback">
+                    <input type="password" formControlName="contrasenyaAlumno" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid':  controlFormulario.contrasenyaAlumno.errors }" />
+                    <div *ngIf=" controlFormulario.contrasenyaAlumno.errors" class="invalid-feedback">
                         <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Inserte la contraseña</div>
-                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Minimo tiene que tener 6 caracteres
-                        </div>
+                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Minimo tiene que tener 6 caracteres</div>
                     </div>
                 </div>
             </div>
