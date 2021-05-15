@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfesorService } from '../../../../services/profesor.service';
 import { Router } from '@angular/router';
 import { Ranking } from 'src/app/models/ranking.model';
 import { Respuesta } from 'src/app/models/respuesta.model';

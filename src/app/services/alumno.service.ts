@@ -90,6 +90,7 @@ export class AlumnoService {
 
 // Función para pedir listado de ranking seleccionado
 public pedirListadoRankingAlumno(idRanking: number ): Observable<any>  {
+  console.log(idRanking);
   return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
 }
 

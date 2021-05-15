@@ -56,7 +56,7 @@
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR">
                                     <td>{{nombreRanking['nombreRanking']}}</td>
-                                    <!-- <td>{{nombreRanking['nickAlumnoTarea']}}</td> -->
+                                    <!-- <td>{{nombreRanking['idRanking']}}</td> -->
                                     <td>
                                         <a class="register-button" [routerLink]="'/vistaRankingsAlumno'" style="color: white;" (click)="selectRanking(nombreRanking)">|| Visualizar ||</a>
 
