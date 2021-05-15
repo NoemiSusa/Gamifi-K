@@ -202,7 +202,6 @@ tr {
 }
 
 td {
-    font-size: large;
+    font-size: 25px;
     font-weight: bold;
-    text-align: center;
 }

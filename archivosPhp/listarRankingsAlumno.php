@@ -10,8 +10,15 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-//lista todos los rankings de un profesor (es el que le pasamos como parametro)
-$query = "SELECT * FROM rankings where nickProfesorRK='".$params."'";
+//lista todos los rankings de un alumno (es el que le pasamos como parametro nickAlumno)
+$query = //"SELECT * FROM rankings where nickProfesorRK='".$params."'";
+"SELECT r.nombreRanking as nombreRanking, concat(al.nickAlumnoTarea)  AS nickAlumnoTarea
+FROM rankings r, tareas t, tareaalumno al
+where t.idRankingTarea = r.idRanking
+AND al.idTareaAl = t.idTarea
+AND al.nickAlumnoTarea ='".$params."'
+Group by r.nombreRanking";
+
 $resultado = mysqli_query($conexion, $query);
 
 $datos = [];

@@ -45,23 +45,20 @@
                             <thead class="thead">
                                 <tr>
                                     <th scope="col">
-                                        <h2>Código Acceso Ranking</h2>
-                                    </th>
-                                    <th scope="col">
                                         <h2>Nombre Ranking</h2>
                                     </th>
+                                    <!-- <th scope="col">
+                                        <h2>Alumno</h2>
+                                    </th> -->
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
-                                <tr *ngFor="let nombreRanking of respuestaR" class="text-center">
-                                    <td>{{nombreRanking['codigoAcceso']}}</td>
+                                <tr *ngFor="let nombreRanking of respuestaR">
                                     <td>{{nombreRanking['nombreRanking']}}</td>
+                                    <!-- <td>{{nombreRanking['nickAlumnoTarea']}}</td> -->
                                     <td>
-                                        <a class="register-button" [routerLink]="'/vistaRanking'" style="color: white;" (click)="selectRanking(nombreRanking)">Visualizar</a> ||
-                                        <a class="register-button" style="color: white; cursor: pointer;" (click)="selectRankingNombre(nombreRanking)">Editar</a> ||
-                                        <a class="register-button" [routerLink]="'/editarRanking'" style="color: white;" (click)="selectRankingTarea(nombreRanking)">Tareas</a> ||
-                                        <a class="register-button" style="color:red; cursor: pointer;" (click)="eliminarRanking(nombreRanking) ">Eliminar</a>
+                                        <a class="register-button" [routerLink]="'/vistaRankingsAlumno'" style="color: white;" (click)="selectRanking(nombreRanking)">|| Visualizar ||</a>
 
                                     </td>
                                     <!-- </a> -->

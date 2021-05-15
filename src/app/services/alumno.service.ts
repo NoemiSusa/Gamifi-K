@@ -84,7 +84,8 @@ export class AlumnoService {
 
 // Función para pedir listado de rankings por alumno
   public pedirListadoRankingsAlumno(sesion: any): Observable<any> {
-    return this.http.post(`${environment.serverUrl}listarRankings.php`, JSON.stringify(sesion));
+    console.log(sesion);
+    return this.http.post(`${environment.serverUrl}listarRankingsAlumno.php`, JSON.stringify(sesion));
 }
 
 // Función para pedir listado de ranking seleccionado
