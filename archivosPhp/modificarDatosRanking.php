@@ -15,7 +15,7 @@ $query = "UPDATE ranking
           SET nombreRanking = '".$params->nombreRanking."',
           codigoAcceso = '".$params->codigoAcceso."',
           fechaFinal = '".$params->fechaFinal."'
-          where idRanking=".$params->idRanking.;
+          where idRanking=".$params->idRanking."'";
 
 $resultado = mysqli_query($conexion, $query);
 
