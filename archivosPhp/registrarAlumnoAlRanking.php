@@ -22,14 +22,14 @@ class RegistrarAlumno{
                 SELECT t.idTarea as idTareaAl, '".$params->nickAlumno."' as nickAlumnoTarea
                 FROM rankings r, tareas t
                 WHERE r.idRanking = t.idRankingTarea
-                AND r.codigoAcceso = ".$params->codigoAcceso;
+                AND r.codigoAcceso = '".$params->codigoAcceso;
 
     $resultado = mysqli_query($conexion, $query);
 
     $conexion->close();
 
     // $respuesta = new \stdClass();
-    $tareasAlumnoCreadas = -1
+    $tareasAlumnoCreadas = -1;
     //una vez insertados los datos volver a la pagina que lista todos los rankings del alumno.
 
     if ($resultado) {
