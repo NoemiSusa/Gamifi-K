@@ -39,7 +39,7 @@ export class LoginProfesorComponent implements OnInit {
     // en le login form entran los datos del formulario y aqui hago la comprobacion
 
     this.loginFormProfesor = this.formBuilder.group({
-      nickProfesor: ['', [Validators.required]],
+      nickProfesor: ['', [Validators.required, Validators.minLength(2)]],
       contrasenyaProfesor: ['', [Validators.required, Validators.minLength(6)]],
     }, {
     });

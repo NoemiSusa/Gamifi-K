@@ -45,7 +45,7 @@ idRanking: number = environment.idRanking;
       (error: any) => {
         console.log(error);
       }
-    )
+    );
   }
 
 }

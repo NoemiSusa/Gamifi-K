@@ -28,15 +28,28 @@ export class ListarRankingsComponent implements OnInit {
 
   sesion: string = environment.vsesion;
   idRanking: number = environment.idRanking;
+
+  // variable para la función map
   rankingmap: any;
+
+  // variable para generar un nuevo código de acceso a un ránking
+  nuevoCodigoRanking: Ranking;
 
 
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankings: ProfesorService,
     private cambiarNombre: ProfesorService,
+
+    // Objeto para generar nuevo código de un ránking
+    private cambiarCodigoRKGService: ProfesorService,
+
+    // Objeto Router
     private router: Router
-  ) { }
+
+
+
+  ) {this.router = router; }
 
   ngOnInit(): void {
 
@@ -54,7 +67,7 @@ export class ListarRankingsComponent implements OnInit {
     )
   }
 
-  // Función que se ejecuta con click en el ranking que queremos seleccionar para editar
+  // Función que se ejecuta con click en el ranking que queremos seleccionar para visualizar
   selectRanking(nombreRanking: Ranking): void {
     console.log(nombreRanking);
     // especifico el campo del objeto que quiero guardar como variable global
@@ -71,7 +84,7 @@ export class ListarRankingsComponent implements OnInit {
     console.log(this.idRanking);
   }
 
-  // Funcion que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
+  // Función que se ejecuta con click en el ranking que queremos seleccionar para modificar el nombre
   selectRankingNombre(nombreRanking: Ranking): void {
     Swal
       .fire({
@@ -159,5 +172,55 @@ export class ListarRankingsComponent implements OnInit {
     }
     )
   }
+
+//  Generamos un nuevo código de acceso para alumnos de un ránking ya existente
+  ModificarCodigoRKG(nombreRanking: Ranking): void{
+
+    // se guarda el idRanking que recibe con nombreRanking en environment per poder executar la funció
+    environment.idRanking = nombreRanking['idRanking'];
+
+    this.nuevoCodigoRanking = new Ranking();
+
+    this.nuevoCodigoRanking.codigoAcceso=Date.now();
+    this.nuevoCodigoRanking.idRanking=environment.idRanking;
+    // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+    this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+    console.log(this.nuevoCodigoRanking)
+
+     // Se ejecuta la función map para poder visualizar el cambio sin necesidad de refrescar la página y perder el login
+      this.respuestaR.map((value: Ranking) => {
+
+        if (value['idRanking'] === environment.idRanking) {
+          value['codigoAcceso'] = this.nuevoCodigoRanking['codigoAcceso'];
+        }
+      }
+      );
+
+    this.cambiarCodigoRKGService.modificarCodigoRkg(this.nuevoCodigoRanking).subscribe(
+
+      // lo primero si ha funcionado
+      (datosDelPhpService: any) => {
+        console.log(datosDelPhpService);
+        if (datosDelPhpService.resultado) {
+          Swal.fire('Genial', datosDelPhpService.msg, 'success');
+         // this.router.navigate(['/listarRankings']);
+        }
+        // si es false
+        else if (!datosDelPhpService.resultado) {
+          Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
+        }
+      },
+      //lo segundo que se espera es si no hay datos
+      (errorDelProfesorServiceTs: any) => {
+        console.log(errorDelProfesorServiceTs);
+        Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
+      }
+
+
+    )
+
+
+ }
+
 }
 

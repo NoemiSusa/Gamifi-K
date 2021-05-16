@@ -75,8 +75,6 @@ export class AlumnoService {
     return this.http.post(`${environment.serverUrl}editarPerfilAl.php`,JSON.stringify(datosPerfil));
   }
 
-
-
 // Función para editar contraseña
   comprobarContrasenyaService(modificarContraAl : Contrasenyas):Observable<any>{
     return this.http.post(`${environment.serverUrl}editarContrasenyaAl.php`, JSON.stringify(modificarContraAl));
@@ -90,6 +88,12 @@ export class AlumnoService {
 
 // Función para pedir listado de ranking seleccionado
 public pedirListadoRankingAlumno(idRanking: number ): Observable<any>  {
+  console.log(idRanking);
+  return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
+}
+
+// Función para insertar alumno con código en un ránking
+public nuevaMatriculaAlumno(idRanking: number ): Observable<any>  {
   console.log(idRanking);
   return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
 }

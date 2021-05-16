@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-rankings-alumno',
@@ -55,5 +56,35 @@ export class ListarRankingsAlumnoComponent implements OnInit {
     this.idRanking = environment.idRanking;
     console.log(this.idRanking);
   }
+
+// Función que se ejecuta con click en el botón del HTML para nueva matrícula en ránking existente
+  nuevaMatricula(idRanking: Ranking): void {
+    Swal
+    .fire({
+      title: "Inserta el código del Ranking " + idRanking['idRanking'],
+      input: "number",
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      cancelButtonText: "Cancelar",
+    })
+    .then(resultado => {
+      if (resultado.value) {
+        let idRkg = resultado.value;
+        console.log("Hola, " + idRkg);
+
+        // Función que permite a través del servideAlumno insertar al alumno en el nuevo Ránking
+        this.listarRankingsAlumno.nuevaMatriculaAlumno(this.sesion).subscribe(
+          (resp: any) => {
+            this.respuestaR = resp;
+
+            console.log(this.respuestaR);
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        )
+  }
+
+
 
 }

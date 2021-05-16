@@ -35,14 +35,26 @@ private router: Router
     this.listarRankingAlumno.pedirListadoRankingAlumno(this.idRanking).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
-
         console.log(this.respuestaR);
+      //  console.log(this.respuestaR[0]['nickAlumno']);
 
       },
       (error: any) => {
         console.log(error);
       }
-    )
+    );
   }
+
+  // Función que utilizamos en el HTML para destacar el nick del alumno logeado
+//   nickAlLog():string {
+//     if(this.respuestaR['nickAlumno'] === this.sesion ) {
+//       //console.log(this.respuestaR[0]['nickAlumno']);
+//       const alumnoLogeado= this.respuestaR['nickAlumno'];
+
+//           return alumnoLogeado;
+//     // }else {
+//     //   return false;
+//      }
+// }
 
 }

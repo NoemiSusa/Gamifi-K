@@ -177,43 +177,43 @@ export class GenerarRankingComponent implements OnInit {
   }
 
 
+// Generamos un nuevo código de acceso para alumnos de un ránking ya existente
+  // ModificarCodigoRKG(){
+  //   this.nuevoCodigoRanking = new Ranking();
 
-  ModificarCodigoRKG(){
-    this.nuevoCodigoRanking = new Ranking();
-
-    this.nuevoCodigoRanking.codigoAcceso=Date.now();
-    this.nuevoCodigoRanking.idRanking=environment.idRanking;
-    // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
-    this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
-    console.log(this.nuevoCodigoRanking)
-
-
+  //   this.nuevoCodigoRanking.codigoAcceso=Date.now();
+  //   this.nuevoCodigoRanking.idRanking=environment.idRanking;
+  //   // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+  //   this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
+  //   console.log(this.nuevoCodigoRanking)
 
 
-    this.cambiarCodigoRKGService.modificarCodigoRkg(this.nuevoCodigoRanking).subscribe(
-
-      // lo primero si ha funcionado
-      (datosDelPhpService: any) => {
-        console.log(datosDelPhpService);
-        if (datosDelPhpService.resultado) {
-          Swal.fire('Genial', datosDelPhpService.msg, 'success');
-         // this.router.navigate(['/listarRankings']);
-        }
-        // si es false
-        else if (!datosDelPhpService.resultado) {
-          Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
-        }
-      },
-      //lo segundo que se espera es si no hay datos
-      (errorDelProfesorServiceTs: any) => {
-        console.log(errorDelProfesorServiceTs);
-        Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
-      }
-
-    )
 
 
-  }
+    // this.cambiarCodigoRKGService.modificarCodigoRkg(this.nuevoCodigoRanking).subscribe(
+
+    //   // lo primero si ha funcionado
+    //   (datosDelPhpService: any) => {
+    //     console.log(datosDelPhpService);
+    //     if (datosDelPhpService.resultado) {
+    //       Swal.fire('Genial', datosDelPhpService.msg, 'success');
+    //      // this.router.navigate(['/listarRankings']);
+    //     }
+    //     // si es false
+    //     else if (!datosDelPhpService.resultado) {
+    //       Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
+    //     }
+    //   },
+    //   //lo segundo que se espera es si no hay datos
+    //   (errorDelProfesorServiceTs: any) => {
+    //     console.log(errorDelProfesorServiceTs);
+    //     Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
+    //   }
+
+    // )
+
+
+ // }
 
 
 

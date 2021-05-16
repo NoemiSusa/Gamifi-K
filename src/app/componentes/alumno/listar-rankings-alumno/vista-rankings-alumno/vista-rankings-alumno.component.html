@@ -23,10 +23,12 @@
                         <h1>Ranking {{idRanking}}</h1>
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <div class="btn-group mr-2">
-                                <button type="button" class="btn card-title" [routerLink]="'/listarRankings'">Volver</button>
-                                <button type="button" class="btn card-title" [routerLink]="'/desktop'">Desktop</button>
+                                <button type="button" class="btn card-title" [routerLink]="'/listarRankingsAlumno'">Volver</button>
+                                <button type="button" class="btn card-title" [routerLink]="'/desktopAlumno'">Desktop</button>
                                 <button type="button" class="btn card-title">Export</button>
                             </div>
+
+                            <!-- Botón de log out alumno -->
                             <button type="button" class="btn btn-outline-danger float-right mr-3 mt-3" style="margin: 50px auto 20px;
                             font-size: 14px;
                             font-weight: 500;" [routerLink]="'/logoutProfesor'">
@@ -58,6 +60,9 @@
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR">
+                                    <!-- <p *ngIf="nickAlLog()">hola</p> -->
+                                    <!-- <p *ngIf="nombreRanking['nickAlumno'] === sesion"></p> -->
+                                    <td **ngIfElse></td>
                                     <td>{{nombreRanking['nickAlumno']}}</td>
                                     <td>{{nombreRanking['Alumno']}}</td>
                                     <td>{{nombreRanking['Puntuacion']}}</td>
