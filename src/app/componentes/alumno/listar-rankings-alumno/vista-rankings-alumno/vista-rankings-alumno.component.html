@@ -60,8 +60,8 @@
                             <tbody>
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR">
-                                    <!-- <p *ngIf="nickAlLog()">hola</p> -->
-                                    <!-- <p *ngIf="nombreRanking['nickAlumno'] === sesion"></p> -->
+                                    <!-- <p *ngIf="nickAlLog(sesion)"></p> -->
+                                    <p *ngIf="nombreRanking['nickAlumno'] === sesion"></p>
                                     <!-- <td **ngIfElse></td> -->
                                     <td>{{nombreRanking['nickAlumno']}}</td>
                                     <td>{{nombreRanking['Alumno']}}</td>

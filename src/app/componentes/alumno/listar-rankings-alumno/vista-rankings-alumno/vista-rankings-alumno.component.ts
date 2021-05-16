@@ -46,15 +46,16 @@ private router: Router
   }
 
   // Función que utilizamos en el HTML para destacar el nick del alumno logeado
-//   nickAlLog():string {
-//     if(this.respuestaR['nickAlumno'] === this.sesion ) {
-//       //console.log(this.respuestaR[0]['nickAlumno']);
-//       const alumnoLogeado= this.respuestaR['nickAlumno'];
+  nickAlLog():boolean {
+    console.log(this.sesion);
+    console.log(this.respuestaR['nickAlumno']);
+    if(this.respuestaR['nickAlumno'] === this.sesion ) {
+      console.log(this.respuestaR[1]['nickAlumno']);
 
-//           return alumnoLogeado;
+          return true;
 //     // }else {
 //     //   return false;
-//      }
-// }
+      }
+ }
 
 }
