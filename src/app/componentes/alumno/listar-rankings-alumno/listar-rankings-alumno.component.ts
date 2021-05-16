@@ -1,4 +1,4 @@
-//import { Swal } from 'sweetalert2';
+
 import { Respuesta } from 'src/app/models/respuesta.model';
 import { Ranking } from 'src/app/models/ranking.model';
 import { Router } from '@angular/router';
@@ -30,6 +30,7 @@ export class ListarRankingsAlumnoComponent implements OnInit {
   constructor(
     // Creamos el objeto ranking del ServiceProfesor
     private listarRankingsAlumno: AlumnoService,
+    private nuevaMatriculaAlumno: AlumnoService,
     private router: Router
   ) { }
 
@@ -58,10 +59,11 @@ export class ListarRankingsAlumnoComponent implements OnInit {
   }
 
 // Función que se ejecuta con click en el botón del HTML para nueva matrícula en ránking existente
-  nuevaMatricula(idRanking: Ranking): void {
+  nuevaMatricula(): void {
+
     Swal
     .fire({
-      title: "Inserta el código del Ranking " + idRanking['idRanking'],
+      title: "Inserta el código del Ranking ",
       input: "number",
       showCancelButton: true,
       confirmButtonText: "Guardar",
@@ -69,22 +71,30 @@ export class ListarRankingsAlumnoComponent implements OnInit {
     })
     .then(resultado => {
       if (resultado.value) {
-        let idRkg = resultado.value;
-        console.log("Hola, " + idRkg);
+        let codigoRanking = resultado.value;
+        console.log("Hola, " + codigoRanking);
 
-        // Función que permite a través del servideAlumno insertar al alumno en el nuevo Ránking
-        this.listarRankingsAlumno.nuevaMatriculaAlumno(this.sesion).subscribe(
+        // Función que permite a través del serviceAlumno insertar al alumno en el nuevo Ránking
+        this.nuevaMatriculaAlumno.insertarNuevaMatriculaAl(codigoRanking, this.sesion).subscribe(
           (resp: any) => {
-            this.respuestaR = resp;
+            this.respuestaRR = resp;
 
-            console.log(this.respuestaR);
+           // idRanking.idRanking = idRkg;
+            console.log(this.respuestaRR);
+
+            Swal.fire(
+              'Matrícula a nuevo Ránking realizada correctamente!',
+              '',
+              'success'
+            )
           },
           (error: any) => {
             console.log(error);
           }
         )
+      }
+    });
   }
-
 
 
 }

@@ -84,18 +84,24 @@ export class AlumnoService {
   public pedirListadoRankingsAlumno(sesion: any): Observable<any> {
     console.log(sesion);
     return this.http.post(`${environment.serverUrl}listarRankingsAlumno.php`, JSON.stringify(sesion));
-}
+  }
 
 // Función para pedir listado de ranking seleccionado
-public pedirListadoRankingAlumno(idRanking: number ): Observable<any>  {
-  console.log(idRanking);
-  return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
-}
+  public pedirListadoRankingAlumno(idRanking: number ): Observable<any>  {
+    console.log(idRanking);
+    return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
+  }
 
 // Función para insertar alumno con código en un ránking
-public nuevaMatriculaAlumno(idRanking: number ): Observable<any>  {
-  console.log(idRanking);
-  return this.http.post(`${environment.serverUrl}mostrarRankingOrdenadoPuntuacion.php`, JSON.stringify(idRanking));
-}
+  public insertarNuevaMatriculaAl(codigoRanking: number, sesion: string ): Observable<any>  {
+  //sirve para crear un objeto con las dos o más variables que le queremos pasar al php porque el php solo puede recibir objetos.
+  const body ={
+    sesion,
+    codigoRanking
+  }
+    console.log(JSON.stringify(body));
+    return this.http.post(`${environment.serverUrl}comprobacionRKGAlumno.php`, body);
+  }
 
 }
+

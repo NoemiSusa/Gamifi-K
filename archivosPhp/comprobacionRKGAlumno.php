@@ -22,7 +22,8 @@ require_once 'generarRanking.php';
 $conexion = conexion();
 
 //consulta que se va a realizar para comprovar si existe el nick
-$query = "SELECT count(idRanking) as contador FROM rankings WHERE codigoAcceso  = '".$params->codigoAcceso;
+$query = "SELECT count(idRanking) as contador FROM rankings WHERE codigoAcceso  = '".$params->codigoAcceso."'";
+
 
 
 // realizamos la consulta a la BD y recojemos el resultado en $resultado
