@@ -61,11 +61,12 @@
                                 <!-- <a *ngIf="respuestaR !== null"> -->
                                 <tr *ngFor="let nombreRanking of respuestaR">
                                     <!-- <p *ngIf="nickAlLog()">{{nombreRanking['nickAlumno']}}</p> -->
-                                    <!-- <p *ngIf="nombreRanking['nickAlumno'] === sesion"></p> -->
-                                    <td>{{nombreRanking['nickAlumno']}}</td>
+                                     <td *ngIf="nombreRanking['nickAlumno'] === sesion" style="color: red;">{{nombreRanking['nickAlumno']}}</td>
+                                     <td *ngIf="nombreRanking['nickAlumno'] !== sesion" style="color: black;">{{nombreRanking['nickAlumno']}}</td>
+                                    <!-- <td>{{nombreRanking['nickAlumno']}}</td> -->
                                     <td>{{nombreRanking['Alumno']}}</td>
                                     <td>{{nombreRanking['Puntuacion']}}</td>
-                                    <p *ngIf="nombreRanking['nickAlumno'] === sesion" style="color: red;">{{nombreRanking['nickAlumno']}}</p>
+                                    <!-- <p *ngIf="nombreRanking['nickAlumno'] === sesion" style="color: red;">{{nombreRanking['nickAlumno']}}</p> -->
                                     <!-- </a> -->
                             </tbody>
                         </table>
