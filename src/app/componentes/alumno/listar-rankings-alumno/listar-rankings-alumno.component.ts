@@ -79,7 +79,6 @@ export class ListarRankingsAlumnoComponent implements OnInit {
           (resp: any) => {
             this.respuestaRR = resp;
 
-           // idRanking.idRanking = idRkg;
             console.log(this.respuestaRR);
 
             Swal.fire(
