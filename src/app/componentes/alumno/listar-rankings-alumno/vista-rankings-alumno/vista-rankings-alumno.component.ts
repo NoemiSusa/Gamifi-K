@@ -48,7 +48,7 @@ private router: Router
   // Función que utilizamos en el HTML para destacar el nick del alumno logeado
   nickAlLog():boolean {
     console.log(this.sesion);
-    console.log(this.respuestaR['nickAlumno']);
+    console.log(this.nombreRanking['nickAlumno']);
     if(this.respuestaR['nickAlumno'] === this.sesion ) {
       console.log(this.respuestaR[1]['nickAlumno']);
 
