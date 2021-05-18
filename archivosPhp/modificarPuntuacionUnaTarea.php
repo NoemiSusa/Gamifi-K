@@ -9,17 +9,16 @@ $json = file_get_contents('php://input');
 // echo('{ "json": "hola" } ');
 
 $params = json_decode($json);
-$tarea = $params->nombreTarea->tareas;
+// $tarea = $params->nombreTarea->tareas;
 $nuevaPuntuacion = (double)$params->nuevaPuntuacion;
 require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "UPDATE tareas
-          SET puntuacion = ".$params->nuevaPuntuacion.
+$query = "UPDATE tareaalumno
+          SET puntuacion = ".$nuevaPuntuacion.
           " WHERE nickAlumnoTarea='".$params->nickAlumno."'".
-          " AND nombreTarea = '".$tarea."'".
-          " AND idRankingTarea = ".$params->idRanking;
+          " AND idTareaAl = ".$params->idTarea;
 
 // echo($query);
 $resultado = mysqli_query($conexion, $query);

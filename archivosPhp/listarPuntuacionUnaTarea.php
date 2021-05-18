@@ -12,7 +12,7 @@ require_once 'conBDLocal.php';
 
 $conexion = conexion();
 
-$query = "SELECT  al.nickAlumno as nick, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) )  AS Alumno, round(ta.puntuacion, 2) AS Puntuacion
+$query = "SELECT  al.nickAlumno as Nick, CONCAT( ' ', CONCAT( al.apellidosAlumno, CONCAT( ' ', CONCAT( al.nombreAlumno, ' ' ) ) ) )  AS Alumno, round(ta.puntuacion, 2) AS Puntuacion
             FROM alumno al, tareas t, tareaalumno ta
             WHERE ta.nickAlumnoTarea = al.nickAlumno
              AND ta.idtareaal = t.idTarea

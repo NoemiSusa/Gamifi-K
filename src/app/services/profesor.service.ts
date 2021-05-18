@@ -131,10 +131,10 @@ export class ProfesorService {
   }
 
   // función para hacer el update de la puntuación en la base de datos.
-  actualizarPuntuacion(idRanking:number,nombreTarea:string, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
+  actualizarPuntuacion(idRanking:number,idTarea:number, nickAlumno:string, nuevaPuntuacion:number): Observable<any>{
     const body ={
       idRanking,
-      nombreTarea,
+      idTarea,
       nickAlumno,
       nuevaPuntuacion
     }

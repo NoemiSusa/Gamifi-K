@@ -76,7 +76,7 @@ export class EditarRankingComponent implements OnInit {
     this.nuevaPuntuacion = nuevaPuntuacion;
 
     //llamamos a la función actualizarPuntuacion del serviceProfesor para modificar la puntuación en la base de datos
-    this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking, this.objetoTarea.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
+    this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking, this.objetoTarea['idT'], nombreRanking['Nick'], this.nuevaPuntuacion).subscribe(
       (respuesta: Respuesta) => {
         console.log(respuesta);
 
