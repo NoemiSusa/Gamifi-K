@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ranking } from 'src/app/models/ranking.model';
 import { Respuesta } from 'src/app/models/respuesta.model';
+import { Tarea } from 'src/app/models/tarea.model';
 import { ProfesorService } from 'src/app/services/profesor.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -16,12 +17,13 @@ export class EditarRankingComponent implements OnInit {
   respuestaR: string[];
   resp;
   listaTareas: string[];   //  =["tarea 1","tarea 2","tarea 3", "todas"];
-  nombreTarea: string;
+  nombreTarea: Tarea;
   nombreRanking: string;
   sesion: string = environment.vsesion;
   idRanking: number = environment.idRanking;
   nickAlumno: string;
   nuevaPuntuacion: number;
+  objetoTarea: Tarea;
 
 
   constructor(
@@ -48,12 +50,12 @@ export class EditarRankingComponent implements OnInit {
   }
 
   //esta función selecciona la tarea que se desea modificar luego la puntuación
-  seleccionarTarea(tarea: string): void {
-    this.nombreTarea = tarea;
-    console.log(this.nombreTarea);
+  seleccionarTarea(tarea: Tarea): void {
+    this.objetoTarea = tarea;
+    console.log(this.objetoTarea);
 
     // Usamos el servicio par pedir todos los campos del ranking y poder listarlo en este caso lo mostramos ordenado por puntuación
-    this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking, this.nombreTarea).subscribe(
+    this.listarRankings.pedirRankingaEditar(this.sesion, this.idRanking, this.objetoTarea['nombreT'], this.objetoTarea['idT']).subscribe(
       (resp: any) => {
         this.respuestaR = resp;
         console.log(this.respuestaR);
@@ -74,7 +76,7 @@ export class EditarRankingComponent implements OnInit {
     this.nuevaPuntuacion = nuevaPuntuacion;
 
     //llamamos a la función actualizarPuntuacion del serviceProfesor para modificar la puntuación en la base de datos
-    this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking, this.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
+    this.actualizaPuntuacion.actualizarPuntuacion(this.idRanking, this.objetoTarea.nombreTarea, this.nickAlumno, this.nuevaPuntuacion).subscribe(
       (respuesta: Respuesta) => {
         console.log(respuesta);
 

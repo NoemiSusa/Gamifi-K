@@ -12,7 +12,7 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 // coje todas las tareas de un ranking de un profesor concreto
-$query = "SELECT t.nombreTarea as tareas".
+$query = "SELECT t.nombreTarea as nombreT, t.idTarea as idT".
           " FROM tareas t, rankings r".
           " where t.idRankingTarea = ".$params.
           " AND t.idRankingTarea = r.idRanking".

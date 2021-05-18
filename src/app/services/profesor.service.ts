@@ -118,14 +118,15 @@ export class ProfesorService {
 
   //Función para pedir todos los datos del ranking a la base de datos.
     //creamos la constante body para generar un objeto ya que el service debe mandar un objeto al php y generamos el objeto con los valores que nosotros necessitamos.
-  pedirRankingaEditar(sesion:string, idRanking:number, nombreTarea:string): Observable<any> {
+  pedirRankingaEditar(sesion:string, idRanking:number, nombreTarea:string, idTarea:number): Observable<any> {
     //sirve para crear un objeto con las dos o más variables que le queremos pasar al php porque el php solo puede recibir objetos.
     const body ={
       sesion,
       idRanking,
-      nombreTarea
+      nombreTarea,
+      idTarea
     }
-    // console.log(JSON.stringify(body));
+     console.log(JSON.stringify(body));
     return this.http.post(`${environment.serverUrl}listarPuntuacionUnaTarea.php`, body);
   }
 
