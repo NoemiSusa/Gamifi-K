@@ -2,6 +2,8 @@
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, x-Requested-With, Content-Type, Accept");
 header('Content-Type: application/json');
+
+// En caso de tener que trabajar con PUT deberían implementarse las siguientes cabezeras
 // header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 // header('Content-Type: text/html; charset=UTF-8');
 // header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -16,13 +18,13 @@ $params = json_decode($json); //debe contener NICKAlumno y CODIGO DE ACCESO
 
 // importamos el archivo con la conexión a la BD y el fichero de insertar para luego realizar el insert
 require_once 'conBDLocal.php';
-require_once 'generarRanking.php';
+require_once 'registrarAlumnoAlRanking.php';
 
 // creamos la conexión
 $conexion = conexion();
 
 //consulta que se va a realizar para comprovar si existe el nick
-$query = "SELECT count(idRanking) as contador FROM rankings WHERE codigoAcceso  = '".$params->codigoAcceso."'";
+$query = "SELECT count(idRanking) as contador FROM rankings WHERE codigoAcceso  = '".$params->codigoRanking."'";
 
 
 

@@ -19,10 +19,10 @@ class RegistrarAlumno{
 
     //creamos en la tabla tareaalumno todas las tareas de un ranking a un alumno
     $query = "INSERT INTO tareaalumno (idTareaAl, nickAlumnoTarea)
-                SELECT t.idTarea as idTareaAl, '".$params->nickAlumno."' as nickAlumnoTarea
+                SELECT t.idTarea as idTareaAl, '".$params->sesion."' as nickAlumnoTarea
                 FROM rankings r, tareas t
                 WHERE r.idRanking = t.idRankingTarea
-                AND r.codigoAcceso = '".$params->codigoAcceso;
+                AND r.codigoAcceso = ".$params->codigoRanking;
 
     $resultado = mysqli_query($conexion, $query);
 

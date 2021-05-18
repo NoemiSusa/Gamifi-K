@@ -11,8 +11,7 @@ require_once 'conBDLocal.php';
 $conexion = conexion();
 
 //lista todos los rankings de un alumno (es el que le pasamos como parametro nickAlumno)
-$query = //"SELECT * FROM rankings where nickProfesorRK='".$params."'";
-"SELECT r.nombreRanking as nombreRanking, concat(r.idRanking) as idRanking, concat(al.nickAlumnoTarea)  AS nickAlumnoTarea
+$query = "SELECT r.nombreRanking as nombreRanking, concat(r.idRanking) as idRanking, concat(al.nickAlumnoTarea)  AS nickAlumnoTarea
 FROM rankings r, tareas t, tareaalumno al
 where t.idRankingTarea = r.idRanking
 AND al.idTareaAl = t.idTarea

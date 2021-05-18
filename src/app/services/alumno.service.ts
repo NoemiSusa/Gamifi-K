@@ -100,7 +100,7 @@ export class AlumnoService {
     codigoRanking
   }
     console.log(JSON.stringify(body));
-    return this.http.post(`${environment.serverUrl}registrarAlumnoAlRanking.php`, body);
+    return this.http.post(`${environment.serverUrl}comprobacionRKGAlumno.php`, body);
   }
 
 }
