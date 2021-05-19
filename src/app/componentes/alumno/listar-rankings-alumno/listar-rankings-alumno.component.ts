@@ -81,6 +81,8 @@ export class ListarRankingsAlumnoComponent implements OnInit {
 
             console.log(this.respuestaRR);
 
+           ///////////////////// this.nombreRanking.codigoAcceso=codigoRanking;
+
             Swal.fire(
               'Matrícula a nuevo Ránking realizada correctamente!',
               '',
@@ -90,8 +92,11 @@ export class ListarRankingsAlumnoComponent implements OnInit {
              // Se ejecuta la función map para poder visualizar el cambio sin necesidad de refrescar la página y perder el login
         this.respuestaR.map((value: Ranking) => {
 
-          if (value['nickAlumno'] === environment.vsesion) {
-            value['codigoAcceso'] = codigoRanking;
+          console.log(this.respuestaR);
+
+          if (value['nickAlumno'] === this.sesion) {
+            value['idRanking'] = this.idRanking;
+
           }
         }
       );
