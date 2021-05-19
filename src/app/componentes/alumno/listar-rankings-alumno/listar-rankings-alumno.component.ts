@@ -86,6 +86,15 @@ export class ListarRankingsAlumnoComponent implements OnInit {
               '',
               'success'
             )
+
+             // Se ejecuta la función map para poder visualizar el cambio sin necesidad de refrescar la página y perder el login
+        this.respuestaR.map((value: Ranking) => {
+
+          if (value['nickAlumno'] === environment.vsesion) {
+            value['codigoAcceso'] = codigoRanking;
+          }
+        }
+      );
           },
           (error: any) => {
             console.log(error);
