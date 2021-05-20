@@ -81,8 +81,6 @@ export class ListarRankingsAlumnoComponent implements OnInit {
 
             console.log(this.respuestaRR);
 
-           ///////////////////// this.nombreRanking.codigoAcceso=codigoRanking;
-
             Swal.fire(
               'Matrícula a nuevo Ránking realizada correctamente!',
               '',
@@ -94,8 +92,8 @@ export class ListarRankingsAlumnoComponent implements OnInit {
 
           console.log(this.respuestaR);
 
-          if (value['nickAlumno'] === this.sesion) {
-            value['idRanking'] = this.idRanking;
+          if (value['idRanking'] === environment.idRanking) {
+            value['nombreRanking'] = this.nombreRanking.nombreRanking;
 
           }
         }
