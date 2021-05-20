@@ -25,7 +25,7 @@
 
 .card-text {
     color: #616161;
-    color: #aaa;
+    color: rgb(131, 158, 177);
     font-weight: 1800;
     opacity: 1;
 }
@@ -193,4 +193,3 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
-

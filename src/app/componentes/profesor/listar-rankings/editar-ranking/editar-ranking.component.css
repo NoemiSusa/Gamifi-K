@@ -1,6 +1,6 @@
 .main-section {
     position: relative;
-    background-image: url('/assets/imgSites/Hexagon1.png'), linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 73, .7), rgba(0, 0, 0, .7));
+    background-image: url('/assets/imgSites/Hexagon.png'), linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 73, .7), rgba(0, 0, 0, .7));
     height: 950px;
     background-size: cover;
 }
