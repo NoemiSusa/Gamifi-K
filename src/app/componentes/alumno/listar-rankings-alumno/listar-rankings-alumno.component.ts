@@ -88,16 +88,19 @@ export class ListarRankingsAlumnoComponent implements OnInit {
             )
 
              // Se ejecuta la función map para poder visualizar el cambio sin necesidad de refrescar la página y perder el login
-        this.respuestaR.map((value: Ranking) => {
+        // this.respuestaR.map((value: Ranking) => {
 
-          console.log(this.respuestaR);
+        //   console.log(this.respuestaR);
 
-          if (value['idRanking'] === environment.idRanking) {
-            value['nombreRanking'] = this.nombreRanking.nombreRanking;
+        //   if (value['codigoRanking'] === codigoRanking) {
+        //   value['nombreRanking'] = this.respuestaRR['nombreRanking'];
 
-          }
-        }
-      );
+          // if (value['idRanking'] ===  {
+          //   value['nombreRanking'] = this.nombreRanking.nombreRanking;
+
+          //  }
+        // }
+      // );
           },
           (error: any) => {
             console.log(error);

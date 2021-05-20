@@ -56,9 +56,27 @@ else if (count($datos)!=0) {
 
   // en funcion del resultado que recibimos de la función sabemos donde ha fallado el programa o si lo ha generado correctamente
   if($insertado==50){
-    $respuesta->resultado = true;
-    $respuesta->msg = "El alumno se ha logueado correctamente al ranking";
-    print json_encode($respuesta);
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $conexion = conexion();
+
+      //consulta que se va a realizar para comprovar si existe el nick
+      $query = "SELECT idRanking, nombreRanking, codigoAcceso  FROM rankings WHERE codigoAcceso  = '".$params->codigoRanking."'";
+
+      // realizamos la consulta a la BD y recojemos el resultado en $resultado
+      $resultado = mysqli_query($conexion, $query);
+
+      $datos=[];
+
+      while($row = mysqli_fetch_assoc($resultado)) {
+        // si el ranking existe obtiene datos y los guarda en el array $datos
+        $datos = $row;
+      }
+
+      $conexion->close();
+///////////////////////////////////////////////////////////////////////////////////
+    // $respuesta->resultado = true;
+    // $respuesta->msg = "El alumno se ha logueado correctamente al ranking";
+    print json_encode($datos);
 
   }else if ($insertado==-50){
     $respuesta->resultado = false;
