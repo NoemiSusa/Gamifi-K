@@ -14,17 +14,20 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginAlumno()">
         <div class="form-row">
             <div class="form-group col-md-12">
-                <input type="text" formControlName="nickAlumno" placeholder="Nick de Alumn@" class="form-control" [ngClass]="{ 'is-invalid':  controlFormulario.nickAlumno.errors }" />
+                <input type="text" formControlName="nickAlumno" placeholder="Nick de Alumn@" class="form-control" [ngClass]="{ 'is-valid':  controlFormulario.nickAlumno.touched && controlFormulario.nickAlumno.valid,
+              'is-invalid': controlFormulario.nickAlumno.touched && controlFormulario.nickAlumno.invalid}" />
                 <div *ngIf=" controlFormulario.nickAlumno.errors" class="invalid-feedback">
                     <div *ngIf="controlFormulario.nickAlumno.errors.required">Nick requerido</div>
+                    <div *ngIf="controlFormulario.nickAlumno.errors.minlength">Mínimo requerido 2 carácteres</div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <input type="password" formControlName="contrasenyaAlumno" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-invalid':  controlFormulario.contrasenyaAlumno.errors }" />
+                    <input type="password" formControlName="contrasenyaAlumno" placeholder="Contraseña" class="form-control" [ngClass]="{ 'is-valid':  controlFormulario.contrasenyaAlumno.touched && controlFormulario.contrasenyaAlumno.valid,
+                  'is-invalid': controlFormulario.contrasenyaAlumno.touched && controlFormulario.contrasenyaAlumno.invalid}" />
                     <div *ngIf=" controlFormulario.contrasenyaAlumno.errors" class="invalid-feedback">
-                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Contraseña requerida</div>
+                        <div *ngIf="controlFormulario.contrasenyaAlumno.errors.required">Inserte la contraseña</div>
                         <div *ngIf="controlFormulario.contrasenyaAlumno.errors.minlength">Minimo mínimo requerido 6 caracteres</div>
                     </div>
                 </div>
