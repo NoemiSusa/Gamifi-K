@@ -1,6 +1,5 @@
 import { Respuesta } from './../../../models/respuesta.model';
 import Swal from 'sweetalert2';
-// import { environment } from './../../../../environments/environment';
 import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -31,10 +30,7 @@ export class GenerarRankingComponent implements OnInit {
   public dataFinNoParsed
   router: Router;
 
-
-
   public nuevoCodigoRanking:Ranking;
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -63,17 +59,16 @@ export class GenerarRankingComponent implements OnInit {
     // valido la fecha
     if (dia < 10 && mes < 10) {
       this.fechaMinimaParsed = (año + "-" + "0" + mes + "-" + "0" + dia);
-      console.log(this.fechaMinimaParsed + " data minima 1");
     }
     else if (mes < 10 && dia > 9) {
       this.fechaMinimaParsed = (año + "-" + "0" + mes + "-" + dia);
-      console.log(this.fechaMinimaParsed + " data minima 2");
+
     }
     else if (mes > 9 && dia > 9) {
       this.fechaMinimaParsed = (año + "-" + mes + "-" + dia);
-      console.log(this.fechaMinimaParsed + " data minima 3");
+
     }
-    console.log(this.fechaMinimaParsed + " data minima @@@@@@@@@@@@@@@@@@@@@");
+
   }
 
   //sirve para ejecutar el control del formulario en el html
@@ -83,43 +78,28 @@ export class GenerarRankingComponent implements OnInit {
 
 
   formularioRankingFuncion(): void {
-    console.log(this.rankingProfesor.controls.nombreRanking.value + " hibirihibiri");
 
     //guardo los valores del formulario en la variable nuevo ranking
     this.nuevoRanking = new Ranking(null,
       this.rankingProfesor.controls.nombreRanking.value);
-    console.log(this.nuevoRanking.nombreRanking + " nuevoranking");
 
-
-
-    console.log(this.nuevoRanking.nombreRanking + " Nuevo ranking ");
     //cojo la fecha del formulario en su formato para luego formatearla correctamente
     this.dataFinNoParsed = (this.rankingProfesor.controls.dataFin.value);
 
 
     var dataFinParced = this.dataFinNoParsed.split("-",);
-    console.log(dataFinParced + "Fecha fin :   datafinparce");
-
     var diaFin = dataFinParced[2];
     var mesFin = dataFinParced[1];
     var añoFin = dataFinParced[0];
 
     var fechaFinRkg = diaFin + "/" + mesFin + "/" + añoFin;
 
-
-    console.log(fechaFinRkg + "  Fecha fin :   fechaFinRkg");
-
-    //guardo la fecha fin en el objeto
     this.nuevoRanking.fechaFinal = fechaFinRkg;
 
-
-
-    console.log(this.nuevoRanking.fechaFinal + "DATA-FIN-FINAL");
-
-    console.log(dataFinParced)
     this.submitted = true;
 
     this.nuevoRanking.nickProfesorRK = environment.vsesion;
+
     //codigo de acceso
     this.nuevoRanking.codigoAcceso = Date.now();
 
@@ -137,25 +117,17 @@ export class GenerarRankingComponent implements OnInit {
     else
       this.datainicio = (dia + "/" + mes + "/" + año);
 
-
     this.nuevoRanking.fechaInicio = this.datainicio;
-    console.log(this.datainicio);
-    console.log(this.nuevoRanking);
-
-
 
     if (this.rankingProfesor.invalid) {
       return;
     }
-
-
 
     // funcion que llama al service y le pasa los valores para poder crear el nuevo RKG
     this.rankingTs.altaRankingService(this.nuevoRanking).subscribe(
 
       // lo primero si ha funcionado
       (datosDelProfesorServiceTsPHP: any) => {
-        console.log(datosDelProfesorServiceTsPHP);
         if (datosDelProfesorServiceTsPHP.resultado) {
           Swal.fire('Genial', datosDelProfesorServiceTsPHP.msg, 'success');
           this.router.navigate(['/listarRankings']);
@@ -167,55 +139,12 @@ export class GenerarRankingComponent implements OnInit {
       },
       //lo segundo que se espera es si no hay datos
       (errorDelProfesorServiceTs: any) => {
-        console.log(errorDelProfesorServiceTs);
         Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
       }
 
     )
 
-
   }
-
-
-// Generamos un nuevo código de acceso para alumnos de un ránking ya existente
-  // ModificarCodigoRKG(){
-  //   this.nuevoCodigoRanking = new Ranking();
-
-  //   this.nuevoCodigoRanking.codigoAcceso=Date.now();
-  //   this.nuevoCodigoRanking.idRanking=environment.idRanking;
-  //   // this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
-  //   this.nuevoCodigoRanking.nickProfesorRK=environment.vsesion;
-  //   console.log(this.nuevoCodigoRanking)
-
-
-
-
-    // this.cambiarCodigoRKGService.modificarCodigoRkg(this.nuevoCodigoRanking).subscribe(
-
-    //   // lo primero si ha funcionado
-    //   (datosDelPhpService: any) => {
-    //     console.log(datosDelPhpService);
-    //     if (datosDelPhpService.resultado) {
-    //       Swal.fire('Genial', datosDelPhpService.msg, 'success');
-    //      // this.router.navigate(['/listarRankings']);
-    //     }
-    //     // si es false
-    //     else if (!datosDelPhpService.resultado) {
-    //       Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
-    //     }
-    //   },
-    //   //lo segundo que se espera es si no hay datos
-    //   (errorDelProfesorServiceTs: any) => {
-    //     console.log(errorDelProfesorServiceTs);
-    //     Swal.fire('Fallo', 'Fallo desconocido en el servidor', 'error');
-    //   }
-
-    // )
-
-
- // }
-
-
 
 }
 

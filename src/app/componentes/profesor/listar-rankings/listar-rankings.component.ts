@@ -7,6 +7,7 @@ import { Respuesta } from 'src/app/models/respuesta.model';
 import Swal from 'sweetalert2';
 import { env } from 'process';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -154,14 +155,17 @@ export class ListarRankingsComponent implements OnInit {
               this.respuesta.msg,
               'success'
             )
-            this.respuestaR.map((value: Ranking) => {
 
-              if (value['idRanking'] === environment.idRanking) {
-               value['nombreRanking'] = null;
-               value['codigoAcceso'] = null;
-              }
-            }
-            );
+            // Afegit per Nelson per substituïr els map
+            this.ngOnInit();
+            // this.respuestaR.map((value: Ranking) => {
+
+            //   if (value['idRanking'] === environment.idRanking) {
+            //    value['nombreRanking'] = null;
+            //    value['codigoAcceso'] = null;
+            //   }
+            // }
+            // );
             this.router.navigate(['/listarRankings']);
           },
           (error: any) => {
@@ -207,6 +211,10 @@ export class ListarRankingsComponent implements OnInit {
         }
         // si es false
         else if (!datosDelPhpService.resultado) {
+          Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
+        }
+
+        else if (datosDelPhpService.resultado =! false) {
           Swal.fire('Problemas', datosDelPhpService.msg, 'warning');
         }
       },
